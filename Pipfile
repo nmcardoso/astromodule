@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pandas = "*"
+astropy = "*"
+astroquery = "*"
+matplotlib = "*"
+seaborn = "*"
+tqdm = "*"
+requests = "*"
+wheel = "*"
+pillow = "*"
+
+[dev-packages]
+jinja2 = "*"
+sphinx = "*"
+sphinxcontrib-napoleon = "*"
+sphinx-copybutton = "*"
+sphinx-astropy = "*"
+sphinx-gallery = "*"
+sphinx-automodapi = "*"
+numpydoc = "*"
+furo = "*"
+pydata-sphinx-theme = "*"
+ipykernel = "*"
+tox = "*"
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.4"
