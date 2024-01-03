@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
   name='astromodule',
-  version='0.2.0',
+  version='0.0.1',
   description='Astronomical Utilities',
   author='Natanael',
   author_email='contact@natanael.net',
