@@ -1,9 +1,13 @@
+from pathlib import Path
+
 from setuptools import find_packages, setup
 
 setup(
   name='astromodule',
   version='0.0.1',
   description='Astronomical Utilities',
+  long_description=Path('README.md').read_text(),
+  long_description_content_type='text/markdown',
   author='Natanael',
   author_email='contact@natanael.net',
   packages=find_packages(),
