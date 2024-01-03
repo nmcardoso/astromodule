@@ -29,6 +29,7 @@ pydata-sphinx-theme = "*"
 ipykernel = "*"
 tox = "*"
 build = "*"
+twine = "*"
 
 [requires]
 python_version = "3.11"
