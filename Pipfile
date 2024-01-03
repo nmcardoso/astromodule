@@ -30,6 +30,7 @@ ipykernel = "*"
 tox = "*"
 build = "*"
 twine = "*"
+toml = "*"
 
 [requires]
 python_version = "3.11"
