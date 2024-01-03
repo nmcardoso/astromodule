@@ -28,6 +28,7 @@ furo = "*"
 pydata-sphinx-theme = "*"
 ipykernel = "*"
 tox = "*"
+build = "*"
 
 [requires]
 python_version = "3.11"
