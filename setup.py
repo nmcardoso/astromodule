@@ -8,8 +8,10 @@ setup(
   description='Astronomical Utilities',
   long_description=Path('README.md').read_text(),
   long_description_content_type='text/markdown',
-  author='Natanael',
+  author='Natanael Magalhães Cardoso',
   author_email='contact@natanael.net',
+  maintainer='Natanael Magalhães Cardoso',
+  maintainer_email='contact@natanael.net',
   packages=find_packages(),
   include_package_data=True,
   package_data={
@@ -41,5 +43,11 @@ setup(
       'pydata-sphinx-theme',
       'ipykernel',
     ]
-  }
+  },
+  keywords=[
+    'astronomy', 
+    'astronomical databases', 
+    'machine learning', 
+    'data science'
+  ],
 )

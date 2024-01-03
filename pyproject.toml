@@ -3,44 +3,7 @@ requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "astromodule"
-version = "0.0.1"
 requires-python = ">= 3.8"
-description = "Astronomy Tools"
-keywords = ["astronomy", "machine learning", "data science"]
-authors = [
-  {name = "Natanael Magalhães Cardoso", email = "contact@natanael.net"}
-]
-maintainers = [
-  {name = "Natanael Magalhães Cardoso", email = "contact@natanael.net"}
-]
-dependencies = [
-  "wheel",
-  "numpy>=1.21.6",
-  "pandas>=1.3.5",
-  "scikit-learn>=1.0.2",
-  "tqdm>=4.64.1",
-  "requests>=2.23",
-  "Pillow>=7.1.2",
-  "astropy>=5.2",
-  "matplotlib",
-  "seaborn"
-]
-
-[project.optional-dependencies]
-docs = [
-  "Jinja2>=3.1",
-  "sphinx",
-  "sphinxcontrib-napoleon",
-  "sphinx_copybutton",
-  "sphinx-astropy",
-  "sphinx-gallery",
-  "sphinx-automodapi",
-  "numpydoc",
-  "furo",
-  "pydata-sphinx-theme",
-  "ipykernel"
-]
 
 [project.urls]
 Homepage = "https://nmcardoso.github.io/astromodule"
