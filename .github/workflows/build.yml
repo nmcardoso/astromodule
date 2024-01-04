@@ -77,13 +77,20 @@ jobs:
         echo $TAG_VER
       env:
         TAG_VER: v${{ needs.version_check.outputs.CODE_VERSION }}
-    - name: Create Release
-      uses: ncipollo/release-action@v1
+    # - name: Create Release
+    #   uses: ncipollo/release-action@v1
+    #   with:
+    #     artifacts: "dist/*"
+    #     draft: false
+    #     prerelease: false
+    #     name: v${{ needs.version_check.outputs.CODE_VERSION }}
+    #     # commit: ${GITHUB_SHA}
+    #     body: |
+    #       AstroModule Release ${{ needs.version_check.outputs.CODE_VERSION }}
+    - uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        artifacts: "dist/*"
-        draft: false
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: v${{ needs.version_check.outputs.CODE_VERSION }}
         prerelease: false
-        name: v${{ needs.version_check.outputs.CODE_VERSION }}
-        # commit: ${GITHUB_SHA}
-        body: |
-          AstroModule Release ${{ needs.version_check.outputs.CODE_VERSION }}
+        title: v${{ needs.version_check.outputs.CODE_VERSION }}
+        files: "dist/*"
