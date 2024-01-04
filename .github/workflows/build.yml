@@ -72,13 +72,17 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
+    - run: |
+        echo $VVV
+      env:
+        VVV: ${{ needs.version-check.outputs.CODE_VERSION }}
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/*"
         draft: false
         prerelease: false
-        tag: ${{ needs.version-check.outputs.CODE_VERSION }}
+        tag: v${{ needs.version-check.outputs.CODE_VERSION }}
         commit: ${GITHUB_SHA}
         body: |
           AstroModule Release ${{ needs.version-check.outputs.CODE_VERSION }}
