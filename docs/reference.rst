@@ -7,3 +7,4 @@ API Reference
    :recursive:
 
    astromodule.distance
+   astromodule.io
