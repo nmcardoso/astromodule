@@ -63,6 +63,8 @@ jobs:
     - build
     - version-check
     if: ${{ needs.version-check.outputs.PYPI_VERSION != needs.version-check.outputs.CODE_VERSION }}
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
     - name: Download all the dists
@@ -77,5 +79,6 @@ jobs:
         draft: false
         prerelease: false
         tag: ${{ needs.version-check.outputs.CODE_VERSION }}
+        commit: ${GITHUB_SHA}
         body: |
           AstroModule Release ${{ needs.version-check.outputs.CODE_VERSION }}
