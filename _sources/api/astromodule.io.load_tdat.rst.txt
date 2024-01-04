@@ -1,0 +1,6 @@
+astromodule.io.load\_tdat
+=========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: load_tdat

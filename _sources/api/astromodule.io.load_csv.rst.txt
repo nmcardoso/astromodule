@@ -1,0 +1,6 @@
+astromodule.io.load\_csv
+========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: load_csv

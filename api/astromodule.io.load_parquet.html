@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview: module code &#8212; AstroModule 0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>astromodule.io.load_parquet &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -41,9 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_parquet';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="astromodule.io.load_table" href="astromodule.io.load_table.html" />
+    <link rel="prev" title="astromodule.io.load_fits" href="astromodule.io.load_fits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,7 +146,7 @@
   </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../reference.html">
                         API Reference
                       </a>
@@ -232,6 +235,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -239,7 +246,7 @@ document.write(`
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -258,7 +265,7 @@ document.write(`
   </p>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
+                    <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="../reference.html">
                         API Reference
                       </a>
@@ -317,6 +324,31 @@ document.write(`
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.distance.html">astromodule.distance</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.distance.arcsec2mpc.html">astromodule.distance.arcsec2mpc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_csv.html">astromodule.io.load_csv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_fits.html">astromodule.io.load_fits</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_parquet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_table.html">astromodule.io.load_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tdat.html">astromodule.io.load_tdat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tsv.html">astromodule.io.load_tsv</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
@@ -349,7 +381,13 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Overview:...</li>
+    
+    <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
 </nav>
 </div>
@@ -366,10 +404,30 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="astromodule/distance.html">astromodule.distance</a></li>
-<li><a href="astromodule/io.html">astromodule.io</a></li>
-</ul>
+  <section id="astromodule-io-load-parquet">
+<h1>astromodule.io.load_parquet<a class="headerlink" href="#astromodule-io-load-parquet" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="astromodule.io.load_parquet">
+<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_parquet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_parquet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_parquet" title="Link to this definition">#</a></dt>
+<dd><p>Loads a parquet table</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>path<span class="classifier">str | Path</span></dt><dd><p>Path to the table to read</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>The table as a pandas dataframe</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+
 
                 </article>
               
@@ -380,12 +438,54 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="astromodule.io.load_fits.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">astromodule.io.load_fits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="astromodule.io.load_table.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">astromodule.io.load_table</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.load_parquet"><code class="docutils literal notranslate"><span class="pre">load_parquet()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/astromodule.io.load_parquet.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
               
             
           </div>

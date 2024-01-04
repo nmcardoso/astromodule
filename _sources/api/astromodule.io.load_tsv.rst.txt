@@ -1,0 +1,6 @@
+astromodule.io.load\_tsv
+========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: load_tsv

@@ -1,0 +1,6 @@
+astromodule.io.load\_parquet
+============================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: load_parquet
