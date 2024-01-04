@@ -1,0 +1,6 @@
+astromodule.distance.mpc2arcsec
+===============================
+
+.. currentmodule:: astromodule.distance
+
+.. autofunction:: mpc2arcsec
