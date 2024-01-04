@@ -110,11 +110,12 @@ def load_table(path: str | Path) -> pd.DataFrame:
   This function tries to detect the table type comparing the file extension and
   returns a pandas dataframe of the loaded table.
   
-  Supported extensions:
-  - Fits tables: .fit, .fits, .fz
-  - ASCII tables: .csv, .tsv, .dat
-  - Heasarc tables: .tdat
-  - Arrow tables: .parquet
+  Supported table types:
+  
+    - Fits tables: .fit, .fits, .fz
+    - ASCII tables: .csv, .tsv, .dat
+    - Heasarc tables: .tdat
+    - Arrow tables: .parquet
 
   Parameters
   ----------
