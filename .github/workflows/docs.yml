@@ -7,7 +7,7 @@ on:
     paths:
       - 'docs/**'
       - 'astromodule/**'
-      - '.github/workflows/docs.yaml'
+      - '.github/workflows/docs.yml'
       - 'setup.py'
 
 jobs:
