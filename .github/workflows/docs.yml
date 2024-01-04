@@ -12,7 +12,7 @@ on:
 
 jobs:
   docs:
-    name: Build & deploy documentation
+    name: Build & Deploy
     runs-on: ubuntu-latest
     permissions:
       contents: write
