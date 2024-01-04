@@ -112,10 +112,10 @@ def load_table(path: str | Path) -> pd.DataFrame:
   
   Supported table types:
   
-    - Fits tables: .fit, .fits, .fz
-    - ASCII tables: .csv, .tsv, .dat
-    - Heasarc tables: .tdat
-    - Arrow tables: .parquet
+  - Fits tables: .fit, .fits, .fz
+  - ASCII tables: .csv, .tsv, .dat
+  - Heasarc tables: .tdat
+  - Arrow tables: .parquet
 
   Parameters
   ----------
