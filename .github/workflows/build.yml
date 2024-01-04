@@ -72,17 +72,18 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
-    - run: |
-        echo $VVV
+    - name: Tag check
+      run: |
+        echo $TAG_VER
       env:
-        VVV: ${{ needs.version_check.outputs.CODE_VERSION }}
+        TAG_VER: v${{ needs.version_check.outputs.CODE_VERSION }}
     - name: Create Release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/*"
         draft: false
         prerelease: false
-        tag: v${{ needs.version_check.outputs.CODE_VERSION }}
+        tag: ${{ needs.version_check.outputs.CODE_VERSION }}
         commit: ${GITHUB_SHA}
         body: |
           AstroModule Release ${{ needs.version_check.outputs.CODE_VERSION }}
