@@ -1,4 +1,4 @@
-name: Publish to Test-PyPI
+name: Build Project
 
 on:
   push:
@@ -18,11 +18,8 @@ jobs:
       with:
         python-version: "3.x"
     - name: Install pypa/build
-      run: >-
-        python3 -m
-        pip install
-        build
-        --user
+      run: |
+        python3 -m pip install build --user
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
     - name: Store the distribution packages
@@ -30,6 +27,7 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
+
 
   version-check:
     name: Check Version
@@ -57,26 +55,27 @@ jobs:
         python scripts/code_version.py >> $GITHUB_OUTPUT
         cat $GITHUB_OUTPUT
 
-  publish-to-testpypi:
-    name: Publish Python 🐍 distribution 📦 to TestPyPI
+
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
     needs:
     - build
     - version-check
-    if: ${{ needs.version-check.outputs.PYPI_VERSION != needs.version-check.outputs.CODE_VERSION}}
-    runs-on: ubuntu-latest
-    environment:
-      name: testpypi
-      url: https://test.pypi.org/p/astromodule
-    permissions:
-      contents: read
-      id-token: write  # IMPORTANT: mandatory for trusted publishing
+    if: ${{ needs.version-check.outputs.PYPI_VERSION != needs.version-check.outputs.CODE_VERSION }}
     steps:
+    - uses: actions/checkout@v4
     - name: Download all the dists
       uses: actions/download-artifact@v3
       with:
         name: python-package-distributions
         path: dist/
-    - name: Publish distribution 📦 to TestPyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+    - name: Create Release
+      uses: ncipollo/release-action@v1
       with:
-        repository-url: https://test.pypi.org/legacy/
+        artifacts: "dist/*"
+        draft: false
+        prerelease: false
+        tag: ${{ needs.version-check.outputs.CODE_VERSION }}
+        body: |
+          AstroModule Release ${{ needs.version-check.outputs.CODE_VERSION }}

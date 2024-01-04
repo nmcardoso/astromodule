@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Upload Python Package
+name: Publish Package
 
 on:
   release:
@@ -16,24 +16,79 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
+  publish-testpypi:
+    name: Publish Python 🐍 distribution 📦 to TestPyPI
+    # needs:
+    # - build
+    # - version-check
+    # if: ${{ needs.version-check.outputs.PYPI_VERSION != needs.version-check.outputs.CODE_VERSION }}
     runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/astromodule
     permissions:
-      id-token: write
+      contents: read
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
+    # - name: Download all the dists
+    #   uses: actions/download-artifact@v3
+    #   with:
+    #     name: python-package-distributions
+    #     path: dist/
+    - name: Download artifacts
+      uses: dsaltares/fetch-gh-release-asset@master
       with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
-    - name: Build package
-      run: python -m build
-    - name: Publish package
+        repo: "nmcardoso/astromodule"
+        # version: "tags/v0.1.18"
+        regex: true
+        file: "*"
+        target: "dist/"
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish distribution 📦 to TestPyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        repository-url: https://test.pypi.org/legacy/
+
+
+  publish-pypi:
+    name: Publish Python 🐍 distribution 📦 to TestPyPI
+    needs:
+    - publish-testpypi
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/astromodule
+    permissions:
+      contents: read
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v3
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution 📦 to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       id-token: write
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Set up Python
+#       uses: actions/setup-python@v3
+#       with:
+#         python-version: '3.x'
+#     - name: Install dependencies
+#       run: |
+#         python -m pip install --upgrade pip
+#         pip install build
+#     - name: Build package
+#       run: python -m build
+#     - name: Publish package
+#       uses: pypa/gh-action-pypi-publish@release/v1
+#       with:
+#         user: __token__
+#         password: ${{ secrets.PYPI_API_TOKEN }}
