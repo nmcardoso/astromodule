@@ -33,8 +33,8 @@ jobs:
     name: Check Version
     runs-on: ubuntu-latest
     outputs:
-      PYPI_VERSION: "steps.pypi_step.outputs.PYPI_VERSION"
-      CODE_VERSION: "steps.code_step.outputs.CODE_VERSION"
+      PYPI_VERSION: ${{ steps.pypi_step.outputs.PYPI_VERSION }}
+      CODE_VERSION: ${{ steps.code_step.outputs.CODE_VERSION }}
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
