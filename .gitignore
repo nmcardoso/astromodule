@@ -1,3 +1,10 @@
+# Interpreter
 __pycache__
+
+# Build
 dist
 *.egg-info
+
+# Docs
+docs/_build
+docs/api
