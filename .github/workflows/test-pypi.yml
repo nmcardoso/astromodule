@@ -11,7 +11,6 @@ jobs:
   build:
     name: Build distribution 📦
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -32,20 +31,45 @@ jobs:
         name: python-package-distributions
         path: dist/
 
+  version-check:
+    name: Check Version
+    runs-on: ubuntu-latest
+    outputs:
+      pypi_version: "steps.pypi_step.outputs.PYPI_VERSION"
+      code_version: "steps.code_step.outputs.CODE_VERSION"
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - name: Install requisites
+      run: |
+        pip install requests
+    - name: Retrieve PYPI version
+      id: pypi_step
+      run: |
+        python scripts/pypi_version.py >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
+    - name: Retrieve CODE version
+      id: code_step
+      run: |
+        python scripts/code_version.py >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
+
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
     needs:
     - build
+    - version-check
+    if: ${{ needs.version-check.outputs.PYPI_VERSION != needs.version-check.outputs.CODE_VERSION}}
     runs-on: ubuntu-latest
-
     environment:
       name: testpypi
       url: https://test.pypi.org/p/astromodule
-
     permissions:
       contents: read
       id-token: write  # IMPORTANT: mandatory for trusted publishing
-
     steps:
     - name: Download all the dists
       uses: actions/download-artifact@v3
