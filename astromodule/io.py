@@ -37,6 +37,7 @@ def load_tdat(path: str | Path) -> pd.DataFrame:
   df = pd.read_csv(StringIO(tb), sep='|')
   return df
 
+
 def load_fits(path: str | Path) -> pd.DataFrame:
   """
   Loads a fits table
@@ -56,6 +57,7 @@ def load_fits(path: str | Path) -> pd.DataFrame:
     table = Table(data=table_data)
     return table.to_pandas()
 
+
 def load_csv(path: str | Path) -> pd.DataFrame:
   """
   Loads a csv table. ASCII tables with columns delimited by a comma.
@@ -71,6 +73,7 @@ def load_csv(path: str | Path) -> pd.DataFrame:
     The table as a pandas dataframe
   """
   return pd.read_csv(path)
+
 
 def load_tsv(path: str | Path) -> pd.DataFrame:
   """
@@ -88,6 +91,7 @@ def load_tsv(path: str | Path) -> pd.DataFrame:
     The table as a pandas dataframe
   """
   return pd.read_csv(path, delim_whitespace=True)
+
 
 def load_parquet(path: str | Path) -> pd.DataFrame:
   """
