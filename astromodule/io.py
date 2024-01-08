@@ -95,14 +95,12 @@ def load_table(
   elif fmt == 'parquet':
     return pd.read_parquet(
       path, 
-      columns=columns, 
-      low_memory=low_memory
+      columns=columns
     )
   elif fmt == 'feather':
     return pd.read_feather(
       path, 
-      columns=columns, 
-      low_memory=low_memory
+      columns=columns
     )
   elif fmt == 'tdat':
     path = Path(path)
