@@ -10,146 +10,12 @@ from astropy.io import fits
 from astropy.table import Table
 
 
-def load_tdat(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a tdat table. Transportable Database Aggregate Table (TDAT) is a data
-  structure created by NASA's Heasarc project. For more information, see [TDAT]_
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-    
-  References
-  ----------
-  .. [TDAT] Transportable Database Aggregate Table (TDAT) Format.
-      `<https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html>`_
-  """
-  path = Path(path)
-  content = path.read_text()
-  header = re.findall(r'line\[1\] = (.*)', content)[0].replace(' ', '|')
-  data = content.split('<DATA>\n')[-1].split('<END>')[0].replace('|\n', '\n')
-  tb = header + '\n' + data
-  df = pd.read_csv(StringIO(tb), sep='|')
-  
-  if columns:
-    df = df[columns]
-  return df
-
-
-def load_fits(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a fits table
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-  """
-  with fits.open(path) as hdul:
-    table_data = hdul[1].data
-    table = Table(data=table_data, names=columns)
-    return table.to_pandas()
-
-
-def load_csv(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a csv table. ASCII tables with columns delimited by a comma.
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-  """
-  return pd.read_csv(path, names=columns)
-
-
-def load_tsv(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a tsv table. ASCII tables with columns delimited by a white character,
-  e.g. space or tab.
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-  """
-  return pd.read_csv(path, delim_whitespace=True, names=columns)
-
-
-def load_parquet(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a parquet table
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-  """
-  return pd.read_parquet(path, columns=columns)
-
-
-def load_feather(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
-  """
-  Loads a feather table
-
-  Parameters
-  ----------
-  path : str | Path
-    Path to the table to read
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
-
-  Returns
-  -------
-  pd.DataFrame
-    The table as a pandas dataframe
-  """
-  return pd.read_feather(path, columns=columns)
-
-
-def load_table(path: str | Path, columns: Sequence[str] | None = None) -> pd.DataFrame:
+def load_table(
+  path: str | Path, 
+  columns: Sequence[str] | None = None,
+  low_memory: bool = False,
+  fmt: str | None = None,
+) -> pd.DataFrame:
   """
   This function tries to detect the table type comparing the file extension and
   returns a pandas dataframe of the loaded table.
@@ -164,10 +30,26 @@ def load_table(path: str | Path, columns: Sequence[str] | None = None) -> pd.Dat
   Parameters
   ----------
   path : str | Path
-    Path to the table to read
+    Path to the table to be read.
   columns : Sequence[str] | None
     If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage
+    reduce memory usage.
+  low_memory : bool
+    Internally process the file in chunks, resulting in lower memory use while 
+    parsing, but possibly mixed type inference. To ensure no mixed types either 
+    set False, or specify the type with the dtype parameter. Note that the 
+    entire file is read into a single DataFrame regardless, use the chunksize 
+    or iterator parameter to return the data in chunks. (Only valid with C parser).
+  fmt : str | None
+    Specify the file format manually to avoid inference by file extension. This
+    parameter can be used to force a specific parser for the given file.
+    
+  Notes
+  -----
+  The Transportable Database Aggregate Table (TDAT) type is a data structure 
+  created by NASA's Heasarc project and a very simple parser was implemented
+  in this functiondue to lack of support in packages like pandas and astropy. 
+  For more information, see [#TDAT]_
 
   Returns
   -------
@@ -178,27 +60,67 @@ def load_table(path: str | Path, columns: Sequence[str] | None = None) -> pd.Dat
   ------
   ValueError
     Raises an error if the file extension can not be detected
+    
+  References
+  ----------
+  .. [#TDAT] Transportable Database Aggregate Table (TDAT) Format.
+      `<https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html>`_
   """
-  func_map = {
-    '.fit': load_fits,
-    '.fits': load_fits,
-    '.fz': load_fits,
-    '.csv': load_csv,
-    '.tsv': load_tsv,
-    '.dat': load_tsv,
-    '.parquet': load_parquet,
-    '.feather': load_feather,
-    '.tdat': load_tdat,
-  }
-  
   path = Path(path)
-  load_func = func_map.get(path.suffix)
-  if load_func is None:
-    raise ValueError(
-      'Can not infer the load function for this table based on suffix. '
-      'Please, use a specific loader.'
+  fmt = fmt or path.suffix
+  if fmt.startswith('.'):
+    fmt = fmt[1:]
+
+  if fmt in ('fit', 'fits', 'fz'):
+    with fits.open(path) as hdul:
+      table_data = hdul[1].data
+      table = Table(data=table_data)
+      df = table.to_pandas()
+      if columns:
+        df = df[columns]
+      return df
+  elif fmt in ('dat', 'tsv'):
+    return pd.read_csv(
+      path, 
+      delim_whitespace=True, 
+      usecols=columns, 
+      low_memory=low_memory
     )
-  return load_func(path, columns=columns)
+  elif fmt == 'csv':
+    return pd.read_csv(
+      path, 
+      usecols=columns, 
+      low_memory=low_memory
+    )
+  elif fmt == 'parquet':
+    return pd.read_parquet(
+      path, 
+      columns=columns, 
+      low_memory=low_memory
+    )
+  elif fmt == 'feather':
+    return pd.read_feather(
+      path, 
+      columns=columns, 
+      low_memory=low_memory
+    )
+  elif fmt == 'tdat':
+    path = Path(path)
+    content = path.read_text()
+    header = re.findall(r'line\[1\] = (.*)', content)[0].replace(' ', '|')
+    data = content.split('<DATA>\n')[-1].split('<END>')[0].replace('|\n', '\n')
+    tb = header + '\n' + data
+    return pd.read_csv(
+      StringIO(tb), 
+      sep='|', 
+      usecols=columns, 
+      low_memory=low_memory
+    )
+
+  raise ValueError(
+    'Can not infer the load function for this table based on suffix. '
+    'Please, use a specific loader.'
+  )
 
 
 def save_table(data: pd.DataFrame, path: str | Path):
