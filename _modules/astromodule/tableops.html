@@ -628,9 +628,9 @@ document.write(`
 
 
   
-<div class="viewcode-block" id="sitilts_crossmatch">
-<a class="viewcode-back" href="../../api/astromodule.tableops.sitilts_crossmatch.html#astromodule.tableops.sitilts_crossmatch">[docs]</a>
-<span class="k">def</span> <span class="nf">sitilts_crossmatch</span><span class="p">(</span>
+<div class="viewcode-block" id="stilts_crossmatch">
+<a class="viewcode-back" href="../../api/astromodule.tableops.stilts_crossmatch.html#astromodule.tableops.stilts_crossmatch">[docs]</a>
+<span class="k">def</span> <span class="nf">stilts_crossmatch</span><span class="p">(</span>
   <span class="n">table1</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Table</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
   <span class="n">table2</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Table</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
   <span class="n">ra1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -768,6 +768,27 @@ document.write(`
 
 
 
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="c1"># r = drop_duplicates(</span>
+  <span class="c1">#   table=Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared.csv&#39;,</span>
+  <span class="c1">#   radius=300*60,</span>
+  <span class="c1"># )</span>
+  <span class="c1"># print(&#39;Drop count:&#39;, r.drop_count)</span>
+  <span class="c1"># print(&#39;Drop it:&#39;, r.n_iterations)</span>
+  <span class="c1"># print(r.df)</span>
+  
+  <span class="c1"># df = crossmatch(</span>
+  <span class="c1">#   left=&#39;/home/natan/repos/splus-radial-search/data/heasarc_subset+center.csv&#39;,</span>
+  <span class="c1">#   right=&#39;/home/natan/repos/splus-radial-search/data/idr5_fields.csv&#39;,</span>
+  <span class="c1">#   radius=(1 * u.deg).to(u.arcsec).value,</span>
+  <span class="c1">#   join=&#39;inner&#39;,</span>
+  <span class="c1"># )</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">sitilts_crossmatch</span><span class="p">(</span>
+    <span class="n">table1</span><span class="o">=</span><span class="s1">&#39;/home/natan/repos/splus-radial-search/data/heasarc_subset+center.csv&#39;</span><span class="p">,</span>
+    <span class="n">table2</span><span class="o">=</span><span class="s1">&#39;/home/natan/repos/splus-radial-search/data/idr5_fields.csv&#39;</span><span class="p">,</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
+  <span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
                 </article>

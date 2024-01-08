@@ -16,7 +16,7 @@
   
     crossmatch
     drop_duplicates
-    sitilts_crossmatch
+    stilts_crossmatch
     stilts_unique
     table_knn
   
