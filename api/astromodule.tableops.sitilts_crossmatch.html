@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.load_tdat &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.tableops.sitilts_crossmatch &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_tdat';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tableops.sitilts_crossmatch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.load_tsv" href="astromodule.io.load_tsv.html" />
-    <link rel="prev" title="astromodule.io.load_table" href="astromodule.io.load_table.html" />
+    <link rel="next" title="astromodule.tableops.stilts_unique" href="astromodule.tableops.stilts_unique.html" />
+    <link rel="prev" title="astromodule.tableops.drop_duplicates" href="astromodule.tableops.drop_duplicates.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -329,21 +329,21 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_csv.html">astromodule.io.load_csv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_feather.html">astromodule.io.load_feather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_fits.html">astromodule.io.load_fits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_parquet.html">astromodule.io.load_parquet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_table.html">astromodule.io.load_table</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_tdat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tdat.html">astromodule.io.load_tdat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tsv.html">astromodule.io.load_tsv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.tableops.html">astromodule.tableops</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tableops.html">astromodule.tableops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.crossmatch.html">astromodule.tableops.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.drop_duplicates.html">astromodule.tableops.drop_duplicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.sitilts_crossmatch.html">astromodule.tableops.sitilts_crossmatch</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.tableops.sitilts_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.stilts_unique.html">astromodule.tableops.stilts_unique</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.table_knn.html">astromodule.tableops.table_knn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
@@ -390,7 +390,7 @@ document.write(`
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    <li class="breadcrumb-item"><a href="astromodule.tableops.html" class="nav-link">astromodule.tableops</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
@@ -409,38 +409,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-load-tdat">
-<h1>astromodule.io.load_tdat<a class="headerlink" href="#astromodule-io-load-tdat" title="Link to this heading">#</a></h1>
+  <section id="astromodule-tableops-sitilts-crossmatch">
+<h1>astromodule.tableops.sitilts_crossmatch<a class="headerlink" href="#astromodule-tableops-sitilts-crossmatch" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.load_tdat">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_tdat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_tdat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_tdat" title="Link to this definition">#</a></dt>
-<dd><p>Loads a tdat table. Transportable Database Aggregate Table (TDAT) is a data
-structure created by NASA’s Heasarc project. For more information, see <a class="reference internal" href="#tdat" id="id1"><span>[TDAT]</span></a></p>
-<section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
-<dl class="simple">
-<dt>path<span class="classifier">str | Path</span></dt><dd><p>Path to the table to read</p>
-</dd>
-</dl>
-</section>
-<section id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
-<dl class="simple">
-<dt>pd.DataFrame</dt><dd><p>The table as a pandas dataframe</p>
-</dd>
-</dl>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div role="list" class="citation-list">
-<div class="citation" id="tdat" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TDAT</a><span class="fn-bracket">]</span></span>
-<p>Transportable Database Aggregate Table (TDAT) Format.
-<a class="reference external" href="https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html">https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html</a></p>
-</div>
-</div>
-</section>
-</dd></dl>
+<dt class="sig sig-object py" id="astromodule.tableops.sitilts_crossmatch">
+<span class="sig-prename descclassname"><span class="pre">astromodule.tableops.</span></span><span class="sig-name descname"><span class="pre">sitilts_crossmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table1:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table2:</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span> <span class="pre">|</span> <span class="pre">~astropy.units.quantity.Quantity</span> <span class="pre">=</span> <span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">arcsec&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join:</span> <span class="pre">~typing.Literal['1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1or2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1not2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'2not1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1xor2']</span> <span class="pre">=</span> <span class="pre">'1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find:</span> <span class="pre">~typing.Literal['all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best2']</span> <span class="pre">=</span> <span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixcols:</span> <span class="pre">~typing.Literal['dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'none']</span> <span class="pre">=</span> <span class="pre">'dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix1:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix2:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorecol:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">'xmatch_sep'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt:</span> <span class="pre">~typing.Literal['fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'csv']</span> <span class="pre">=</span> <span class="pre">'fits'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tableops.html#sitilts_crossmatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tableops.sitilts_crossmatch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 
@@ -455,20 +429,20 @@ structure created by NASA’s Heasarc project. For more information, see <a clas
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.load_table.html"
+       href="astromodule.tableops.drop_duplicates.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.load_table</p>
+        <p class="prev-next-title">astromodule.tableops.drop_duplicates</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.load_tsv.html"
+       href="astromodule.tableops.stilts_unique.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.load_tsv</p>
+        <p class="prev-next-title">astromodule.tableops.stilts_unique</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -490,14 +464,14 @@ structure created by NASA’s Heasarc project. For more information, see <a clas
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.load_tdat"><code class="docutils literal notranslate"><span class="pre">load_tdat()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.sitilts_crossmatch"><code class="docutils literal notranslate"><span class="pre">sitilts_crossmatch()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.io.load_tdat.rst.txt">
+    <a href="../_sources/api/astromodule.tableops.sitilts_crossmatch.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

@@ -1,0 +1,42 @@
+﻿astromodule.tableops
+====================
+
+.. automodule:: astromodule.tableops
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Functions
+
+  .. autosummary::
+    :toctree:
+  
+    crossmatch
+    drop_duplicates
+    sitilts_crossmatch
+    stilts_unique
+    table_knn
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    DropDuplicatesResult
+  
+  
+
+  
+  
+  
+
+
+

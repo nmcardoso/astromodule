@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.load_tdat &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.io.load_feather &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_tdat';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_feather';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.load_tsv" href="astromodule.io.load_tsv.html" />
-    <link rel="prev" title="astromodule.io.load_table" href="astromodule.io.load_table.html" />
+    <link rel="next" title="astromodule.io.load_fits" href="astromodule.io.load_fits.html" />
+    <link rel="prev" title="astromodule.io.load_csv" href="astromodule.io.load_csv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -331,11 +331,11 @@ document.write(`
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_csv.html">astromodule.io.load_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_feather.html">astromodule.io.load_feather</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_feather</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_fits.html">astromodule.io.load_fits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_parquet.html">astromodule.io.load_parquet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_table.html">astromodule.io.load_table</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_tdat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tdat.html">astromodule.io.load_tdat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tsv.html">astromodule.io.load_tsv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
@@ -409,13 +409,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-load-tdat">
-<h1>astromodule.io.load_tdat<a class="headerlink" href="#astromodule-io-load-tdat" title="Link to this heading">#</a></h1>
+  <section id="astromodule-io-load-feather">
+<h1>astromodule.io.load_feather<a class="headerlink" href="#astromodule-io-load-feather" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.load_tdat">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_tdat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_tdat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_tdat" title="Link to this definition">#</a></dt>
-<dd><p>Loads a tdat table. Transportable Database Aggregate Table (TDAT) is a data
-structure created by NASA’s Heasarc project. For more information, see <a class="reference internal" href="#tdat" id="id1"><span>[TDAT]</span></a></p>
+<dt class="sig sig-object py" id="astromodule.io.load_feather">
+<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_feather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_feather"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_feather" title="Link to this definition">#</a></dt>
+<dd><p>Loads a feather table</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
 <dl class="simple">
@@ -429,16 +428,6 @@ structure created by NASA’s Heasarc project. For more information, see <a clas
 <dt>pd.DataFrame</dt><dd><p>The table as a pandas dataframe</p>
 </dd>
 </dl>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div role="list" class="citation-list">
-<div class="citation" id="tdat" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TDAT</a><span class="fn-bracket">]</span></span>
-<p>Transportable Database Aggregate Table (TDAT) Format.
-<a class="reference external" href="https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html">https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html</a></p>
-</div>
-</div>
 </section>
 </dd></dl>
 
@@ -455,20 +444,20 @@ structure created by NASA’s Heasarc project. For more information, see <a clas
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.load_table.html"
+       href="astromodule.io.load_csv.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.load_table</p>
+        <p class="prev-next-title">astromodule.io.load_csv</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.load_tsv.html"
+       href="astromodule.io.load_fits.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.load_tsv</p>
+        <p class="prev-next-title">astromodule.io.load_fits</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -490,14 +479,14 @@ structure created by NASA’s Heasarc project. For more information, see <a clas
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.load_tdat"><code class="docutils literal notranslate"><span class="pre">load_tdat()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.load_feather"><code class="docutils literal notranslate"><span class="pre">load_feather()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.io.load_tdat.rst.txt">
+    <a href="../_sources/api/astromodule.io.load_feather.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

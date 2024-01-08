@@ -1,0 +1,6 @@
+astromodule.tableops.crossmatch
+===============================
+
+.. currentmodule:: astromodule.tableops
+
+.. autofunction:: crossmatch

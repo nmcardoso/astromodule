@@ -17,24 +17,24 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
@@ -53,7 +53,7 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -96,8 +96,10 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
     <span class="fa-solid fa-bars"></span>
@@ -135,12 +137,6 @@
       
         <div class="navbar-item">
 <nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
@@ -232,12 +228,22 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
-    </nav>
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
@@ -250,12 +256,6 @@ document.write(`
         
           <div class="navbar-item">
 <nav class="navbar-nav">
-  <p class="sidebar-header-items__title"
-     role="heading"
-     aria-level="1"
-     aria-label="Site Navigation">
-    Site Navigation
-  </p>
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
@@ -367,7 +367,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for astromodule.distance</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
@@ -391,8 +391,8 @@ document.write(`
 <span class="sd">  Parameters</span>
 <span class="sd">  ----------</span>
 <span class="sd">  distance: float or Quantity</span>
-<span class="sd">    The distance to be converted. This argument accepts a float variable or</span>
-<span class="sd">    an array-like object (python list, numpy array, pandas series) of floats.</span>
+<span class="sd">    The distance in arcsec to be converted. This argument accepts a float variable </span>
+<span class="sd">    or an array-like object (python list, numpy array, pandas series) of floats.</span>
 <span class="sd">    If a float or sequence of floats is passed, this function interprets it</span>
 <span class="sd">    as a arcsec unit. If a quantity is passed, this funcion convert the given</span>
 <span class="sd">    unit (e.g. arcmin or deg) to arcsec. Therefore, if a Quantity object is</span>
@@ -406,9 +406,9 @@ document.write(`
 <span class="sd">  cosmology: FlatLambdaCDM, optional.</span>
 <span class="sd">    An astropy cosmology. This function uses Planck 2018 cosmology as default</span>
 <span class="sd">    with parameters from Planck Collaboration (2020) Table 2 (TT, TE, EE</span>
-<span class="sd">    + lowE + lensing + BAO) [P18]_. That is also possible to use a custom</span>
+<span class="sd">    + lowE + lensing + BAO) [#P18]_. That is also possible to use a custom</span>
 <span class="sd">    cosmology, passing a FlatLambdaCDM instance or any cosmology realizations</span>
-<span class="sd">    from astropy package [AR]_.</span>
+<span class="sd">    from astropy package [#AR]_.</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -417,10 +417,10 @@ document.write(`
 <span class="sd">    </span>
 <span class="sd">  References</span>
 <span class="sd">  ----------</span>
-<span class="sd">  .. [P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.</span>
+<span class="sd">  .. [#P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.</span>
 <span class="sd">      Cosmological parameters. Astronomy \&amp; Astrophysics, 641, A6.</span>
 <span class="sd">      `&lt;https://ui.adsabs.harvard.edu/abs/2020A%26A...641A...6P/abstract&gt;`_</span>
-<span class="sd">  .. [AR] Included Cosmology Realizations - Astropy Documentation</span>
+<span class="sd">  .. [#AR] Included Cosmology Realizations - Astropy Documentation</span>
 <span class="sd">      `&lt;https://docs.astropy.org/en/stable/cosmology/realizations.html&gt;`_</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
@@ -447,8 +447,8 @@ document.write(`
 <span class="sd">  Parameters</span>
 <span class="sd">  ----------</span>
 <span class="sd">  distance: float or Quantity</span>
-<span class="sd">    The distance to be converted. This argument accepts a float variable or</span>
-<span class="sd">    an array-like object (python list, numpy array, pandas series) of floats.</span>
+<span class="sd">    The distance in Mpc to be converted. This argument accepts a float variable </span>
+<span class="sd">    or an array-like object (python list, numpy array, pandas series) of floats.</span>
 <span class="sd">    If a float or sequence of floats is passed, this function interprets it</span>
 <span class="sd">    as a Mpc unit. If a quantity is passed, this funcion convert the given</span>
 <span class="sd">    unit to Mpc. Therefore, if a Quantity object is passed, there is no </span>
@@ -462,9 +462,9 @@ document.write(`
 <span class="sd">  cosmology: FlatLambdaCDM, optional</span>
 <span class="sd">    An astropy cosmology. This function uses Planck 2018 cosmology as default</span>
 <span class="sd">    with parameters from Planck Collaboration (2020) Table 2 (TT, TE, EE</span>
-<span class="sd">    + lowE + lensing + BAO) [P18]_. That is also possible to use a custom</span>
+<span class="sd">    + lowE + lensing + BAO) [#P18]_. That is also possible to use a custom</span>
 <span class="sd">    cosmology, passing a FlatLambdaCDM instance or any cosmology realizations</span>
-<span class="sd">    from astropy package [AR]_.</span>
+<span class="sd">    from astropy package [#AR]_.</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -473,10 +473,10 @@ document.write(`
 <span class="sd">  </span>
 <span class="sd">  References</span>
 <span class="sd">  ----------</span>
-<span class="sd">  .. [P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.</span>
+<span class="sd">  .. [#P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.</span>
 <span class="sd">      Cosmological parameters. Astronomy \&amp; Astrophysics, 641, A6.</span>
 <span class="sd">      `&lt;https://ui.adsabs.harvard.edu/abs/2020A%26A...641A...6P/abstract&gt;`_</span>
-<span class="sd">  .. [AR] Included Cosmology Realizations - Astropy Documentation</span>
+<span class="sd">  .. [#AR] Included Cosmology Realizations - Astropy Documentation</span>
 <span class="sd">      `&lt;https://docs.astropy.org/en/stable/cosmology/realizations.html&gt;`_</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
@@ -511,6 +511,8 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -522,8 +524,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -556,7 +558,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
 </p></div>
       
     </div>

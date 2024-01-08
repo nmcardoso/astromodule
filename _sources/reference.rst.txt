@@ -8,3 +8,4 @@ API Reference
 
    astromodule.distance
    astromodule.io
+   astromodule.tableops
