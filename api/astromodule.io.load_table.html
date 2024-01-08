@@ -45,8 +45,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_table';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.load_tdat" href="astromodule.io.load_tdat.html" />
-    <link rel="prev" title="astromodule.io.load_parquet" href="astromodule.io.load_parquet.html" />
+    <link rel="next" title="astromodule.io.save_table" href="astromodule.io.save_table.html" />
+    <link rel="prev" title="astromodule.io" href="astromodule.io.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -330,13 +330,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_csv.html">astromodule.io.load_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_feather.html">astromodule.io.load_feather</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_fits.html">astromodule.io.load_fits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_parquet.html">astromodule.io.load_parquet</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tdat.html">astromodule.io.load_tdat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tsv.html">astromodule.io.load_tsv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
 </li>
@@ -413,7 +407,7 @@ document.write(`
 <h1>astromodule.io.load_table<a class="headerlink" href="#astromodule-io-load-table" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="astromodule.io.load_table">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_table" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_memory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_table" title="Link to this definition">#</a></dt>
 <dd><p>This function tries to detect the table type comparing the file extension and
 returns a pandas dataframe of the loaded table.</p>
 <p>Supported table types:</p>
@@ -426,12 +420,28 @@ returns a pandas dataframe of the loaded table.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
 <dl class="simple">
-<dt>path<span class="classifier">str | Path</span></dt><dd><p>Path to the table to read</p>
+<dt>path<span class="classifier">str | Path</span></dt><dd><p>Path to the table to be read.</p>
 </dd>
 <dt>columns<span class="classifier">Sequence[str] | None</span></dt><dd><p>If specified, only the column names in list will be loaded. Can be used to
-reduce memory usage</p>
+reduce memory usage.</p>
+</dd>
+<dt>low_memory<span class="classifier">bool</span></dt><dd><p>Internally process the file in chunks, resulting in lower memory use while 
+parsing, but possibly mixed type inference. To ensure no mixed types either 
+set False, or specify the type with the dtype parameter. Note that the 
+entire file is read into a single DataFrame regardless, use the chunksize 
+or iterator parameter to return the data in chunks. (Only valid with C parser).</p>
+</dd>
+<dt>fmt<span class="classifier">str | None</span></dt><dd><p>Specify the file format manually to avoid inference by file extension. This
+parameter can be used to force a specific parser for the given file.</p>
 </dd>
 </dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<p>The Transportable Database Aggregate Table (TDAT) type is a data structure 
+created by NASA’s Heasarc project and a very simple parser was implemented
+in this functiondue to lack of support in packages like pandas and astropy. 
+For more information, see <a class="footnote-reference brackets" href="#tdat" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="returns">
 <h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
@@ -446,6 +456,16 @@ reduce memory usage</p>
 <dt>ValueError</dt><dd><p>Raises an error if the file extension can not be detected</p>
 </dd>
 </dl>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="tdat" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Transportable Database Aggregate Table (TDAT) Format.
+<a class="reference external" href="https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html">https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html</a></p>
+</aside>
+</aside>
 </section>
 </dd></dl>
 
@@ -462,20 +482,20 @@ reduce memory usage</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.load_parquet.html"
+       href="astromodule.io.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.load_parquet</p>
+        <p class="prev-next-title">astromodule.io</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.load_tdat.html"
+       href="astromodule.io.save_table.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.load_tdat</p>
+        <p class="prev-next-title">astromodule.io.save_table</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

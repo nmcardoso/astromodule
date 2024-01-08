@@ -14,13 +14,7 @@
   .. autosummary::
     :toctree:
   
-    load_csv
-    load_feather
-    load_fits
-    load_parquet
     load_table
-    load_tdat
-    load_tsv
     save_table
   
   

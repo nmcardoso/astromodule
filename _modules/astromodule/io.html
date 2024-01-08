@@ -382,166 +382,14 @@ document.write(`
 <span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
 
 
-<div class="viewcode-block" id="load_tdat">
-<a class="viewcode-back" href="../../api/astromodule.io.load_tdat.html#astromodule.io.load_tdat">[docs]</a>
-<span class="k">def</span> <span class="nf">load_tdat</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a tdat table. Transportable Database Aggregate Table (TDAT) is a data</span>
-<span class="sd">  structure created by NASA&#39;s Heasarc project. For more information, see [TDAT]_</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">    </span>
-<span class="sd">  References</span>
-<span class="sd">  ----------</span>
-<span class="sd">  .. [TDAT] Transportable Database Aggregate Table (TDAT) Format.</span>
-<span class="sd">      `&lt;https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html&gt;`_</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-  <span class="n">content</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-  <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;line\[1\] = (.*)&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">)</span>
-  <span class="n">data</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;DATA&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;END&gt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;|</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-  <span class="n">tb</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">data</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">tb</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
-  
-  <span class="k">if</span> <span class="n">columns</span><span class="p">:</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
-  <span class="k">return</span> <span class="n">df</span></div>
-
-
-
-<div class="viewcode-block" id="load_fits">
-<a class="viewcode-back" href="../../api/astromodule.io.load_fits.html#astromodule.io.load_fits">[docs]</a>
-<span class="k">def</span> <span class="nf">load_fits</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a fits table</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdul</span><span class="p">:</span>
-    <span class="n">table_data</span> <span class="o">=</span> <span class="n">hdul</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">table_data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">table</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
-
-
-
-<div class="viewcode-block" id="load_csv">
-<a class="viewcode-back" href="../../api/astromodule.io.load_csv.html#astromodule.io.load_csv">[docs]</a>
-<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a csv table. ASCII tables with columns delimited by a comma.</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="load_tsv">
-<a class="viewcode-back" href="../../api/astromodule.io.load_tsv.html#astromodule.io.load_tsv">[docs]</a>
-<span class="k">def</span> <span class="nf">load_tsv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a tsv table. ASCII tables with columns delimited by a white character,</span>
-<span class="sd">  e.g. space or tab.</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="load_parquet">
-<a class="viewcode-back" href="../../api/astromodule.io.load_parquet.html#astromodule.io.load_parquet">[docs]</a>
-<span class="k">def</span> <span class="nf">load_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a parquet table</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="load_feather">
-<a class="viewcode-back" href="../../api/astromodule.io.load_feather.html#astromodule.io.load_feather">[docs]</a>
-<span class="k">def</span> <span class="nf">load_feather</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Loads a feather table</span>
-
-<span class="sd">  Parameters</span>
-<span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
-<span class="sd">  columns : Sequence[str] | None</span>
-<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
-
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  pd.DataFrame</span>
-<span class="sd">    The table as a pandas dataframe</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
-
-
-
 <div class="viewcode-block" id="load_table">
 <a class="viewcode-back" href="../../api/astromodule.io.load_table.html#astromodule.io.load_table">[docs]</a>
-<span class="k">def</span> <span class="nf">load_table</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_table</span><span class="p">(</span>
+  <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> 
+  <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">low_memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This function tries to detect the table type comparing the file extension and</span>
 <span class="sd">  returns a pandas dataframe of the loaded table.</span>
@@ -556,10 +404,26 @@ document.write(`
 <span class="sd">  Parameters</span>
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
-<span class="sd">    Path to the table to read</span>
+<span class="sd">    Path to the table to be read.</span>
 <span class="sd">  columns : Sequence[str] | None</span>
 <span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
-<span class="sd">    reduce memory usage</span>
+<span class="sd">    reduce memory usage.</span>
+<span class="sd">  low_memory : bool</span>
+<span class="sd">    Internally process the file in chunks, resulting in lower memory use while </span>
+<span class="sd">    parsing, but possibly mixed type inference. To ensure no mixed types either </span>
+<span class="sd">    set False, or specify the type with the dtype parameter. Note that the </span>
+<span class="sd">    entire file is read into a single DataFrame regardless, use the chunksize </span>
+<span class="sd">    or iterator parameter to return the data in chunks. (Only valid with C parser).</span>
+<span class="sd">  fmt : str | None</span>
+<span class="sd">    Specify the file format manually to avoid inference by file extension. This</span>
+<span class="sd">    parameter can be used to force a specific parser for the given file.</span>
+<span class="sd">    </span>
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  The Transportable Database Aggregate Table (TDAT) type is a data structure </span>
+<span class="sd">  created by NASA&#39;s Heasarc project and a very simple parser was implemented</span>
+<span class="sd">  in this functiondue to lack of support in packages like pandas and astropy. </span>
+<span class="sd">  For more information, see [#TDAT]_</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -570,27 +434,67 @@ document.write(`
 <span class="sd">  ------</span>
 <span class="sd">  ValueError</span>
 <span class="sd">    Raises an error if the file extension can not be detected</span>
+<span class="sd">    </span>
+<span class="sd">  References</span>
+<span class="sd">  ----------</span>
+<span class="sd">  .. [#TDAT] Transportable Database Aggregate Table (TDAT) Format.</span>
+<span class="sd">      `&lt;https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html&gt;`_</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">func_map</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;.fit&#39;</span><span class="p">:</span> <span class="n">load_fits</span><span class="p">,</span>
-    <span class="s1">&#39;.fits&#39;</span><span class="p">:</span> <span class="n">load_fits</span><span class="p">,</span>
-    <span class="s1">&#39;.fz&#39;</span><span class="p">:</span> <span class="n">load_fits</span><span class="p">,</span>
-    <span class="s1">&#39;.csv&#39;</span><span class="p">:</span> <span class="n">load_csv</span><span class="p">,</span>
-    <span class="s1">&#39;.tsv&#39;</span><span class="p">:</span> <span class="n">load_tsv</span><span class="p">,</span>
-    <span class="s1">&#39;.dat&#39;</span><span class="p">:</span> <span class="n">load_tsv</span><span class="p">,</span>
-    <span class="s1">&#39;.parquet&#39;</span><span class="p">:</span> <span class="n">load_parquet</span><span class="p">,</span>
-    <span class="s1">&#39;.feather&#39;</span><span class="p">:</span> <span class="n">load_feather</span><span class="p">,</span>
-    <span class="s1">&#39;.tdat&#39;</span><span class="p">:</span> <span class="n">load_tdat</span><span class="p">,</span>
-  <span class="p">}</span>
-  
   <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-  <span class="n">load_func</span> <span class="o">=</span> <span class="n">func_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">load_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-      <span class="s1">&#39;Can not infer the load function for this table based on suffix. &#39;</span>
-      <span class="s1">&#39;Please, use a specific loader.&#39;</span>
+  <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span>
+  <span class="k">if</span> <span class="n">fmt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+  <span class="k">if</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;fz&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdul</span><span class="p">:</span>
+      <span class="n">table_data</span> <span class="o">=</span> <span class="n">hdul</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+      <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">table_data</span><span class="p">)</span>
+      <span class="n">df</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+      <span class="k">if</span> <span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+      <span class="k">return</span> <span class="n">df</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dat&#39;</span><span class="p">,</span> <span class="s1">&#39;tsv&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+      <span class="n">path</span><span class="p">,</span> 
+      <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+      <span class="n">usecols</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
+      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
     <span class="p">)</span>
-  <span class="k">return</span> <span class="n">load_func</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+      <span class="n">path</span><span class="p">,</span> 
+      <span class="n">usecols</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
+      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+    <span class="p">)</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;parquet&#39;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+      <span class="n">path</span><span class="p">,</span> 
+      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
+      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+    <span class="p">)</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;feather&#39;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span>
+      <span class="n">path</span><span class="p">,</span> 
+      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
+      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+    <span class="p">)</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;tdat&#39;</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;line\[1\] = (.*)&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;DATA&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;END&gt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;|</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">tb</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">data</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+      <span class="n">StringIO</span><span class="p">(</span><span class="n">tb</span><span class="p">),</span> 
+      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span> 
+      <span class="n">usecols</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
+      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+    <span class="p">)</span>
+
+  <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+    <span class="s1">&#39;Can not infer the load function for this table based on suffix. &#39;</span>
+    <span class="s1">&#39;Please, use a specific loader.&#39;</span>
+  <span class="p">)</span></div>
 
 
 

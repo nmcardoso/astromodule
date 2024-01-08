@@ -1,6 +1,0 @@
-astromodule.io.load\_feather
-============================
-
-.. currentmodule:: astromodule.io
-
-.. autofunction:: load_feather

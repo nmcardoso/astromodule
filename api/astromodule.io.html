@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.load_csv" href="astromodule.io.load_csv.html" />
+    <link rel="next" title="astromodule.io.load_table" href="astromodule.io.load_table.html" />
     <link rel="prev" title="astromodule.distance.mpc2arcsec" href="astromodule.distance.mpc2arcsec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -330,13 +330,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_csv.html">astromodule.io.load_csv</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_feather.html">astromodule.io.load_feather</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_fits.html">astromodule.io.load_fits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_parquet.html">astromodule.io.load_parquet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_table.html">astromodule.io.load_table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tdat.html">astromodule.io.load_tdat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_tsv.html">astromodule.io.load_tsv</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
 </li>
@@ -411,26 +405,8 @@ document.write(`
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.load_csv.html#astromodule.io.load_csv" title="astromodule.io.load_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_csv</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a csv table.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.load_feather.html#astromodule.io.load_feather" title="astromodule.io.load_feather"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_feather</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a feather table</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.load_fits.html#astromodule.io.load_fits" title="astromodule.io.load_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_fits</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a fits table</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.load_parquet.html#astromodule.io.load_parquet" title="astromodule.io.load_parquet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_parquet</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a parquet table</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.load_table.html#astromodule.io.load_table" title="astromodule.io.load_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_table</span></code></a>(path[, columns])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.load_table.html#astromodule.io.load_table" title="astromodule.io.load_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_table</span></code></a>(path[, columns, low_memory, fmt])</p></td>
 <td><p>This function tries to detect the table type comparing the file extension and returns a pandas dataframe of the loaded table.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.load_tdat.html#astromodule.io.load_tdat" title="astromodule.io.load_tdat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_tdat</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a tdat table.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.load_tsv.html#astromodule.io.load_tsv" title="astromodule.io.load_tsv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_tsv</span></code></a>(path[, columns])</p></td>
-<td><p>Loads a tsv table.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.save_table.html#astromodule.io.save_table" title="astromodule.io.save_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_table</span></code></a>(data, path)</p></td>
 <td><p></p></td>
@@ -459,11 +435,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.load_csv.html"
+       href="astromodule.io.load_table.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.load_csv</p>
+        <p class="prev-next-title">astromodule.io.load_table</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

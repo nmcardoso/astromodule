@@ -1,6 +1,0 @@
-astromodule.io.load\_fits
-=========================
-
-.. currentmodule:: astromodule.io
-
-.. autofunction:: load_fits
