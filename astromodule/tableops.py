@@ -259,7 +259,7 @@ def stilts_crossmatch(
   suffix2: str = '_2',
   scorecol: str | None = 'xmatch_sep',
   fmt: Literal['fits', 'csv'] = 'fits',
-):
+) -> pd.DataFrame:
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt}'
@@ -329,7 +329,7 @@ def stilts_unique(
   ra: str | None = None,
   dec: str | None = None,
   fmt: Literal['fits', 'csv'] = 'fits',
-):
+) -> pd.DataFrame:
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   in_path = tmpdir / f'xmatch_in_{token}.{fmt}'
