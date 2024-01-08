@@ -133,3 +133,59 @@ def sitilts_crossmatch(
 
 
 
+def stilts_unique(
+  table: pd.DataFrame | Table | str | Path,
+  radius: float | u.Quantity,
+  action: Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'] = 'keep1',
+  ra: str | None = None,
+  dec: str | None = None,
+  fmt: Literal['fits', 'csv'] = 'fits',
+):
+  tmpdir = Path(tempfile.gettempdir())
+  token = secrets.token_hex(8)
+  in_path = tmpdir / f'xmatch_in_{token}.{fmt}'
+  out_path = tmpdir / f'xmatch_out_{token}.{fmt}'
+  
+  df = _load_table(table)
+  
+  ra, dec = _guess_coords_columns(df, ra, dec)
+  
+  save_table(df, in_path)
+  
+  if isinstance(radius, u.Quantity):
+    radius = int(radius.to(u.arcsec).value)
+  else:
+    radius = int(radius)
+    
+  cmd = [
+    'stilts',
+    'tmatch1',
+    'matcher=sky',
+    f'params={radius}',
+    f'values={ra} {dec}',
+    f'action={action}',
+    'progress=none',
+    'runner=parallel',
+    f'ifmt={fmt}',
+    'omode=out',
+    f'ofmt={fmt}',
+    f'out={str(out_path.absolute())}',
+    f'in={str(in_path.absolute())}',
+  ]
+  
+  result = subprocess.run(
+    cmd,
+    stderr=subprocess.PIPE,
+  )
+  
+  error = result.stderr.decode().strip()
+  if error:
+    print(error)
+    
+  in_path.unlink()
+  
+  df_out = load_table(out_path)
+  out_path.unlink()
+  return df_out
+
+
