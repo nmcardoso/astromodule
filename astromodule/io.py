@@ -170,3 +170,17 @@ def load_table(path: str | Path) -> pd.DataFrame:
       'Please, use a specific loader.'
     )
   return load_func(path)
+
+
+def save_table(data: pd.DataFrame, path: str | Path):
+  path = Path(path)
+  if path.suffix in ('.fit', '.fits'):
+    Table.from_pandas(data).write(path, overwrite=True)
+  elif path.suffix == '.csv':
+    data.to_csv(path, index=False)
+  elif path.suffix == '.parquet':
+    data.to_parquet(path, index=False)
+  elif path.suffix == '.dat':
+    data.to_csv(path, sep=' ')
+  elif path.suffix == '.tsv':
+    data.to_csv(path, sep='\t')
