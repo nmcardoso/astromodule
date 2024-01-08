@@ -105,6 +105,24 @@ def load_parquet(path: str | Path) -> pd.DataFrame:
   """
   return pd.read_parquet(path)
 
+
+def load_feather(path: str | Path) -> pd.DataFrame:
+  """
+  Loads a feather table
+
+  Parameters
+  ----------
+  path : str | Path
+    Path to the table to read
+
+  Returns
+  -------
+  pd.DataFrame
+    The table as a pandas dataframe
+  """
+  return pd.read_feather(path)
+
+
 def load_table(path: str | Path) -> pd.DataFrame:
   """
   This function tries to detect the table type comparing the file extension and
@@ -115,7 +133,7 @@ def load_table(path: str | Path) -> pd.DataFrame:
   - Fits tables: .fit, .fits, .fz
   - ASCII tables: .csv, .tsv, .dat
   - Heasarc tables: .tdat
-  - Arrow tables: .parquet
+  - Arrow tables: .parquet, .feather
 
   Parameters
   ----------
@@ -140,6 +158,7 @@ def load_table(path: str | Path) -> pd.DataFrame:
     '.tsv': load_tsv,
     '.dat': load_tsv,
     '.parquet': load_parquet,
+    '.feather': load_feather,
     '.tdat': load_tdat,
   }
   
