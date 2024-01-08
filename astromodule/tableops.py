@@ -244,7 +244,7 @@ def drop_duplicates(
 
 
   
-def sitilts_crossmatch(
+def stilts_crossmatch(
   table1: pd.DataFrame | Table | str | Path,
   table2: pd.DataFrame | Table | str | Path,
   ra1: str | None = None,
@@ -378,3 +378,24 @@ def stilts_unique(
   return df_out
 
 
+if __name__ == '__main__':
+  # r = drop_duplicates(
+  #   table=Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
+  #   radius=300*60,
+  # )
+  # print('Drop count:', r.drop_count)
+  # print('Drop it:', r.n_iterations)
+  # print(r.df)
+  
+  # df = crossmatch(
+  #   left='/home/natan/repos/splus-radial-search/data/heasarc_subset+center.csv',
+  #   right='/home/natan/repos/splus-radial-search/data/idr5_fields.csv',
+  #   radius=(1 * u.deg).to(u.arcsec).value,
+  #   join='inner',
+  # )
+  df = sitilts_crossmatch(
+    table1='/home/natan/repos/splus-radial-search/data/heasarc_subset+center.csv',
+    table2='/home/natan/repos/splus-radial-search/data/idr5_fields.csv',
+    radius=1*u.deg,
+  )
+  print(df)
