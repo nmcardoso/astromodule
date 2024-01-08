@@ -48,7 +48,7 @@ def load_table(
   -----
   The Transportable Database Aggregate Table (TDAT) type is a data structure 
   created by NASA's Heasarc project and a very simple parser was implemented
-  in this functiondue to lack of support in packages like pandas and astropy. 
+  in this function due to lack of support in packages like pandas and astropy. 
   For more information, see [#TDAT]_
 
   Returns
