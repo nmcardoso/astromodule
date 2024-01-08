@@ -373,6 +373,7 @@ document.write(`
 <span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span>
 
 <span class="kn">import</span> <span class="nn">astropy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -383,7 +384,7 @@ document.write(`
 
 <div class="viewcode-block" id="load_tdat">
 <a class="viewcode-back" href="../../api/astromodule.io.load_tdat.html#astromodule.io.load_tdat">[docs]</a>
-<span class="k">def</span> <span class="nf">load_tdat</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_tdat</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a tdat table. Transportable Database Aggregate Table (TDAT) is a data</span>
 <span class="sd">  structure created by NASA&#39;s Heasarc project. For more information, see [TDAT]_</span>
@@ -392,6 +393,9 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -409,13 +413,16 @@ document.write(`
   <span class="n">data</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;DATA&gt;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&lt;END&gt;&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;|</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
   <span class="n">tb</span> <span class="o">=</span> <span class="n">header</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">data</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">tb</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">columns</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">df</span></div>
 
 
 
 <div class="viewcode-block" id="load_fits">
 <a class="viewcode-back" href="../../api/astromodule.io.load_fits.html#astromodule.io.load_fits">[docs]</a>
-<span class="k">def</span> <span class="nf">load_fits</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_fits</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a fits table</span>
 
@@ -423,6 +430,9 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -431,14 +441,14 @@ document.write(`
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdul</span><span class="p">:</span>
     <span class="n">table_data</span> <span class="o">=</span> <span class="n">hdul</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
-    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">table_data</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">table_data</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">table</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span></div>
 
 
 
 <div class="viewcode-block" id="load_csv">
 <a class="viewcode-back" href="../../api/astromodule.io.load_csv.html#astromodule.io.load_csv">[docs]</a>
-<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a csv table. ASCII tables with columns delimited by a comma.</span>
 
@@ -446,19 +456,22 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
 <span class="sd">  pd.DataFrame</span>
 <span class="sd">    The table as a pandas dataframe</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="load_tsv">
 <a class="viewcode-back" href="../../api/astromodule.io.load_tsv.html#astromodule.io.load_tsv">[docs]</a>
-<span class="k">def</span> <span class="nf">load_tsv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_tsv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a tsv table. ASCII tables with columns delimited by a white character,</span>
 <span class="sd">  e.g. space or tab.</span>
@@ -467,19 +480,22 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
 <span class="sd">  pd.DataFrame</span>
 <span class="sd">    The table as a pandas dataframe</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="load_parquet">
 <a class="viewcode-back" href="../../api/astromodule.io.load_parquet.html#astromodule.io.load_parquet">[docs]</a>
-<span class="k">def</span> <span class="nf">load_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a parquet table</span>
 
@@ -487,19 +503,22 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
 <span class="sd">  pd.DataFrame</span>
 <span class="sd">    The table as a pandas dataframe</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="load_feather">
 <a class="viewcode-back" href="../../api/astromodule.io.load_feather.html#astromodule.io.load_feather">[docs]</a>
-<span class="k">def</span> <span class="nf">load_feather</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_feather</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Loads a feather table</span>
 
@@ -507,19 +526,22 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
 <span class="sd">  pd.DataFrame</span>
 <span class="sd">    The table as a pandas dataframe</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="load_table">
 <a class="viewcode-back" href="../../api/astromodule.io.load_table.html#astromodule.io.load_table">[docs]</a>
-<span class="k">def</span> <span class="nf">load_table</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">load_table</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This function tries to detect the table type comparing the file extension and</span>
 <span class="sd">  returns a pandas dataframe of the loaded table.</span>
@@ -535,6 +557,9 @@ document.write(`
 <span class="sd">  ----------</span>
 <span class="sd">  path : str | Path</span>
 <span class="sd">    Path to the table to read</span>
+<span class="sd">  columns : Sequence[str] | None</span>
+<span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
+<span class="sd">    reduce memory usage</span>
 
 <span class="sd">  Returns</span>
 <span class="sd">  -------</span>
@@ -565,7 +590,7 @@ document.write(`
       <span class="s1">&#39;Can not infer the load function for this table based on suffix. &#39;</span>
       <span class="s1">&#39;Please, use a specific loader.&#39;</span>
     <span class="p">)</span>
-  <span class="k">return</span> <span class="n">load_func</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+  <span class="k">return</span> <span class="n">load_func</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span></div>
 
 
 
