@@ -17,8 +17,8 @@ def arcsec2mpc(
   Parameters
   ----------
   distance: float or Quantity
-    The distance to be converted. This argument accepts a float variable or
-    an array-like object (python list, numpy array, pandas series) of floats.
+    The distance in arcsec to be converted. This argument accepts a float variable 
+    or an array-like object (python list, numpy array, pandas series) of floats.
     If a float or sequence of floats is passed, this function interprets it
     as a arcsec unit. If a quantity is passed, this funcion convert the given
     unit (e.g. arcmin or deg) to arcsec. Therefore, if a Quantity object is
@@ -32,9 +32,9 @@ def arcsec2mpc(
   cosmology: FlatLambdaCDM, optional.
     An astropy cosmology. This function uses Planck 2018 cosmology as default
     with parameters from Planck Collaboration (2020) Table 2 (TT, TE, EE
-    + lowE + lensing + BAO) [P18]_. That is also possible to use a custom
+    + lowE + lensing + BAO) [#P18]_. That is also possible to use a custom
     cosmology, passing a FlatLambdaCDM instance or any cosmology realizations
-    from astropy package [AR]_.
+    from astropy package [#AR]_.
 
   Returns
   -------
@@ -43,10 +43,10 @@ def arcsec2mpc(
     
   References
   ----------
-  .. [P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.
+  .. [#P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.
       Cosmological parameters. Astronomy \& Astrophysics, 641, A6.
       `<https://ui.adsabs.harvard.edu/abs/2020A%26A...641A...6P/abstract>`_
-  .. [AR] Included Cosmology Realizations - Astropy Documentation
+  .. [#AR] Included Cosmology Realizations - Astropy Documentation
       `<https://docs.astropy.org/en/stable/cosmology/realizations.html>`_
   """
   if isinstance(distance, u.Quantity):
@@ -70,8 +70,8 @@ def mpc2arcsec(
   Parameters
   ----------
   distance: float or Quantity
-    The distance to be converted. This argument accepts a float variable or
-    an array-like object (python list, numpy array, pandas series) of floats.
+    The distance in Mpc to be converted. This argument accepts a float variable 
+    or an array-like object (python list, numpy array, pandas series) of floats.
     If a float or sequence of floats is passed, this function interprets it
     as a Mpc unit. If a quantity is passed, this funcion convert the given
     unit to Mpc. Therefore, if a Quantity object is passed, there is no 
@@ -85,9 +85,9 @@ def mpc2arcsec(
   cosmology: FlatLambdaCDM, optional
     An astropy cosmology. This function uses Planck 2018 cosmology as default
     with parameters from Planck Collaboration (2020) Table 2 (TT, TE, EE
-    + lowE + lensing + BAO) [P18]_. That is also possible to use a custom
+    + lowE + lensing + BAO) [#P18]_. That is also possible to use a custom
     cosmology, passing a FlatLambdaCDM instance or any cosmology realizations
-    from astropy package [AR]_.
+    from astropy package [#AR]_.
 
   Returns
   -------
@@ -96,10 +96,10 @@ def mpc2arcsec(
   
   References
   ----------
-  .. [P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.
+  .. [#P18] Planck Collaboration, et. al. (2020). Planck 2018 results. VI.
       Cosmological parameters. Astronomy \& Astrophysics, 641, A6.
       `<https://ui.adsabs.harvard.edu/abs/2020A%26A...641A...6P/abstract>`_
-  .. [AR] Included Cosmology Realizations - Astropy Documentation
+  .. [#AR] Included Cosmology Realizations - Astropy Documentation
       `<https://docs.astropy.org/en/stable/cosmology/realizations.html>`_
   """
   if isinstance(distance, u.Quantity):
