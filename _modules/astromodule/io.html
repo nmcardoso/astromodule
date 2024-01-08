@@ -422,7 +422,7 @@ document.write(`
 <span class="sd">  -----</span>
 <span class="sd">  The Transportable Database Aggregate Table (TDAT) type is a data structure </span>
 <span class="sd">  created by NASA&#39;s Heasarc project and a very simple parser was implemented</span>
-<span class="sd">  in this functiondue to lack of support in packages like pandas and astropy. </span>
+<span class="sd">  in this function due to lack of support in packages like pandas and astropy. </span>
 <span class="sd">  For more information, see [#TDAT]_</span>
 
 <span class="sd">  Returns</span>
@@ -469,14 +469,12 @@ document.write(`
   <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;parquet&#39;</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
       <span class="n">path</span><span class="p">,</span> 
-      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
-      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
     <span class="p">)</span>
   <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;feather&#39;</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span>
       <span class="n">path</span><span class="p">,</span> 
-      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
-      <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span>
+      <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
     <span class="p">)</span>
   <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;tdat&#39;</span><span class="p">:</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
