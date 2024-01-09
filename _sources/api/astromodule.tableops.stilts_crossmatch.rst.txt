@@ -1,6 +1,0 @@
-astromodule.tableops.stilts\_crossmatch
-=======================================
-
-.. currentmodule:: astromodule.tableops
-
-.. autofunction:: stilts_crossmatch
