@@ -1,7 +1,7 @@
 import re
 from io import StringIO
 from pathlib import Path
-from typing import Hashable, Sequence
+from typing import Dict, Sequence
 
 import astropy
 import numpy as np
@@ -16,7 +16,7 @@ def load_table(
   low_memory: bool = False,
   fmt: str | None = None,
   comment: str | None = None,
-  na_values: Sequence[str] | Hashable[str, Sequence[str]] = None,
+  na_values: Sequence[str] | Dict[str, Sequence[str]] = None,
   keep_default_na: bool = True,
   na_filter: bool = True,
 ) -> pd.DataFrame:
