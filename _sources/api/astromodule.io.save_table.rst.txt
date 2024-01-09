@@ -1,0 +1,6 @@
+astromodule.io.save\_table
+==========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: save_table

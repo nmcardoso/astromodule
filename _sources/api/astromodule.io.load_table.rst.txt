@@ -1,0 +1,6 @@
+astromodule.io.load\_table
+==========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: load_table

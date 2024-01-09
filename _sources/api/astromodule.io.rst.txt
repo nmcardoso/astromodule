@@ -1,0 +1,31 @@
+﻿astromodule.io
+==============
+
+.. automodule:: astromodule.io
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Functions
+
+  .. autosummary::
+    :toctree:
+  
+    load_table
+    save_table
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+
+

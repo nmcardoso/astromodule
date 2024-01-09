@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.distance &#8212; AstroModule 0 documentation</title>
+    <title>DropDuplicatesResult &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,10 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.distance';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tableops.DropDuplicatesResult';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.distance.arcsec2mpc" href="astromodule.distance.arcsec2mpc.html" />
-    <link rel="prev" title="API Reference" href="../reference.html" />
+    <link rel="prev" title="astromodule.tableops.table_knn" href="astromodule.tableops.table_knn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -324,7 +323,7 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">astromodule.distance</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.distance.html">astromodule.distance</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.arcsec2mpc.html">astromodule.distance.arcsec2mpc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
@@ -334,13 +333,13 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.tableops.html">astromodule.tableops</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tableops.html">astromodule.tableops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.crossmatch.html">astromodule.tableops.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.drop_duplicates.html">astromodule.tableops.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.stilts_crossmatch.html">astromodule.tableops.stilts_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.stilts_unique.html">astromodule.tableops.stilts_unique</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.table_knn.html">astromodule.tableops.table_knn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DropDuplicatesResult</a></li>
 </ul>
 </li>
 </ul>
@@ -383,7 +382,10 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">astromodule.distance</li>
+    
+    <li class="breadcrumb-item"><a href="astromodule.tableops.html" class="nav-link">astromodule.tableops</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">DropDuplicatesResult</li>
   </ul>
 </nav>
 </div>
@@ -400,19 +402,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-astromodule.distance">
-<span id="astromodule-distance"></span><h1>astromodule.distance<a class="headerlink" href="#module-astromodule.distance" title="Link to this heading">#</a></h1>
-<p class="rubric">Functions</p>
+  <section id="dropduplicatesresult">
+<h1>DropDuplicatesResult<a class="headerlink" href="#dropduplicatesresult" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">astromodule.tableops.</span></span><span class="sig-name descname"><span class="pre">DropDuplicatesResult</span></span><a class="reference internal" href="../_modules/astromodule/tableops.html#DropDuplicatesResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>DropDuplicatesResult(df: pandas.core.frame.DataFrame, distances: numpy.ndarray, n_iterations: int, drop_count: int)</p>
+<p class="rubric">Attributes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.distance.arcsec2mpc.html#astromodule.distance.arcsec2mpc" title="astromodule.distance.arcsec2mpc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsec2mpc</span></code></a>(distance, z[, cosmology, Om0, ...])</p></td>
-<td><p>Converts arcsecs to Mpc at a given redshift using the specified cosmology This function can be used to convert a single distance or multiple distances  with a single call.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#astromodule.tableops.DropDuplicatesResult.df" title="astromodule.tableops.DropDuplicatesResult.df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">df</span></code></a></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.distance.mpc2arcsec.html#astromodule.distance.mpc2arcsec" title="astromodule.distance.mpc2arcsec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mpc2arcsec</span></code></a>(distance, z[, cosmology, Om0, ...])</p></td>
-<td><p>Converts Mpc to arcsecs at a given redshif using the specified cosmology This function can be used to convert a single distance or multiple distances  with a single call.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#astromodule.tableops.DropDuplicatesResult.distances" title="astromodule.tableops.DropDuplicatesResult.distances"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distances</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#astromodule.tableops.DropDuplicatesResult.n_iterations" title="astromodule.tableops.DropDuplicatesResult.n_iterations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_iterations</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#astromodule.tableops.DropDuplicatesResult.drop_count" title="astromodule.tableops.DropDuplicatesResult.drop_count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_count</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py method">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">distances</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.0.dev0)"><span class="pre">ndarray</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iterations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult.df">
+<span class="sig-name descname"><span class="pre">df</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></em><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult.df" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult.distances">
+<span class="sig-name descname"><span class="pre">distances</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.0.dev0)"><span class="pre">ndarray</span></a></em><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult.distances" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult.drop_count">
+<span class="sig-name descname"><span class="pre">drop_count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult.drop_count" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="astromodule.tableops.DropDuplicatesResult.n_iterations">
+<span class="sig-name descname"><span class="pre">n_iterations</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><a class="headerlink" href="#astromodule.tableops.DropDuplicatesResult.n_iterations" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -426,22 +466,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../reference.html"
+       href="astromodule.tableops.table_knn.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API Reference</p>
+        <p class="prev-next-title">astromodule.tableops.table_knn</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="astromodule.distance.arcsec2mpc.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.distance.arcsec2mpc</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -454,9 +485,28 @@ document.write(`
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult.__init__"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult.df"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult.df</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult.distances"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult.distances</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult.drop_count"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult.drop_count</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.DropDuplicatesResult.n_iterations"><code class="docutils literal notranslate"><span class="pre">DropDuplicatesResult.n_iterations</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.distance.rst.txt">
+    <a href="../_sources/api/astromodule.tableops.DropDuplicatesResult.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

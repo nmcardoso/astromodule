@@ -1,0 +1,6 @@
+astromodule.tableops.stilts\_unique
+===================================
+
+.. currentmodule:: astromodule.tableops
+
+.. autofunction:: stilts_unique

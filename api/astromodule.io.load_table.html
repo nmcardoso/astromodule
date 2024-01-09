@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.distance &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.io.load_table &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.distance';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.load_table';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.distance.arcsec2mpc" href="astromodule.distance.arcsec2mpc.html" />
-    <link rel="prev" title="API Reference" href="../reference.html" />
+    <link rel="next" title="astromodule.io.save_table" href="astromodule.io.save_table.html" />
+    <link rel="prev" title="astromodule.io" href="astromodule.io.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -324,13 +324,13 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">astromodule.distance</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.distance.html">astromodule.distance</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.arcsec2mpc.html">astromodule.distance.arcsec2mpc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.io.load_table.html">astromodule.io.load_table</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.load_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.save_table.html">astromodule.io.save_table</a></li>
 </ul>
 </li>
@@ -383,7 +383,10 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">astromodule.distance</li>
+    
+    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
 </nav>
 </div>
@@ -400,19 +403,101 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-astromodule.distance">
-<span id="astromodule-distance"></span><h1>astromodule.distance<a class="headerlink" href="#module-astromodule.distance" title="Link to this heading">#</a></h1>
-<p class="rubric">Functions</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.distance.arcsec2mpc.html#astromodule.distance.arcsec2mpc" title="astromodule.distance.arcsec2mpc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arcsec2mpc</span></code></a>(distance, z[, cosmology, Om0, ...])</p></td>
-<td><p>Converts arcsecs to Mpc at a given redshift using the specified cosmology This function can be used to convert a single distance or multiple distances  with a single call.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.distance.mpc2arcsec.html#astromodule.distance.mpc2arcsec" title="astromodule.distance.mpc2arcsec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mpc2arcsec</span></code></a>(distance, z[, cosmology, Om0, ...])</p></td>
-<td><p>Converts Mpc to arcsecs at a given redshif using the specified cosmology This function can be used to convert a single distance or multiple distances  with a single call.</p></td>
-</tr>
-</tbody>
-</table>
+  <section id="astromodule-io-load-table">
+<h1>astromodule.io.load_table<a class="headerlink" href="#astromodule-io-load-table" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="astromodule.io.load_table">
+<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">load_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_memory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_default_na</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#load_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.load_table" title="Link to this definition">#</a></dt>
+<dd><blockquote>
+<div><p>This function tries to detect the table type comparing the file extension and
+returns a pandas dataframe of the loaded table.</p>
+<p>Supported table types:</p>
+<ul class="simple">
+<li><p>Fits tables: .fit, .fits, .fz</p></li>
+<li><p>Votable: .vo, .vot, .votable, .xml</p></li>
+<li><p>ASCII tables: .csv, .tsv, .dat</p></li>
+<li><p>Heasarc tables: .tdat</p></li>
+<li><p>Arrow tables: .parquet, .feather</p></li>
+</ul>
+<dl class="simple">
+<dt>path<span class="classifier">str | Path</span></dt><dd><p>Path to the table to be read.</p>
+</dd>
+<dt>columns<span class="classifier">Sequence[str] | None</span></dt><dd><p>If specified, only the column names in list will be loaded. Can be used to
+reduce memory usage.</p>
+</dd>
+<dt>low_memory<span class="classifier">bool</span></dt><dd><p>Internally process the file in chunks, resulting in lower memory use while 
+parsing, but possibly mixed type inference. To ensure no mixed types either 
+set False, or specify the type with the dtype parameter. Note that the 
+entire file is read into a single DataFrame regardless, use the chunksize 
+or iterator parameter to return the data in chunks. (Only valid with C parser).</p>
+</dd>
+<dt>fmt<span class="classifier">str | None</span></dt><dd><p>Specify the file format manually to avoid inference by file extension. This
+parameter can be used to force a specific parser for the given file.</p>
+</dd>
+<dt>comment<span class="classifier">str | None</span></dt><dd><p>Character indicating that the remainder of line should not be parsed. 
+If found at the beginning of a line, the line will be ignored altogether. 
+This parameter must be a single character. Like empty lines 
+(as long as skip_blank_lines=True), fully commented lines are ignored 
+by the parameter header but not by skiprows. For example, if comment=’#’, 
+parsing #empty</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>a,b,c
+1,2,3 with header=0 will result in ‘a,b,c’ being</p>
+<blockquote>
+<div><blockquote>
+<div><p>treated as the header.</p>
+</div></blockquote>
+<dl>
+<dt>na_values: Hashable, Iterable of Hashable or dict of {HashableIterable}</dt><dd><p>Additional strings to recognize as <cite>NA</cite>/<cite>NaN</cite>. If <cite>dict</cite> passed, specific 
+per-column <cite>NA</cite> values. By default the following values are interpreted 
+as <cite>NaN</cite>: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, 
+“-nan”, “1.#IND”, “1.#QNAN”, “&lt;NA&gt;”, “N/A”, “NA”, “NULL”, “NaN”, “None”, 
+“n/a”, “nan”, “null “.</p>
+</dd>
+<dt>keep_default_na<span class="classifier">bool </span></dt><dd><p>Whether or not to include the default <cite>NaN</cite> values when parsing the data. 
+Depending on whether <cite>na_values</cite> is passed in, the behavior is as follows:</p>
+<ul class="simple">
+<li><p>If <cite>keep_default_na</cite> is <cite>True</cite>, and <cite>na_values</cite> are specified,</p></li>
+</ul>
+<p><cite>na_values</cite> is appended to the default NaN values used for parsing.
+- If <cite>keep_default_na</cite> is <cite>True</cite>, and <cite>na_values</cite> are not specified, only the 
+default <cite>NaN</cite> values are used for parsing.
+- If <cite>keep_default_na</cite> is <cite>False</cite>, and <cite>na_values</cite> are specified, only 
+the <cite>NaN</cite> values specified na_values are used for parsing.
+- If <cite>keep_default_na</cite> is <cite>False</cite>, and <cite>na_values</cite> are not specified, 
+no strings will be parsed as <cite>NaN</cite>.</p>
+<p>Note that if <cite>na_filter</cite> is passed in as <cite>False</cite>, the <cite>keep_default_na</cite> and 
+<cite>na_values</cite> parameters will be ignored.</p>
+</dd>
+<dt>na_filter<span class="classifier">bool</span></dt><dd><p>Detect missing value markers (empty strings and the value of <cite>na_values</cite>). 
+In data without any <cite>NA</cite> values, passing <cite>na_filter=False</cite> can improve the 
+performance of reading a large file.</p>
+</dd>
+</dl>
+<p>The Transportable Database Aggregate Table (TDAT) type is a data structure 
+created by NASA’s Heasarc project and a very simple parser was implemented
+in this function due to lack of support in packages like pandas and astropy. 
+For more information, see <a class="footnote-reference brackets" href="#tdat" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>The table as a pandas dataframe</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>ValueError</dt><dd><p>Raises an error if the file extension can not be detected</p>
+</dd>
+</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="tdat" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Transportable Database Aggregate Table (TDAT) Format.
+<a class="reference external" href="https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html">https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html</a></p>
+</aside>
+</aside>
+</div></blockquote>
+</dd></dl>
+
 </section>
 
 
@@ -426,20 +511,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../reference.html"
+       href="astromodule.io.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API Reference</p>
+        <p class="prev-next-title">astromodule.io</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.distance.arcsec2mpc.html"
+       href="astromodule.io.save_table.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.distance.arcsec2mpc</p>
+        <p class="prev-next-title">astromodule.io.save_table</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -454,9 +539,21 @@ document.write(`
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.load_table"><code class="docutils literal notranslate"><span class="pre">load_table()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.distance.rst.txt">
+    <a href="../_sources/api/astromodule.io.load_table.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
