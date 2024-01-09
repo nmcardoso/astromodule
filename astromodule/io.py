@@ -1,7 +1,7 @@
 import re
 from io import StringIO
 from pathlib import Path
-from typing import Sequence
+from typing import Hashable, Sequence
 
 import astropy
 import numpy as np
@@ -15,6 +15,10 @@ def load_table(
   columns: Sequence[str] | None = None,
   low_memory: bool = False,
   fmt: str | None = None,
+  comment: str | None = None,
+  na_values: Sequence[str] | Hashable[str, Sequence[str]] = None,
+  keep_default_na: bool = True,
+  na_filter: bool = True,
 ) -> pd.DataFrame:
   """
   This function tries to detect the table type comparing the file extension and
@@ -43,7 +47,41 @@ def load_table(
   fmt : str | None
     Specify the file format manually to avoid inference by file extension. This
     parameter can be used to force a specific parser for the given file.
-    
+  comment : str | None
+    Character indicating that the remainder of line should not be parsed. 
+    If found at the beginning of a line, the line will be ignored altogether. 
+    This parameter must be a single character. Like empty lines 
+    (as long as skip_blank_lines=True), fully commented lines are ignored 
+    by the parameter header but not by skiprows. For example, if comment='#', 
+    parsing #empty\na,b,c\n1,2,3 with header=0 will result in 'a,b,c' being 
+    treated as the header.
+  na_values: Hashable, Iterable of Hashable or dict of {HashableIterable}
+    Additional strings to recognize as `NA`/`NaN`. If `dict` passed, specific 
+    per-column `NA` values. By default the following values are interpreted 
+    as `NaN`: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, 
+    “-nan”, “1.#IND”, “1.#QNAN”, “<NA>”, “N/A”, “NA”, “NULL”, “NaN”, “None”, 
+    “n/a”, “nan”, “null “.
+  keep_default_na : bool 
+    Whether or not to include the default `NaN` values when parsing the data. 
+    Depending on whether `na_values` is passed in, the behavior is as follows:
+
+    - If `keep_default_na` is `True`, and `na_values` are specified, 
+    `na_values` is appended to the default NaN values used for parsing.
+    - If `keep_default_na` is `True`, and `na_values` are not specified, only the 
+    default `NaN` values are used for parsing.
+    - If `keep_default_na` is `False`, and `na_values` are specified, only 
+    the `NaN` values specified na_values are used for parsing.
+    - If `keep_default_na` is `False`, and `na_values` are not specified, 
+    no strings will be parsed as `NaN`.
+
+    Note that if `na_filter` is passed in as `False`, the `keep_default_na` and 
+    `na_values` parameters will be ignored.
+  na_filter : bool
+    Detect missing value markers (empty strings and the value of `na_values`). 
+    In data without any `NA` values, passing `na_filter=False` can improve the 
+    performance of reading a large file.
+
+
   Notes
   -----
   The Transportable Database Aggregate Table (TDAT) type is a data structure 
@@ -84,18 +122,26 @@ def load_table(
       path, 
       delim_whitespace=True, 
       usecols=columns, 
-      low_memory=low_memory
+      low_memory=low_memory,
+      comment=comment,
+      na_values=na_values,
+      keep_default_na=keep_default_na,
+      na_filter=na_filter,
     )
   elif fmt == 'csv':
     return pd.read_csv(
       path, 
       usecols=columns, 
-      low_memory=low_memory
+      low_memory=low_memory,
+      comment=comment,
+      na_values=na_values,
+      keep_default_na=keep_default_na,
+      na_filter=na_filter,
     )
   elif fmt == 'parquet':
     return pd.read_parquet(
       path, 
-      columns=columns
+      columns=columns,
     )
   elif fmt == 'feather':
     return pd.read_feather(
