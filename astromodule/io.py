@@ -6,7 +6,7 @@ from typing import Hashable, Sequence
 import astropy
 import numpy as np
 import pandas as pd
-from astropy.io import fits
+from astropy.io import fits, votable
 from astropy.table import Table
 
 
@@ -27,6 +27,7 @@ def load_table(
   Supported table types:
   
   - Fits tables: .fit, .fits, .fz
+  - Votable: .vo, .vot, .votable, .xml
   - ASCII tables: .csv, .tsv, .dat
   - Heasarc tables: .tdat
   - Arrow tables: .parquet, .feather
@@ -80,7 +81,6 @@ def load_table(
     Detect missing value markers (empty strings and the value of `na_values`). 
     In data without any `NA` values, passing `na_filter=False` can improve the 
     performance of reading a large file.
-
 
   Notes
   -----
@@ -160,6 +160,14 @@ def load_table(
       usecols=columns, 
       low_memory=low_memory
     )
+  elif fmt in ('vo', 'vot', 'votable', 'xml'):
+    result = votable.parse_single_table(path)
+    table = result.to_table(use_names_over_ids=True)
+    # table = result.get_first_table().to_table(use_names_over_ids=True)
+    df = table.to_pandas()
+    if columns:
+      df = df[columns]
+    return df
 
   raise ValueError(
     'Can not infer the load function for this table based on suffix. '
