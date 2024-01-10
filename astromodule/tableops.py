@@ -358,25 +358,32 @@ def stilts_unique(
     f'ifmt={fmt}',
     'omode=out',
     f'ofmt={fmt}',
-    f'out={str(out_path.absolute())}',
+    'out=-',
     f'in={str(in_path.absolute())}',
   ]
   
   result = subprocess.run(
     cmd,
     stderr=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    text=False,
   )
   
+  in_path.unlink()
   error = result.stderr.decode().strip()
   if error:
     print(error)
-    
-  in_path.unlink()
+    return None
   
-  df_out = load_table(out_path)
-  out_path.unlink()
+  df_out = load_table(BytesIO(result.stdout), fmt=fmt)
   return df_out
 
 
 if __name__ == '__main__':
-  pass
+  df = stilts_unique(
+    Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
+    radius=45*u.arcmin,
+    action='indentify',
+    fmt='csv'
+  )
+  print(df)
