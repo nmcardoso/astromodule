@@ -184,6 +184,6 @@ def save_table(data: pd.DataFrame, path: str | Path):
   elif path.suffix == '.parquet':
     data.to_parquet(path, index=False)
   elif path.suffix == '.dat':
-    data.to_csv(path, sep=' ')
+    data.to_csv(path, index=False, sep=' ')
   elif path.suffix == '.tsv':
-    data.to_csv(path, sep='\t')
+    data.to_csv(path, index=False, sep='\t')
