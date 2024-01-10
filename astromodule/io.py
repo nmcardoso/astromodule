@@ -3,7 +3,6 @@ from io import StringIO
 from pathlib import Path
 from typing import Dict, Sequence
 
-import astropy
 import numpy as np
 import pandas as pd
 from astropy.io import fits, votable
@@ -13,8 +12,8 @@ from astropy.table import Table
 def load_table(
   path: str | Path, 
   columns: Sequence[str] | None = None,
-  low_memory: bool = False,
   fmt: str | None = None,
+  low_memory: bool = False,
   comment: str | None = None,
   na_values: Sequence[str] | Dict[str, Sequence[str]] = None,
   keep_default_na: bool = True,
@@ -26,61 +25,87 @@ def load_table(
   
   Supported table types:
   
-  - Fits tables: .fit, .fits, .fz
-  - Votable: .vo, .vot, .votable, .xml
-  - ASCII tables: .csv, .tsv, .dat
-  - Heasarc tables: .tdat
-  - Arrow tables: .parquet, .feather
+    =============== ===========================
+    Table Type      Extensions
+    =============== ===========================
+    Fits            .fit, .fits, .fz
+    Votable         .vo, .vot, .votable, .xml
+    ASCII           .csv, .tsv, .dat
+    Heasarc         .tdat
+    Arrow           .parquet, .feather
+    =============== ===========================
 
   Parameters
   ----------
-  path : str | Path
+  path : str or Path
     Path to the table to be read.
+  
   columns : Sequence[str] | None
     If specified, only the column names in list will be loaded. Can be used to
     reduce memory usage.
+  
+  fmt : str | None
+    Specify the file format manually to avoid inference by file extension. This
+    parameter can be used to force a specific parser for the given file.
+  
   low_memory : bool
     Internally process the file in chunks, resulting in lower memory use while 
     parsing, but possibly mixed type inference. To ensure no mixed types either 
     set False, or specify the type with the dtype parameter. Note that the 
     entire file is read into a single DataFrame regardless, use the chunksize 
     or iterator parameter to return the data in chunks. (Only valid with C parser).
-  fmt : str | None
-    Specify the file format manually to avoid inference by file extension. This
-    parameter can be used to force a specific parser for the given file.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
+  
   comment : str | None
     Character indicating that the remainder of line should not be parsed. 
     If found at the beginning of a line, the line will be ignored altogether. 
     This parameter must be a single character. Like empty lines 
-    (as long as skip_blank_lines=True), fully commented lines are ignored 
-    by the parameter header but not by skiprows. For example, if comment='#', 
-    parsing #empty\na,b,c\n1,2,3 with header=0 will result in 'a,b,c' being 
-    treated as the header.
+    (as long as ``skip_blank_lines=True``), fully commented lines are ignored 
+    by the parameter header but not by skiprows. For example, if ``comment='#'``, 
+    parsing ``#empty\\\\na,b,c\\\\n1,2,3`` with ``header=0`` will result in 
+    ``'a,b,c'`` being treated as the header.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
+  
   na_values: Hashable, Iterable of Hashable or dict of {HashableIterable}
-    Additional strings to recognize as `NA`/`NaN`. If `dict` passed, specific 
-    per-column `NA` values. By default the following values are interpreted 
+    Additional strings to recognize as ``NA``/``NaN``. If ``dict`` passed, specific 
+    per-column ``NA`` values. By default the following values are interpreted 
     as `NaN`: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, 
     “-nan”, “1.#IND”, “1.#QNAN”, “<NA>”, “N/A”, “NA”, “NULL”, “NaN”, “None”, 
     “n/a”, “nan”, “null “.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
+  
   keep_default_na : bool 
-    Whether or not to include the default `NaN` values when parsing the data. 
-    Depending on whether `na_values` is passed in, the behavior is as follows:
+    Whether or not to include the default ``NaN`` values when parsing the data. 
+    Depending on whether ``na_values`` is passed in, the behavior is as follows:
 
-    - If `keep_default_na` is `True`, and `na_values` are specified, 
-    `na_values` is appended to the default NaN values used for parsing.
-    - If `keep_default_na` is `True`, and `na_values` are not specified, only the 
-    default `NaN` values are used for parsing.
-    - If `keep_default_na` is `False`, and `na_values` are specified, only 
-    the `NaN` values specified na_values are used for parsing.
-    - If `keep_default_na` is `False`, and `na_values` are not specified, 
-    no strings will be parsed as `NaN`.
+    - If ``keep_default_na`` is ``True``, and ``na_values`` are specified, 
+      `na_values` is appended to the default NaN values used for parsing.
+    - If ``keep_default_na`` is ``True``, and ``na_values`` are not specified, only the 
+      default ``NaN`` values are used for parsing.
+    - If ``keep_default_na`` is ``False``, and ``na_values`` are specified, only 
+      the ``NaN`` values specified na_values are used for parsing.
+    - If ``keep_default_na`` is ``False``, and ``na_values`` are not specified, 
+      no strings will be parsed as ``NaN``.
 
-    Note that if `na_filter` is passed in as `False`, the `keep_default_na` and 
-    `na_values` parameters will be ignored.
+    Note that if ``na_filter`` is passed in as ``False``, the ``keep_default_na`` and 
+    ``na_values`` parameters will be ignored.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
+  
   na_filter : bool
-    Detect missing value markers (empty strings and the value of `na_values`). 
-    In data without any `NA` values, passing `na_filter=False` can improve the 
+    Detect missing value markers (empty strings and the value of ``na_values``). 
+    In data without any ``NA`` values, passing ``na_filter=False`` can improve the 
     performance of reading a large file.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
 
   Notes
   -----
