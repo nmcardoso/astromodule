@@ -187,3 +187,7 @@ def save_table(data: pd.DataFrame, path: str | Path):
     data.to_csv(path, index=False, sep=' ')
   elif path.suffix == '.tsv':
     data.to_csv(path, index=False, sep='\t')
+  elif path.suffix == '.html':
+    data.to_html(path, index=False)
+  elif path.suffix == '.feather':
+    data.to_feather(path, index=False)
