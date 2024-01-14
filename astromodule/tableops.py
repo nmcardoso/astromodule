@@ -4,6 +4,7 @@ import subprocess
 import tempfile
 from dataclasses import dataclass
 from difflib import get_close_matches
+from io import BytesIO, StringIO
 from pathlib import Path
 from typing import Literal, Sequence, Tuple, Union
 
@@ -28,7 +29,7 @@ def _match_regex_against_sequence(
   return None
 
 
-def _guess_coords_columns(
+def guess_coords_columns(
   df: pd.DataFrame,
   ra: str | None = None,
   dec: str | None = None,
@@ -44,15 +45,7 @@ def _guess_coords_columns(
       "via `ra` and `dec` parameters"
     )
   return ra, dec
-  
 
-def _load_table(table: str | Path | pd.DataFrame | Table) -> pd.DataFrame:
-  if isinstance(table, (str, Path)):
-    return load_table(table)
-  elif isinstance(table, pd.DataFrame):
-    return table
-  elif isinstance(table, Table):
-    return table.to_pandas()
 
 
 def table_knn(
@@ -64,8 +57,8 @@ def table_knn(
   right_ra: str = 'ra',
   right_dec: str = 'dec',
 ) -> Tuple[np.ndarray, np.ndarray]:
-  left_df = _load_table(left)
-  right_df = _load_table(right)
+  left_df = load_table(left)
+  right_df = load_table(right)
   
   left_coords = SkyCoord(
     ra=left_df[left_ra].values,
@@ -101,10 +94,10 @@ def crossmatch(
   right_columns: Sequence[str] | None = None,
   include_sep: bool = True,
 ):
-  left_df = _load_table(left)
-  left_ra, left_dec = _guess_coords_columns(left_df, left_ra, left_dec)
-  right_df = _load_table(right)
-  right_ra, right_dec = _guess_coords_columns(right_df, right_ra, right_dec)
+  left_df = load_table(left)
+  left_ra, left_dec = guess_coords_columns(left_df, left_ra, left_dec)
+  right_df = load_table(right)
+  right_ra, right_dec = guess_coords_columns(right_df, right_ra, right_dec)
   
   idx, d = table_knn(
     left_df, 
@@ -193,8 +186,8 @@ def drop_duplicates(
   else:
     radius = u.Quantity(radius, unit=u.arcsec).to(u.deg).value
   
-  df = _load_table(table)
-  ra, dec = _guess_coords_columns(df, ra, dec)
+  df = load_table(table)
+  ra, dec = guess_coords_columns(df, ra, dec)
   df_coords = df[[ra, dec]].copy(deep=True)
   total_drop_count = 0
   drop_count = -1
@@ -259,18 +252,17 @@ def stilts_crossmatch(
   suffix2: str = '_2',
   scorecol: str | None = 'xmatch_sep',
   fmt: Literal['fits', 'csv'] = 'fits',
-) -> pd.DataFrame:
+) -> pd.DataFrame | None:
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt}'
   tb2_path = tmpdir / f'xmatch_in2_{token}.{fmt}'
-  out_path = tmpdir / f'xmatch_out_{token}.{fmt}'
   
-  df1 = _load_table(table1)
-  df2 = _load_table(table2)
+  df1 = load_table(table1)
+  df2 = load_table(table2)
   
-  ra1, dec1 = _guess_coords_columns(df1, ra1, dec1)
-  ra2, dec2 = _guess_coords_columns(df2, ra2, dec2)
+  ra1, dec1 = guess_coords_columns(df1, ra1, dec1)
+  ra2, dec2 = guess_coords_columns(df2, ra2, dec2)
   
   save_table(df1, tb1_path)
   save_table(df2, tb2_path)
@@ -290,7 +282,7 @@ def stilts_crossmatch(
     f'ifmt2={fmt}',
     f'ofmt={fmt}',
     'omode=out',
-    f'out={str(out_path.absolute())}',
+    f'out=-',
     f'values1={ra1} {dec1}',
     f'values2={ra2} {dec2}',
     f'params={radius}',
@@ -307,17 +299,18 @@ def stilts_crossmatch(
   result = subprocess.run(
     cmd,
     stderr=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    text=False,
   )
   
+  tb1_path.unlink()
+  tb2_path.unlink()
   error = result.stderr.decode().strip()
   if error:
     print(error)
-    
-  tb1_path.unlink()
-  tb2_path.unlink()
+    return None
   
-  df_out = load_table(out_path)
-  out_path.unlink()
+  df_out = load_table(BytesIO(result.stdout), fmt=fmt)
   return df_out
 
 
@@ -329,15 +322,14 @@ def stilts_unique(
   ra: str | None = None,
   dec: str | None = None,
   fmt: Literal['fits', 'csv'] = 'fits',
-) -> pd.DataFrame:
+) -> pd.DataFrame | None:
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   in_path = tmpdir / f'xmatch_in_{token}.{fmt}'
-  out_path = tmpdir / f'xmatch_out_{token}.{fmt}'
   
-  df = _load_table(table)
+  df = load_table(table)
   
-  ra, dec = _guess_coords_columns(df, ra, dec)
+  ra, dec = guess_coords_columns(df, ra, dec)
   
   save_table(df, in_path)
   

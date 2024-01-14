@@ -1,18 +1,24 @@
+import bz2
+import concurrent.futures
 import re
-from io import StringIO
+from io import BufferedIOBase, RawIOBase, StringIO, TextIOBase
 from pathlib import Path
-from typing import Dict, Sequence
+from typing import Any, BinaryIO, Callable, Dict, Sequence
 
 import numpy as np
 import pandas as pd
+import requests
 from astropy.io import fits, votable
 from astropy.table import Table
+from tqdm import tqdm
+
+RANDOM_SEED = 42
 
 
 def load_table(
   path: str | Path, 
-  columns: Sequence[str] | None = None,
   fmt: str | None = None,
+  columns: Sequence[str] | None = None,
   low_memory: bool = False,
   comment: str | None = None,
   na_values: Sequence[str] | Dict[str, Sequence[str]] = None,
@@ -40,13 +46,13 @@ def load_table(
   path : str or Path
     Path to the table to be read.
   
-  columns : Sequence[str] | None
-    If specified, only the column names in list will be loaded. Can be used to
-    reduce memory usage.
-  
   fmt : str | None
     Specify the file format manually to avoid inference by file extension. This
     parameter can be used to force a specific parser for the given file.
+  
+  columns : Sequence[str] | None
+    If specified, only the column names in list will be loaded. Can be used to
+    reduce memory usage.
   
   low_memory : bool
     Internally process the file in chunks, resulting in lower memory use while 
@@ -64,7 +70,7 @@ def load_table(
     This parameter must be a single character. Like empty lines 
     (as long as ``skip_blank_lines=True``), fully commented lines are ignored 
     by the parameter header but not by skiprows. For example, if ``comment='#'``, 
-    parsing ``#empty\\\\na,b,c\\\\n1,2,3`` with ``header=0`` will result in 
+    parsing ``#empty\\na,b,c\\n1,2,3`` with ``header=0`` will result in 
     ``'a,b,c'`` being treated as the header.
     
     .. note::
@@ -129,8 +135,20 @@ def load_table(
   .. [#TDAT] Transportable Database Aggregate Table (TDAT) Format.
       `<https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html>`_
   """
-  path = Path(path)
-  fmt = fmt or path.suffix
+  is_file_like = False
+  if isinstance(path, (str, Path)):
+    path = Path(path)
+    fmt = fmt or path.suffix
+  elif isinstance(path, pd.DataFrame):
+    return path
+  elif isinstance(path, Table):
+    df = path.to_pandas()
+    if columns:
+      df = df[columns]
+    return df
+  elif isinstance(path, (RawIOBase, BufferedIOBase, TextIOBase)):
+    is_file_like = True
+  
   if fmt.startswith('.'):
     fmt = fmt[1:]
 
@@ -174,6 +192,7 @@ def load_table(
       columns=columns
     )
   elif fmt == 'tdat':
+    if is_file_like: raise ValueError('Not implemented for file-like objects')
     path = Path(path)
     content = path.read_text()
     header = re.findall(r'line\[1\] = (.*)', content)[0].replace(' ', '|')
@@ -200,19 +219,158 @@ def load_table(
   )
 
 
-def save_table(data: pd.DataFrame, path: str | Path):
-  path = Path(path)
-  if path.suffix in ('.fit', '.fits'):
+def save_table(data: pd.DataFrame, path: str | Path, fmt: str = None):
+  if isinstance(path, str):
+    fmt = fmt or Path(path).suffix
+  elif isinstance(path, Path):
+    fmt = fmt or path.suffix
+    path = str(path.absolute())
+  
+  if fmt.startswith('.'):
+    fmt = fmt[1:]
+  
+  if fmt in ('fit', 'fits'):
     Table.from_pandas(data).write(path, overwrite=True)
-  elif path.suffix == '.csv':
+  elif fmt == 'csv':
     data.to_csv(path, index=False)
-  elif path.suffix == '.parquet':
+  elif fmt == 'parquet':
     data.to_parquet(path, index=False)
-  elif path.suffix == '.dat':
+  elif fmt == 'dat':
     data.to_csv(path, index=False, sep=' ')
-  elif path.suffix == '.tsv':
+  elif fmt == 'tsv':
     data.to_csv(path, index=False, sep='\t')
-  elif path.suffix == '.html':
+  elif fmt == 'html':
     data.to_html(path, index=False)
-  elif path.suffix == '.feather':
+  elif fmt == 'feather':
     data.to_feather(path, index=False)
+  elif fmt in ('vo', 'vot', 'votable', 'xml'):
+    t = Table.from_pandas(data)
+    votable.writeto(t, path)
+    
+    
+
+def compress_fits(
+  file: str | Path | BinaryIO,
+  compress_type: str = 'HCOMPRESS_1',
+  hcomp_scale: int = 3,
+  quantize_level: int = 10,
+  quantize_method: int = -1,
+  ext: int = 0,
+  save_path: str | Path = None,
+  replace: bool = True,
+):
+  hdul = fits.open(file)
+
+  if ext >= len(hdul):
+    raise ValueError(f'Trying to access ext {ext}, max ext is {len(hdul)-1}')
+
+  if save_path.exists() and not replace:
+    return None
+
+  comp = None
+
+  try:
+    comp = fits.CompImageHDU(
+      data=hdul[ext].data,
+      header=hdul[ext].header,
+      compression_type=compress_type,
+      hcomp_scale=hcomp_scale,
+      quantize_level=quantize_level,
+      quantize_method=quantize_method,
+      dither_seed=RANDOM_SEED,
+    )
+    if save_path:
+      comp.writeto(
+        save_path,
+        overwrite=replace,
+      )
+  except OSError as e:
+    pass
+
+  return comp
+
+
+
+def download_file(
+  url: str,
+  save_path: str | Path,
+  replace: bool = False,
+  http_client: requests.Session = None,
+  extract: bool = False,
+  return_bytes: bool = False,
+) -> bytes | None:
+  save_path = Path(save_path)
+
+  if not replace and save_path.exists():
+    return None
+
+  http_client = http_client or requests
+
+  if not save_path.parent.exists():
+    save_path.parent.mkdir(parents=True, exist_ok=True)
+
+  r = http_client.get(url, allow_redirects=True)
+
+  if r.status_code == 200:
+    if extract:
+      file_bytes = bz2.decompress(r.content)
+    else:
+      file_bytes = r.content
+
+    if return_bytes:
+      return file_bytes
+
+    with open(str(save_path.resolve()), 'wb') as f:
+      f.write(file_bytes)
+
+  return None
+
+
+def parallel_function_executor(
+  func: Callable,
+  params: Sequence[Dict[str, Any]] = [],
+  workers: int = 2,
+  unit: str = 'it'
+):
+  with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+    futures = []
+
+    for i in range(len(params)):
+      futures.append(executor.submit(
+        func,
+        **params[i]
+      ))
+
+    for future in tqdm(
+      concurrent.futures.as_completed(futures),
+      total=len(futures),
+      unit=unit
+    ):
+      try:
+        future.result()
+      except Exception as e:
+        pass
+
+
+def batch_download_file(
+  urls: Sequence[str],
+  save_path: Sequence[str] | Sequence[Path],
+  replace: bool = False,
+  http_client: requests.Session = None,
+  workers: int = 2,
+):
+  params = [
+    {
+      'url': _url,
+      'save_path': Path(_save_path),
+      'replace': replace,
+      'http_client': http_client
+    }
+    for _url, _save_path in zip(urls, save_path)
+  ]
+  parallel_function_executor(download_file, params, workers=workers, unit='file')
+
+
+if __name__ == '__main__':
+  df = pd.DataFrame({'RA': [193.20100, 193.31000], 'DEC': [-15.43320, -15.38000]})
+  save_table(df, 'broca.xml')
