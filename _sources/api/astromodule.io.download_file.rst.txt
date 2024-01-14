@@ -1,0 +1,6 @@
+astromodule.io.download\_file
+=============================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: download_file

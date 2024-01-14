@@ -370,25 +370,30 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for astromodule.io</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span></span><span class="kn">import</span> <span class="nn">bz2</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BufferedIOBase</span><span class="p">,</span> <span class="n">RawIOBase</span><span class="p">,</span> <span class="n">StringIO</span><span class="p">,</span> <span class="n">TextIOBase</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">BinaryIO</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span>
 
-<span class="kn">import</span> <span class="nn">astropy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span><span class="p">,</span> <span class="n">votable</span>
 <span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">42</span>
 
 
 <div class="viewcode-block" id="load_table">
 <a class="viewcode-back" href="../../api/astromodule.io.load_table.html#astromodule.io.load_table">[docs]</a>
 <span class="k">def</span> <span class="nf">load_table</span><span class="p">(</span>
   <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> 
+  <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">low_memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-  <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">comment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">na_values</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">keep_default_na</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -400,61 +405,87 @@ document.write(`
 <span class="sd">  </span>
 <span class="sd">  Supported table types:</span>
 <span class="sd">  </span>
-<span class="sd">  - Fits tables: .fit, .fits, .fz</span>
-<span class="sd">  - Votable: .vo, .vot, .votable, .xml</span>
-<span class="sd">  - ASCII tables: .csv, .tsv, .dat</span>
-<span class="sd">  - Heasarc tables: .tdat</span>
-<span class="sd">  - Arrow tables: .parquet, .feather</span>
+<span class="sd">    =============== ===========================</span>
+<span class="sd">    Table Type      Extensions</span>
+<span class="sd">    =============== ===========================</span>
+<span class="sd">    Fits            .fit, .fits, .fz</span>
+<span class="sd">    Votable         .vo, .vot, .votable, .xml</span>
+<span class="sd">    ASCII           .csv, .tsv, .dat</span>
+<span class="sd">    Heasarc         .tdat</span>
+<span class="sd">    Arrow           .parquet, .feather</span>
+<span class="sd">    =============== ===========================</span>
 
 <span class="sd">  Parameters</span>
 <span class="sd">  ----------</span>
-<span class="sd">  path : str | Path</span>
+<span class="sd">  path : str or Path</span>
 <span class="sd">    Path to the table to be read.</span>
+<span class="sd">  </span>
+<span class="sd">  fmt : str | None</span>
+<span class="sd">    Specify the file format manually to avoid inference by file extension. This</span>
+<span class="sd">    parameter can be used to force a specific parser for the given file.</span>
+<span class="sd">  </span>
 <span class="sd">  columns : Sequence[str] | None</span>
 <span class="sd">    If specified, only the column names in list will be loaded. Can be used to</span>
 <span class="sd">    reduce memory usage.</span>
+<span class="sd">  </span>
 <span class="sd">  low_memory : bool</span>
 <span class="sd">    Internally process the file in chunks, resulting in lower memory use while </span>
 <span class="sd">    parsing, but possibly mixed type inference. To ensure no mixed types either </span>
 <span class="sd">    set False, or specify the type with the dtype parameter. Note that the </span>
 <span class="sd">    entire file is read into a single DataFrame regardless, use the chunksize </span>
 <span class="sd">    or iterator parameter to return the data in chunks. (Only valid with C parser).</span>
-<span class="sd">  fmt : str | None</span>
-<span class="sd">    Specify the file format manually to avoid inference by file extension. This</span>
-<span class="sd">    parameter can be used to force a specific parser for the given file.</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">      Used only for ASCII tables, ignored by other types of tables.</span>
+<span class="sd">  </span>
 <span class="sd">  comment : str | None</span>
 <span class="sd">    Character indicating that the remainder of line should not be parsed. </span>
 <span class="sd">    If found at the beginning of a line, the line will be ignored altogether. </span>
 <span class="sd">    This parameter must be a single character. Like empty lines </span>
-<span class="sd">    (as long as skip_blank_lines=True), fully commented lines are ignored </span>
-<span class="sd">    by the parameter header but not by skiprows. For example, if comment=&#39;#&#39;, </span>
-<span class="sd">    parsing #empty\na,b,c\n1,2,3 with header=0 will result in &#39;a,b,c&#39; being </span>
-<span class="sd">    treated as the header.</span>
+<span class="sd">    (as long as ``skip_blank_lines=True``), fully commented lines are ignored </span>
+<span class="sd">    by the parameter header but not by skiprows. For example, if ``comment=&#39;#&#39;``, </span>
+<span class="sd">    parsing ``#empty\\na,b,c\\n1,2,3`` with ``header=0`` will result in </span>
+<span class="sd">    ``&#39;a,b,c&#39;`` being treated as the header.</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">      Used only for ASCII tables, ignored by other types of tables.</span>
+<span class="sd">  </span>
 <span class="sd">  na_values: Hashable, Iterable of Hashable or dict of {HashableIterable}</span>
-<span class="sd">    Additional strings to recognize as `NA`/`NaN`. If `dict` passed, specific </span>
-<span class="sd">    per-column `NA` values. By default the following values are interpreted </span>
+<span class="sd">    Additional strings to recognize as ``NA``/``NaN``. If ``dict`` passed, specific </span>
+<span class="sd">    per-column ``NA`` values. By default the following values are interpreted </span>
 <span class="sd">    as `NaN`: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, </span>
 <span class="sd">    “-nan”, “1.#IND”, “1.#QNAN”, “&lt;NA&gt;”, “N/A”, “NA”, “NULL”, “NaN”, “None”, </span>
 <span class="sd">    “n/a”, “nan”, “null “.</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">      Used only for ASCII tables, ignored by other types of tables.</span>
+<span class="sd">  </span>
 <span class="sd">  keep_default_na : bool </span>
-<span class="sd">    Whether or not to include the default `NaN` values when parsing the data. </span>
-<span class="sd">    Depending on whether `na_values` is passed in, the behavior is as follows:</span>
+<span class="sd">    Whether or not to include the default ``NaN`` values when parsing the data. </span>
+<span class="sd">    Depending on whether ``na_values`` is passed in, the behavior is as follows:</span>
 
-<span class="sd">    - If `keep_default_na` is `True`, and `na_values` are specified, </span>
-<span class="sd">    `na_values` is appended to the default NaN values used for parsing.</span>
-<span class="sd">    - If `keep_default_na` is `True`, and `na_values` are not specified, only the </span>
-<span class="sd">    default `NaN` values are used for parsing.</span>
-<span class="sd">    - If `keep_default_na` is `False`, and `na_values` are specified, only </span>
-<span class="sd">    the `NaN` values specified na_values are used for parsing.</span>
-<span class="sd">    - If `keep_default_na` is `False`, and `na_values` are not specified, </span>
-<span class="sd">    no strings will be parsed as `NaN`.</span>
+<span class="sd">    - If ``keep_default_na`` is ``True``, and ``na_values`` are specified, </span>
+<span class="sd">      `na_values` is appended to the default NaN values used for parsing.</span>
+<span class="sd">    - If ``keep_default_na`` is ``True``, and ``na_values`` are not specified, only the </span>
+<span class="sd">      default ``NaN`` values are used for parsing.</span>
+<span class="sd">    - If ``keep_default_na`` is ``False``, and ``na_values`` are specified, only </span>
+<span class="sd">      the ``NaN`` values specified na_values are used for parsing.</span>
+<span class="sd">    - If ``keep_default_na`` is ``False``, and ``na_values`` are not specified, </span>
+<span class="sd">      no strings will be parsed as ``NaN``.</span>
 
-<span class="sd">    Note that if `na_filter` is passed in as `False`, the `keep_default_na` and </span>
-<span class="sd">    `na_values` parameters will be ignored.</span>
+<span class="sd">    Note that if ``na_filter`` is passed in as ``False``, the ``keep_default_na`` and </span>
+<span class="sd">    ``na_values`` parameters will be ignored.</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">      Used only for ASCII tables, ignored by other types of tables.</span>
+<span class="sd">  </span>
 <span class="sd">  na_filter : bool</span>
-<span class="sd">    Detect missing value markers (empty strings and the value of `na_values`). </span>
-<span class="sd">    In data without any `NA` values, passing `na_filter=False` can improve the </span>
+<span class="sd">    Detect missing value markers (empty strings and the value of ``na_values``). </span>
+<span class="sd">    In data without any ``NA`` values, passing ``na_filter=False`` can improve the </span>
 <span class="sd">    performance of reading a large file.</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">      Used only for ASCII tables, ignored by other types of tables.</span>
 
 <span class="sd">  Notes</span>
 <span class="sd">  -----</span>
@@ -478,8 +509,20 @@ document.write(`
 <span class="sd">  .. [#TDAT] Transportable Database Aggregate Table (TDAT) Format.</span>
 <span class="sd">      `&lt;https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html&gt;`_</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-  <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span>
+  <span class="n">is_file_like</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">)):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span>
+  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">path</span>
+  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Table</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">columns</span><span class="p">:</span>
+      <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">df</span>
+  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="n">RawIOBase</span><span class="p">,</span> <span class="n">BufferedIOBase</span><span class="p">,</span> <span class="n">TextIOBase</span><span class="p">)):</span>
+    <span class="n">is_file_like</span> <span class="o">=</span> <span class="kc">True</span>
+  
   <span class="k">if</span> <span class="n">fmt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
     <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
@@ -523,6 +566,7 @@ document.write(`
       <span class="n">columns</span><span class="o">=</span><span class="n">columns</span>
     <span class="p">)</span>
   <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;tdat&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">is_file_like</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Not implemented for file-like objects&#39;</span><span class="p">)</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
     <span class="n">header</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;line\[1\] = (.*)&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">)</span>
@@ -552,23 +596,174 @@ document.write(`
 
 <div class="viewcode-block" id="save_table">
 <a class="viewcode-back" href="../../api/astromodule.io.save_table.html#astromodule.io.save_table">[docs]</a>
-<span class="k">def</span> <span class="nf">save_table</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
-  <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fit&#39;</span><span class="p">,</span> <span class="s1">&#39;.fits&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">save_table</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span> <span class="ow">or</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span>
+  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span> <span class="ow">or</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+  
+  <span class="k">if</span> <span class="n">fmt</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+  
+  <span class="k">if</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;fits&#39;</span><span class="p">):</span>
     <span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.csv&#39;</span><span class="p">:</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">:</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;parquet&#39;</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.dat&#39;</span><span class="p">:</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;dat&#39;</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.tsv&#39;</span><span class="p">:</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;tsv&#39;</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.html&#39;</span><span class="p">:</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;html&#39;</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.feather&#39;</span><span class="p">:</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;feather&#39;</span><span class="p">:</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">fmt</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;vo&#39;</span><span class="p">,</span> <span class="s1">&#39;vot&#39;</span><span class="p">,</span> <span class="s1">&#39;votable&#39;</span><span class="p">,</span> <span class="s1">&#39;xml&#39;</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">votable</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
 
+    
+    
+
+<div class="viewcode-block" id="compress_fits">
+<a class="viewcode-back" href="../../api/astromodule.io.compress_fits.html#astromodule.io.compress_fits">[docs]</a>
+<span class="k">def</span> <span class="nf">compress_fits</span><span class="p">(</span>
+  <span class="n">file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="n">BinaryIO</span><span class="p">,</span>
+  <span class="n">compress_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;HCOMPRESS_1&#39;</span><span class="p">,</span>
+  <span class="n">hcomp_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="n">quantize_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">quantize_method</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+  <span class="n">ext</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+  <span class="n">hdul</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">ext</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hdul</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Trying to access ext </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s1">, max ext is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hdul</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">save_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">replace</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+  <span class="n">comp</span> <span class="o">=</span> <span class="kc">None</span>
+
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">comp</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">CompImageHDU</span><span class="p">(</span>
+      <span class="n">data</span><span class="o">=</span><span class="n">hdul</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+      <span class="n">header</span><span class="o">=</span><span class="n">hdul</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">,</span>
+      <span class="n">compression_type</span><span class="o">=</span><span class="n">compress_type</span><span class="p">,</span>
+      <span class="n">hcomp_scale</span><span class="o">=</span><span class="n">hcomp_scale</span><span class="p">,</span>
+      <span class="n">quantize_level</span><span class="o">=</span><span class="n">quantize_level</span><span class="p">,</span>
+      <span class="n">quantize_method</span><span class="o">=</span><span class="n">quantize_method</span><span class="p">,</span>
+      <span class="n">dither_seed</span><span class="o">=</span><span class="n">RANDOM_SEED</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">save_path</span><span class="p">:</span>
+      <span class="n">comp</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span>
+        <span class="n">save_path</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+      <span class="p">)</span>
+  <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+  <span class="k">return</span> <span class="n">comp</span></div>
+
+
+
+
+<div class="viewcode-block" id="download_file">
+<a class="viewcode-back" href="../../api/astromodule.io.download_file.html#astromodule.io.download_file">[docs]</a>
+<span class="k">def</span> <span class="nf">download_file</span><span class="p">(</span>
+  <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+  <span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
+  <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">http_client</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">extract</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">return_bytes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+  <span class="n">save_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">replace</span> <span class="ow">and</span> <span class="n">save_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+  <span class="n">http_client</span> <span class="o">=</span> <span class="n">http_client</span> <span class="ow">or</span> <span class="n">requests</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">save_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">save_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="n">r</span> <span class="o">=</span> <span class="n">http_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">extract</span><span class="p">:</span>
+      <span class="n">file_bytes</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">file_bytes</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">content</span>
+
+    <span class="k">if</span> <span class="n">return_bytes</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">file_bytes</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">save_path</span><span class="o">.</span><span class="n">resolve</span><span class="p">()),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_bytes</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="parallel_function_executor">
+<a class="viewcode-back" href="../../api/astromodule.io.parallel_function_executor.html#astromodule.io.parallel_function_executor">[docs]</a>
+<span class="k">def</span> <span class="nf">parallel_function_executor</span><span class="p">(</span>
+  <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+  <span class="n">params</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[],</span>
+  <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">unit</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;it&#39;</span>
+<span class="p">):</span>
+  <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+    <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
+      <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+      <span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
+      <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">),</span>
+      <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">futures</span><span class="p">),</span>
+      <span class="n">unit</span><span class="o">=</span><span class="n">unit</span>
+    <span class="p">):</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+      <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+
+
+
+<div class="viewcode-block" id="batch_download_file">
+<a class="viewcode-back" href="../../api/astromodule.io.batch_download_file.html#astromodule.io.batch_download_file">[docs]</a>
+<span class="k">def</span> <span class="nf">batch_download_file</span><span class="p">(</span>
+  <span class="n">urls</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+  <span class="n">save_path</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+  <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">http_client</span><span class="p">:</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">):</span>
+  <span class="n">params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">_url</span><span class="p">,</span>
+      <span class="s1">&#39;save_path&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">_save_path</span><span class="p">),</span>
+      <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="n">replace</span><span class="p">,</span>
+      <span class="s1">&#39;http_client&#39;</span><span class="p">:</span> <span class="n">http_client</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="n">_url</span><span class="p">,</span> <span class="n">_save_path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+  <span class="p">]</span>
+  <span class="n">parallel_function_executor</span><span class="p">(</span><span class="n">download_file</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;RA&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">193.20100</span><span class="p">,</span> <span class="mf">193.31000</span><span class="p">],</span> <span class="s1">&#39;DEC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">15.43320</span><span class="p">,</span> <span class="o">-</span><span class="mf">15.38000</span><span class="p">]})</span>
+  <span class="n">save_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;broca.xml&#39;</span><span class="p">)</span>
 </pre></div>
 
                 </article>

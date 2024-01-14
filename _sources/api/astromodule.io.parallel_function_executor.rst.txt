@@ -1,0 +1,6 @@
+astromodule.io.parallel\_function\_executor
+===========================================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: parallel_function_executor

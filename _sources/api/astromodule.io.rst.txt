@@ -14,7 +14,11 @@
   .. autosummary::
     :toctree:
   
+    batch_download_file
+    compress_fits
+    download_file
     load_table
+    parallel_function_executor
     save_table
   
   

@@ -1,0 +1,6 @@
+astromodule.io.batch\_download\_file
+====================================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: batch_download_file

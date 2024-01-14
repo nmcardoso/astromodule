@@ -16,6 +16,7 @@
   
     crossmatch
     drop_duplicates
+    guess_coords_columns
     stilts_crossmatch
     stilts_unique
     table_knn

@@ -376,6 +376,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">difflib</span> <span class="kn">import</span> <span class="n">get_close_matches</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span><span class="p">,</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
@@ -400,7 +401,9 @@ document.write(`
   <span class="k">return</span> <span class="kc">None</span>
 
 
-<span class="k">def</span> <span class="nf">_guess_coords_columns</span><span class="p">(</span>
+<div class="viewcode-block" id="guess_coords_columns">
+<a class="viewcode-back" href="../../api/astromodule.tableops.guess_coords_columns.html#astromodule.tableops.guess_coords_columns">[docs]</a>
+<span class="k">def</span> <span class="nf">guess_coords_columns</span><span class="p">(</span>
   <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
   <span class="n">ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -415,16 +418,9 @@ document.write(`
       <span class="s2">&quot;Can&#39;t guess RA or DEC columns, please, specify the columns names &quot;</span>
       <span class="s2">&quot;via `ra` and `dec` parameters&quot;</span>
     <span class="p">)</span>
-  <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span>
-  
+  <span class="k">return</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span></div>
 
-<span class="k">def</span> <span class="nf">_load_table</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="n">Table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">)):</span>
-    <span class="k">return</span> <span class="n">load_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">table</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">Table</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">table</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
 
 
 <div class="viewcode-block" id="table_knn">
@@ -438,8 +434,8 @@ document.write(`
   <span class="n">right_ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ra&#39;</span><span class="p">,</span>
   <span class="n">right_dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;dec&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-  <span class="n">left_df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-  <span class="n">right_df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+  <span class="n">left_df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+  <span class="n">right_df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
   
   <span class="n">left_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
     <span class="n">ra</span><span class="o">=</span><span class="n">left_df</span><span class="p">[</span><span class="n">left_ra</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
@@ -478,10 +474,10 @@ document.write(`
   <span class="n">right_columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">include_sep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-  <span class="n">left_df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
-  <span class="n">left_ra</span><span class="p">,</span> <span class="n">left_dec</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">left_ra</span><span class="p">,</span> <span class="n">left_dec</span><span class="p">)</span>
-  <span class="n">right_df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
-  <span class="n">right_ra</span><span class="p">,</span> <span class="n">right_dec</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">right_df</span><span class="p">,</span> <span class="n">right_ra</span><span class="p">,</span> <span class="n">right_dec</span><span class="p">)</span>
+  <span class="n">left_df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+  <span class="n">left_ra</span><span class="p">,</span> <span class="n">left_dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">left_df</span><span class="p">,</span> <span class="n">left_ra</span><span class="p">,</span> <span class="n">left_dec</span><span class="p">)</span>
+  <span class="n">right_df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+  <span class="n">right_ra</span><span class="p">,</span> <span class="n">right_dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">right_df</span><span class="p">,</span> <span class="n">right_ra</span><span class="p">,</span> <span class="n">right_dec</span><span class="p">)</span>
   
   <span class="n">idx</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">table_knn</span><span class="p">(</span>
     <span class="n">left_df</span><span class="p">,</span> 
@@ -576,8 +572,8 @@ document.write(`
   <span class="k">else</span><span class="p">:</span>
     <span class="n">radius</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
   
-  <span class="n">df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
-  <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+  <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
   <span class="n">df_coords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
   <span class="n">total_drop_count</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="n">drop_count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -645,18 +641,17 @@ document.write(`
   <span class="n">suffix2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_2&#39;</span><span class="p">,</span>
   <span class="n">scorecol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;xmatch_sep&#39;</span><span class="p">,</span>
   <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
   <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
   <span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
   <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in1_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
   <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in2_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
-  <span class="n">out_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_out_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
   
-  <span class="n">df1</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
-  <span class="n">df2</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
+  <span class="n">df1</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
+  <span class="n">df2</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
   
-  <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span><span class="p">)</span>
-  <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span><span class="p">)</span>
+  <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span><span class="p">)</span>
+  <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span><span class="p">)</span>
   
   <span class="n">save_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">tb1_path</span><span class="p">)</span>
   <span class="n">save_table</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">tb2_path</span><span class="p">)</span>
@@ -676,7 +671,7 @@ document.write(`
     <span class="sa">f</span><span class="s1">&#39;ifmt2=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;ofmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="s1">&#39;omode=out&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;out=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">out_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;out=-&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;values1=</span><span class="si">{</span><span class="n">ra1</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;values2=</span><span class="si">{</span><span class="n">ra2</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;params=</span><span class="si">{</span><span class="n">radius</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -693,17 +688,18 @@ document.write(`
   <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">cmd</span><span class="p">,</span>
     <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
   <span class="p">)</span>
   
+  <span class="n">tb1_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  <span class="n">tb2_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
   <span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    
-  <span class="n">tb1_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-  <span class="n">tb2_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">None</span>
   
-  <span class="n">df_out</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
-  <span class="n">out_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  <span class="n">df_out</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">),</span> <span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">df_out</span></div>
 
 
@@ -718,15 +714,14 @@ document.write(`
   <span class="n">ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
   <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
   <span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
   <span class="n">in_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
-  <span class="n">out_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_out_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
   
-  <span class="n">df</span> <span class="o">=</span> <span class="n">_load_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
   
-  <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
+  <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
   
   <span class="n">save_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">in_path</span><span class="p">)</span>
   
@@ -747,29 +742,36 @@ document.write(`
     <span class="sa">f</span><span class="s1">&#39;ifmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="s1">&#39;omode=out&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;ofmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;out=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">out_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;out=-&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;in=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">in_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
   <span class="p">]</span>
   
   <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">cmd</span><span class="p">,</span>
     <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
   <span class="p">)</span>
   
+  <span class="n">in_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
   <span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-    
-  <span class="n">in_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">None</span>
   
-  <span class="n">df_out</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">out_path</span><span class="p">)</span>
-  <span class="n">out_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  <span class="n">df_out</span> <span class="o">=</span> <span class="n">load_table</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">),</span> <span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">df_out</span></div>
 
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-  <span class="k">pass</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">stilts_unique</span><span class="p">(</span>
+    <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;tests&#39;</span> <span class="o">/</span> <span class="s1">&#39;selection_claudia+prepared.csv&#39;</span><span class="p">,</span>
+    <span class="n">radius</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">arcmin</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;indentify&#39;</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span>
+  <span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
                 </article>

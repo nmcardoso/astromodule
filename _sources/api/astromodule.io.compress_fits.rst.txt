@@ -1,0 +1,6 @@
+astromodule.io.compress\_fits
+=============================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: compress_fits
