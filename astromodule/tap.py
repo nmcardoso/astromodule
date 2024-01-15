@@ -9,6 +9,7 @@ import requests
 
 from astromodule.io import (batch_download_file, download_file, load_table,
                             save_table)
+from astromodule.tableops import concat_tables
 
 
 class TapService:
@@ -60,14 +61,8 @@ class TapService:
     )
 
     if join_outputs:
-      dfs = [
-        load_table(f, comment='#') for f in tmp_folder.glob('*.csv')
-      ]
-      if len(dfs) > 0:
-        combined_csv = pd.concat(dfs)
-        save_paths = Path(save_paths)
-        save_paths.parent.mkdir(parents=True, exist_ok=True)
-        save_table(combined_csv, save_paths)
+      combined_df = concat_tables(tmp_folder.glob('*.csv'), comment='#')
+      save_table(combined_df, save_paths)
 
 
 

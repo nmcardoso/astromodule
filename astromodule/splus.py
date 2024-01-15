@@ -32,6 +32,7 @@ import requests
 import tqdm
 
 from astromodule.io import download_file, load_table, save_table
+from astromodule.tableops import concat_tables
 
 BASE_URL = 'https://splus.cloud/api/'
 LOGIN_ROUTE = 'auth/login'
@@ -491,9 +492,7 @@ class SplusService:
     )
     
     if join:
-      df = pd.concat([
-        load_table(p, comment='#') for p in save_path
-      ])
+      df = concat_tables(save_path, comment='#')
       save_table(df, final_path)
 
 

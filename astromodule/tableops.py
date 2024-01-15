@@ -371,6 +371,18 @@ def stilts_unique(
   return df_out
 
 
+
+
+def concat_tables(
+  tables: Sequence[pd.DataFrame | str | Path | Table],
+  **kwargs
+) -> pd.DataFrame:
+  dfs = [load_table(df, **kwargs) for df in tables]
+  dfs = [df for df in dfs if df and len(df) > 0]
+  return pd.concat(dfs)
+
+
+
 if __name__ == '__main__':
   df = stilts_unique(
     Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
