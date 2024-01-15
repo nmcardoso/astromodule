@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.tableops.table_knn &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.tableops.concat_tables &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tableops.table_knn';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tableops.concat_tables';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DropDuplicatesResult" href="astromodule.tableops.DropDuplicatesResult.html" />
-    <link rel="prev" title="astromodule.tableops.stilts_unique" href="astromodule.tableops.stilts_unique.html" />
+    <link rel="next" title="astromodule.tableops.crossmatch" href="astromodule.tableops.crossmatch.html" />
+    <link rel="prev" title="astromodule.tableops" href="astromodule.tableops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -339,13 +339,13 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tableops.html">astromodule.tableops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.concat_tables.html">astromodule.tableops.concat_tables</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.tableops.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.crossmatch.html">astromodule.tableops.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.drop_duplicates.html">astromodule.tableops.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.guess_coords_columns.html">astromodule.tableops.guess_coords_columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.stilts_crossmatch.html">astromodule.tableops.stilts_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.stilts_unique.html">astromodule.tableops.stilts_unique</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.tableops.table_knn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.table_knn.html">astromodule.tableops.table_knn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
 </ul>
 </li>
@@ -409,11 +409,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-tableops-table-knn">
-<h1>astromodule.tableops.table_knn<a class="headerlink" href="#astromodule-tableops-table-knn" title="Link to this heading">#</a></h1>
+  <section id="astromodule-tableops-concat-tables">
+<h1>astromodule.tableops.concat_tables<a class="headerlink" href="#astromodule-tableops-concat-tables" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.tableops.table_knn">
-<span class="sig-prename descclassname"><span class="pre">astromodule.tableops.</span></span><span class="sig-name descname"><span class="pre">table_knn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><span class="pre">Table</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><span class="pre">Table</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nthneighbor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_ra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ra'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_dec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dec'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_ra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ra'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_dec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dec'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.12)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.0.dev0)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.0.dev0)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/astromodule/tableops.html#table_knn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tableops.table_knn" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="astromodule.tableops.concat_tables">
+<span class="sig-prename descclassname"><span class="pre">astromodule.tableops.</span></span><span class="sig-name descname"><span class="pre">concat_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><span class="pre">Table</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.1.4)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/tableops.html#concat_tables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tableops.concat_tables" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -429,20 +429,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.tableops.stilts_unique.html"
+       href="astromodule.tableops.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.tableops.stilts_unique</p>
+        <p class="prev-next-title">astromodule.tableops</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.tableops.DropDuplicatesResult.html"
+       href="astromodule.tableops.crossmatch.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DropDuplicatesResult</p>
+        <p class="prev-next-title">astromodule.tableops.crossmatch</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -464,14 +464,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.table_knn"><code class="docutils literal notranslate"><span class="pre">table_knn()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tableops.concat_tables"><code class="docutils literal notranslate"><span class="pre">concat_tables()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.tableops.table_knn.rst.txt">
+    <a href="../_sources/api/astromodule.tableops.concat_tables.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

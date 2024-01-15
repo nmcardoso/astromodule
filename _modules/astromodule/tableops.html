@@ -764,6 +764,21 @@ document.write(`
 
 
 
+
+
+<div class="viewcode-block" id="concat_tables">
+<a class="viewcode-back" href="../../api/astromodule.tableops.concat_tables.html#astromodule.tableops.concat_tables">[docs]</a>
+<span class="k">def</span> <span class="nf">concat_tables</span><span class="p">(</span>
+  <span class="n">tables</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="n">Table</span><span class="p">],</span>
+  <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+  <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">load_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">]</span>
+  <span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span> <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">dfs</span> <span class="k">if</span> <span class="n">df</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span></div>
+
+
+
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">stilts_unique</span><span class="p">(</span>
     <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;tests&#39;</span> <span class="o">/</span> <span class="s1">&#39;selection_claudia+prepared.csv&#39;</span><span class="p">,</span>

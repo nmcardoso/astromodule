@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tableops';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.tableops.crossmatch" href="astromodule.tableops.crossmatch.html" />
+    <link rel="next" title="astromodule.tableops.concat_tables" href="astromodule.tableops.concat_tables.html" />
     <link rel="prev" title="astromodule.io.save_table" href="astromodule.io.save_table.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -339,6 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">astromodule.tableops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.concat_tables.html">astromodule.tableops.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.crossmatch.html">astromodule.tableops.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.drop_duplicates.html">astromodule.tableops.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.tableops.guess_coords_columns.html">astromodule.tableops.guess_coords_columns</a></li>
@@ -410,22 +411,25 @@ document.write(`
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.crossmatch.html#astromodule.tableops.crossmatch" title="astromodule.tableops.crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crossmatch</span></code></a>(left, right[, radius, join, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.concat_tables.html#astromodule.tableops.concat_tables" title="astromodule.tableops.concat_tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concat_tables</span></code></a>(tables, **kwargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.drop_duplicates.html#astromodule.tableops.drop_duplicates" title="astromodule.tableops.drop_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>(table[, radius, ra, dec, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.crossmatch.html#astromodule.tableops.crossmatch" title="astromodule.tableops.crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crossmatch</span></code></a>(left, right[, radius, join, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.guess_coords_columns.html#astromodule.tableops.guess_coords_columns" title="astromodule.tableops.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>(df[, ra, dec])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.drop_duplicates.html#astromodule.tableops.drop_duplicates" title="astromodule.tableops.drop_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>(table[, radius, ra, dec, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.stilts_crossmatch.html#astromodule.tableops.stilts_crossmatch" title="astromodule.tableops.stilts_crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stilts_crossmatch</span></code></a>(table1, table2[, ra1, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.guess_coords_columns.html#astromodule.tableops.guess_coords_columns" title="astromodule.tableops.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>(df[, ra, dec])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.stilts_unique.html#astromodule.tableops.stilts_unique" title="astromodule.tableops.stilts_unique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stilts_unique</span></code></a>(table, radius[, action, ra, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.stilts_crossmatch.html#astromodule.tableops.stilts_crossmatch" title="astromodule.tableops.stilts_crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stilts_crossmatch</span></code></a>(table1, table2[, ra1, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.table_knn.html#astromodule.tableops.table_knn" title="astromodule.tableops.table_knn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table_knn</span></code></a>(left, right[, nthneighbor, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.tableops.stilts_unique.html#astromodule.tableops.stilts_unique" title="astromodule.tableops.stilts_unique"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stilts_unique</span></code></a>(table, radius[, action, ra, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.tableops.table_knn.html#astromodule.tableops.table_knn" title="astromodule.tableops.table_knn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table_knn</span></code></a>(left, right[, nthneighbor, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -460,11 +464,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.tableops.crossmatch.html"
+       href="astromodule.tableops.concat_tables.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.tableops.crossmatch</p>
+        <p class="prev-next-title">astromodule.tableops.concat_tables</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -14,6 +14,7 @@
   .. autosummary::
     :toctree:
   
+    concat_tables
     crossmatch
     drop_duplicates
     guess_coords_columns
