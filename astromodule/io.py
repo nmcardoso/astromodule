@@ -222,8 +222,10 @@ def load_table(
 def save_table(data: pd.DataFrame, path: str | Path, fmt: str = None):
   if isinstance(path, str):
     fmt = fmt or Path(path).suffix
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
   elif isinstance(path, Path):
     fmt = fmt or path.suffix
+    path.parent.mkdir(parents=True, exist_ok=True)
     path = str(path.absolute())
   
   if fmt.startswith('.'):
