@@ -7,8 +7,7 @@ from urllib.parse import quote, urlencode
 import pandas as pd
 import requests
 
-from astromodule.io import (batch_download_file, download_file, load_table,
-                            save_table)
+from astromodule.io import batch_download_file, download_file, write_table
 from astromodule.tableops import concat_tables
 
 
@@ -62,7 +61,7 @@ class TapService:
 
     if join_outputs:
       combined_df = concat_tables(tmp_folder.glob('*.csv'), comment='#')
-      save_table(combined_df, save_paths)
+      write_table(combined_df, save_paths)
 
 
 

@@ -10,8 +10,8 @@ import pandas as pd
 import requests
 import tqdm
 
-from astromodule.io import (batch_download_file, download_file, load_table,
-                            save_table)
+from astromodule.io import (PathOrFile, batch_download_file, download_file,
+                            write_table)
 from astromodule.utils import append_query_params
 
 
@@ -136,4 +136,4 @@ class TapService:
       ])
       save_paths = Path(save_paths)
       save_paths.parent.mkdir(parents=True, exist_ok=True)
-      save_table(combined_csv, save_paths)
+      write_table(combined_csv, save_paths)

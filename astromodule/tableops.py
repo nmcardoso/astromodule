@@ -14,7 +14,7 @@ import pandas as pd
 from astropy.coordinates import SkyCoord, match_coordinates_sky
 from astropy.table import Table
 
-from astromodule.io import load_table, save_table
+from astromodule.io import PathOrFile, TableLike, read_table, write_table
 
 RA_REGEX = re.compile(r'^ra_?\d*$', re.IGNORECASE)
 DEC_REGEX = re.compile(r'^dec_?\d*$', re.IGNORECASE)
@@ -57,8 +57,8 @@ def table_knn(
   right_ra: str = 'ra',
   right_dec: str = 'dec',
 ) -> Tuple[np.ndarray, np.ndarray]:
-  left_df = load_table(left)
-  right_df = load_table(right)
+  left_df = read_table(left)
+  right_df = read_table(right)
   
   left_coords = SkyCoord(
     ra=left_df[left_ra].values,
@@ -94,9 +94,9 @@ def crossmatch(
   right_columns: Sequence[str] | None = None,
   include_sep: bool = True,
 ):
-  left_df = load_table(left)
+  left_df = read_table(left)
   left_ra, left_dec = guess_coords_columns(left_df, left_ra, left_dec)
-  right_df = load_table(right)
+  right_df = read_table(right)
   right_ra, right_dec = guess_coords_columns(right_df, right_ra, right_dec)
   
   idx, d = table_knn(
@@ -186,7 +186,7 @@ def drop_duplicates(
   else:
     radius = u.Quantity(radius, unit=u.arcsec).to(u.deg).value
   
-  df = load_table(table)
+  df = read_table(table)
   ra, dec = guess_coords_columns(df, ra, dec)
   df_coords = df[[ra, dec]].copy(deep=True)
   total_drop_count = 0
@@ -258,14 +258,14 @@ def stilts_crossmatch(
   tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt}'
   tb2_path = tmpdir / f'xmatch_in2_{token}.{fmt}'
   
-  df1 = load_table(table1)
-  df2 = load_table(table2)
+  df1 = read_table(table1)
+  df2 = read_table(table2)
   
   ra1, dec1 = guess_coords_columns(df1, ra1, dec1)
   ra2, dec2 = guess_coords_columns(df2, ra2, dec2)
   
-  save_table(df1, tb1_path)
-  save_table(df2, tb2_path)
+  write_table(df1, tb1_path)
+  write_table(df2, tb2_path)
   
   if isinstance(radius, u.Quantity):
     radius = int(radius.to(u.arcsec).value)
@@ -310,7 +310,7 @@ def stilts_crossmatch(
     print(error)
     return None
   
-  df_out = load_table(BytesIO(result.stdout), fmt=fmt)
+  df_out = read_table(BytesIO(result.stdout), fmt=fmt)
   return df_out
 
 
@@ -327,11 +327,11 @@ def stilts_unique(
   token = secrets.token_hex(8)
   in_path = tmpdir / f'xmatch_in_{token}.{fmt}'
   
-  df = load_table(table)
+  df = read_table(table)
   
   ra, dec = guess_coords_columns(df, ra, dec)
   
-  save_table(df, in_path)
+  write_table(df, in_path)
   
   if isinstance(radius, u.Quantity):
     radius = int(radius.to(u.arcsec).value)
@@ -367,7 +367,7 @@ def stilts_unique(
     print(error)
     return None
   
-  df_out = load_table(BytesIO(result.stdout), fmt=fmt)
+  df_out = read_table(BytesIO(result.stdout), fmt=fmt)
   return df_out
 
 
@@ -377,7 +377,7 @@ def concat_tables(
   tables: Sequence[pd.DataFrame | str | Path | Table],
   **kwargs
 ) -> pd.DataFrame:
-  dfs = [load_table(df, **kwargs) for df in tables]
+  dfs = [read_table(df, **kwargs) for df in tables]
   dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
   return pd.concat(dfs)
 

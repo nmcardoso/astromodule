@@ -16,9 +16,7 @@ RANDOM_SEED = 42
 PathOrFile = str | Path | BufferedIOBase | RawIOBase | TextIOBase
 TableLike = Table | pd.DataFrame
 
-
-def load_table(
-  path: str | Path, 
+def read_table(
   fmt: str | None = None,
   columns: Sequence[str] | None = None,
   low_memory: bool = False,
@@ -221,7 +219,7 @@ def load_table(
   )
 
 
-def save_table(data: pd.DataFrame, path: str | Path, fmt: str = None):
+def write_table(data: TableLike, path: PathOrFile, fmt: str | None = None):
   if isinstance(path, str):
     fmt = fmt or Path(path).suffix
     Path(path).parent.mkdir(parents=True, exist_ok=True)
@@ -377,4 +375,4 @@ def batch_download_file(
 
 if __name__ == '__main__':
   df = pd.DataFrame({'RA': [193.20100, 193.31000], 'DEC': [-15.43320, -15.38000]})
-  save_table(df, 'broca.xml')
+  write_table(df, 'test.xml')

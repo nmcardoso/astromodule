@@ -31,7 +31,7 @@ import pandas as pd
 import requests
 import tqdm
 
-from astromodule.io import download_file, load_table, save_table
+from astromodule.io import download_file, write_table
 from astromodule.tableops import concat_tables
 
 BASE_URL = 'https://splus.cloud/api/'
@@ -418,7 +418,7 @@ class SplusService:
     else:
       params['upload'] = 'upload,param:uplTable'
       file = BytesIO()
-      save_table(table, file, fmt='votable')
+      write_table(table, file, fmt='votable')
       resp = self.client.post(
         url,
         params=params,
@@ -493,7 +493,7 @@ class SplusService:
     
     if join:
       df = concat_tables(save_path, comment='#')
-      save_table(df, final_path)
+      write_table(df, final_path)
 
 
   def _get_url(self, route: str, params: dict = {}) -> str:

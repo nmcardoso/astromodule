@@ -8,8 +8,9 @@ from astropy import units as u
 from astropy.table import Table
 
 from astromodule.adql import AdqlColumn, AdqlDatabase, AdqlSchema, AdqlTable
-from astromodule.io import (compress_fits, download_file, load_table,
-                            parallel_function_executor)
+from astromodule.io import (PathOrFile, TableLike, compress_fits,
+                            download_file, parallel_function_executor,
+                            read_table)
 from astromodule.tableops import guess_coords_columns
 from astromodule.tap import TapService
 from astromodule.utils import append_query_params, iauname, iauname_path
@@ -302,7 +303,7 @@ class LegacyService(TapService):
       mag_r BETWEEN 10 AND 23
     ORDER BY ls_separation ASC
     """.strip()
-    df = load_table(table)
+    df = read_table(table)
     ra_col, dec_col = guess_coords_columns(df, ra_col, dec_col)
     tb = Legacy.DR10.tractor
     queries = []
