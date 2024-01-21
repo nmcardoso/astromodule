@@ -34,6 +34,39 @@ def guess_coords_columns(
   ra: str | None = None,
   dec: str | None = None,
 ) -> Tuple[str, str]:
+  """
+  Receives a pandas dataframe and try to guess the columns names used to
+  identify the RA and DEC coordinates.
+
+  Parameters
+  ----------
+  df : pd.DataFrame
+    A pandas dataframe
+  ra : str | None, optional
+    The column name used to name the RA column. If a string is passed, this
+    function will skip the RA guessing and will return the value of RA passed
+    by this parameter. If the value is set to ``None``, this function will
+    guess the RA column name using a pre-defined regular expression and will
+    return the value of the first match found following the sequence of
+    the columns.
+  dec : str | None, optional
+    The column name used to name the DEC column. If a string is passed, this
+    function will skip the DEC guessing and will return the value of DEC passed
+    by this parameter. If the value is set to ``None``, this function will
+    guess the DEC column name using a pre-defined regular expression and will
+    return the value of the first match found following the sequence of
+    the columns.
+
+  Returns
+  -------
+  Tuple[str, str]
+    A tuple of RA and DEC columns guessed.
+
+  Raises
+  ------
+  ValueError
+    Raises a error if the RA or DEC columns cannot be found.
+  """
   cols = df.columns.to_list()
   if ra is None:
     _, ra = _match_regex_against_sequence(RA_REGEX, cols)
@@ -253,6 +286,163 @@ def crossmatch(
   scorecol: str | None = 'xmatch_sep',
   fmt: Literal['fits', 'csv'] = 'fits',
 ) -> pd.DataFrame | None:
+  """
+  Performs a crossmatch between two tables using STILTS [#ST]_ as a backend.
+  This function invokes spawns a subprocess invoking the ``tmatch2`` [#tmatch2]_ 
+  tool of the STILTS executable. 
+
+  Parameters
+  ----------
+  table1 : TableLike | PathOrFile
+    The first table that will be crossmatched. This parameter accepts a
+    table-like object (pandas dataframe, astropy table), a path to a file
+    represented as a string or pathlib.Path object, or a file object
+    (BinaryIO, StringIO, file-descriptor, etc).
+  
+  table2 : TableLike | PathOrFile
+    The second table that will be crossmatched. This parameter accepts a
+    table-like object (pandas dataframe, astropy table), a path to a file
+    represented as a string or pathlib.Path object, or a file object
+    (BinaryIO, StringIO, file-descriptor, etc).
+  
+  ra1 : str | None, optional
+    The name of the Right Ascension (RA) column in the first table. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  dec1 : str | None, optional
+    The name of the Declination (DEC) column in the first table. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  ra2 : str | None, optional
+    The name of the Right Ascension (RA) column in the second table. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  dec2 : str | None, optional
+    The name of the Declination (DEC) column in the second table. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  radius : float | u.Quantity, optional
+    The crossmatch max error radius. This function accepts a ``float`` value,
+    that will be interpreted as ``arcsec`` unit, or a `~astropy.units.Quantity`
+  
+  join : Literal['1and2', '1or2', 'all1', 'all2', '1not2', '2not1', '1xor2'], optional
+    Determines which rows are included in the output table. 
+    The matching algorithm determines which of the rows from the first 
+    table correspond to which rows from the second. This parameter 
+    determines what to do with that information. Perhaps the most 
+    obvious thing is to write out a table containing only rows which 
+    correspond to a row in both of the two input tables. However, 
+    you may also want to see the unmatched rows from one or both 
+    input tables, or rows present in one table but unmatched in the other, 
+    or other possibilities. The options are:
+
+      - ``1and2``: An output row for each row represented in both input 
+        tables (INNER JOIN)
+      - ``1or2``: An output row for each row represented in either or both 
+        of the input tables (FULL OUTER JOIN)
+      - ``all1``: An output row for each matched or unmatched row in table 1 
+        (LEFT OUTER JOIN)
+      - ``all2``: An output row for each matched or unmatched row in table 2 
+        (RIGHT OUTER JOIN)
+      - ``1not2``: An output row only for rows which appear in the first 
+        table but are not matched in the second table
+      - ``2not1``: An output row only for rows which appear in the second 
+        table but are not matched in the first table
+      - ``1xor2``: An output row only for rows represented in one of the 
+        input tables but not the other one
+
+  find : Literal['all', 'best', 'best1', 'best2'], optional
+    Determines what happens when a row in one table can be matched by more 
+    than one row in the other table. The options are:
+
+      - ``all``: All matches. Every match between the two tables is included 
+        in the result. Rows from both of the input tables may appear multiple 
+        times in the result.
+      - ``best``: Best match, symmetric. The best pairs are selected in a 
+        way which treats the two tables symmetrically. Any input row which 
+        appears in one result pair is disqualified from appearing in any 
+        other result pair, so each row from both input tables will appear 
+        in at most one row in the result.
+      - ``best1``: Best match for each Table 1 row. For each row in table 1, 
+        only the best match from table 2 will appear in the result. Each row 
+        from table 1 will appear a maximum of once in the result, but rows 
+        from table 2 may appear multiple times.
+      - ``best2``: Best match for each Table 2 row. For each row in table 2, 
+        only the best match from table 1 will appear in the result. Each row 
+        from table 2 will appear a maximum of once in the result, but rows 
+        from table 1 may appear multiple times.
+
+    The differences between ``best``, ``best1`` and ``best2`` are a bit subtle. 
+    In cases where it's obvious which object in each table is the 
+    best match for which object in the other, choosing betwen these 
+    options will not affect the result. However, in crowded fields 
+    (where the distance between objects within one or both tables is 
+    typically similar to or smaller than the specified match radius) 
+    it will make a difference. In this case one of the asymmetric 
+    options (``best1`` or ``best2``) is usually more appropriate than best, 
+    but you'll have to think about which of them suits your requirements. 
+    The performance (time and memory usage) of the match may also differ 
+    between these options, especially if one table is much bigger than 
+    the other.
+  
+  fixcols : Literal['dups', 'all', 'none'], optional
+    Determines how input columns are renamed before use in the output table. 
+    The choices are:
+
+      - ``none``: columns are not renamed
+      - ``dups``: columns which would otherwise have duplicate names in the 
+        output will be renamed to indicate which table they came from
+      - ``all``: all columns will be renamed to indicate which table they 
+        came from
+
+    If columns are renamed, the new ones are determined by ``suffix*`` 
+    parameters. 
+  
+  suffix1 : str, optional
+    If the fixcols parameter is set so that input columns are renamed for 
+    insertion into the output table, this parameter determines how the 
+    renaming is done. It gives a suffix which is appended to all renamed 
+    columns from table 1. 
+  
+  suffix2 : str, optional
+    If the fixcols parameter is set so that input columns are renamed for 
+    insertion into the output table, this parameter determines how the 
+    renaming is done. It gives a suffix which is appended to all renamed 
+    columns from table 2. 
+  
+  scorecol : str | None, optional
+    Gives the name of a column in the output table to contain the "match score" 
+    for each pairwise match. The meaning of this column is dependent on the 
+    chosen ``matcher``, but it typically represents a distance of some kind 
+    between the two matching points. If ``None`` is chosen, no score 
+    column will be inserted in the output table. The default value of this 
+    parameter depends on matcher. 
+  
+  fmt : Literal['fits', 'csv'], optional
+    This function converts the two input tables to files to pass to 
+    stilts backend. This parameter can be used to set the intermediate
+    file types. Fits is faster and is the default file type.
+
+  Returns
+  -------
+  pd.DataFrame | None
+    The result table as a pandas dataframe  
+  
+  References
+  ----------
+  .. [#ST] STILTS - Starlink Tables Infrastructure Library Tool Set.
+      `<https://www.star.bristol.ac.uk/mbt/stilts/>`_
+  .. [#tmatch2] STILTS tmatch2 Documentation.
+      `<https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html>`_
+  """
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt}'
@@ -291,7 +481,7 @@ def crossmatch(
     f'fixcols={fixcols}',
     f'suffix1={suffix1}',
     f'suffix2={suffix2}',
-    f'scorecol={scorecol or "none"}',
+    f'scorecol={scorecol or ""}',
     f'in1={str(tb1_path.absolute())}',
     f'in2={str(tb2_path.absolute())}',
   ]
@@ -307,6 +497,7 @@ def crossmatch(
   tb2_path.unlink()
   error = result.stderr.decode().strip()
   if error:
+    print('STILTS proccess exited with an error signal. Error message:')
     print(error)
     return None
   
@@ -323,6 +514,83 @@ def selfmatch(
   dec: str | None = None,
   fmt: Literal['fits', 'csv'] = 'fits',
 ) -> pd.DataFrame | None:
+  """
+  Performs a selfmatch in a table (crossmatch agains the same table) using 
+  STILTS [#ST]_ as a backend (the same backend of TOPCAT [#TOPCAT]_). 
+  This is useful for duplicates removal, groups detection, etc. 
+  This function invokes spawns a subprocess invoking the ``tmatch1`` [#tmatch1]_ 
+  tool of the STILTS executable.
+
+  Parameters
+  ----------
+  table : TableLike | PathOrFile
+    The table that will be crossmatched. This parameter accepts a
+    table-like object (pandas dataframe, astropy table), a path to a file
+    represented as a string or pathlib.Path object, or a file object
+    (BinaryIO, StringIO, file-descriptor, etc).
+  
+  radius : float | u.Quantity
+    The crossmatch max error radius. This function accepts a ``float`` value,
+    that will be interpreted as ``arcsec`` unit, or a `~astropy.units.Quantity`
+  
+  action : Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'], optional
+    Determines the form of the table which will be output as a result of the 
+    internal match.
+
+      - ``identify``: The output table is the same as the input table except 
+        that it contains two additional columns, GroupID and GroupSize, 
+        following the input columns. Each group of rows which matched is 
+        assigned a unique integer, recorded in the GroupID column, and the 
+        size of each group is recorded in the GroupSize column. Rows which 
+        don't match any others (singles) have null values in both these columns.
+      - ``keep0``: The result is a new table containing only "single" rows, 
+        that is ones which don't match any other rows in the table. 
+        Any other rows are thrown out.
+      - ``keep1``: The result is a new table in which only one row 
+        (the first in the input table order) from each group of matching 
+        ones is retained. A subsequent intra-table match with the same 
+        criteria would therefore show no matches.
+      - ``wideN``: The result is a new "wide" table consisting of matched 
+        rows in the input table stacked next to each other. Only groups of 
+        exactly N rows in the input table are used to form the output table; 
+        each row of the output table consists of the columns of the first 
+        group member, followed by the columns of the second group member 
+        and so on. The output table therefore has N times as many columns 
+        as the input table. The column names in the new table have _1, _2, ... 
+        appended to them to avoid duplication.
+
+  
+  ra : str | None, optional
+    The name of the Right Ascension (RA) column. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  dec : str | None, optional
+    The name of the Declination (DEC) column. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  fmt : Literal['fits', 'csv'], optional
+    This function converts the input table to file before passing to 
+    stilts backend. This parameter can be used to set the intermediate
+    file type. Fits is faster and is the default file type.
+
+  Returns
+  -------
+  pd.DataFrame | None
+    A table of resulting selfmatch 
+      
+  References
+  ----------
+  .. [#TOPCAT] TOPCAT - Tool for OPerations on Catalogues And Tables.
+      `<https://www.star.bristol.ac.uk/mbt/topcat/>`_
+  .. [#ST] STILTS - Starlink Tables Infrastructure Library Tool Set.
+      `<https://www.star.bristol.ac.uk/mbt/stilts/>`_
+  .. [#tmatch2] STILTS tmatch2 Documentation.
+      `<https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html>`_
+  """
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   in_path = tmpdir / f'xmatch_in_{token}.{fmt}'
@@ -364,6 +632,7 @@ def selfmatch(
   in_path.unlink()
   error = result.stderr.decode().strip()
   if error:
+    print('STILTS proccess exited with an error signal. Error message:')
     print(error)
     return None
   
@@ -377,6 +646,29 @@ def concat_tables(
   tables: Sequence[TableLike | PathOrFile],
   **kwargs
 ) -> pd.DataFrame:
+  """
+  Concatenate tables into a single one. This function concatenate over the
+  table rows and is usefull to concatenate tables with same columns, although 
+  there is no error in concatenating tables with non-existent columns in other.
+  If a table does not have a certain column, the values will be filled with 
+  ``NaN`` values. This function does not attempt to apply any type of 
+  duplicate row removal.
+
+  Parameters
+  ----------
+  tables : Sequence[TableLike  |  PathOrFile]
+    A sequence of tables to be concatenated. This parameter accepts a
+    table-like object (pandas dataframe, astropy table), a path to a file
+    represented as a string or pathlib.Path object, or a file object
+    (BinaryIO, StringIO, file-descriptor, etc).
+  kwargs : Any
+    Arguments that will be passed to `~astromodule.io.read_table` function
+
+  Returns
+  -------
+  pd.DataFrame
+    A dataframe of the concatenated table
+  """
   dfs = [read_table(df, **kwargs) for df in tables]
   dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
   return pd.concat(dfs)
