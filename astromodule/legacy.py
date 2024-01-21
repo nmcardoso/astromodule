@@ -350,4 +350,4 @@ if __name__ == '__main__':
   
   ls = LegacyService()
   df = pd.DataFrame(({'ra':[184.4924, 184.4922], 'dec': [7.2737, 7.1862]}))
-  ls.crossmatch(df, ['mag_r', 'mag_g', 'mag_i', 'mag_z'], 3, 'foba.csv')
+  ls.crossmatch(df, ['mag_r', 'mag_g', 'mag_i', 'mag_z'], 3, 'test.csv')
