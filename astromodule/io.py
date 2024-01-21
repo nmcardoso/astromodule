@@ -14,6 +14,7 @@ from tqdm import tqdm
 
 RANDOM_SEED = 42
 PathOrFile = str | Path | BufferedIOBase | RawIOBase | TextIOBase
+TableLike = Table | pd.DataFrame
 
 
 def load_table(
