@@ -80,7 +80,7 @@ def table_knn(
   return np.array(idx), np.array(d)
 
 
-def crossmatch(
+def fast_crossmatch(
   left: TableLike | PathOrFile,
   right: TableLike | PathOrFile,
   radius: float | u.Quantity = 1*u.arcsec,
@@ -237,7 +237,7 @@ def drop_duplicates(
 
 
   
-def stilts_crossmatch(
+def crossmatch(
   table1: TableLike | PathOrFile,
   table2: TableLike | PathOrFile,
   ra1: str | None = None,
@@ -315,7 +315,7 @@ def stilts_crossmatch(
 
 
 
-def stilts_unique(
+def selfmatch(
   table: TableLike | PathOrFile,
   radius: float | u.Quantity,
   action: Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'] = 'keep1',
@@ -384,7 +384,7 @@ def concat_tables(
 
 
 if __name__ == '__main__':
-  df = stilts_unique(
+  df = selfmatch(
     Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
     radius=45*u.arcmin,
     action='indentify',
