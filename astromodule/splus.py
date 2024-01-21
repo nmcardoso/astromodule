@@ -32,7 +32,7 @@ import requests
 import tqdm
 
 from astromodule.io import download_file, write_table
-from astromodule.tableops import concat_tables
+from astromodule.table import concat_tables
 
 BASE_URL = 'https://splus.cloud/api/'
 LOGIN_ROUTE = 'auth/login'

@@ -8,7 +8,7 @@ import pandas as pd
 import requests
 
 from astromodule.io import batch_download_file, download_file, write_table
-from astromodule.tableops import concat_tables
+from astromodule.table import concat_tables
 
 
 class TapService:

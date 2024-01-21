@@ -11,7 +11,7 @@ from astromodule.adql import AdqlColumn, AdqlDatabase, AdqlSchema, AdqlTable
 from astromodule.io import (PathOrFile, TableLike, compress_fits,
                             download_file, parallel_function_executor,
                             read_table)
-from astromodule.tableops import guess_coords_columns
+from astromodule.table import guess_coords_columns
 from astromodule.tap import TapService
 from astromodule.utils import append_query_params, iauname, iauname_path
 
