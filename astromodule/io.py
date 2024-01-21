@@ -13,6 +13,7 @@ from astropy.table import Table
 from tqdm import tqdm
 
 RANDOM_SEED = 42
+PathOrFile = str | Path | BufferedIOBase | RawIOBase | TextIOBase
 
 
 def load_table(
