@@ -3,8 +3,8 @@ import secrets
 import tempfile
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import List, Union
-from urllib.parse import quote, urlencode
+from typing import List, Sequence
+from urllib.parse import urlencode
 
 import pandas as pd
 import requests
@@ -53,9 +53,9 @@ class ImagingService(ABC):
 
   def _batch_download_rgb(
     self,
-    ra: List[float],
-    dec: List[float],
-    save_path: List[Path],
+    ra: Sequence[float],
+    dec: Sequence[float],
+    save_path: Sequence[Path],
     workers: int = None,
     **kwargs
   ):
@@ -87,7 +87,7 @@ class TapService:
     self.url = url
     self.http_client = requests.Session()
 
-  def sync_query(self, query: str, save_path: Union[str, Path]):
+  def sync_query(self, query: str, save_path: PathOrFile):
     params = {
       'request': 'doQuery',
       'version': 1.0,
@@ -103,8 +103,8 @@ class TapService:
 
   def batch_sync_query(
     self,
-    queries: List[str],
-    save_paths: List[str] | List[Path] | str | Path,
+    queries: Sequence[str],
+    save_paths: PathOrFile | Sequence[PathOrFile],
     join_outputs: bool = False,
     workers: int = 3
   ):

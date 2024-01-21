@@ -49,8 +49,8 @@ def guess_coords_columns(
 
 
 def table_knn(
-  left: str | Path | pd.DataFrame | Table,
-  right: str | Path | pd.DataFrame | Table,
+  left: TableLike | PathOrFile,
+  right: TableLike | PathOrFile,
   nthneighbor: int = 1,
   left_ra: str = 'ra',
   left_dec: str = 'dec',
@@ -81,8 +81,8 @@ def table_knn(
 
 
 def crossmatch(
-  left: str | Path | pd.DataFrame | Table,
-  right: str | Path | pd.DataFrame | Table,
+  left: TableLike | PathOrFile,
+  right: TableLike | PathOrFile,
   radius: float | u.Quantity = 1*u.arcsec,
   join: Literal['inner', 'left'] = 'inner',
   nthneighbor: int = 1,
@@ -174,7 +174,7 @@ class DropDuplicatesResult:
 
   
 def drop_duplicates(
-  table: str | Path | pd.DataFrame | Table,
+  table: TableLike | PathOrFile,
   radius: float | u.Quantity = 1*u.arcsec,
   ra: str | None = None,
   dec: str | None = None,
@@ -238,8 +238,8 @@ def drop_duplicates(
 
   
 def stilts_crossmatch(
-  table1: pd.DataFrame | Table | str | Path,
-  table2: pd.DataFrame | Table | str | Path,
+  table1: TableLike | PathOrFile,
+  table2: TableLike | PathOrFile,
   ra1: str | None = None,
   dec1: str | None = None,
   ra2: str | None = None,
@@ -316,7 +316,7 @@ def stilts_crossmatch(
 
 
 def stilts_unique(
-  table: pd.DataFrame | Table | str | Path,
+  table: TableLike | PathOrFile,
   radius: float | u.Quantity,
   action: Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'] = 'keep1',
   ra: str | None = None,
@@ -374,7 +374,7 @@ def stilts_unique(
 
 
 def concat_tables(
-  tables: Sequence[pd.DataFrame | str | Path | Table],
+  tables: Sequence[TableLike | PathOrFile],
   **kwargs
 ) -> pd.DataFrame:
   dfs = [read_table(df, **kwargs) for df in tables]

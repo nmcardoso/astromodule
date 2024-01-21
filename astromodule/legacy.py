@@ -144,7 +144,7 @@ class LegacyService(TapService):
     ra: float,
     dec: float,
     save_path: Path = None,
-    base_path: Union[str, Path] = '',
+    base_path: str | Path = '',
     mag_r: float = None,
   ) -> None:
     """
@@ -209,11 +209,11 @@ class LegacyService(TapService):
 
   def batch_cutout(
     self,
-    ra: List[float],
-    dec: List[float],
-    save_path: List[Path] = None,
-    base_path: Union[str, Path] = '',
-    mag_r: List[float] = None,
+    ra: Sequence[float],
+    dec: Sequence[float],
+    save_path: Sequence[Path] = None,
+    base_path: str | Path = '',
+    mag_r: Sequence[float] = None,
   ) -> Tuple[List[Path], List[Path]]:
     """
     Downloads a list of objects defined by RA and DEC coordinates.
@@ -272,7 +272,7 @@ class LegacyService(TapService):
     return success, error
 
 
-  def get_pixscale(self, mag_r: Union[float, List[float]]) -> Union[float, List[float]]:
+  def get_pixscale(self, mag_r: float | Sequence[float]) -> float | Sequence[float]:
     if isinstance(mag_r, list):
       return [self.get_pixscale(m) for m in mag_r]
 
@@ -284,7 +284,7 @@ class LegacyService(TapService):
     
   def crossmatch(
     self, 
-    table: str | Path | pd.DataFrame | Table, 
+    table: TableLike | PathOrFile, 
     columns: Sequence[str] | Sequence[AdqlColumn], 
     radius: float | u.Quantity,
     save_path: str | Path,

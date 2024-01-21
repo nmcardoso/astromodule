@@ -17,6 +17,7 @@ PathOrFile = str | Path | BufferedIOBase | RawIOBase | TextIOBase
 TableLike = Table | pd.DataFrame
 
 def read_table(
+  path: TableLike | PathOrFile,
   fmt: str | None = None,
   columns: Sequence[str] | None = None,
   low_memory: bool = False,
@@ -228,6 +229,9 @@ def write_table(data: TableLike, path: PathOrFile, fmt: str | None = None):
     path.parent.mkdir(parents=True, exist_ok=True)
     path = str(path.absolute())
   
+  if isinstance(data, Table):
+    data = data.to_pandas()
+  
   if fmt.startswith('.'):
     fmt = fmt[1:]
   
@@ -252,7 +256,7 @@ def write_table(data: TableLike, path: PathOrFile, fmt: str | None = None):
     
 
 def compress_fits(
-  file: str | Path | BinaryIO,
+  file: PathOrFile,
   compress_type: str = 'HCOMPRESS_1',
   hcomp_scale: int = 3,
   quantize_level: int = 10,
