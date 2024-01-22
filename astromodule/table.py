@@ -458,9 +458,9 @@ def crossmatch(
   write_table(df2, tb2_path)
   
   if isinstance(radius, u.Quantity):
-    radius = int(radius.to(u.arcsec).value)
+    radius = float(radius.to(u.arcsec).value)
   else:
-    radius = int(radius)
+    radius = float(radius)
   
   cmd = [
     'stilts',
