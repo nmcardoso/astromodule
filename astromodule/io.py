@@ -236,7 +236,7 @@ def write_table(data: TableLike, path: PathOrFile, fmt: str | None = None):
     fmt = fmt[1:]
   
   if fmt in ('fit', 'fits'):
-    Table.from_pandas(data).write(path, overwrite=True)
+    Table.from_pandas(data).write(path, overwrite=True, format='fits')
   elif fmt == 'csv':
     data.to_csv(path, index=False)
   elif fmt == 'parquet':
