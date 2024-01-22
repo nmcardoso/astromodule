@@ -559,7 +559,6 @@ def selfmatch(
         as the input table. The column names in the new table have _1, _2, ... 
         appended to them to avoid duplication.
 
-  
   ra : str | None, optional
     The name of the Right Ascension (RA) column. If ``None``
     is passed, this function will try to guess the RA column name based on
@@ -602,22 +601,22 @@ def selfmatch(
   write_table(df, in_path)
   
   if isinstance(radius, u.Quantity):
-    radius = int(radius.to(u.arcsec).value)
+    radius = float(radius.to(u.arcsec).value)
   else:
-    radius = int(radius)
+    radius = float(radius)
     
   cmd = [
     'stilts',
     'tmatch1',
     'matcher=sky',
+    'progress=none',
+    'runner=parallel',
     f'params={radius}',
     f'values={ra} {dec}',
     f'action={action}',
-    'progress=none',
-    'runner=parallel',
     f'ifmt={fmt}',
-    'omode=out',
     f'ofmt={fmt}',
+    'omode=out',
     'out=-',
     f'in={str(in_path.absolute())}',
   ]
