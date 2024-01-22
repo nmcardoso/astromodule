@@ -497,7 +497,7 @@ def crossmatch(
   tb2_path.unlink()
   error = result.stderr.decode().strip()
   if error:
-    print('STILTS proccess exited with an error signal. Error message:')
+    print('STILTS proccess exited with an error signal.')
     print(error)
     return None
   
@@ -631,7 +631,7 @@ def selfmatch(
   in_path.unlink()
   error = result.stderr.decode().strip()
   if error:
-    print('STILTS proccess exited with an error signal. Error message:')
+    print('STILTS proccess exited with an error signal.')
     print(error)
     return None
   
