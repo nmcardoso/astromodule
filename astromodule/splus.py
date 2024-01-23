@@ -463,7 +463,7 @@ class SplusService:
       The splus.cloud scope. Can be `public` or `private`. Use `private` only
       if you are assigned as collaborator. Defaults to `public`
     fmt: str (optional)
-      The mimi-type of query output. Defaults to `text/csv`
+      The mime-type of query output. Defaults to `text/csv`
     workers: int (optional)
       The number of parallel processes that will be spawned. Defaults to 1
     """
