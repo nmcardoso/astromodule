@@ -3,8 +3,7 @@ import secrets
 import subprocess
 import tempfile
 from dataclasses import dataclass
-from difflib import get_close_matches
-from io import BytesIO, StringIO
+from io import BufferedIOBase, BytesIO, RawIOBase, StringIO, TextIOBase
 from pathlib import Path
 from typing import Literal, Sequence, Tuple, Union
 
@@ -600,6 +599,12 @@ def selfmatch(
   
   write_table(df, in_path)
   
+  # input_stream = BytesIO()
+  # df = read_table(table)
+  # ra, dec = guess_coords_columns(df, ra, dec)
+  # write_table(df, input_stream, fmt=fmt)
+  # input_stream.seek(0)
+  
   if isinstance(radius, u.Quantity):
     radius = float(radius.to(u.arcsec).value)
   else:
@@ -678,7 +683,7 @@ if __name__ == '__main__':
   df = selfmatch(
     Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
     radius=45*u.arcmin,
-    action='indentify',
-    fmt='csv'
+    action='identify',
+    fmt='parquet'
   )
   print(df)
