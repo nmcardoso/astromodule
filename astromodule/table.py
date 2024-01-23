@@ -343,41 +343,41 @@ def crossmatch(
     input tables, or rows present in one table but unmatched in the other, 
     or other possibilities. The options are:
 
-      - ``1and2``: An output row for each row represented in both input 
-        tables (INNER JOIN)
-      - ``1or2``: An output row for each row represented in either or both 
-        of the input tables (FULL OUTER JOIN)
-      - ``all1``: An output row for each matched or unmatched row in table 1 
-        (LEFT OUTER JOIN)
-      - ``all2``: An output row for each matched or unmatched row in table 2 
-        (RIGHT OUTER JOIN)
-      - ``1not2``: An output row only for rows which appear in the first 
-        table but are not matched in the second table
-      - ``2not1``: An output row only for rows which appear in the second 
-        table but are not matched in the first table
-      - ``1xor2``: An output row only for rows represented in one of the 
-        input tables but not the other one
+    * ``1and2``: An output row for each row represented in both input 
+      tables (INNER JOIN)
+    * ``1or2``: An output row for each row represented in either or both 
+      of the input tables (FULL OUTER JOIN)
+    * ``all1``: An output row for each matched or unmatched row in table 1 
+      (LEFT OUTER JOIN)
+    * ``all2``: An output row for each matched or unmatched row in table 2 
+      (RIGHT OUTER JOIN)
+    * ``1not2``: An output row only for rows which appear in the first 
+      table but are not matched in the second table
+    * ``2not1``: An output row only for rows which appear in the second 
+      table but are not matched in the first table
+    * ``1xor2``: An output row only for rows represented in one of the 
+      input tables but not the other one
 
   find : Literal['all', 'best', 'best1', 'best2'], optional
     Determines what happens when a row in one table can be matched by more 
     than one row in the other table. The options are:
 
-      - ``all``: All matches. Every match between the two tables is included 
-        in the result. Rows from both of the input tables may appear multiple 
-        times in the result.
-      - ``best``: Best match, symmetric. The best pairs are selected in a 
-        way which treats the two tables symmetrically. Any input row which 
-        appears in one result pair is disqualified from appearing in any 
-        other result pair, so each row from both input tables will appear 
-        in at most one row in the result.
-      - ``best1``: Best match for each Table 1 row. For each row in table 1, 
-        only the best match from table 2 will appear in the result. Each row 
-        from table 1 will appear a maximum of once in the result, but rows 
-        from table 2 may appear multiple times.
-      - ``best2``: Best match for each Table 2 row. For each row in table 2, 
-        only the best match from table 1 will appear in the result. Each row 
-        from table 2 will appear a maximum of once in the result, but rows 
-        from table 1 may appear multiple times.
+    * ``all``: All matches. Every match between the two tables is included 
+      in the result. Rows from both of the input tables may appear multiple 
+      times in the result.
+    * ``best``: Best match, symmetric. The best pairs are selected in a 
+      way which treats the two tables symmetrically. Any input row which 
+      appears in one result pair is disqualified from appearing in any 
+      other result pair, so each row from both input tables will appear 
+      in at most one row in the result.
+    * ``best1``: Best match for each Table 1 row. For each row in table 1, 
+      only the best match from table 2 will appear in the result. Each row 
+      from table 1 will appear a maximum of once in the result, but rows 
+      from table 2 may appear multiple times.
+    * ``best2``: Best match for each Table 2 row. For each row in table 2, 
+      only the best match from table 1 will appear in the result. Each row 
+      from table 2 will appear a maximum of once in the result, but rows 
+      from table 1 may appear multiple times.
 
     The differences between ``best``, ``best1`` and ``best2`` are a bit subtle. 
     In cases where it's obvious which object in each table is the 
@@ -396,11 +396,11 @@ def crossmatch(
     Determines how input columns are renamed before use in the output table. 
     The choices are:
 
-      - ``none``: columns are not renamed
-      - ``dups``: columns which would otherwise have duplicate names in the 
-        output will be renamed to indicate which table they came from
-      - ``all``: all columns will be renamed to indicate which table they 
-        came from
+    * ``none``: columns are not renamed
+    * ``dups``: columns which would otherwise have duplicate names in the 
+      output will be renamed to indicate which table they came from
+    * ``all``: all columns will be renamed to indicate which table they 
+      came from
 
     If columns are renamed, the new ones are determined by ``suffix*`` 
     parameters. 
@@ -586,8 +586,8 @@ def selfmatch(
       `<https://www.star.bristol.ac.uk/mbt/topcat/>`_
   .. [#ST] STILTS - Starlink Tables Infrastructure Library Tool Set.
       `<https://www.star.bristol.ac.uk/mbt/stilts/>`_
-  .. [#tmatch2] STILTS tmatch2 Documentation.
-      `<https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html>`_
+  .. [#tmatch1] STILTS tmatch1 Documentation.
+      `<https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch1-usage.html>`_
   """
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
