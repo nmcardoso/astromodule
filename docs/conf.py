@@ -215,12 +215,12 @@ epub_exclude_files = ['search.html']
 
 # -- Extension configuration -------------------------------------------------
 autodoc_class_signature = 'separated'
-# autodoc_member_order = 'groupwise'
-# autodoc_default_options = {
-#   'member-order': 'groupwise',
-#   'exclude-members': '__init__',
-#   'undoc-members': True,
-# }
+autodoc_member_order = 'groupwise'
+autodoc_default_options = {
+  'member-order': 'groupwise',
+  'exclude-members': '__init__',
+  'undoc-members': True,
+}
 
 
 intersphinx_mapping = {
