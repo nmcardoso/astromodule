@@ -1,0 +1,6 @@
+astromodule.table.drop\_duplicates
+==================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: drop_duplicates

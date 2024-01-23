@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.download_file &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.table.selfmatch &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.download_file';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.table.selfmatch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.parallel_function_executor" href="astromodule.io.parallel_function_executor.html" />
-    <link rel="prev" title="astromodule.io.compress_fits" href="astromodule.io.compress_fits.html" />
+    <link rel="next" title="astromodule.table.table_knn" href="astromodule.table.table_knn.html" />
+    <link rel="prev" title="astromodule.table.guess_coords_columns" href="astromodule.table.guess_coords_columns.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -325,10 +325,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.download_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.write_table.html">astromodule.io.write_table</a></li>
@@ -346,13 +346,13 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.splus.SplusService.html">SplusService</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.fast_crossmatch.html">astromodule.table.fast_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.table.selfmatch.html">astromodule.table.selfmatch</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.table.selfmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.table_knn.html">astromodule.table.table_knn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
 </ul>
@@ -408,7 +408,7 @@ document.write(`
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    <li class="breadcrumb-item"><a href="astromodule.table.html" class="nav-link">astromodule.table</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
@@ -427,12 +427,99 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-download-file">
-<h1>astromodule.io.download_file<a class="headerlink" href="#astromodule-io-download-file" title="Link to this heading">#</a></h1>
+  <section id="astromodule-table-selfmatch">
+<h1>astromodule.table.selfmatch<a class="headerlink" href="#astromodule-table-selfmatch" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.download_file">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.download_file" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="astromodule.table.selfmatch">
+<span class="sig-prename descclassname"><span class="pre">astromodule.table.</span></span><span class="sig-name descname"><span class="pre">selfmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><span class="pre">Table</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.0)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedIOBase" title="(in Python v3.12)"><span class="pre">BufferedIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.RawIOBase" title="(in Python v3.12)"><span class="pre">RawIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.12)"><span class="pre">TextIOBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.units.quantity.Quantity.html#astropy.units.quantity.Quantity" title="(in Astropy v6.1)"><span class="pre">Quantity</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.12)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'identify'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'keep0'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'keep1'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'wide2'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'wideN'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'keep1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.12)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'fits'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'csv'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fits'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.0)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/table.html#selfmatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.table.selfmatch" title="Link to this definition">#</a></dt>
+<dd><p>Performs a selfmatch in a table (crossmatch agains the same table) using 
+STILTS <a class="footnote-reference brackets" href="#st" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> as a backend (the same backend of TOPCAT <a class="footnote-reference brackets" href="#topcat" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>). 
+This is useful for duplicates removal, groups detection, etc. 
+This function invokes spawns a subprocess invoking the <code class="docutils literal notranslate"><span class="pre">tmatch1</span></code> <a href="#id5"><span class="problematic" id="id3">[#tmatch1]_</span></a> 
+tool of the STILTS executable.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<dl>
+<dt>table<span class="classifier">TableLike | PathOrFile</span></dt><dd><p>The table that will be crossmatched. This parameter accepts a
+table-like object (pandas dataframe, astropy table), a path to a file
+represented as a string or pathlib.Path object, or a file object
+(BinaryIO, StringIO, file-descriptor, etc).</p>
+</dd>
+<dt>radius<span class="classifier">float | u.Quantity</span></dt><dd><p>The crossmatch max error radius. This function accepts a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
+that will be interpreted as <code class="docutils literal notranslate"><span class="pre">arcsec</span></code> unit, or a <cite>~astropy.units.Quantity</cite></p>
+</dd>
+<dt>action<span class="classifier">Literal[‘identify’, ‘keep0’, ‘keep1’, ‘wide2’, ‘wideN’], optional</span></dt><dd><p>Determines the form of the table which will be output as a result of the 
+internal match.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">identify</span></code>: The output table is the same as the input table except 
+that it contains two additional columns, GroupID and GroupSize, 
+following the input columns. Each group of rows which matched is 
+assigned a unique integer, recorded in the GroupID column, and the 
+size of each group is recorded in the GroupSize column. Rows which 
+don’t match any others (singles) have null values in both these columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keep0</span></code>: The result is a new table containing only “single” rows, 
+that is ones which don’t match any other rows in the table. 
+Any other rows are thrown out.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keep1</span></code>: The result is a new table in which only one row 
+(the first in the input table order) from each group of matching 
+ones is retained. A subsequent intra-table match with the same 
+criteria would therefore show no matches.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wideN</span></code>: The result is a new “wide” table consisting of matched 
+rows in the input table stacked next to each other. Only groups of 
+exactly N rows in the input table are used to form the output table; 
+each row of the output table consists of the columns of the first 
+group member, followed by the columns of the second group member 
+and so on. The output table therefore has N times as many columns 
+as the input table. The column names in the new table have _1, _2, … 
+appended to them to avoid duplication.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>ra<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Right Ascension (RA) column. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
+</dd>
+<dt>dec<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Declination (DEC) column. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
+</dd>
+<dt>fmt<span class="classifier">Literal[‘fits’, ‘csv’], optional</span></dt><dd><p>This function converts the input table to file before passing to 
+stilts backend. This parameter can be used to set the intermediate
+file type. Fits is faster and is the default file type.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>pd.DataFrame | None</dt><dd><p>A table of resulting selfmatch</p>
+</dd>
+</dl>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="topcat" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>TOPCAT - Tool for OPerations on Catalogues And Tables.
+<a class="reference external" href="https://www.star.bristol.ac.uk/mbt/topcat/">https://www.star.bristol.ac.uk/mbt/topcat/</a></p>
+</aside>
+<aside class="footnote brackets" id="st" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>STILTS - Starlink Tables Infrastructure Library Tool Set.
+<a class="reference external" href="https://www.star.bristol.ac.uk/mbt/stilts/">https://www.star.bristol.ac.uk/mbt/stilts/</a></p>
+</aside>
+<aside class="footnote brackets" id="tmatch2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<p>STILTS tmatch2 Documentation.
+<a class="reference external" href="https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html">https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html</a></p>
+</aside>
+</aside>
+</section>
+</dd></dl>
 
 </section>
 
@@ -447,20 +534,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.compress_fits.html"
+       href="astromodule.table.guess_coords_columns.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.compress_fits</p>
+        <p class="prev-next-title">astromodule.table.guess_coords_columns</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.parallel_function_executor.html"
+       href="astromodule.table.table_knn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.parallel_function_executor</p>
+        <p class="prev-next-title">astromodule.table.table_knn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -482,14 +569,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.table.selfmatch"><code class="docutils literal notranslate"><span class="pre">selfmatch()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.io.download_file.rst.txt">
+    <a href="../_sources/api/astromodule.table.selfmatch.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

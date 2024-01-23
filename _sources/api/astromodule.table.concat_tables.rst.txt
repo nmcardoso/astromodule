@@ -1,0 +1,6 @@
+astromodule.table.concat\_tables
+================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: concat_tables

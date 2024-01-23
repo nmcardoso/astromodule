@@ -1,0 +1,6 @@
+astromodule.table.selfmatch
+===========================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: selfmatch

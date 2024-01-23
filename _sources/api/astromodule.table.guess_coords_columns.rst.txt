@@ -1,0 +1,6 @@
+astromodule.table.guess\_coords\_columns
+========================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: guess_coords_columns

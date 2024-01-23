@@ -1,0 +1,38 @@
+﻿astromodule.splus
+=================
+
+.. automodule:: astromodule.splus
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Functions
+
+  .. autosummary::
+    :toctree:
+  
+    update_authorization
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    SplusService
+  
+  
+
+  
+  
+  
+
+
+

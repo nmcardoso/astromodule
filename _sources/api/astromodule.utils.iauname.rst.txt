@@ -1,0 +1,6 @@
+astromodule.utils.iauname
+=========================
+
+.. currentmodule:: astromodule.utils
+
+.. autofunction:: iauname

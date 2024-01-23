@@ -1,0 +1,6 @@
+astromodule.splus.update\_authorization
+=======================================
+
+.. currentmodule:: astromodule.splus
+
+.. autofunction:: update_authorization

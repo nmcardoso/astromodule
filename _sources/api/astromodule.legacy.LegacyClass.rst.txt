@@ -1,0 +1,23 @@
+LegacyClass
+===========
+
+.. currentmodule:: astromodule.legacy
+
+.. autoclass:: LegacyClass
+  :members:
+  :private-members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+
+
+  
+  
+  .. rubric:: Attributes
+
+  .. autosummary::
+  
+      ~LegacyClass.DR10
+  
+  

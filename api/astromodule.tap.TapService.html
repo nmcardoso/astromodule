@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.download_file &#8212; AstroModule 0 documentation</title>
+    <title>TapService &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.download_file';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tap.TapService';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.parallel_function_executor" href="astromodule.io.parallel_function_executor.html" />
-    <link rel="prev" title="astromodule.io.compress_fits" href="astromodule.io.compress_fits.html" />
+    <link rel="next" title="astromodule.utils" href="astromodule.utils.html" />
+    <link rel="prev" title="astromodule.tap" href="astromodule.tap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -325,10 +325,10 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.download_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.write_table.html">astromodule.io.write_table</a></li>
@@ -357,8 +357,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.tap.html">astromodule.tap</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.tap.TapService.html">TapService</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tap.html">astromodule.tap</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">TapService</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -408,9 +408,9 @@ document.write(`
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    <li class="breadcrumb-item"><a href="astromodule.tap.html" class="nav-link">astromodule.tap</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
+    <li class="breadcrumb-item active" aria-current="page">TapService</li>
   </ul>
 </nav>
 </div>
@@ -427,12 +427,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-download-file">
-<h1>astromodule.io.download_file<a class="headerlink" href="#astromodule-io-download-file" title="Link to this heading">#</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.download_file">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http_client</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extract</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_bytes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.12)"><span class="pre">bytes</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.download_file" title="Link to this definition">#</a></dt>
+  <section id="tapservice">
+<h1>TapService<a class="headerlink" href="#tapservice" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="astromodule.tap.TapService">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">astromodule.tap.</span></span><span class="sig-name descname"><span class="pre">TapService</span></span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="astromodule.tap.TapService.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService.__init__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="astromodule.tap.TapService.batch_sync_query">
+<span class="sig-name descname"><span class="pre">batch_sync_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">join_outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService.batch_sync_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService.batch_sync_query" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="astromodule.tap.TapService.sync_query">
+<span class="sig-name descname"><span class="pre">sync_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService.sync_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService.sync_query" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 </section>
 
@@ -447,20 +463,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.compress_fits.html"
+       href="astromodule.tap.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.compress_fits</p>
+        <p class="prev-next-title">astromodule.tap</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.parallel_function_executor.html"
+       href="astromodule.utils.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.parallel_function_executor</p>
+        <p class="prev-next-title">astromodule.utils</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -482,14 +498,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService"><code class="docutils literal notranslate"><span class="pre">TapService</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.__init__"><code class="docutils literal notranslate"><span class="pre">TapService.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.batch_sync_query"><code class="docutils literal notranslate"><span class="pre">TapService.batch_sync_query()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.sync_query"><code class="docutils literal notranslate"><span class="pre">TapService.sync_query()</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.io.download_file.rst.txt">
+    <a href="../_sources/api/astromodule.tap.TapService.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

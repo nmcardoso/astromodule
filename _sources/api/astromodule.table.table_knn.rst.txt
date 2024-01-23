@@ -1,0 +1,6 @@
+astromodule.table.table\_knn
+============================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: table_knn

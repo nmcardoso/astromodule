@@ -1,0 +1,6 @@
+astromodule.utils.iauname\_path
+===============================
+
+.. currentmodule:: astromodule.utils
+
+.. autofunction:: iauname_path

@@ -1,0 +1,60 @@
+LS10Tractor
+===========
+
+.. currentmodule:: astromodule.legacy
+
+.. autoclass:: LS10Tractor
+  :members:
+  :private-members:
+  :undoc-members:
+  :show-inheritance:
+  :inherited-members:
+
+
+
+  
+  
+  .. rubric:: Attributes
+
+  .. autosummary::
+  
+      ~LS10Tractor.brick_primary
+      ~LS10Tractor.brickid
+      ~LS10Tractor.brickname
+      ~LS10Tractor.bx
+      ~LS10Tractor.by
+      ~LS10Tractor.dec
+      ~LS10Tractor.dec_ivar
+      ~LS10Tractor.fitbits
+      ~LS10Tractor.mag_g
+      ~LS10Tractor.mag_i
+      ~LS10Tractor.mag_r
+      ~LS10Tractor.mag_w1
+      ~LS10Tractor.mag_w2
+      ~LS10Tractor.mag_w3
+      ~LS10Tractor.mag_w4
+      ~LS10Tractor.mag_z
+      ~LS10Tractor.maskbits
+      ~LS10Tractor.nobs_g
+      ~LS10Tractor.nobs_i
+      ~LS10Tractor.nobs_r
+      ~LS10Tractor.nobs_w1
+      ~LS10Tractor.nobs_w2
+      ~LS10Tractor.nobs_w3
+      ~LS10Tractor.nobs_w4
+      ~LS10Tractor.nobs_z
+      ~LS10Tractor.objid
+      ~LS10Tractor.ra
+      ~LS10Tractor.ra_ivar
+      ~LS10Tractor.rchisq_g
+      ~LS10Tractor.rchisq_i
+      ~LS10Tractor.rchisq_r
+      ~LS10Tractor.rchisq_w1
+      ~LS10Tractor.rchisq_w2
+      ~LS10Tractor.rchisq_w3
+      ~LS10Tractor.rchisq_w4
+      ~LS10Tractor.rchisq_z
+      ~LS10Tractor.release
+      ~LS10Tractor.type
+  
+  

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.read_table &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.table.crossmatch &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.read_table';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.table.crossmatch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.write_table" href="astromodule.io.write_table.html" />
-    <link rel="prev" title="astromodule.io.parallel_function_executor" href="astromodule.io.parallel_function_executor.html" />
+    <link rel="next" title="astromodule.table.drop_duplicates" href="astromodule.table.drop_duplicates.html" />
+    <link rel="prev" title="astromodule.table.concat_tables" href="astromodule.table.concat_tables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -325,12 +325,12 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.read_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.write_table.html">astromodule.io.write_table</a></li>
 </ul>
 </li>
@@ -346,9 +346,9 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.splus.SplusService.html">SplusService</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.table.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.fast_crossmatch.html">astromodule.table.fast_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
@@ -408,7 +408,7 @@ document.write(`
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    <li class="breadcrumb-item"><a href="astromodule.table.html" class="nav-link">astromodule.table</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
@@ -427,140 +427,169 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-read-table">
-<h1>astromodule.io.read_table<a class="headerlink" href="#astromodule-io-read-table" title="Link to this heading">#</a></h1>
+  <section id="astromodule-table-crossmatch">
+<h1>astromodule.table.crossmatch<a class="headerlink" href="#astromodule-table-crossmatch" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.read_table">
-<span class="sig-prename descclassname"><span class="pre">astromodule.io.</span></span><span class="sig-name descname"><span class="pre">read_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v6.1)"><span class="pre">Table</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.0)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedIOBase" title="(in Python v3.12)"><span class="pre">BufferedIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.RawIOBase" title="(in Python v3.12)"><span class="pre">RawIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.12)"><span class="pre">TextIOBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low_memory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.12)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_default_na</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.0)"><span class="pre">DataFrame</span></a></span></span><a class="reference internal" href="../_modules/astromodule/io.html#read_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.read_table" title="Link to this definition">#</a></dt>
-<dd><p>This function tries to detect the table type comparing the file extension and
-returns a pandas dataframe of the loaded table.</p>
-<p>Supported table types:</p>
-<blockquote>
-<div><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Table Type</p></th>
-<th class="head"><p>Extensions</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Fits</p></td>
-<td><p>.fit, .fits, .fz</p></td>
-</tr>
-<tr class="row-odd"><td><p>Votable</p></td>
-<td><p>.vo, .vot, .votable, .xml</p></td>
-</tr>
-<tr class="row-even"><td><p>ASCII</p></td>
-<td><p>.csv, .tsv, .dat</p></td>
-</tr>
-<tr class="row-odd"><td><p>Heasarc</p></td>
-<td><p>.tdat</p></td>
-</tr>
-<tr class="row-even"><td><p>Arrow</p></td>
-<td><p>.parquet, .feather</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+<dt class="sig sig-object py" id="astromodule.table.crossmatch">
+<span class="sig-prename descclassname"><span class="pre">astromodule.table.</span></span><span class="sig-name descname"><span class="pre">crossmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table1:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table2:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span> <span class="pre">|</span> <span class="pre">~astropy.units.quantity.Quantity</span> <span class="pre">=</span> <span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">arcsec&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join:</span> <span class="pre">~typing.Literal['1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1or2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1not2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'2not1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1xor2']</span> <span class="pre">=</span> <span class="pre">'1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find:</span> <span class="pre">~typing.Literal['all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best2']</span> <span class="pre">=</span> <span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixcols:</span> <span class="pre">~typing.Literal['dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'none']</span> <span class="pre">=</span> <span class="pre">'dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix1:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix2:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorecol:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">'xmatch_sep'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt:</span> <span class="pre">~typing.Literal['fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'csv']</span> <span class="pre">=</span> <span class="pre">'fits'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.0)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/table.html#crossmatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.table.crossmatch" title="Link to this definition">#</a></dt>
+<dd><p>Performs a crossmatch between two tables using STILTS <a class="footnote-reference brackets" href="#st" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> as a backend.
+This function invokes spawns a subprocess invoking the <code class="docutils literal notranslate"><span class="pre">tmatch2</span></code> <a class="footnote-reference brackets" href="#tmatch2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 
+tool of the STILTS executable.</p>
 <section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
 <dl>
-<dt>path<span class="classifier">str or Path</span></dt><dd><p>Path to the table to be read.</p>
+<dt>table1<span class="classifier">TableLike | PathOrFile</span></dt><dd><p>The first table that will be crossmatched. This parameter accepts a
+table-like object (pandas dataframe, astropy table), a path to a file
+represented as a string or pathlib.Path object, or a file object
+(BinaryIO, StringIO, file-descriptor, etc).</p>
 </dd>
-<dt>fmt<span class="classifier">str | None</span></dt><dd><p>Specify the file format manually to avoid inference by file extension. This
-parameter can be used to force a specific parser for the given file.</p>
+<dt>table2<span class="classifier">TableLike | PathOrFile</span></dt><dd><p>The second table that will be crossmatched. This parameter accepts a
+table-like object (pandas dataframe, astropy table), a path to a file
+represented as a string or pathlib.Path object, or a file object
+(BinaryIO, StringIO, file-descriptor, etc).</p>
 </dd>
-<dt>columns<span class="classifier">Sequence[str] | None</span></dt><dd><p>If specified, only the column names in list will be loaded. Can be used to
-reduce memory usage.</p>
+<dt>ra1<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
 </dd>
-<dt>low_memory<span class="classifier">bool</span></dt><dd><p>Internally process the file in chunks, resulting in lower memory use while 
-parsing, but possibly mixed type inference. To ensure no mixed types either 
-set False, or specify the type with the dtype parameter. Note that the 
-entire file is read into a single DataFrame regardless, use the chunksize 
-or iterator parameter to return the data in chunks. (Only valid with C parser).</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Used only for ASCII tables, ignored by other types of tables.</p>
-</div>
+<dt>dec1<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Declination (DEC) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
 </dd>
-<dt>comment<span class="classifier">str | None</span></dt><dd><p>Character indicating that the remainder of line should not be parsed. 
-If found at the beginning of a line, the line will be ignored altogether. 
-This parameter must be a single character. Like empty lines 
-(as long as <code class="docutils literal notranslate"><span class="pre">skip_blank_lines=True</span></code>), fully commented lines are ignored 
-by the parameter header but not by skiprows. For example, if <code class="docutils literal notranslate"><span class="pre">comment='#'</span></code>, 
-parsing <code class="docutils literal notranslate"><span class="pre">#empty\na,b,c\n1,2,3</span></code> with <code class="docutils literal notranslate"><span class="pre">header=0</span></code> will result in 
-<code class="docutils literal notranslate"><span class="pre">'a,b,c'</span></code> being treated as the header.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Used only for ASCII tables, ignored by other types of tables.</p>
-</div>
+<dt>ra2<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
 </dd>
-<dt>na_values: Hashable, Iterable of Hashable or dict of {HashableIterable}</dt><dd><p>Additional strings to recognize as <code class="docutils literal notranslate"><span class="pre">NA</span></code>/<code class="docutils literal notranslate"><span class="pre">NaN</span></code>. If <code class="docutils literal notranslate"><span class="pre">dict</span></code> passed, specific 
-per-column <code class="docutils literal notranslate"><span class="pre">NA</span></code> values. By default the following values are interpreted 
-as <cite>NaN</cite>: “ “, “#N/A”, “#N/A N/A”, “#NA”, “-1.#IND”, “-1.#QNAN”, “-NaN”, 
-“-nan”, “1.#IND”, “1.#QNAN”, “&lt;NA&gt;”, “N/A”, “NA”, “NULL”, “NaN”, “None”, 
-“n/a”, “nan”, “null “.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Used only for ASCII tables, ignored by other types of tables.</p>
-</div>
+<dt>dec2<span class="classifier">str | None, optional</span></dt><dd><p>The name of the Declination (DEC) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <cite>~guess_coords_columns</cite>, see this
+function’s documentation for more details.</p>
 </dd>
-<dt>keep_default_na<span class="classifier">bool </span></dt><dd><p>Whether or not to include the default <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values when parsing the data. 
-Depending on whether <code class="docutils literal notranslate"><span class="pre">na_values</span></code> is passed in, the behavior is as follows:</p>
-<ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are specified, 
-<cite>na_values</cite> is appended to the default NaN values used for parsing.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are not specified, only the 
-default <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values are used for parsing.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are specified, only 
-the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values specified na_values are used for parsing.</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">na_values</span></code> are not specified, 
-no strings will be parsed as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
+<dt>radius<span class="classifier">float | u.Quantity, optional</span></dt><dd><p>The crossmatch max error radius. This function accepts a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
+that will be interpreted as <code class="docutils literal notranslate"><span class="pre">arcsec</span></code> unit, or a <cite>~astropy.units.Quantity</cite></p>
+</dd>
+<dt>join<span class="classifier">Literal[‘1and2’, ‘1or2’, ‘all1’, ‘all2’, ‘1not2’, ‘2not1’, ‘1xor2’], optional</span></dt><dd><p>Determines which rows are included in the output table. 
+The matching algorithm determines which of the rows from the first 
+table correspond to which rows from the second. This parameter 
+determines what to do with that information. Perhaps the most 
+obvious thing is to write out a table containing only rows which 
+correspond to a row in both of the two input tables. However, 
+you may also want to see the unmatched rows from one or both 
+input tables, or rows present in one table but unmatched in the other, 
+or other possibilities. The options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1and2</span></code>: An output row for each row represented in both input 
+tables (INNER JOIN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1or2</span></code>: An output row for each row represented in either or both 
+of the input tables (FULL OUTER JOIN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all1</span></code>: An output row for each matched or unmatched row in table 1 
+(LEFT OUTER JOIN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all2</span></code>: An output row for each matched or unmatched row in table 2 
+(RIGHT OUTER JOIN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1not2</span></code>: An output row only for rows which appear in the first 
+table but are not matched in the second table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2not1</span></code>: An output row only for rows which appear in the second 
+table but are not matched in the first table</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1xor2</span></code>: An output row only for rows represented in one of the 
+input tables but not the other one</p></li>
 </ul>
-<p>Note that if <code class="docutils literal notranslate"><span class="pre">na_filter</span></code> is passed in as <code class="docutils literal notranslate"><span class="pre">False</span></code>, the <code class="docutils literal notranslate"><span class="pre">keep_default_na</span></code> and 
-<code class="docutils literal notranslate"><span class="pre">na_values</span></code> parameters will be ignored.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Used only for ASCII tables, ignored by other types of tables.</p>
-</div>
+</div></blockquote>
 </dd>
-<dt>na_filter<span class="classifier">bool</span></dt><dd><p>Detect missing value markers (empty strings and the value of <code class="docutils literal notranslate"><span class="pre">na_values</span></code>). 
-In data without any <code class="docutils literal notranslate"><span class="pre">NA</span></code> values, passing <code class="docutils literal notranslate"><span class="pre">na_filter=False</span></code> can improve the 
-performance of reading a large file.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Used only for ASCII tables, ignored by other types of tables.</p>
-</div>
+<dt>find<span class="classifier">Literal[‘all’, ‘best’, ‘best1’, ‘best2’], optional</span></dt><dd><p>Determines what happens when a row in one table can be matched by more 
+than one row in the other table. The options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: All matches. Every match between the two tables is included 
+in the result. Rows from both of the input tables may appear multiple 
+times in the result.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best</span></code>: Best match, symmetric. The best pairs are selected in a 
+way which treats the two tables symmetrically. Any input row which 
+appears in one result pair is disqualified from appearing in any 
+other result pair, so each row from both input tables will appear 
+in at most one row in the result.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best1</span></code>: Best match for each Table 1 row. For each row in table 1, 
+only the best match from table 2 will appear in the result. Each row 
+from table 1 will appear a maximum of once in the result, but rows 
+from table 2 may appear multiple times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best2</span></code>: Best match for each Table 2 row. For each row in table 2, 
+only the best match from table 1 will appear in the result. Each row 
+from table 2 will appear a maximum of once in the result, but rows 
+from table 1 may appear multiple times.</p></li>
+</ul>
+</div></blockquote>
+<p>The differences between <code class="docutils literal notranslate"><span class="pre">best</span></code>, <code class="docutils literal notranslate"><span class="pre">best1</span></code> and <code class="docutils literal notranslate"><span class="pre">best2</span></code> are a bit subtle. 
+In cases where it’s obvious which object in each table is the 
+best match for which object in the other, choosing betwen these 
+options will not affect the result. However, in crowded fields 
+(where the distance between objects within one or both tables is 
+typically similar to or smaller than the specified match radius) 
+it will make a difference. In this case one of the asymmetric 
+options (<code class="docutils literal notranslate"><span class="pre">best1</span></code> or <code class="docutils literal notranslate"><span class="pre">best2</span></code>) is usually more appropriate than best, 
+but you’ll have to think about which of them suits your requirements. 
+The performance (time and memory usage) of the match may also differ 
+between these options, especially if one table is much bigger than 
+the other.</p>
+</dd>
+<dt>fixcols<span class="classifier">Literal[‘dups’, ‘all’, ‘none’], optional</span></dt><dd><p>Determines how input columns are renamed before use in the output table. 
+The choices are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>: columns are not renamed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dups</span></code>: columns which would otherwise have duplicate names in the 
+output will be renamed to indicate which table they came from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: all columns will be renamed to indicate which table they 
+came from</p></li>
+</ul>
+</div></blockquote>
+<p>If columns are renamed, the new ones are determined by <code class="docutils literal notranslate"><span class="pre">suffix*</span></code> 
+parameters.</p>
+</dd>
+<dt>suffix1<span class="classifier">str, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
+insertion into the output table, this parameter determines how the 
+renaming is done. It gives a suffix which is appended to all renamed 
+columns from table 1.</p>
+</dd>
+<dt>suffix2<span class="classifier">str, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
+insertion into the output table, this parameter determines how the 
+renaming is done. It gives a suffix which is appended to all renamed 
+columns from table 2.</p>
+</dd>
+<dt>scorecol<span class="classifier">str | None, optional</span></dt><dd><p>Gives the name of a column in the output table to contain the “match score” 
+for each pairwise match. The meaning of this column is dependent on the 
+chosen <code class="docutils literal notranslate"><span class="pre">matcher</span></code>, but it typically represents a distance of some kind 
+between the two matching points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is chosen, no score 
+column will be inserted in the output table. The default value of this 
+parameter depends on matcher.</p>
+</dd>
+<dt>fmt<span class="classifier">Literal[‘fits’, ‘csv’], optional</span></dt><dd><p>This function converts the two input tables to files to pass to 
+stilts backend. This parameter can be used to set the intermediate
+file types. Fits is faster and is the default file type.</p>
 </dd>
 </dl>
-</section>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
-<p>The Transportable Database Aggregate Table (TDAT) type is a data structure 
-created by NASA’s Heasarc project and a very simple parser was implemented
-in this function due to lack of support in packages like pandas and astropy. 
-For more information, see <a class="footnote-reference brackets" href="#tdat" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="returns">
 <h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
 <dl class="simple">
-<dt>pd.DataFrame</dt><dd><p>The table as a pandas dataframe</p>
-</dd>
-</dl>
-</section>
-<section id="raises">
-<h2>Raises<a class="headerlink" href="#raises" title="Link to this heading">#</a></h2>
-<dl class="simple">
-<dt>ValueError</dt><dd><p>Raises an error if the file extension can not be detected</p>
+<dt>pd.DataFrame | None</dt><dd><p>The result table as a pandas dataframe</p>
 </dd>
 </dl>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="tdat" role="doc-footnote">
+<aside class="footnote brackets" id="st" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Transportable Database Aggregate Table (TDAT) Format.
-<a class="reference external" href="https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html">https://heasarc.gsfc.nasa.gov/docs/software/dbdocs/tdat.html</a></p>
+<p>STILTS - Starlink Tables Infrastructure Library Tool Set.
+<a class="reference external" href="https://www.star.bristol.ac.uk/mbt/stilts/">https://www.star.bristol.ac.uk/mbt/stilts/</a></p>
+</aside>
+<aside class="footnote brackets" id="tmatch2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>STILTS tmatch2 Documentation.
+<a class="reference external" href="https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html">https://www.star.bristol.ac.uk/mbt/stilts/sun256/tmatch2-usage.html</a></p>
 </aside>
 </aside>
 </section>
@@ -579,20 +608,20 @@ For more information, see <a class="footnote-reference brackets" href="#tdat" id
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.parallel_function_executor.html"
+       href="astromodule.table.concat_tables.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.parallel_function_executor</p>
+        <p class="prev-next-title">astromodule.table.concat_tables</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.write_table.html"
+       href="astromodule.table.drop_duplicates.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.write_table</p>
+        <p class="prev-next-title">astromodule.table.drop_duplicates</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -614,14 +643,14 @@ For more information, see <a class="footnote-reference brackets" href="#tdat" id
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.read_table"><code class="docutils literal notranslate"><span class="pre">read_table()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.table.crossmatch"><code class="docutils literal notranslate"><span class="pre">crossmatch()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/astromodule.io.read_table.rst.txt">
+    <a href="../_sources/api/astromodule.table.crossmatch.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

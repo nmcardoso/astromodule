@@ -1,0 +1,1181 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>astromodule.splus &#8212; AstroModule 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/astromodule/splus';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/galaxy_256.png" class="logo__image only-light" alt="AstroModule 0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/galaxy_256.png" class="logo__image only-dark" alt="AstroModule 0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">astromodule.splus</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for astromodule.splus</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module performs requests with ``splus.cloud`` server over https</span>
+
+<span class="sd">Features</span>
+<span class="sd">--------</span>
+<span class="sd">* Download a single rgb image colored using Lupton or Trilogy method</span>
+<span class="sd">* Donwload a single fits image of single band</span>
+<span class="sd">* Fast batch download of rgb images using multiprocessing</span>
+<span class="sd">* Fast batch download of fits images using multiprocessing</span>
+<span class="sd">* Single async database query</span>
+<span class="sd">* Fast batch database queries using multiprocessing</span>
+
+<span class="sd">Authors</span>
+<span class="sd">-------</span>
+<span class="sd">Natanael Magalhães Cardoso &lt;natanael.net&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">secrets</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Lock</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">astromodule.io</span> <span class="kn">import</span> <span class="n">download_file</span><span class="p">,</span> <span class="n">write_table</span>
+<span class="kn">from</span> <span class="nn">astromodule.table</span> <span class="kn">import</span> <span class="n">concat_tables</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://splus.cloud/api/&#39;</span>
+<span class="n">LOGIN_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;auth/login&#39;</span>
+<span class="n">LUPTON_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_lupton_image/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{r_band}</span><span class="s1">/</span><span class="si">{g_band}</span><span class="s1">/</span><span class="si">{b_band}</span><span class="s1">/</span><span class="si">{stretch}</span><span class="s1">/</span><span class="si">{Q}</span><span class="s1">&#39;</span>
+<span class="n">TRILOGY_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_image/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{r_band}</span><span class="s1">-</span><span class="si">{g_band}</span><span class="s1">-</span><span class="si">{b_band}</span><span class="s1">/</span><span class="si">{noise}</span><span class="s1">/</span><span class="si">{saturation}</span><span class="s1">&#39;</span>
+<span class="n">FITS_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_cut/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{band}</span><span class="s1">&#39;</span>
+<span class="n">PUBLIC_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/public-TAP/tap/async/?request=doQuery&amp;version=1.0&amp;lang=ADQL&amp;phase=run&amp;query=</span><span class="si">{sql}</span><span class="s1">&amp;format=</span><span class="si">{fmt}</span><span class="s1">&amp;upload=upload,param:uplTable&#39;</span>
+<span class="n">PRIVATE_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/tap/tap/async/?request=doQuery&amp;version=1.0&amp;lang=ADQL&amp;phase=run&amp;query=</span><span class="si">{sql}</span><span class="s1">&amp;format=</span><span class="si">{fmt}</span><span class="s1">&amp;upload=upload,param:uplTable&#39;</span>
+<span class="n">PUBLIC_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/public-TAP/tap/async/&#39;</span>
+<span class="n">PRIVATE_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/tap/tap/async/&#39;</span>
+<span class="n">SPLUS_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_USER&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">SPLUS_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_PASS&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Content-Disposition: form-data; name=&quot;uplTable&quot;; filename=&quot;test.xml&quot;</span>
+<span class="c1"># Content-Type: text/xml</span>
+
+
+<div class="viewcode-block" id="update_authorization">
+<a class="viewcode-back" href="../../api/astromodule.splus.update_authorization.html#astromodule.splus.update_authorization">[docs]</a>
+<span class="k">def</span> <span class="nf">update_authorization</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Decorator that can be placed on functions that needs S-PLUS authentication</span>
+<span class="sd">  This decorator will update authorization token before the function call if </span>
+<span class="sd">  needed</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  f: the function that will be decorated</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  Callable</span>
+<span class="sd">    The decorated function</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">kargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">this</span><span class="p">:</span> <span class="n">SplusService</span> <span class="o">=</span> <span class="n">kargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">updated</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">update_token</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">updated</span><span class="p">:</span>
+      <span class="n">this</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+        <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">this</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+      <span class="p">})</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">kargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+
+
+<div class="viewcode-block" id="SplusService">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService">[docs]</a>
+<span class="k">class</span> <span class="nc">SplusService</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This service class interacts with splus.cloud server over https</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  username: str (optional)</span>
+<span class="sd">    The username used in splus.cloud authentication, defaults to ``SPLUS_USER``</span>
+<span class="sd">    environment variable</span>
+<span class="sd">  password: str (optional)</span>
+<span class="sd">    The password used in splus.cloud authentication, defaults to ``SPLUS_PASS``</span>
+<span class="sd">    environment variable</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_lock</span><span class="p">:</span> <span class="n">Lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="SplusService.__init__">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.__init__">[docs]</a>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_USER</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_PASS</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+      <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">password</span>
+    <span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">token_duration</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.update_token">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.update_token">[docs]</a>
+  <span class="k">def</span> <span class="nf">update_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Updates splus.cloud authorization token</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">      `True` if the token was updated and `False` otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_duration</span><span class="p">):</span>
+      <span class="k">with</span> <span class="n">SplusService</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_duration</span><span class="p">):</span>
+          <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_get_url</span><span class="p">(</span><span class="n">LOGIN_ROUTE</span><span class="p">),</span>
+            <span class="n">json</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">credentials</span>
+          <span class="p">)</span>
+          <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;application/json&#39;</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]:</span>
+              <span class="n">resp_body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+              <span class="k">if</span> <span class="s1">&#39;token&#39;</span> <span class="ow">in</span> <span class="n">resp_body</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">resp_body</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span>
+                  <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="kc">True</span> <span class="c1"># updated</span>
+    <span class="k">return</span> <span class="kc">False</span> <span class="c1"># using cache</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.download_lupton_rgb">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_lupton_rgb">[docs]</a>
+  <span class="k">def</span> <span class="nf">download_lupton_rgb</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">r_band</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span>
+    <span class="n">g_band</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span>
+    <span class="n">b_band</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span>
+    <span class="n">stretch</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">Q</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads a single Lupton RGB image based on object posistion, this method</span>
+<span class="sd">    accepts arguments to customize Lupton&#39;s parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ra: float</span>
+<span class="sd">      The right ascension in degrees</span>
+<span class="sd">    dec: float</span>
+<span class="sd">      The declination in degrees</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the file will be saved</span>
+<span class="sd">    replace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download</span>
+<span class="sd">    size: int (optional)</span>
+<span class="sd">      The image size in pixels</span>
+<span class="sd">    r_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as R channel of the RGB image</span>
+<span class="sd">    g_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as G channel of the RGB image</span>
+<span class="sd">    b_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as B channel of the RGB image</span>
+<span class="sd">    stretch: int or float (optional)</span>
+<span class="sd">      The `stretch` parameter of Lupton&#39;s formula</span>
+<span class="sd">    Q: int or float (optional)</span>
+<span class="sd">      The `Q` parameter of Lupton&#39;s formula</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_download_image</span><span class="p">(</span>
+      <span class="n">LUPTON_ROUTE</span><span class="p">,</span>
+      <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+      <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+      <span class="n">ra</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">ra</span><span class="p">),</span>
+      <span class="n">dec</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">dec</span><span class="p">),</span>
+      <span class="n">size</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="p">),</span>
+      <span class="n">r_band</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">r_band</span><span class="p">),</span>
+      <span class="n">g_band</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">g_band</span><span class="p">),</span>
+      <span class="n">b_band</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">b_band</span><span class="p">),</span>
+      <span class="n">stretch</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">stretch</span><span class="p">),</span>
+      <span class="n">Q</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.download_trilogy_rgb">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_trilogy_rgb">[docs]</a>
+  <span class="k">def</span> <span class="nf">download_trilogy_rgb</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">r_band</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;F861&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">],</span>
+    <span class="n">g_band</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;F515&#39;</span><span class="p">,</span> <span class="s1">&#39;F660&#39;</span><span class="p">],</span>
+    <span class="n">b_band</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;F378&#39;</span><span class="p">,</span> <span class="s1">&#39;F395&#39;</span><span class="p">,</span> <span class="s1">&#39;F410&#39;</span><span class="p">,</span> <span class="s1">&#39;F430&#39;</span><span class="p">],</span>
+    <span class="n">noise</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">saturation</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.15</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads a single Trilogy RGB image based on object posistion, this method</span>
+<span class="sd">    accepts arguments to customize Trilogy parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ra: float</span>
+<span class="sd">      The right ascension in degrees</span>
+<span class="sd">    dec: float</span>
+<span class="sd">      The declination in degrees</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the file will be saved</span>
+<span class="sd">    replace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download</span>
+<span class="sd">    size: int (optional)</span>
+<span class="sd">      The image size in pixels</span>
+<span class="sd">    r_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as R channel of the RGB image</span>
+<span class="sd">    g_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as G channel of the RGB image</span>
+<span class="sd">    b_band: str (optional)</span>
+<span class="sd">      The S-PLUS band that will be mapped as B channel of the RGB image</span>
+<span class="sd">    noise: int or float (optional)</span>
+<span class="sd">      The `noise` parameter of Trilogy algorithm</span>
+<span class="sd">    saturation: int or float (optional)</span>
+<span class="sd">      The `saturation` parameter of Trilogy algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_download_image</span><span class="p">(</span>
+      <span class="n">TRILOGY_ROUTE</span><span class="p">,</span>
+      <span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span>
+      <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">,</span>
+      <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+      <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+      <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+      <span class="n">r_band</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r_band</span><span class="p">),</span>
+      <span class="n">g_band</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">g_band</span><span class="p">),</span>
+      <span class="n">b_band</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">b_band</span><span class="p">),</span>
+      <span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">,</span>
+      <span class="n">saturation</span><span class="o">=</span><span class="n">saturation</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.download_fits">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_fits">[docs]</a>
+  <span class="k">def</span> <span class="nf">download_fits</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="n">band</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads a single FITS image based on object posistion</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ra: float</span>
+<span class="sd">      The right ascension in degrees</span>
+<span class="sd">    dec: float</span>
+<span class="sd">      The declination in degrees</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the file will be saved</span>
+<span class="sd">    replace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download</span>
+<span class="sd">    size: int (optional)</span>
+<span class="sd">      The image size in pixels</span>
+<span class="sd">    band: str (optional)</span>
+<span class="sd">      The S-PLUS band of the fits file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_download_image</span><span class="p">(</span>
+      <span class="n">FITS_ROUTE</span><span class="p">,</span>
+      <span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span>
+      <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">,</span>
+      <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+      <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+      <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span>
+      <span class="n">band</span><span class="o">=</span><span class="n">band</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.batch_image_download">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.batch_image_download">[docs]</a>
+  <span class="k">def</span> <span class="nf">batch_image_download</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">ra</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="n">dec</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]],</span>
+    <span class="n">img_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;trilogy&#39;</span><span class="p">,</span> <span class="s1">&#39;lupton&#39;</span><span class="p">,</span> <span class="s1">&#39;fits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lupton&#39;</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads a single Lupton RGB image based on object posistion, this method</span>
+<span class="sd">    accepts arguments to customize Lupton&#39;s parameters</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ra: list of float</span>
+<span class="sd">      A list of right ascension in degrees</span>
+<span class="sd">    dec: list of float</span>
+<span class="sd">      A list of declination in degrees</span>
+<span class="sd">    save_path: list of str or list of Path</span>
+<span class="sd">      A list of paths where the file will be saved</span>
+<span class="sd">    img_type: str (optional)</span>
+<span class="sd">      One of: ``lupton``, ``trilogy`` or ``fits``.</span>
+<span class="sd">      Defaults to ``lupton``</span>
+<span class="sd">    workers: int (optional)</span>
+<span class="sd">      The  number of parallel processes that will be spawned. Default to a</span>
+<span class="sd">      single process</span>
+<span class="sd">    kwargs: Any (optional)</span>
+<span class="sd">      Any optional parameter of `download_lupton_rgb` if ``img_type=&#39;lupton&#39;``,</span>
+<span class="sd">      or  any optional parameter of `download_trilogy_rgb`</span>
+<span class="sd">      if ``img_type=&#39;trilogy&#39;`` or any optional parameter of</span>
+<span class="sd">      `download_fits_rgb` if ``img_type=&#39;fits&#39;``.</span>
+<span class="sd">      These parameters must have the same type as the mentioned functions,</span>
+<span class="sd">      i.e. pass a single value instead of a list of values and all images</span>
+<span class="sd">      will be downloaded with the same parameter</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">      &gt;&gt; ra = [172.4, 193.9, 63.3]</span>
+<span class="sd">      &gt;&gt; dec = [0.42, 2.63, -1.24]</span>
+<span class="sd">      &gt;&gt; paths = [&#39;fig1.png&#39;, &#39;fig2.png&#39;, &#39;fig3.png&#39;]</span>
+<span class="sd">      &gt;&gt; service.batch_image_download(ra, dec, paths, &#39;trilogy&#39;,</span>
+<span class="sd">      ...                             size=256, noise=0.2, saturation=0.2)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ra</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">dec</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">img_type</span> <span class="o">==</span> <span class="s1">&#39;fits&#39;</span><span class="p">:</span>
+      <span class="n">download_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_fits</span>
+    <span class="k">elif</span> <span class="n">img_type</span> <span class="o">==</span> <span class="s1">&#39;lupton&#39;</span><span class="p">:</span>
+      <span class="n">download_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_lupton_rgb</span>
+    <span class="k">elif</span> <span class="n">img_type</span> <span class="o">==</span> <span class="s1">&#39;trilogy&#39;</span><span class="p">:</span>
+      <span class="n">download_function</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_trilogy_rgb</span>
+
+    <span class="n">download_args</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span><span class="s1">&#39;ra&#39;</span><span class="p">:</span> <span class="n">_ra</span><span class="p">,</span> <span class="s1">&#39;dec&#39;</span><span class="p">:</span> <span class="n">_dec</span><span class="p">,</span> <span class="s1">&#39;save_path&#39;</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">_save_path</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">}</span>
+      <span class="k">for</span> <span class="n">_ra</span><span class="p">,</span> <span class="n">_dec</span><span class="p">,</span> <span class="n">_save_path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_batch_download</span><span class="p">(</span>
+      <span class="n">download_function</span><span class="o">=</span><span class="n">download_function</span><span class="p">,</span>
+      <span class="n">download_args</span><span class="o">=</span><span class="n">download_args</span><span class="p">,</span>
+      <span class="n">workers</span><span class="o">=</span><span class="n">workers</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.query">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.query">[docs]</a>
+  <span class="nd">@update_authorization</span>
+  <span class="k">def</span> <span class="nf">query</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">scope</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="s1">&#39;private&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;text/csv&#39;</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sends a single query to splus.cloud database</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sql: str</span>
+<span class="sd">      The sql query string</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the query output will be saved</span>
+<span class="sd">    repalace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">    scope: str (optional)</span>
+<span class="sd">      The splus.cloud scope. Can be `public` or `private`. Use `private` only</span>
+<span class="sd">      if you are assigned as collaborator. Defaults to `public`</span>
+<span class="sd">    fmt: str (optional)</span>
+<span class="sd">      The mimi-type of query output. Defaults to `text/csv`</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt; service.query(&#39;SELECT TOP 10 * FROM dr1.all_dr1&#39;, &#39;query.csv&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="s1">&#39;doQuery&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;lang&#39;</span><span class="p">:</span> <span class="s1">&#39;ADQL&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;phase&#39;</span><span class="p">:</span> <span class="s1">&#39;run&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="n">sql</span><span class="p">,</span>
+      <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="n">fmt</span><span class="p">,</span>
+    <span class="p">}</span>
+    
+    <span class="k">if</span> <span class="n">scope</span> <span class="o">==</span> <span class="s1">&#39;public&#39;</span><span class="p">:</span>
+      <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_url</span><span class="p">(</span><span class="n">PUBLIC_TAP_ROUTE</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_url</span><span class="p">(</span><span class="n">PRIVATE_TAP_ROUTE</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">table</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span>
+        <span class="p">}</span>
+      <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">params</span><span class="p">[</span><span class="s1">&#39;upload&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;upload,param:uplTable&#39;</span>
+      <span class="n">file</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+      <span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;votable&#39;</span><span class="p">)</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+        <span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;uplTable&#39;</span><span class="p">:</span> <span class="n">file</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+          <span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_track_tap_job</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">resp</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService.batch_query">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.batch_query">[docs]</a>
+  <span class="k">def</span> <span class="nf">batch_query</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">sql</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]],</span>
+    <span class="n">join</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">scope</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;public&#39;</span><span class="p">,</span> <span class="s1">&#39;private&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;text/csv&#39;</span><span class="p">,</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sends a batch of queries to splus.cloud database</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sql: list of str</span>
+<span class="sd">      The sql query string</span>
+<span class="sd">    save_path: list of str or list of Path</span>
+<span class="sd">      The path where the query output will be saved</span>
+<span class="sd">    join: bool (optional)</span>
+<span class="sd">      Join all tables</span>
+<span class="sd">    repalace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">    scope: str (optional)</span>
+<span class="sd">      The splus.cloud scope. Can be `public` or `private`. Use `private` only</span>
+<span class="sd">      if you are assigned as collaborator. Defaults to `public`</span>
+<span class="sd">    fmt: str (optional)</span>
+<span class="sd">      The mimi-type of query output. Defaults to `text/csv`</span>
+<span class="sd">    workers: int (optional)</span>
+<span class="sd">      The number of parallel processes that will be spawned. Defaults to 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">join</span><span class="p">:</span>
+      <span class="n">final_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
+      <span class="n">save_path</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;spluslib_</span><span class="si">{</span><span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="si">}</span><span class="s1">.csv&#39;</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span>
+      <span class="p">]</span>
+    
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s1">&#39;sql&#39;</span><span class="p">:</span> <span class="n">_sql</span><span class="p">,</span>
+        <span class="s1">&#39;save_path&#39;</span><span class="p">:</span> <span class="n">_save_path</span><span class="p">,</span>
+        <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="n">replace</span><span class="p">,</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="n">scope</span><span class="p">,</span>
+        <span class="s1">&#39;fmt&#39;</span><span class="p">:</span> <span class="n">fmt</span>
+      <span class="p">}</span>
+      <span class="k">for</span> <span class="n">_sql</span><span class="p">,</span> <span class="n">_save_path</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_batch_download</span><span class="p">(</span>
+      <span class="n">download_function</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">,</span>
+      <span class="n">download_args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+      <span class="n">workers</span><span class="o">=</span><span class="n">workers</span>
+    <span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">join</span><span class="p">:</span>
+      <span class="n">df</span> <span class="o">=</span> <span class="n">concat_tables</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+      <span class="n">write_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">final_path</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService._get_url">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._get_url">[docs]</a>
+  <span class="k">def</span> <span class="nf">_get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the full url based on params</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="n">route</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService._track_tap_job">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._track_tap_job">[docs]</a>
+  <span class="nd">@update_authorization</span>
+  <span class="k">def</span> <span class="nf">_track_tap_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tracks the async query status in splus.cloud database</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    url: str</span>
+<span class="sd">      The job url</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the query output will be saved</span>
+<span class="sd">    repalace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
+<span class="sd">      skip the download. Default to ``False``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Accept&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">})</span>
+
+      <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">destruction_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;destruction&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;+00:00&#39;</span><span class="p">)</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">destruction_time</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EXECUTING&#39;</span> <span class="ow">and</span> <span class="n">destruction_time</span> <span class="o">&gt;</span> <span class="n">now</span><span class="p">:</span>
+          <span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;COMPLETED&#39;</span><span class="p">:</span>
+          <span class="n">result_url</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;href&#39;</span><span class="p">])</span>
+          <span class="n">result_url</span> <span class="o">=</span> <span class="n">result_url</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">netloc</span><span class="o">=</span><span class="s1">&#39;splus.cloud&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>
+          <span class="n">download_file</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">result_url</span><span class="p">,</span>
+            <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+            <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+            <span class="n">http_client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+          <span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">:</span>
+          <span class="n">message</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;error&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+          <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+          <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">break</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Status code: </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">break</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService._download_image">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._download_image">[docs]</a>
+  <span class="nd">@update_authorization</span>
+  <span class="k">def</span> <span class="nf">_download_image</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
+    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generic download method for splus.cloud images</span>
+<span class="sd">    This method performs a generic two stages download, required by splus.cloud</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    route: str</span>
+<span class="sd">      The image request route</span>
+<span class="sd">    save_path: str or Path</span>
+<span class="sd">      The path where the file will be saved</span>
+<span class="sd">    replace: bool (optional)</span>
+<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
+<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
+<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">replace</span> <span class="ow">and</span> <span class="n">save_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+      <span class="k">return</span>
+
+    <span class="c1"># Stage 1 request</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_url</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">resp</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+      <span class="k">if</span> <span class="s1">&#39;application/json&#39;</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">]:</span>
+        <span class="n">resp_body</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="n">file_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_url</span><span class="p">(</span><span class="n">resp_body</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">])</span>
+        <span class="c1"># Stage 2 request</span>
+        <span class="n">download_file</span><span class="p">(</span>
+          <span class="n">file_url</span><span class="p">,</span>
+          <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
+          <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
+          <span class="n">http_client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SplusService._batch_download">
+<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._batch_download">[docs]</a>
+  <span class="k">def</span> <span class="nf">_batch_download</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">download_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">download_args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generic batch download method.</span>
+<span class="sd">    This method receives a donwload function and perform a multi-theread</span>
+<span class="sd">    execution</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    download_function: function</span>
+<span class="sd">      The download function that will spawned in multiple threads</span>
+<span class="sd">    download_args: list of dict</span>
+<span class="sd">      The list of parameters of `download_function`</span>
+<span class="sd">    workers: int (optional)</span>
+<span class="sd">      The number of parallel processes that will be spawned. Defaults to 1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+      <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">download_function</span> <span class="o">=</span> <span class="n">download_function</span> <span class="ow">or</span> <span class="n">download_file</span>
+
+      <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">download_args</span><span class="p">)):</span>
+        <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span>
+          <span class="n">download_function</span><span class="p">,</span>
+          <span class="o">**</span><span class="n">download_args</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="p">))</span>
+
+      <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span>
+        <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">),</span>
+        <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">futures</span><span class="p">),</span>
+        <span class="n">unit</span><span class="o">=</span><span class="s1">&#39; files&#39;</span>
+      <span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+          <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+          <span class="k">pass</span></div>
+</div>
+
+
+
+
+
+
+
+<span class="c1"># class TableDr4Dual(Entity):</span>
+<span class="c1">#   _name = &#39;dr4_dual&#39;</span>
+<span class="c1">#   RA = SplusColumn(&#39;RA&#39;)</span>
+<span class="c1">#   DEC = SplusColumn(&#39;DEC&#39;)</span>
+<span class="c1">#   photoz = SplusColumn(&#39;photoz&#39;)</span>
+    
+
+<span class="c1"># class DR4Schema(Entity):</span>
+<span class="c1">#   _name = &#39;DR4&#39;</span>
+<span class="c1">#   dr4_dual = TableDr4Dual()</span>
+
+<span class="c1"># class SplusClass(Entity):</span>
+<span class="c1">#   _name = &#39;SPLUS&#39;</span>
+<span class="c1">#   DR4 = DR4Schema()</span>
+  
+
+<span class="c1"># Splus = SplusClass()</span>
+<span class="c1"># Splus._config(Splus)</span>
+
+<span class="c1"># sql = &quot;&quot;&quot;</span>
+<span class="c1"># SELECT {&#39;,&#39;.join(tables)} </span>
+<span class="c1"># FROM </span>
+<span class="c1"># &quot;&quot;&quot;</span>
+
+<span class="c1"># tb = Splus.DR4.dr4_dual</span>
+<span class="c1"># print(</span>
+<span class="c1">#   (tb.RA.between(3, 5) &amp; tb.DEC.between(-4, -12) &amp; (tb.photoz &lt; 0.1)) |</span>
+<span class="c1">#   (tb.photoz &gt; 0.4)</span>
+<span class="c1"># )</span>
+
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">SplusService</span><span class="p">()</span>
+  <span class="n">ra</span> <span class="o">=</span> <span class="p">[</span><span class="mf">11.5933851</span><span class="p">,</span> <span class="mf">11.8345742</span><span class="p">,</span> <span class="mf">11.9053378</span><span class="p">,</span> <span class="mf">12.1397573</span><span class="p">,</span> <span class="mf">12.3036425</span><span class="p">]</span>
+  <span class="n">dec</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0180862</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8710110</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8707459</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7373196</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4088959</span><span class="p">]</span>
+  <span class="n">path1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.png&#39;</span><span class="p">,</span> <span class="s1">&#39;2.png&#39;</span><span class="p">,</span> <span class="s1">&#39;3.png&#39;</span><span class="p">,</span> <span class="s1">&#39;4.png&#39;</span><span class="p">,</span> <span class="s1">&#39;5.png&#39;</span><span class="p">]</span>
+  <span class="n">path2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;01.png&#39;</span><span class="p">,</span> <span class="s1">&#39;02.png&#39;</span><span class="p">,</span> <span class="s1">&#39;03.png&#39;</span><span class="p">,</span> <span class="s1">&#39;04.png&#39;</span><span class="p">,</span> <span class="s1">&#39;05.png&#39;</span><span class="p">]</span>
+  <span class="n">path3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;2.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;3.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;4.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;5.fits&#39;</span><span class="p">]</span>
+  <span class="c1"># s.batch_image_download(ra, dec, path1, img_type=&#39;lupton&#39;, workers=3, replace=True)</span>
+  <span class="c1"># s.batch_image_download(ra, dec, path2, img_type=&#39;trilogy&#39;, workers=3, replace=True)</span>
+  <span class="c1"># s.batch_image_download(ra, dec, path3, img_type=&#39;fits&#39;, workers=3, replace=True)</span>
+
+
+  <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT TOP 100 ID, RA, DEC FROM dr3.all_dr3 where id like </span><span class="se">\&#39;</span><span class="s1">%HYDRA%</span><span class="se">\&#39;</span><span class="s1">&#39;</span>
+  <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">  SELECT TOP 10 * </span>
+<span class="s2">  FROM &quot;dr4_dual&quot;.&quot;dr4_dual_r&quot; AS r </span>
+<span class="s2">  JOIN TAP_UPLOAD.upload AS upl ON 1=CONTAINS(</span>
+<span class="s2">    POINT(&#39;ICRS&#39;, r.ra, r.dec), CIRCLE(&#39;ICRS&#39;, upl.RA, upl.DEC, 0.00027)</span>
+<span class="s2">  )</span>
+<span class="s2">  &quot;&quot;&quot;</span>
+  <span class="c1"># path4 = [f&#39;table{i}.csv&#39; for i in range(10)]</span>
+  <span class="n">path4</span> <span class="o">=</span> <span class="s1">&#39;table0.csv&#39;</span>
+  <span class="c1"># s.query(sql, save_path=path4, replace=True, table=pd.DataFrame({&#39;ra&#39;: ra, &#39;dec&#39;: dec}))</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Natanael M. Cardoso.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

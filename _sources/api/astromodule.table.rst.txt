@@ -1,0 +1,44 @@
+﻿astromodule.table
+=================
+
+.. automodule:: astromodule.table
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Functions
+
+  .. autosummary::
+    :toctree:
+  
+    concat_tables
+    crossmatch
+    drop_duplicates
+    fast_crossmatch
+    guess_coords_columns
+    selfmatch
+    table_knn
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    DropDuplicatesResult
+  
+  
+
+  
+  
+  
+
+
+

@@ -8,4 +8,8 @@ API Reference
 
    astromodule.distance
    astromodule.io
-   astromodule.tableops
+   astromodule.legacy
+   astromodule.splus
+   astromodule.table
+   astromodule.tap
+   astromodule.utils

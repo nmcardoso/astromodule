@@ -1,0 +1,6 @@
+astromodule.utils.append\_query\_params
+=======================================
+
+.. currentmodule:: astromodule.utils
+
+.. autofunction:: append_query_params

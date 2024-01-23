@@ -1,0 +1,6 @@
+astromodule.table.fast\_crossmatch
+==================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: fast_crossmatch
