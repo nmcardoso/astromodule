@@ -1,0 +1,6 @@
+astromodule.io.write\_table
+===========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: write_table

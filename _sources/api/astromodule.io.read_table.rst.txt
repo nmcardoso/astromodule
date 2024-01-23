@@ -1,6 +1,6 @@
-astromodule.io.save\_table
+astromodule.io.read\_table
 ==========================
 
 .. currentmodule:: astromodule.io
 
-.. autofunction:: save_table
+.. autofunction:: read_table
