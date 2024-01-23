@@ -536,27 +536,27 @@ def selfmatch(
     Determines the form of the table which will be output as a result of the 
     internal match.
 
-      - ``identify``: The output table is the same as the input table except 
-        that it contains two additional columns, GroupID and GroupSize, 
-        following the input columns. Each group of rows which matched is 
-        assigned a unique integer, recorded in the GroupID column, and the 
-        size of each group is recorded in the GroupSize column. Rows which 
-        don't match any others (singles) have null values in both these columns.
-      - ``keep0``: The result is a new table containing only "single" rows, 
-        that is ones which don't match any other rows in the table. 
-        Any other rows are thrown out.
-      - ``keep1``: The result is a new table in which only one row 
-        (the first in the input table order) from each group of matching 
-        ones is retained. A subsequent intra-table match with the same 
-        criteria would therefore show no matches.
-      - ``wideN``: The result is a new "wide" table consisting of matched 
-        rows in the input table stacked next to each other. Only groups of 
-        exactly N rows in the input table are used to form the output table; 
-        each row of the output table consists of the columns of the first 
-        group member, followed by the columns of the second group member 
-        and so on. The output table therefore has N times as many columns 
-        as the input table. The column names in the new table have _1, _2, ... 
-        appended to them to avoid duplication.
+    * ``identify``: The output table is the same as the input table except 
+      that it contains two additional columns, GroupID and GroupSize, 
+      following the input columns. Each group of rows which matched is 
+      assigned a unique integer, recorded in the GroupID column, and the 
+      size of each group is recorded in the GroupSize column. Rows which 
+      don't match any others (singles) have null values in both these columns.
+    * ``keep0``: The result is a new table containing only "single" rows, 
+      that is ones which don't match any other rows in the table. 
+      Any other rows are thrown out.
+    * ``keep1``: The result is a new table in which only one row 
+      (the first in the input table order) from each group of matching 
+      ones is retained. A subsequent intra-table match with the same 
+      criteria would therefore show no matches.
+    * ``wideN``: The result is a new "wide" table consisting of matched 
+      rows in the input table stacked next to each other. Only groups of 
+      exactly N rows in the input table are used to form the output table; 
+      each row of the output table consists of the columns of the first 
+      group member, followed by the columns of the second group member 
+      and so on. The output table therefore has N times as many columns 
+      as the input table. The column names in the new table have _1, _2, ... 
+      appended to them to avoid duplication.
 
   ra : str | None, optional
     The name of the Right Ascension (RA) column. If ``None``
