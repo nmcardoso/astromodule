@@ -462,8 +462,6 @@ document.write(`
   <span class="n">_lock</span><span class="p">:</span> <span class="n">Lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="SplusService.__init__">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.__init__">[docs]</a>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_USER</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_PASS</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
@@ -471,8 +469,7 @@ document.write(`
     <span class="p">}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">token_duration</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span></div>
-
+    <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="SplusService.update_token">
@@ -855,7 +852,7 @@ document.write(`
 <span class="sd">      The splus.cloud scope. Can be `public` or `private`. Use `private` only</span>
 <span class="sd">      if you are assigned as collaborator. Defaults to `public`</span>
 <span class="sd">    fmt: str (optional)</span>
-<span class="sd">      The mimi-type of query output. Defaults to `text/csv`</span>
+<span class="sd">      The mime-type of query output. Defaults to `text/csv`</span>
 <span class="sd">    workers: int (optional)</span>
 <span class="sd">      The number of parallel processes that will be spawned. Defaults to 1</span>
 <span class="sd">    &quot;&quot;&quot;</span>

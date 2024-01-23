@@ -445,11 +445,6 @@ environment variable</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="astromodule.splus.SplusService.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/splus.html#SplusService.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.splus.SplusService.__init__" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="astromodule.splus.SplusService._batch_download">
 <span class="sig-name descname"><span class="pre">_batch_download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">download_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.12)"><span class="pre">Callable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/splus.html#SplusService._batch_download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.splus.SplusService._batch_download" title="Link to this definition">#</a></dt>
 <dd><p>Generic batch download method.
@@ -478,11 +473,6 @@ execution</p>
 <span class="sig-name descname"><span class="pre">_get_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">route</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/astromodule/splus.html#SplusService._get_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.splus.SplusService._get_url" title="Link to this definition">#</a></dt>
 <dd><p>Get the full url based on params</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="astromodule.splus.SplusService._lock">
-<span class="sig-name descname"><span class="pre">_lock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Lock</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Lock(owner=None)&gt;</span></em><a class="headerlink" href="#astromodule.splus.SplusService._lock" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="astromodule.splus.SplusService._track_tap_job">
@@ -553,7 +543,7 @@ skip the download. Default to <cite>False</cite></p>
 <dt>scope: str (optional)</dt><dd><p>The splus.cloud scope. Can be <cite>public</cite> or <cite>private</cite>. Use <cite>private</cite> only
 if you are assigned as collaborator. Defaults to <cite>public</cite></p>
 </dd>
-<dt>fmt: str (optional)</dt><dd><p>The mimi-type of query output. Defaults to <cite>text/csv</cite></p>
+<dt>fmt: str (optional)</dt><dd><p>The mime-type of query output. Defaults to <cite>text/csv</cite></p>
 </dd>
 <dt>workers: int (optional)</dt><dd><p>The number of parallel processes that will be spawned. Defaults to 1</p>
 </dd>
@@ -678,6 +668,11 @@ skip the download</p>
 </section>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="astromodule.splus.SplusService._lock">
+<span class="sig-name descname"><span class="pre">_lock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Lock</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Lock(owner=None)&gt;</span></em><a class="headerlink" href="#astromodule.splus.SplusService._lock" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 </dd></dl>
 
@@ -730,11 +725,9 @@ skip the download</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService"><code class="docutils literal notranslate"><span class="pre">SplusService</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.__init__"><code class="docutils literal notranslate"><span class="pre">SplusService.__init__()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._batch_download"><code class="docutils literal notranslate"><span class="pre">SplusService._batch_download()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._download_image"><code class="docutils literal notranslate"><span class="pre">SplusService._download_image()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._get_url"><code class="docutils literal notranslate"><span class="pre">SplusService._get_url()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._lock"><code class="docutils literal notranslate"><span class="pre">SplusService._lock</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._track_tap_job"><code class="docutils literal notranslate"><span class="pre">SplusService._track_tap_job()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.batch_image_download"><code class="docutils literal notranslate"><span class="pre">SplusService.batch_image_download()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.batch_query"><code class="docutils literal notranslate"><span class="pre">SplusService.batch_query()</span></code></a></li>
@@ -743,6 +736,7 @@ skip the download</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.download_trilogy_rgb"><code class="docutils literal notranslate"><span class="pre">SplusService.download_trilogy_rgb()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.query"><code class="docutils literal notranslate"><span class="pre">SplusService.query()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService.update_token"><code class="docutils literal notranslate"><span class="pre">SplusService.update_token()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.splus.SplusService._lock"><code class="docutils literal notranslate"><span class="pre">SplusService._lock</span></code></a></li>
 </ul>
 </li>
 </ul>
