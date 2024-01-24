@@ -1,21 +1,11 @@
-# -*- coding: utf-8 -*-
-#
-# Configuration file for the Sphinx documentation builder.
-#
-# This file does only contain a selection of the most common options. For a
-# full list see the documentation:
-# http://www.sphinx-doc.org/en/master/config
-
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
 import os
 import sys
 
-# from sphinx_astropy.conf import *
+from sphinx_astropy.conf.v2 import (exclude_patterns, extensions,
+                                    html_theme_options, intersphinx_mapping,
+                                    numpydoc_xref_aliases,
+                                    numpydoc_xref_astropy_aliases,
+                                    numpydoc_xref_ignore, rst_epilog)
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -48,7 +38,7 @@ extensions = [
   'sphinx.ext.doctest',
   'sphinx.ext.intersphinx',
   'sphinx_copybutton',
-  # 'sphinxcontrib.napoleon',
+  'numpydoc',
   'sphinx_automodapi.automodapi',
   'sphinx_automodapi.smart_resolver',
   # "sphinx.ext.todo",
@@ -81,6 +71,10 @@ language = 'en'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '__pycache__']
+
+add_module_names = False
+
+default_role = 'obj'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -223,6 +217,18 @@ autodoc_default_options = {
 }
 
 
+numpydoc_show_class_members = True
+numpydoc_xref_param_type = True
+numpydoc_xref_aliases = {
+  'Table': 'astropy.table.Table',
+  'DataFrame': 'pandas.DataFrame',
+  'Path': 'pathlib.Path',
+}
+numpydoc_show_inherited_class_members = {
+  '__new__': False,
+}
+
+
 intersphinx_mapping = {
   'python': ('https://docs.python.org/3/', None),
   'numpy': ('https://numpy.org/devdocs/', None),
@@ -234,23 +240,9 @@ intersphinx_mapping = {
 }
 
 
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = True
-napoleon_include_special_with_doc = False
-napoleon_use_admonition_for_examples = True
-napoleon_use_admonition_for_notes = True
-napoleon_use_admonition_for_references = True
-napoleon_use_ivar = True
-napoleon_use_param = True
-napoleon_use_rtype = True
-napoleon_use_keyword = True
-napoleon_custom_sections = None
-
-
-
 automodapi_inheritance_diagram = True
 automodapi_toctreedirnm = 'api'
 automodapi_writereprocessed = False
 automodsumm_inherited_members = False
+
+toc_object_entries = True

@@ -320,10 +320,10 @@ class SplusService:
       The  number of parallel processes that will be spawned. Default to a
       single process
     kwargs: Any (optional)
-      Any optional parameter of `download_lupton_rgb` if ``img_type='lupton'``,
-      or  any optional parameter of `download_trilogy_rgb`
+      Any optional parameter of :meth:`.download_lupton_rgb` if ``img_type='lupton'``,
+      or  any optional parameter of :meth:`.download_trilogy_rgb`
       if ``img_type='trilogy'`` or any optional parameter of
-      `download_fits_rgb` if ``img_type='fits'``.
+      :meth:`.download_fits` if ``img_type='fits'``.
       These parameters must have the same type as the mentioned functions,
       i.e. pass a single value instead of a list of values and all images
       will be downloaded with the same parameter

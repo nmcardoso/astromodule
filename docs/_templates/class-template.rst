@@ -1,23 +1,33 @@
-{{ name | escape | underline}}
+{{ fullname | escape | underline}}
 
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}
-  :members:
-  :private-members:
-  :undoc-members:
-  :show-inheritance:
-  :inherited-members:
 
+   {% block methods %}
+   {% if methods %}
+   .. rubric:: {{ _('Methods') }}
 
+   .. autosummary::
+      :toctree: generated/
 
-  {% block attributes %}
-  {% if attributes %}
-  .. rubric:: {{ _('Attributes') }}
+   {% for item in methods %}
+       {% if item != "__init__" %}
+          ~{{ name }}.{{ item }}
+       {% endif %}
+   {%- endfor %}
+   {% endif %}
+   {% endblock %}
 
-  .. autosummary::
-  {% for item in attributes %}
+   {% block attributes %}
+   {% if attributes %}
+   .. rubric:: {{ _('Attributes') }}
+
+   .. autosummary::
+      :toctree: generated/
+
+   {% for item in attributes %}
       ~{{ name }}.{{ item }}
-  {%- endfor %}
-  {% endif %}
-  {% endblock %}
+   {%- endfor %}
+   {% endif %}
+   {% endblock %}

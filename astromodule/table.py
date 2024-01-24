@@ -525,12 +525,12 @@ def selfmatch(
   table : TableLike | PathOrFile
     The table that will be crossmatched. This parameter accepts a
     table-like object (pandas dataframe, astropy table), a path to a file
-    represented as a string or pathlib.Path object, or a file object
+    represented as a `str` or `pathlib.Path` object, or a file object
     (BinaryIO, StringIO, file-descriptor, etc).
   
   radius : float | u.Quantity
     The crossmatch max error radius. This function accepts a ``float`` value,
-    that will be interpreted as ``arcsec`` unit, or a `~astropy.units.Quantity`
+    that will be interpreted as ``arcsec`` unit, or a `astropy.units.Quantity`
   
   action : Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'], optional
     Determines the form of the table which will be output as a result of the 
