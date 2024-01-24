@@ -110,7 +110,7 @@ class SplusService:
     Returns
     -------
     bool
-      `True` if the token was updated and `False` otherwise
+      ``True`` if the token was updated and ``False`` otherwise
     """
     now = datetime.now()
     if self.token is None or self.token['timestamp'] < (now - self.token_duration):
@@ -330,10 +330,10 @@ class SplusService:
 
     Examples
     --------
-      >> ra = [172.4, 193.9, 63.3]
-      >> dec = [0.42, 2.63, -1.24]
-      >> paths = ['fig1.png', 'fig2.png', 'fig3.png']
-      >> service.batch_image_download(ra, dec, paths, 'trilogy',
+      >>> ra = [172.4, 193.9, 63.3]
+      >>> dec = [0.42, 2.63, -1.24]
+      >>> paths = ['fig1.png', 'fig2.png', 'fig3.png']
+      >>> service.batch_image_download(ra, dec, paths, 'trilogy',
       ...                             size=256, noise=0.2, saturation=0.2)
     """
     assert len(ra) == len(dec) == len(save_path)
