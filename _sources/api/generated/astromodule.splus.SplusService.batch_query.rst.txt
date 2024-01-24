@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.batch\_query
+===========================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.batch_query

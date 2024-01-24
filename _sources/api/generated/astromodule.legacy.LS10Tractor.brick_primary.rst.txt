@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.brick\_primary
+=============================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.brick_primary

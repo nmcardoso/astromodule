@@ -1,17 +1,43 @@
-SplusService
-============
+astromodule.splus.SplusService
+==============================
 
 .. currentmodule:: astromodule.splus
 
 .. autoclass:: SplusService
-  :members:
-  :private-members:
-  :undoc-members:
-  :show-inheritance:
-  :inherited-members:
 
+   
+   
+   .. rubric:: Methods
 
+   .. autosummary::
+      :toctree: generated/
 
-  
-  
-  
+   
+       
+       
+          ~SplusService.batch_image_download
+       
+       
+          ~SplusService.batch_query
+       
+       
+          ~SplusService.download_fits
+       
+       
+          ~SplusService.download_lupton_rgb
+       
+       
+          ~SplusService.download_trilogy_rgb
+       
+       
+          ~SplusService.query
+       
+       
+          ~SplusService.update_token
+       
+   
+   
+
+   
+   
+   

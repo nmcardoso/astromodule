@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyClass.config
+=====================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LegacyClass.config

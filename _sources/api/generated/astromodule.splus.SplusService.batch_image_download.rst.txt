@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.batch\_image\_download
+=====================================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.batch_image_download

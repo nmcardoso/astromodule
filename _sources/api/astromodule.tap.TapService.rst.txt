@@ -1,17 +1,28 @@
-TapService
-==========
+astromodule.tap.TapService
+==========================
 
 .. currentmodule:: astromodule.tap
 
 .. autoclass:: TapService
-  :members:
-  :private-members:
-  :undoc-members:
-  :show-inheritance:
-  :inherited-members:
 
+   
+   
+   .. rubric:: Methods
 
+   .. autosummary::
+      :toctree: generated/
 
-  
-  
-  
+   
+       
+       
+          ~TapService.batch_sync_query
+       
+       
+          ~TapService.sync_query
+       
+   
+   
+
+   
+   
+   

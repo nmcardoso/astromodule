@@ -1,17 +1,40 @@
-LegacyService
-=============
+astromodule.legacy.LegacyService
+================================
 
 .. currentmodule:: astromodule.legacy
 
 .. autoclass:: LegacyService
-  :members:
-  :private-members:
-  :undoc-members:
-  :show-inheritance:
-  :inherited-members:
 
+   
+   
+   .. rubric:: Methods
 
+   .. autosummary::
+      :toctree: generated/
 
-  
-  
-  
+   
+       
+       
+          ~LegacyService.batch_cutout
+       
+       
+          ~LegacyService.batch_sync_query
+       
+       
+          ~LegacyService.crossmatch
+       
+       
+          ~LegacyService.cutout
+       
+       
+          ~LegacyService.get_pixscale
+       
+       
+          ~LegacyService.sync_query
+       
+   
+   
+
+   
+   
+   

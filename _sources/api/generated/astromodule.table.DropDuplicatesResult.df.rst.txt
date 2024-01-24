@@ -1,0 +1,6 @@
+astromodule.table.DropDuplicatesResult.df
+=========================================
+
+.. currentmodule:: astromodule.table
+
+.. autoattribute:: DropDuplicatesResult.df

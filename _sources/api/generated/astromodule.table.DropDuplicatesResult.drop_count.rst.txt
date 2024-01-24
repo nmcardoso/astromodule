@@ -1,0 +1,6 @@
+astromodule.table.DropDuplicatesResult.drop\_count
+==================================================
+
+.. currentmodule:: astromodule.table
+
+.. autoattribute:: DropDuplicatesResult.drop_count

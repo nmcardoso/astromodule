@@ -1,0 +1,6 @@
+astromodule.legacy.LS10.config
+==============================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LS10.config

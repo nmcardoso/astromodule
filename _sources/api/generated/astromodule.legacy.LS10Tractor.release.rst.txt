@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.release
+======================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.release

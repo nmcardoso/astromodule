@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyService.get\_pixscale
+==============================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LegacyService.get_pixscale

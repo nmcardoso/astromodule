@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.mag\_r
+=====================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.mag_r

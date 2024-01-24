@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.update\_token
+============================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.update_token

@@ -473,7 +473,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.update_token">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.update_token">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.update_token.html#astromodule.splus.SplusService.update_token">[docs]</a>
   <span class="k">def</span> <span class="nf">update_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates splus.cloud authorization token</span>
@@ -481,7 +481,7 @@ document.write(`
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    bool</span>
-<span class="sd">      `True` if the token was updated and `False` otherwise</span>
+<span class="sd">      ``True`` if the token was updated and ``False`` otherwise</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_duration</span><span class="p">):</span>
@@ -505,7 +505,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.download_lupton_rgb">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_lupton_rgb">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_lupton_rgb.html#astromodule.splus.SplusService.download_lupton_rgb">[docs]</a>
   <span class="k">def</span> <span class="nf">download_lupton_rgb</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -567,7 +567,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.download_trilogy_rgb">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_trilogy_rgb">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_trilogy_rgb.html#astromodule.splus.SplusService.download_trilogy_rgb">[docs]</a>
   <span class="k">def</span> <span class="nf">download_trilogy_rgb</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -629,7 +629,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.download_fits">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.download_fits">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_fits.html#astromodule.splus.SplusService.download_fits">[docs]</a>
   <span class="k">def</span> <span class="nf">download_fits</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -674,7 +674,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.batch_image_download">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.batch_image_download">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.batch_image_download.html#astromodule.splus.SplusService.batch_image_download">[docs]</a>
   <span class="k">def</span> <span class="nf">batch_image_download</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
@@ -703,20 +703,20 @@ document.write(`
 <span class="sd">      The  number of parallel processes that will be spawned. Default to a</span>
 <span class="sd">      single process</span>
 <span class="sd">    kwargs: Any (optional)</span>
-<span class="sd">      Any optional parameter of `download_lupton_rgb` if ``img_type=&#39;lupton&#39;``,</span>
-<span class="sd">      or  any optional parameter of `download_trilogy_rgb`</span>
+<span class="sd">      Any optional parameter of :meth:`.download_lupton_rgb` if ``img_type=&#39;lupton&#39;``,</span>
+<span class="sd">      or  any optional parameter of :meth:`.download_trilogy_rgb`</span>
 <span class="sd">      if ``img_type=&#39;trilogy&#39;`` or any optional parameter of</span>
-<span class="sd">      `download_fits_rgb` if ``img_type=&#39;fits&#39;``.</span>
+<span class="sd">      :meth:`.download_fits` if ``img_type=&#39;fits&#39;``.</span>
 <span class="sd">      These parameters must have the same type as the mentioned functions,</span>
 <span class="sd">      i.e. pass a single value instead of a list of values and all images</span>
 <span class="sd">      will be downloaded with the same parameter</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">      &gt;&gt; ra = [172.4, 193.9, 63.3]</span>
-<span class="sd">      &gt;&gt; dec = [0.42, 2.63, -1.24]</span>
-<span class="sd">      &gt;&gt; paths = [&#39;fig1.png&#39;, &#39;fig2.png&#39;, &#39;fig3.png&#39;]</span>
-<span class="sd">      &gt;&gt; service.batch_image_download(ra, dec, paths, &#39;trilogy&#39;,</span>
+<span class="sd">      &gt;&gt;&gt; ra = [172.4, 193.9, 63.3]</span>
+<span class="sd">      &gt;&gt;&gt; dec = [0.42, 2.63, -1.24]</span>
+<span class="sd">      &gt;&gt;&gt; paths = [&#39;fig1.png&#39;, &#39;fig2.png&#39;, &#39;fig3.png&#39;]</span>
+<span class="sd">      &gt;&gt;&gt; service.batch_image_download(ra, dec, paths, &#39;trilogy&#39;,</span>
 <span class="sd">      ...                             size=256, noise=0.2, saturation=0.2)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ra</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">dec</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>
@@ -742,7 +742,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.query">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.query">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.query.html#astromodule.splus.SplusService.query">[docs]</a>
   <span class="nd">@update_authorization</span>
   <span class="k">def</span> <span class="nf">query</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
@@ -820,7 +820,7 @@ document.write(`
 
 
 <div class="viewcode-block" id="SplusService.batch_query">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.batch_query">[docs]</a>
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.batch_query.html#astromodule.splus.SplusService.batch_query">[docs]</a>
   <span class="k">def</span> <span class="nf">batch_query</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">sql</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
@@ -886,18 +886,13 @@ document.write(`
 
 
 
-<div class="viewcode-block" id="SplusService._get_url">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._get_url">[docs]</a>
   <span class="k">def</span> <span class="nf">_get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the full url based on params</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="n">route</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">BASE_URL</span><span class="p">,</span> <span class="n">route</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">))</span>
 
 
-
-<div class="viewcode-block" id="SplusService._track_tap_job">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._track_tap_job">[docs]</a>
   <span class="nd">@update_authorization</span>
   <span class="k">def</span> <span class="nf">_track_tap_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -944,12 +939,9 @@ document.write(`
           <span class="k">break</span>
       <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Status code: </span><span class="si">{</span><span class="n">resp</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="k">break</span></div>
+        <span class="k">break</span>
 
 
-
-<div class="viewcode-block" id="SplusService._download_image">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._download_image">[docs]</a>
   <span class="nd">@update_authorization</span>
   <span class="k">def</span> <span class="nf">_download_image</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
@@ -992,12 +984,9 @@ document.write(`
           <span class="n">save_path</span><span class="o">=</span><span class="n">save_path</span><span class="p">,</span>
           <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">,</span>
           <span class="n">http_client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
 
 
-
-<div class="viewcode-block" id="SplusService._batch_download">
-<a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService._batch_download">[docs]</a>
   <span class="k">def</span> <span class="nf">_batch_download</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">download_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -1037,7 +1026,6 @@ document.write(`
           <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
           <span class="k">pass</span></div>
-</div>
 
 
 

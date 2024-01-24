@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyClass.DR10
+===================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LegacyClass.DR10

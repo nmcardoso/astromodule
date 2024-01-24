@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.download\_fits
+=============================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.download_fits

@@ -1,23 +1,42 @@
-LS10Tractor
-===========
+astromodule.legacy.LS10Tractor
+==============================
 
 .. currentmodule:: astromodule.legacy
 
 .. autoclass:: LS10Tractor
-  :members:
-  :private-members:
-  :undoc-members:
-  :show-inheritance:
-  :inherited-members:
 
+   
+   
+   .. rubric:: Methods
 
+   .. autosummary::
+      :toctree: generated/
 
-  
-  
-  .. rubric:: Attributes
+   
+       
+       
+          ~LS10Tractor.config
+       
+       
+          ~LS10Tractor.get_name
+       
+       
+          ~LS10Tractor.get_schema
+       
+       
+          ~LS10Tractor.set_schema
+       
+   
+   
 
-  .. autosummary::
-  
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
       ~LS10Tractor.brick_primary
       ~LS10Tractor.brickid
       ~LS10Tractor.brickname
@@ -56,5 +75,5 @@ LS10Tractor
       ~LS10Tractor.rchisq_z
       ~LS10Tractor.release
       ~LS10Tractor.type
-  
-  
+   
+   

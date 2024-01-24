@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.set\_schema
+==========================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LS10Tractor.set_schema

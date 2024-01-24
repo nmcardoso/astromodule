@@ -1,0 +1,6 @@
+astromodule.tap.TapService.batch\_sync\_query
+=============================================
+
+.. currentmodule:: astromodule.tap
+
+.. automethod:: TapService.batch_sync_query

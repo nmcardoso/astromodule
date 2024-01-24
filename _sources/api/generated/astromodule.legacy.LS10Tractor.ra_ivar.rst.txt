@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.ra\_ivar
+=======================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.ra_ivar

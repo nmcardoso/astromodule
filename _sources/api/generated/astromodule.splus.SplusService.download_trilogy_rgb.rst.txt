@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.download\_trilogy\_rgb
+=====================================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.download_trilogy_rgb

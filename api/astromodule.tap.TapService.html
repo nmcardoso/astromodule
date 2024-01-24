@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>TapService &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.tap.TapService &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.tap.TapService';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.utils" href="astromodule.utils.html" />
+    <link rel="next" title="astromodule.tap.TapService.batch_sync_query" href="generated/astromodule.tap.TapService.batch_sync_query.html" />
     <link rel="prev" title="astromodule.tap" href="astromodule.tap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -335,18 +335,88 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.legacy.html">astromodule.legacy</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.legacy.LS10.html">LS10</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.legacy.LS10Tractor.html">LS10Tractor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.legacy.LegacyClass.html">LegacyClass</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.legacy.LegacyService.html">LegacyService</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LS10.html">astromodule.legacy.LS10</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.config.html">astromodule.legacy.LS10.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.get_name.html">astromodule.legacy.LS10.get_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.tractor.html">astromodule.legacy.LS10.tractor</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.splus.html">astromodule.splus</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LS10Tractor.html">astromodule.legacy.LS10Tractor</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.config.html">astromodule.legacy.LS10Tractor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.get_name.html">astromodule.legacy.LS10Tractor.get_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.get_schema.html">astromodule.legacy.LS10Tractor.get_schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.set_schema.html">astromodule.legacy.LS10Tractor.set_schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brick_primary.html">astromodule.legacy.LS10Tractor.brick_primary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brickid.html">astromodule.legacy.LS10Tractor.brickid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brickname.html">astromodule.legacy.LS10Tractor.brickname</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.bx.html">astromodule.legacy.LS10Tractor.bx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.by.html">astromodule.legacy.LS10Tractor.by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.dec.html">astromodule.legacy.LS10Tractor.dec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.dec_ivar.html">astromodule.legacy.LS10Tractor.dec_ivar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.fitbits.html">astromodule.legacy.LS10Tractor.fitbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_g.html">astromodule.legacy.LS10Tractor.mag_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_i.html">astromodule.legacy.LS10Tractor.mag_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_r.html">astromodule.legacy.LS10Tractor.mag_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w1.html">astromodule.legacy.LS10Tractor.mag_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w2.html">astromodule.legacy.LS10Tractor.mag_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w3.html">astromodule.legacy.LS10Tractor.mag_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w4.html">astromodule.legacy.LS10Tractor.mag_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_z.html">astromodule.legacy.LS10Tractor.mag_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.maskbits.html">astromodule.legacy.LS10Tractor.maskbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_g.html">astromodule.legacy.LS10Tractor.nobs_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_i.html">astromodule.legacy.LS10Tractor.nobs_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_r.html">astromodule.legacy.LS10Tractor.nobs_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w1.html">astromodule.legacy.LS10Tractor.nobs_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w2.html">astromodule.legacy.LS10Tractor.nobs_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w3.html">astromodule.legacy.LS10Tractor.nobs_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w4.html">astromodule.legacy.LS10Tractor.nobs_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_z.html">astromodule.legacy.LS10Tractor.nobs_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.objid.html">astromodule.legacy.LS10Tractor.objid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.ra.html">astromodule.legacy.LS10Tractor.ra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.ra_ivar.html">astromodule.legacy.LS10Tractor.ra_ivar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_g.html">astromodule.legacy.LS10Tractor.rchisq_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_i.html">astromodule.legacy.LS10Tractor.rchisq_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_r.html">astromodule.legacy.LS10Tractor.rchisq_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w1.html">astromodule.legacy.LS10Tractor.rchisq_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w2.html">astromodule.legacy.LS10Tractor.rchisq_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w3.html">astromodule.legacy.LS10Tractor.rchisq_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w4.html">astromodule.legacy.LS10Tractor.rchisq_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_z.html">astromodule.legacy.LS10Tractor.rchisq_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.release.html">astromodule.legacy.LS10Tractor.release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.type.html">astromodule.legacy.LS10Tractor.type</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LegacyClass.html">astromodule.legacy.LegacyClass</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyClass.config.html">astromodule.legacy.LegacyClass.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyClass.DR10.html">astromodule.legacy.LegacyClass.DR10</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LegacyService.html">astromodule.legacy.LegacyService</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_cutout.html">astromodule.legacy.LegacyService.batch_cutout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_sync_query.html">astromodule.legacy.LegacyService.batch_sync_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.crossmatch.html">astromodule.legacy.LegacyService.crossmatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.cutout.html">astromodule.legacy.LegacyService.cutout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.get_pixscale.html">astromodule.legacy.LegacyService.get_pixscale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.sync_query.html">astromodule.legacy.LegacyService.sync_query</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.splus.html">astromodule.splus</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.splus.update_authorization.html">astromodule.splus.update_authorization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.splus.SplusService.html">SplusService</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.splus.SplusService.html">astromodule.splus.SplusService</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_image_download.html">astromodule.splus.SplusService.batch_image_download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_query.html">astromodule.splus.SplusService.batch_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_fits.html">astromodule.splus.SplusService.download_fits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_lupton_rgb.html">astromodule.splus.SplusService.download_lupton_rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_trilogy_rgb.html">astromodule.splus.SplusService.download_trilogy_rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.query.html">astromodule.splus.SplusService.query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.update_token.html">astromodule.splus.SplusService.update_token</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
@@ -354,14 +424,24 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.selfmatch.html">astromodule.table.selfmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.table_knn.html">astromodule.table.table_knn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.html">DropDuplicatesResult</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.html">astromodule.table.DropDuplicatesResult</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.df.html">astromodule.table.DropDuplicatesResult.df</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.distances.html">astromodule.table.DropDuplicatesResult.distances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.n_iterations.html">astromodule.table.DropDuplicatesResult.n_iterations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.drop_count.html">astromodule.table.DropDuplicatesResult.drop_count</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tap.html">astromodule.tap</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">TapService</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.tap.html">astromodule.tap</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">astromodule.tap.TapService</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.tap.TapService.batch_sync_query.html">astromodule.tap.TapService.batch_sync_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.tap.TapService.sync_query.html">astromodule.tap.TapService.sync_query</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.utils.append_query_params.html">astromodule.utils.append_query_params</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.utils.iauname.html">astromodule.utils.iauname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.utils.iauname_path.html">astromodule.utils.iauname_path</a></li>
@@ -410,7 +490,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="astromodule.tap.html" class="nav-link">astromodule.tap</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">TapService</li>
+    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
 </nav>
 </div>
@@ -427,20 +507,25 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="tapservice">
-<h1>TapService<a class="headerlink" href="#tapservice" title="Link to this heading">#</a></h1>
+  <section id="astromodule-tap-tapservice">
+<h1>astromodule.tap.TapService<a class="headerlink" href="#astromodule-tap-tapservice" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="astromodule.tap.TapService">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">astromodule.tap.</span></span><span class="sig-name descname"><span class="pre">TapService</span></span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TapService</span></span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService" title="Link to this definition">#</a></dt>
+<dd><p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.tap.TapService.batch_sync_query.html#astromodule.tap.TapService.batch_sync_query" title="astromodule.tap.TapService.batch_sync_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">batch_sync_query</span></code></a>(queries, save_paths[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.tap.TapService.sync_query.html#astromodule.tap.TapService.sync_query" title="astromodule.tap.TapService.sync_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sync_query</span></code></a>(query, save_path)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
-<dt class="sig sig-object py" id="astromodule.tap.TapService.batch_sync_query">
-<span class="sig-name descname"><span class="pre">batch_sync_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">queries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.12)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">join_outputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService.batch_sync_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService.batch_sync_query" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="astromodule.tap.TapService.sync_query">
-<span class="sig-name descname"><span class="pre">sync_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/tap.html#TapService.sync_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.tap.TapService.sync_query" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="astromodule.tap.TapService.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#astromodule.tap.TapService.__new__" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -467,11 +552,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.utils.html"
+       href="generated/astromodule.tap.TapService.batch_sync_query.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.utils</p>
+        <p class="prev-next-title">astromodule.tap.TapService.batch_sync_query</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -494,8 +579,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService"><code class="docutils literal notranslate"><span class="pre">TapService</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.batch_sync_query"><code class="docutils literal notranslate"><span class="pre">TapService.batch_sync_query()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.sync_query"><code class="docutils literal notranslate"><span class="pre">TapService.sync_query()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.tap.TapService.__new__"><code class="docutils literal notranslate"><span class="pre">TapService.__new__()</span></code></a></li>
 </ul>
 </li>
 </ul>

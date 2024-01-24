@@ -1,0 +1,6 @@
+astromodule.table.DropDuplicatesResult.n\_iterations
+====================================================
+
+.. currentmodule:: astromodule.table
+
+.. autoattribute:: DropDuplicatesResult.n_iterations

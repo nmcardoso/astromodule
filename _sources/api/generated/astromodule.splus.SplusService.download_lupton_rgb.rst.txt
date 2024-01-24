@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.download\_lupton\_rgb
+====================================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.download_lupton_rgb

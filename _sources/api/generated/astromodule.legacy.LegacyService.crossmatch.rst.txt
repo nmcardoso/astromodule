@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyService.crossmatch
+===========================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LegacyService.crossmatch

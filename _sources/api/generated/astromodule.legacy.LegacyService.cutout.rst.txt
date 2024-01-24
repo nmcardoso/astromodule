@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyService.cutout
+=======================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LegacyService.cutout

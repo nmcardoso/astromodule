@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.fitbits
+======================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.fitbits

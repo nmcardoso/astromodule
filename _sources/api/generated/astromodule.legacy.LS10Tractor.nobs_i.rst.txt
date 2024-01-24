@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.nobs\_i
+======================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.nobs_i

@@ -1,0 +1,6 @@
+astromodule.table.DropDuplicatesResult.distances
+================================================
+
+.. currentmodule:: astromodule.table
+
+.. autoattribute:: DropDuplicatesResult.distances

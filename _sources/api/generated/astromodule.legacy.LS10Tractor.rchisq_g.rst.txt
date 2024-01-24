@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.rchisq\_g
+========================================
+
+.. currentmodule:: astromodule.legacy
+
+.. autoattribute:: LS10Tractor.rchisq_g

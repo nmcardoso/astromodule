@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.query
+====================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.query

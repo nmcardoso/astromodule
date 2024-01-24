@@ -1,0 +1,6 @@
+astromodule.legacy.LegacyService.sync\_query
+============================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LegacyService.sync_query

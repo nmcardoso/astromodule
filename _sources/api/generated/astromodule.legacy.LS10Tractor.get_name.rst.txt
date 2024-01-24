@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.get\_name
+========================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LS10Tractor.get_name

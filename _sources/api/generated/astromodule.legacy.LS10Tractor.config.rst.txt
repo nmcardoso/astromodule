@@ -1,0 +1,6 @@
+astromodule.legacy.LS10Tractor.config
+=====================================
+
+.. currentmodule:: astromodule.legacy
+
+.. automethod:: LS10Tractor.config
