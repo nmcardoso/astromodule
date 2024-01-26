@@ -600,11 +600,11 @@ class SplusService:
     save_path: str or Path
       The path where the file will be saved
     replace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
-      skip the download. Default to `False`
+      is ``False`` and a file exists in ```save_path`` location, this method will
+      skip the download. Default to ``False``
     """
     if not replace and save_path.exists():
       return
