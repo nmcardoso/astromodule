@@ -20,7 +20,7 @@ import os
 import secrets
 import tempfile
 from datetime import datetime, timedelta
-from io import BytesIO
+from io import BufferedIOBase, BytesIO, RawIOBase
 from multiprocessing import Lock
 from pathlib import Path
 from time import sleep
@@ -500,7 +500,7 @@ class SplusService:
   def download_field(
     self, 
     field: str, 
-    output: str | Path,
+    output: str | Path | BufferedIOBase | RawIOBase,
     band: Literal['R', 'G', 'I', 'U', 'Z', 'F378', 'F395', 'F410', 'F430', 'F515', 'F660', 'F861'] = 'R', 
     weight_image: bool = False,
   ):
@@ -516,9 +516,12 @@ class SplusService:
       json=payload
     )
     
-    output = Path(output)
-    output.mkdir(parents=True, exist_ok=True)
-    output.write_bytes(resp.content)
+    if isinstance(output, (str, Path)):
+      output = Path(output)
+      output.mkdir(parents=True, exist_ok=True)
+      output.write_bytes(resp.content)
+    elif isinstance(output, (BufferedIOBase, RawIOBase)):
+      output.write(resp.content)
     
 
 
