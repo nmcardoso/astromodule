@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 dynamic = ["readme"]
 name = "astromodule"
-version = "0.4.0"
+version = "0.4.1"
 requires-python = ">= 3.8"
 description = "Astronomy Tools"
 keywords = ["astronomy", "machine learning", "data science"]
@@ -35,7 +35,6 @@ dependencies = [
 docs = [
   "Jinja2>=3.1",
   "sphinx",
-  "sphinxcontrib-napoleon",
   "sphinx_copybutton",
   "sphinx-astropy",
   "sphinx-gallery",
