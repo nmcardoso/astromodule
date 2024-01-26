@@ -454,16 +454,16 @@ class SplusService:
     join: bool (optional)
       Join all tables
     repalace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
-      skip the download. Default to `False`
+      is ``False`` and a file exists in ``save_path`` location, this method will
+      skip the download. Default to ``False``
     scope: str (optional)
-      The splus.cloud scope. Can be `public` or `private`. Use `private` only
-      if you are assigned as collaborator. Defaults to `public`
+      The splus.cloud scope. Can be ``public`` or ``private``. Use ``private`` only
+      if you are assigned as collaborator. Defaults to ``public``
     fmt: str (optional)
-      The mime-type of query output. Defaults to `text/csv`
+      The mime-type of query output. Defaults to ``text/csv``
     workers: int (optional)
       The number of parallel processes that will be spawned. Defaults to 1
     """
