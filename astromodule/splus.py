@@ -494,6 +494,32 @@ class SplusService:
     if join:
       df = concat_tables(save_path, comment='#')
       write_table(df, final_path)
+      
+      
+  @update_authorization
+  def download_field(
+    self, 
+    field: str, 
+    output: str | Path,
+    band: Literal['R', 'G', 'I', 'U', 'Z', 'F378', 'F395', 'F410', 'F430', 'F515', 'F660', 'F861'] = 'R', 
+    weight_image: bool = False,
+  ):
+    payload = {
+      'band': band,
+      'dr': None,
+      'fieldname': field,
+      'weight': '1' if weight_image else 0
+    }
+    
+    resp = self.client.post(
+      url='https://splus.cloud/api/download_frame',
+      json=payload
+    )
+    
+    output = Path(output)
+    output.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(resp.content)
+    
 
 
   def _get_url(self, route: str, params: dict = {}) -> str:
