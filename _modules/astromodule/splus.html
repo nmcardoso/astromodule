@@ -884,6 +884,35 @@ document.write(`
       <span class="n">df</span> <span class="o">=</span> <span class="n">concat_tables</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
       <span class="n">write_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">final_path</span><span class="p">)</span></div>
 
+      
+      
+<div class="viewcode-block" id="SplusService.download_field">
+<a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_field.html#astromodule.splus.SplusService.download_field">[docs]</a>
+  <span class="nd">@update_authorization</span>
+  <span class="k">def</span> <span class="nf">download_field</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> 
+    <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+    <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">band</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;F378&#39;</span><span class="p">,</span> <span class="s1">&#39;F395&#39;</span><span class="p">,</span> <span class="s1">&#39;F410&#39;</span><span class="p">,</span> <span class="s1">&#39;F430&#39;</span><span class="p">,</span> <span class="s1">&#39;F515&#39;</span><span class="p">,</span> <span class="s1">&#39;F660&#39;</span><span class="p">,</span> <span class="s1">&#39;F861&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> 
+    <span class="n">weight_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="p">):</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;band&#39;</span><span class="p">:</span> <span class="n">band</span><span class="p">,</span>
+      <span class="s1">&#39;dr&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s1">&#39;fieldname&#39;</span><span class="p">:</span> <span class="n">field</span><span class="p">,</span>
+      <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span> <span class="k">if</span> <span class="n">weight_image</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="p">}</span>
+    
+    <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+      <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://splus.cloud/api/download_frame&#39;</span><span class="p">,</span>
+      <span class="n">json</span><span class="o">=</span><span class="n">payload</span>
+    <span class="p">)</span>
+    
+    <span class="n">output</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">)</span></div>
+
+    
 
 
   <span class="k">def</span> <span class="nf">_get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

@@ -407,6 +407,7 @@ document.write(`
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">astromodule.splus.SplusService</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_image_download.html">astromodule.splus.SplusService.batch_image_download</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_query.html">astromodule.splus.SplusService.batch_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_field.html">astromodule.splus.SplusService.download_field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_fits.html">astromodule.splus.SplusService.download_fits</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_lupton_rgb.html">astromodule.splus.SplusService.download_lupton_rgb</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_trilogy_rgb.html">astromodule.splus.SplusService.download_trilogy_rgb</a></li>
@@ -534,19 +535,22 @@ environment variable</p>
 <tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_query.html#astromodule.splus.SplusService.batch_query" title="astromodule.splus.SplusService.batch_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">batch_query</span></code></a>(sql, save_path[, join, replace, ...])</p></td>
 <td><p>Sends a batch of queries to splus.cloud database</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_fits.html#astromodule.splus.SplusService.download_fits" title="astromodule.splus.SplusService.download_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_fits</span></code></a>(ra, dec, save_path[, replace, ...])</p></td>
-<td><p>Downloads a single FITS image based on object posistion</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_lupton_rgb.html#astromodule.splus.SplusService.download_lupton_rgb" title="astromodule.splus.SplusService.download_lupton_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_lupton_rgb</span></code></a>(ra, dec, save_path[, ...])</p></td>
-<td><p>Downloads a single Lupton RGB image based on object posistion, this method accepts arguments to customize Lupton's parameters</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_trilogy_rgb.html#astromodule.splus.SplusService.download_trilogy_rgb" title="astromodule.splus.SplusService.download_trilogy_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_trilogy_rgb</span></code></a>(ra, dec, save_path[, ...])</p></td>
-<td><p>Downloads a single Trilogy RGB image based on object posistion, this method accepts arguments to customize Trilogy parameters</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.query.html#astromodule.splus.SplusService.query" title="astromodule.splus.SplusService.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(**kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_field.html#astromodule.splus.SplusService.download_field" title="astromodule.splus.SplusService.download_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_field</span></code></a>(**kwargs)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.update_token.html#astromodule.splus.SplusService.update_token" title="astromodule.splus.SplusService.update_token"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_token</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_fits.html#astromodule.splus.SplusService.download_fits" title="astromodule.splus.SplusService.download_fits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_fits</span></code></a>(ra, dec, save_path[, replace, ...])</p></td>
+<td><p>Downloads a single FITS image based on object posistion</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_lupton_rgb.html#astromodule.splus.SplusService.download_lupton_rgb" title="astromodule.splus.SplusService.download_lupton_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_lupton_rgb</span></code></a>(ra, dec, save_path[, ...])</p></td>
+<td><p>Downloads a single Lupton RGB image based on object posistion, this method accepts arguments to customize Lupton's parameters</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.download_trilogy_rgb.html#astromodule.splus.SplusService.download_trilogy_rgb" title="astromodule.splus.SplusService.download_trilogy_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_trilogy_rgb</span></code></a>(ra, dec, save_path[, ...])</p></td>
+<td><p>Downloads a single Trilogy RGB image based on object posistion, this method accepts arguments to customize Trilogy parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.query.html#astromodule.splus.SplusService.query" title="astromodule.splus.SplusService.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(**kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.splus.SplusService.update_token.html#astromodule.splus.SplusService.update_token" title="astromodule.splus.SplusService.update_token"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_token</span></code></a>()</p></td>
 <td><p>Updates splus.cloud authorization token</p></td>
 </tr>
 </tbody>

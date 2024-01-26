@@ -21,6 +21,9 @@ astromodule.splus.SplusService
           ~SplusService.batch_query
        
        
+          ~SplusService.download_field
+       
+       
           ~SplusService.download_fits
        
        

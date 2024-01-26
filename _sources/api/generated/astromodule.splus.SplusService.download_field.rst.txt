@@ -1,0 +1,6 @@
+astromodule.splus.SplusService.download\_field
+==============================================
+
+.. currentmodule:: astromodule.splus
+
+.. automethod:: SplusService.download_field
