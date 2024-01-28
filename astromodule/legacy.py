@@ -1,3 +1,8 @@
+"""
+High-level interface to Legacy Survey data
+"""
+
+
 from io import BytesIO
 from pathlib import Path
 from typing import List, Sequence, Tuple, Union

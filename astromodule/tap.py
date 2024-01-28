@@ -1,3 +1,8 @@
+"""
+High-level interface for data access using Table Access Protocol (TAP)
+"""
+
+
 import secrets
 import tempfile
 from pathlib import Path

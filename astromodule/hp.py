@@ -1,3 +1,9 @@
+"""
+Hyperparameter data model useful for standardizing the training loop of
+machine learning applications.
+"""
+
+
 import logging
 from abc import ABC, abstractmethod
 from typing import Any, List, Sequence, Union

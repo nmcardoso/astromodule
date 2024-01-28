@@ -1,3 +1,8 @@
+"""
+Distance transformation
+"""
+
+
 from typing import Sequence
 
 from astropy import units as u

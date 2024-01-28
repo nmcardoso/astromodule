@@ -1,3 +1,7 @@
+"""
+Input/Output operations
+"""
+
 import bz2
 import concurrent.futures
 import re

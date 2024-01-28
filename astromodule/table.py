@@ -1,3 +1,8 @@
+"""
+Common table operations
+"""
+
+
 import re
 import secrets
 import subprocess
