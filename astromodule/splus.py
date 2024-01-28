@@ -1,5 +1,6 @@
 """
-This module performs requests with ``splus.cloud`` server over https
+This module performs requests to `splus.cloud <https://splus.cloud>`_ server 
+over https
 
 Features
 --------
@@ -12,7 +13,7 @@ Features
 
 Authors
 -------
-Natanael Magalhães Cardoso <natanael.net>
+Natanael Magalhães Cardoso <`natanael.net <https://natanael.net>`_>
 """
 
 import concurrent.futures
@@ -25,9 +26,8 @@ from multiprocessing import Lock
 from pathlib import Path
 from time import sleep
 from typing import Callable, List, Literal, Union
-from urllib.parse import quote, urljoin, urlparse
+from urllib.parse import urljoin, urlparse
 
-import pandas as pd
 import requests
 import tqdm
 
@@ -39,15 +39,11 @@ LOGIN_ROUTE = 'auth/login'
 LUPTON_ROUTE = 'get_lupton_image/{ra}/{dec}/{size}/{r_band}/{g_band}/{b_band}/{stretch}/{Q}'
 TRILOGY_ROUTE = 'get_image/{ra}/{dec}/{size}/{r_band}-{g_band}-{b_band}/{noise}/{saturation}'
 FITS_ROUTE = 'get_cut/{ra}/{dec}/{size}/{band}'
-PUBLIC_TAP_ROUTE = '/public-TAP/tap/async/?request=doQuery&version=1.0&lang=ADQL&phase=run&query={sql}&format={fmt}&upload=upload,param:uplTable'
-PRIVATE_TAP_ROUTE = '/tap/tap/async/?request=doQuery&version=1.0&lang=ADQL&phase=run&query={sql}&format={fmt}&upload=upload,param:uplTable'
 PUBLIC_TAP_ROUTE = '/public-TAP/tap/async/'
 PRIVATE_TAP_ROUTE = '/tap/tap/async/'
-SPLUS_USER = os.environ.get('SPLUS_USER', None)
-SPLUS_PASS = os.environ.get('SPLUS_PASS', None)
+SPLUS_USER = os.environ.get('SPLUS_USER')
+SPLUS_PASS = os.environ.get('SPLUS_PASS')
 
-# Content-Disposition: form-data; name="uplTable"; filename="test.xml"
-# Content-Type: text/xml
 
 
 def update_authorization(f: Callable):
@@ -65,14 +61,14 @@ def update_authorization(f: Callable):
   Callable
     The decorated function
   """
-  def wrapper(*kargs, **kwargs):
-    this: SplusService = kargs[0]
+  def wrapper(*args, **kwargs):
+    this: SplusService = args[0]
     updated = this.update_token()
     if updated:
       this.client.headers.update({
         'Authorization': f'Token {this.token["value"]}'
       })
-    return f(*kargs, **kwargs)
+    return f(*args, **kwargs)
   return wrapper
 
 
@@ -158,10 +154,10 @@ class SplusService:
     save_path: str or Path
       The path where the file will be saved
     replace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
+      is ``False`` and a file exists in ``save_path`` location, this method will
       skip the download
     size: int (optional)
       The image size in pixels
@@ -172,9 +168,9 @@ class SplusService:
     b_band: str (optional)
       The S-PLUS band that will be mapped as B channel of the RGB image
     stretch: int or float (optional)
-      The `stretch` parameter of Lupton's formula
+      The ``stretch`` parameter of Lupton's formula
     Q: int or float (optional)
-      The `Q` parameter of Lupton's formula
+      The ``Q`` parameter of Lupton's formula
     """
     self._download_image(
       LUPTON_ROUTE,
@@ -217,10 +213,10 @@ class SplusService:
     save_path: str or Path
       The path where the file will be saved
     replace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
+      is ``False`` and a file exists in ``save_path`` location, this method will
       skip the download
     size: int (optional)
       The image size in pixels
@@ -231,9 +227,9 @@ class SplusService:
     b_band: str (optional)
       The S-PLUS band that will be mapped as B channel of the RGB image
     noise: int or float (optional)
-      The `noise` parameter of Trilogy algorithm
+      The ``noise`` parameter of Trilogy algorithm
     saturation: int or float (optional)
-      The `saturation` parameter of Trilogy algorithm
+      The ``saturation`` parameter of Trilogy algorithm
     """
     self._download_image(
       TRILOGY_ROUTE,
@@ -271,10 +267,10 @@ class SplusService:
     save_path: str or Path
       The path where the file will be saved
     replace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
+      is ``False`` and a file exists in ``save_path`` location, this method will
       skip the download
     size: int (optional)
       The image size in pixels
@@ -377,16 +373,16 @@ class SplusService:
     save_path: str or Path
       The path where the query output will be saved
     repalace: bool (optional)
-      This method checks if a file exists in `save_path` location before the
-      download. If this parameters is `True` and a file exists in `save_path`
+      This method checks if a file exists in ``save_path`` location before the
+      download. If this parameters is ``True`` and a file exists in ``save_path``
       location, this method will ovewrite the existing file. If this parameter
-      is `False` and a file exists in `sava_path` location, this method will
-      skip the download. Default to `False`
+      is ``False`` and a file exists in ``save_path`` location, this method will
+      skip the download. Default to ``False``
     scope: str (optional)
-      The splus.cloud scope. Can be `public` or `private`. Use `private` only
-      if you are assigned as collaborator. Defaults to `public`
+      The splus.cloud scope. Can be ``public`` or ``private``. Use ``private`` only
+      if you are assigned as collaborator. Defaults to ``public``
     fmt: str (optional)
-      The mimi-type of query output. Defaults to `text/csv`
+      The mimi-type of query output. Defaults to ``text/csv``
 
     Examples
     --------
@@ -644,7 +640,7 @@ class SplusService:
     download_args: list of dict
       The list of parameters of `download_function`
     workers: int (optional)
-      The number of parallel processes that will be spawned. Defaults to 1
+      The number of parallel processes that will be spawned, defaults to ``None``
     """
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
       futures = []
