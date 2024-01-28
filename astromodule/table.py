@@ -286,8 +286,8 @@ def crossmatch(
   fmt: Literal['fits', 'csv'] = 'fits',
 ) -> pd.DataFrame | None:
   """
-  Performs a crossmatch between two tables using STILTS [#ST]_ as a backend.
-  This function invokes spawns a subprocess invoking the ``tmatch2`` [#tmatch2]_ 
+  Performs a crossmatch between two tables using STILTS [#ST]_ as the backend.
+  This function spawns a subprocess invoking the ``tmatch2`` [#tmatch2]_ 
   tool of the STILTS executable. 
 
   Parameters
@@ -517,7 +517,7 @@ def selfmatch(
   Performs a selfmatch in a table (crossmatch agains the same table) using 
   STILTS [#ST]_ as a backend (the same backend of TOPCAT [#TOPCAT]_). 
   This is useful for duplicates removal, groups detection, etc. 
-  This function invokes spawns a subprocess invoking the ``tmatch1`` [#tmatch1]_ 
+  This function spawns a subprocess invoking the ``tmatch1`` [#tmatch1]_ 
   tool of the STILTS executable.
 
   Parameters
