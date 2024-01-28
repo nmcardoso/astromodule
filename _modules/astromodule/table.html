@@ -667,8 +667,8 @@ document.write(`
   <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Performs a crossmatch between two tables using STILTS [#ST]_ as a backend.</span>
-<span class="sd">  This function invokes spawns a subprocess invoking the ``tmatch2`` [#tmatch2]_ </span>
+<span class="sd">  Performs a crossmatch between two tables using STILTS [#ST]_ as the backend.</span>
+<span class="sd">  This function spawns a subprocess invoking the ``tmatch2`` [#tmatch2]_ </span>
 <span class="sd">  tool of the STILTS executable. </span>
 
 <span class="sd">  Parameters</span>
@@ -901,7 +901,7 @@ document.write(`
 <span class="sd">  Performs a selfmatch in a table (crossmatch agains the same table) using </span>
 <span class="sd">  STILTS [#ST]_ as a backend (the same backend of TOPCAT [#TOPCAT]_). </span>
 <span class="sd">  This is useful for duplicates removal, groups detection, etc. </span>
-<span class="sd">  This function invokes spawns a subprocess invoking the ``tmatch1`` [#tmatch1]_ </span>
+<span class="sd">  This function spawns a subprocess invoking the ``tmatch1`` [#tmatch1]_ </span>
 <span class="sd">  tool of the STILTS executable.</span>
 
 <span class="sd">  Parameters</span>
