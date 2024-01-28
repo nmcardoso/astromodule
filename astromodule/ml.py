@@ -186,9 +186,9 @@ class ConstantHyperParameter(HyperParameter):
 
 class HP:
   """
-  A utilitary factory class that produces concrete `HyperParameter` instances
-  according to its type. Used for convenience, to avoid importing and
-  instantiate each type of hyperparmeter separately.
+  A utilitary factory class that produces concretes `HyperParameter` instances
+  according to its types. Used for convenience, to avoid importing and
+  instantiating each type of hyperparmeter separately.
 
   Returns
   -------
@@ -223,9 +223,9 @@ class HP:
 
 class HyperParameterSet:
   """
-  Represents a set of concrete `HyperParameter` instances and 
-  handles the hyperparameters register and access.
-
+  Represents a set of concretes `HyperParameter` instances and 
+  handles the registration and access of hyperparameters.
+  
   Parameters
   ----------
   *args: HyperParameter
