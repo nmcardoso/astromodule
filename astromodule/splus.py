@@ -21,6 +21,7 @@ import os
 import secrets
 import tempfile
 from datetime import datetime, timedelta
+from functools import wraps
 from io import BufferedIOBase, BytesIO, RawIOBase
 from multiprocessing import Lock
 from pathlib import Path
@@ -61,6 +62,7 @@ def update_authorization(f: Callable):
   Callable
     The decorated function
   """
+  @wraps(f)
   def wrapper(*args, **kwargs):
     this: SplusService = args[0]
     updated = this.update_token()
@@ -386,7 +388,7 @@ class SplusService:
 
     Examples
     --------
-    >> service.query('SELECT TOP 10 * FROM dr1.all_dr1', 'query.csv')
+      >>> service.query('SELECT TOP 10 * FROM dr1.all_dr1', 'query.csv')
     """
     params = {
       'request': 'doQuery',
