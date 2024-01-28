@@ -1,0 +1,6 @@
+astromodule.hp.FloatHyperParameter.from\_dict
+=============================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: FloatHyperParameter.from_dict

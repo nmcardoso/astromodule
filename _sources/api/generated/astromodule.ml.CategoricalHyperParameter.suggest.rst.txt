@@ -1,6 +1,0 @@
-astromodule.ml.CategoricalHyperParameter.suggest
-================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: CategoricalHyperParameter.suggest

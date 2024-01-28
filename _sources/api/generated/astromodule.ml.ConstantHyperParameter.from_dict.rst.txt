@@ -1,6 +1,0 @@
-astromodule.ml.ConstantHyperParameter.from\_dict
-================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: ConstantHyperParameter.from_dict

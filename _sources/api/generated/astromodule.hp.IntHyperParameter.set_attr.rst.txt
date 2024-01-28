@@ -1,0 +1,6 @@
+astromodule.hp.IntHyperParameter.set\_attr
+==========================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: IntHyperParameter.set_attr

@@ -1,0 +1,6 @@
+astromodule.hp.HP.const
+=======================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HP.const

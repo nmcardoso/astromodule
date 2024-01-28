@@ -1,6 +1,0 @@
-astromodule.ml.ConstantHyperParameter.set\_trial
-================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: ConstantHyperParameter.set_trial

@@ -1,0 +1,40 @@
+astromodule.hp.IntHyperParameter
+================================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: IntHyperParameter
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~IntHyperParameter.clear_last_value
+       
+       
+          ~IntHyperParameter.from_dict
+       
+       
+          ~IntHyperParameter.set_attr
+       
+       
+          ~IntHyperParameter.set_trial
+       
+       
+          ~IntHyperParameter.suggest
+       
+       
+          ~IntHyperParameter.to_dict
+       
+   
+   
+
+   
+   
+   

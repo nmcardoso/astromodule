@@ -1,0 +1,6 @@
+astromodule.hp.FloatHyperParameter.set\_trial
+=============================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: FloatHyperParameter.set_trial

@@ -1,0 +1,37 @@
+﻿astromodule.hp
+==============
+
+.. automodule:: astromodule.hp
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    CategoricalHyperParameter
+    ConstantHyperParameter
+    FloatHyperParameter
+    HP
+    HyperParameter
+    HyperParameterSet
+    IntHyperParameter
+  
+  
+
+  
+  
+  
+
+
+

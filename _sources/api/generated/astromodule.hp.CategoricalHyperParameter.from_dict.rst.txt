@@ -1,0 +1,6 @@
+astromodule.hp.CategoricalHyperParameter.from\_dict
+===================================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: CategoricalHyperParameter.from_dict

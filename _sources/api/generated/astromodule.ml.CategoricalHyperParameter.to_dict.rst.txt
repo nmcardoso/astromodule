@@ -1,6 +1,0 @@
-astromodule.ml.CategoricalHyperParameter.to\_dict
-=================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: CategoricalHyperParameter.to_dict

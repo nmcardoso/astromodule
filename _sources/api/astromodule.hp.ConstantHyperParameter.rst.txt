@@ -1,0 +1,40 @@
+astromodule.hp.ConstantHyperParameter
+=====================================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: ConstantHyperParameter
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~ConstantHyperParameter.clear_last_value
+       
+       
+          ~ConstantHyperParameter.from_dict
+       
+       
+          ~ConstantHyperParameter.set_attr
+       
+       
+          ~ConstantHyperParameter.set_trial
+       
+       
+          ~ConstantHyperParameter.suggest
+       
+       
+          ~ConstantHyperParameter.to_dict
+       
+   
+   
+
+   
+   
+   

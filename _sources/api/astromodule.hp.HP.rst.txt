@@ -1,0 +1,31 @@
+astromodule.hp.HP
+=================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: HP
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~HP.cat
+       
+       
+          ~HP.const
+       
+       
+          ~HP.num
+       
+   
+   
+
+   
+   
+   

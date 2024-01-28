@@ -1,0 +1,6 @@
+astromodule.hp.ConstantHyperParameter.to\_dict
+==============================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: ConstantHyperParameter.to_dict

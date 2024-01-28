@@ -1,0 +1,6 @@
+astromodule.hp.HP.num
+=====================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HP.num

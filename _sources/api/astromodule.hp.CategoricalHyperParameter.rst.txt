@@ -1,0 +1,40 @@
+astromodule.hp.CategoricalHyperParameter
+========================================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: CategoricalHyperParameter
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~CategoricalHyperParameter.clear_last_value
+       
+       
+          ~CategoricalHyperParameter.from_dict
+       
+       
+          ~CategoricalHyperParameter.set_attr
+       
+       
+          ~CategoricalHyperParameter.set_trial
+       
+       
+          ~CategoricalHyperParameter.suggest
+       
+       
+          ~CategoricalHyperParameter.to_dict
+       
+   
+   
+
+   
+   
+   

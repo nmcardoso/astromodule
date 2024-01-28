@@ -1,0 +1,6 @@
+astromodule.hp.FloatHyperParameter.clear\_last\_value
+=====================================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: FloatHyperParameter.clear_last_value

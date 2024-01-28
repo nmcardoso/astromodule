@@ -1,0 +1,40 @@
+astromodule.hp.HyperParameterSet
+================================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: HyperParameterSet
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~HyperParameterSet.add
+       
+       
+          ~HyperParameterSet.check_missing_hp
+       
+       
+          ~HyperParameterSet.clear_values_dict
+       
+       
+          ~HyperParameterSet.get
+       
+       
+          ~HyperParameterSet.set_trial
+       
+       
+          ~HyperParameterSet.to_values_dict
+       
+   
+   
+
+   
+   
+   

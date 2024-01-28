@@ -1,0 +1,40 @@
+astromodule.hp.FloatHyperParameter
+==================================
+
+.. currentmodule:: astromodule.hp
+
+.. autoclass:: FloatHyperParameter
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~FloatHyperParameter.clear_last_value
+       
+       
+          ~FloatHyperParameter.from_dict
+       
+       
+          ~FloatHyperParameter.set_attr
+       
+       
+          ~FloatHyperParameter.set_trial
+       
+       
+          ~FloatHyperParameter.suggest
+       
+       
+          ~FloatHyperParameter.to_dict
+       
+   
+   
+
+   
+   
+   

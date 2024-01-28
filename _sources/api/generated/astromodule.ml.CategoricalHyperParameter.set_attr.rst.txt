@@ -1,6 +1,0 @@
-astromodule.ml.CategoricalHyperParameter.set\_attr
-==================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: CategoricalHyperParameter.set_attr

@@ -1,6 +1,0 @@
-astromodule.ml.HyperParameter.suggest
-=====================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: HyperParameter.suggest

@@ -1,0 +1,6 @@
+astromodule.hp.FloatHyperParameter.suggest
+==========================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: FloatHyperParameter.suggest

@@ -1,0 +1,6 @@
+astromodule.hp.ConstantHyperParameter.set\_trial
+================================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: ConstantHyperParameter.set_trial

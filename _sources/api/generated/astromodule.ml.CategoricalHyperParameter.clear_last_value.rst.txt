@@ -1,6 +1,0 @@
-astromodule.ml.CategoricalHyperParameter.clear\_last\_value
-===========================================================
-
-.. currentmodule:: astromodule.ml
-
-.. automethod:: CategoricalHyperParameter.clear_last_value

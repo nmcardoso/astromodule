@@ -7,9 +7,9 @@ API Reference
    :recursive:
 
    astromodule.distance
+   astromodule.hp
    astromodule.io
    astromodule.legacy
-   astromodule.ml
    astromodule.splus
    astromodule.table
    astromodule.tap

@@ -1,0 +1,6 @@
+astromodule.hp.HP.cat
+=====================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HP.cat

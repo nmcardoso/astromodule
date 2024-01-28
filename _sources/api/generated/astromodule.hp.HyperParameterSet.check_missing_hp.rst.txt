@@ -1,0 +1,6 @@
+astromodule.hp.HyperParameterSet.check\_missing\_hp
+===================================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HyperParameterSet.check_missing_hp

@@ -1,0 +1,6 @@
+astromodule.hp.HyperParameterSet.add
+====================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HyperParameterSet.add
