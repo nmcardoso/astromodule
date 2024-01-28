@@ -1,0 +1,6 @@
+astromodule.ml.HyperParameterSet.get
+====================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: HyperParameterSet.get

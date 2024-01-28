@@ -1,0 +1,6 @@
+astromodule.ml.CategoricalHyperParameter.set\_trial
+===================================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: CategoricalHyperParameter.set_trial

@@ -1,0 +1,6 @@
+astromodule.ml.IntHyperParameter.clear\_last\_value
+===================================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: IntHyperParameter.clear_last_value

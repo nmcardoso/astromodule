@@ -9,6 +9,7 @@ API Reference
    astromodule.distance
    astromodule.io
    astromodule.legacy
+   astromodule.ml
    astromodule.splus
    astromodule.table
    astromodule.tap

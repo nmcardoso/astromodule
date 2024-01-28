@@ -1,0 +1,6 @@
+astromodule.ml.HyperParameter.to\_dict
+======================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: HyperParameter.to_dict

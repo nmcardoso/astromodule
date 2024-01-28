@@ -363,7 +363,8 @@ document.write(`
                   
   <h1>Source code for astromodule.splus</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">This module performs requests with ``splus.cloud`` server over https</span>
+<span class="sd">This module performs requests to `splus.cloud &lt;https://splus.cloud&gt;`_ server </span>
+<span class="sd">over https</span>
 
 <span class="sd">Features</span>
 <span class="sd">--------</span>
@@ -376,7 +377,7 @@ document.write(`
 
 <span class="sd">Authors</span>
 <span class="sd">-------</span>
-<span class="sd">Natanael Magalhães Cardoso &lt;natanael.net&gt;</span>
+<span class="sd">Natanael Magalhães Cardoso &lt;`natanael.net &lt;https://natanael.net&gt;`_&gt;</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">concurrent.futures</span>
@@ -389,9 +390,8 @@ document.write(`
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">quote</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">tqdm</span>
 
@@ -403,15 +403,11 @@ document.write(`
 <span class="n">LUPTON_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_lupton_image/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{r_band}</span><span class="s1">/</span><span class="si">{g_band}</span><span class="s1">/</span><span class="si">{b_band}</span><span class="s1">/</span><span class="si">{stretch}</span><span class="s1">/</span><span class="si">{Q}</span><span class="s1">&#39;</span>
 <span class="n">TRILOGY_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_image/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{r_band}</span><span class="s1">-</span><span class="si">{g_band}</span><span class="s1">-</span><span class="si">{b_band}</span><span class="s1">/</span><span class="si">{noise}</span><span class="s1">/</span><span class="si">{saturation}</span><span class="s1">&#39;</span>
 <span class="n">FITS_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;get_cut/</span><span class="si">{ra}</span><span class="s1">/</span><span class="si">{dec}</span><span class="s1">/</span><span class="si">{size}</span><span class="s1">/</span><span class="si">{band}</span><span class="s1">&#39;</span>
-<span class="n">PUBLIC_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/public-TAP/tap/async/?request=doQuery&amp;version=1.0&amp;lang=ADQL&amp;phase=run&amp;query=</span><span class="si">{sql}</span><span class="s1">&amp;format=</span><span class="si">{fmt}</span><span class="s1">&amp;upload=upload,param:uplTable&#39;</span>
-<span class="n">PRIVATE_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/tap/tap/async/?request=doQuery&amp;version=1.0&amp;lang=ADQL&amp;phase=run&amp;query=</span><span class="si">{sql}</span><span class="s1">&amp;format=</span><span class="si">{fmt}</span><span class="s1">&amp;upload=upload,param:uplTable&#39;</span>
 <span class="n">PUBLIC_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/public-TAP/tap/async/&#39;</span>
 <span class="n">PRIVATE_TAP_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;/tap/tap/async/&#39;</span>
-<span class="n">SPLUS_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_USER&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">SPLUS_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_PASS&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">SPLUS_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_USER&#39;</span><span class="p">)</span>
+<span class="n">SPLUS_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPLUS_PASS&#39;</span><span class="p">)</span>
 
-<span class="c1"># Content-Disposition: form-data; name=&quot;uplTable&quot;; filename=&quot;test.xml&quot;</span>
-<span class="c1"># Content-Type: text/xml</span>
 
 
 <div class="viewcode-block" id="update_authorization">
@@ -431,14 +427,14 @@ document.write(`
 <span class="sd">  Callable</span>
 <span class="sd">    The decorated function</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">kargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">this</span><span class="p">:</span> <span class="n">SplusService</span> <span class="o">=</span> <span class="n">kargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">this</span><span class="p">:</span> <span class="n">SplusService</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">updated</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">update_token</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">updated</span><span class="p">:</span>
       <span class="n">this</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
         <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Token </span><span class="si">{</span><span class="n">this</span><span class="o">.</span><span class="n">token</span><span class="p">[</span><span class="s2">&quot;value&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
       <span class="p">})</span>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">kargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">wrapper</span></div>
 
 
@@ -532,10 +528,10 @@ document.write(`
 <span class="sd">    save_path: str or Path</span>
 <span class="sd">      The path where the file will be saved</span>
 <span class="sd">    replace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
 <span class="sd">      skip the download</span>
 <span class="sd">    size: int (optional)</span>
 <span class="sd">      The image size in pixels</span>
@@ -546,9 +542,9 @@ document.write(`
 <span class="sd">    b_band: str (optional)</span>
 <span class="sd">      The S-PLUS band that will be mapped as B channel of the RGB image</span>
 <span class="sd">    stretch: int or float (optional)</span>
-<span class="sd">      The `stretch` parameter of Lupton&#39;s formula</span>
+<span class="sd">      The ``stretch`` parameter of Lupton&#39;s formula</span>
 <span class="sd">    Q: int or float (optional)</span>
-<span class="sd">      The `Q` parameter of Lupton&#39;s formula</span>
+<span class="sd">      The ``Q`` parameter of Lupton&#39;s formula</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_download_image</span><span class="p">(</span>
       <span class="n">LUPTON_ROUTE</span><span class="p">,</span>
@@ -594,10 +590,10 @@ document.write(`
 <span class="sd">    save_path: str or Path</span>
 <span class="sd">      The path where the file will be saved</span>
 <span class="sd">    replace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
 <span class="sd">      skip the download</span>
 <span class="sd">    size: int (optional)</span>
 <span class="sd">      The image size in pixels</span>
@@ -608,9 +604,9 @@ document.write(`
 <span class="sd">    b_band: str (optional)</span>
 <span class="sd">      The S-PLUS band that will be mapped as B channel of the RGB image</span>
 <span class="sd">    noise: int or float (optional)</span>
-<span class="sd">      The `noise` parameter of Trilogy algorithm</span>
+<span class="sd">      The ``noise`` parameter of Trilogy algorithm</span>
 <span class="sd">    saturation: int or float (optional)</span>
-<span class="sd">      The `saturation` parameter of Trilogy algorithm</span>
+<span class="sd">      The ``saturation`` parameter of Trilogy algorithm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_download_image</span><span class="p">(</span>
       <span class="n">TRILOGY_ROUTE</span><span class="p">,</span>
@@ -651,10 +647,10 @@ document.write(`
 <span class="sd">    save_path: str or Path</span>
 <span class="sd">      The path where the file will be saved</span>
 <span class="sd">    replace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
 <span class="sd">      skip the download</span>
 <span class="sd">    size: int (optional)</span>
 <span class="sd">      The image size in pixels</span>
@@ -763,16 +759,16 @@ document.write(`
 <span class="sd">    save_path: str or Path</span>
 <span class="sd">      The path where the query output will be saved</span>
 <span class="sd">    repalace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
-<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
+<span class="sd">      skip the download. Default to ``False``</span>
 <span class="sd">    scope: str (optional)</span>
-<span class="sd">      The splus.cloud scope. Can be `public` or `private`. Use `private` only</span>
-<span class="sd">      if you are assigned as collaborator. Defaults to `public`</span>
+<span class="sd">      The splus.cloud scope. Can be ``public`` or ``private``. Use ``private`` only</span>
+<span class="sd">      if you are assigned as collaborator. Defaults to ``public``</span>
 <span class="sd">    fmt: str (optional)</span>
-<span class="sd">      The mimi-type of query output. Defaults to `text/csv`</span>
+<span class="sd">      The mimi-type of query output. Defaults to ``text/csv``</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -843,16 +839,16 @@ document.write(`
 <span class="sd">    join: bool (optional)</span>
 <span class="sd">      Join all tables</span>
 <span class="sd">    repalace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
-<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">      is ``False`` and a file exists in ``save_path`` location, this method will</span>
+<span class="sd">      skip the download. Default to ``False``</span>
 <span class="sd">    scope: str (optional)</span>
-<span class="sd">      The splus.cloud scope. Can be `public` or `private`. Use `private` only</span>
-<span class="sd">      if you are assigned as collaborator. Defaults to `public`</span>
+<span class="sd">      The splus.cloud scope. Can be ``public`` or ``private``. Use ``private`` only</span>
+<span class="sd">      if you are assigned as collaborator. Defaults to ``public``</span>
 <span class="sd">    fmt: str (optional)</span>
-<span class="sd">      The mime-type of query output. Defaults to `text/csv`</span>
+<span class="sd">      The mime-type of query output. Defaults to ``text/csv``</span>
 <span class="sd">    workers: int (optional)</span>
 <span class="sd">      The number of parallel processes that will be spawned. Defaults to 1</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -993,11 +989,11 @@ document.write(`
 <span class="sd">    save_path: str or Path</span>
 <span class="sd">      The path where the file will be saved</span>
 <span class="sd">    replace: bool (optional)</span>
-<span class="sd">      This method checks if a file exists in `save_path` location before the</span>
-<span class="sd">      download. If this parameters is `True` and a file exists in `save_path`</span>
+<span class="sd">      This method checks if a file exists in ``save_path`` location before the</span>
+<span class="sd">      download. If this parameters is ``True`` and a file exists in ``save_path``</span>
 <span class="sd">      location, this method will ovewrite the existing file. If this parameter</span>
-<span class="sd">      is `False` and a file exists in `sava_path` location, this method will</span>
-<span class="sd">      skip the download. Default to `False`</span>
+<span class="sd">      is ``False`` and a file exists in ```save_path`` location, this method will</span>
+<span class="sd">      skip the download. Default to ``False``</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">replace</span> <span class="ow">and</span> <span class="n">save_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
       <span class="k">return</span>
@@ -1037,7 +1033,7 @@ document.write(`
 <span class="sd">    download_args: list of dict</span>
 <span class="sd">      The list of parameters of `download_function`</span>
 <span class="sd">    workers: int (optional)</span>
-<span class="sd">      The number of parallel processes that will be spawned. Defaults to 1</span>
+<span class="sd">      The number of parallel processes that will be spawned, defaults to ``None``</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
       <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>

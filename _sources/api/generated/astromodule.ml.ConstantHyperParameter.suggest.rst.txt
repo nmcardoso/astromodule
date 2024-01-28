@@ -1,0 +1,6 @@
+astromodule.ml.ConstantHyperParameter.suggest
+=============================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: ConstantHyperParameter.suggest

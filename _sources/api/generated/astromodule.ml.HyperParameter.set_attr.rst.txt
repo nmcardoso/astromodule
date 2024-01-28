@@ -1,0 +1,6 @@
+astromodule.ml.HyperParameter.set\_attr
+=======================================
+
+.. currentmodule:: astromodule.ml
+
+.. automethod:: HyperParameter.set_attr
