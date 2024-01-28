@@ -28,7 +28,8 @@ dependencies = [
   "Pillow>=7.1.2",
   "astropy>=5.2",
   "matplotlib",
-  "seaborn"
+  "seaborn",
+  "optuna",
 ]
 
 [project.optional-dependencies]

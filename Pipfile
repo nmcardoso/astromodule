@@ -16,6 +16,7 @@ wheel = "*"
 pillow = "*"
 pyarrow = "*"
 fastparquet = "*"
+optuna = "*"
 
 [dev-packages]
 jinja2 = "*"
