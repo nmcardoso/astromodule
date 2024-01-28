@@ -34,7 +34,7 @@ class HyperParameter(ABC):
     Parameters
     ----------
     trial: optuna.trial.FrozenTrial, optional
-      An instance of Trying ``optuna``, by default none
+      An instance of the ``optuna`` trial, by default none
     """
     pass
 
