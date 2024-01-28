@@ -579,8 +579,34 @@ document.write(`
 <h1>astromodule.splus.SplusService.query<a class="headerlink" href="#astromodule-splus-splusservice-query" title="Link to this heading">#</a></h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="astromodule.splus.SplusService.query">
-<span class="sig-prename descclassname"><span class="pre">SplusService.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/astromodule/splus.html#SplusService.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.splus.SplusService.query" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">SplusService.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.12)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'public'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'private'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'public'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'text/csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/astromodule/splus.html#SplusService.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.splus.SplusService.query" title="Link to this definition">#</a></dt>
+<dd><p>Sends a single query to splus.cloud database</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sql: str</strong></dt><dd><p>The sql query string</p>
+</dd>
+<dt><strong>save_path: str or Path</strong></dt><dd><p>The path where the query output will be saved</p>
+</dd>
+<dt><strong>repalace: bool (optional)</strong></dt><dd><p>This method checks if a file exists in <code class="docutils literal notranslate"><span class="pre">save_path</span></code> location before the
+download. If this parameters is <code class="docutils literal notranslate"><span class="pre">True</span></code> and a file exists in <code class="docutils literal notranslate"><span class="pre">save_path</span></code>
+location, this method will ovewrite the existing file. If this parameter
+is <code class="docutils literal notranslate"><span class="pre">False</span></code> and a file exists in <code class="docutils literal notranslate"><span class="pre">save_path</span></code> location, this method will
+skip the download. Default to <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+</dd>
+<dt><strong>scope: str (optional)</strong></dt><dd><p>The splus.cloud scope. Can be <code class="docutils literal notranslate"><span class="pre">public</span></code> or <code class="docutils literal notranslate"><span class="pre">private</span></code>. Use <code class="docutils literal notranslate"><span class="pre">private</span></code> only
+if you are assigned as collaborator. Defaults to <code class="docutils literal notranslate"><span class="pre">public</span></code></p>
+</dd>
+<dt><strong>fmt: str (optional)</strong></dt><dd><p>The mimi-type of query output. Defaults to <code class="docutils literal notranslate"><span class="pre">text/csv</span></code></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SELECT TOP 10 * FROM dr1.all_dr1&#39;</span><span class="p">,</span> <span class="s1">&#39;query.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </section>
 
