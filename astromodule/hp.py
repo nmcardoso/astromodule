@@ -1,6 +1,6 @@
 import logging
 from abc import ABC, abstractmethod
-from typing import Any, Sequence, Union
+from typing import Any, List, Sequence, Union
 
 import optuna
 
@@ -233,12 +233,12 @@ class HyperParameterSet:
 
   See Also
   --------
-  astromodule.ml.HyperParameter
-  astromodule.ml.CategoricalHyperParameter
-  astromodule.ml.IntHyperParameter
-  astromodule.ml.FloatHyperParameter
-  astromodule.ml.ConstantHyperParameter
-  astromodule.ml.HP
+  astromodule.hp.HyperParameter
+  astromodule.hp.CategoricalHyperParameter
+  astromodule.hp.IntHyperParameter
+  astromodule.hp.FloatHyperParameter
+  astromodule.hp.ConstantHyperParameter
+  astromodule.hp.HP
   """
   def __init__(self, *args: HyperParameter):
     self.hps = {}
@@ -299,7 +299,7 @@ class HyperParameterSet:
 
     See Also
     --------
-    astromodule.ml.HyperParameter.suggest
+    astromodule.hp.HyperParameter.suggest
     """
     if not name in self.hps:
       L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
@@ -339,3 +339,42 @@ class HyperParameterSet:
     """
     for hp in self.hps.values():
       hp.clear_last_value()
+      
+      
+  def check_missing_hp(self, hps: Sequence[str]) -> List[str]:
+    """
+    Checks if all elements in a given list is in hyperparameters set
+
+    Parameters
+    ----------
+    hps : Sequence[str]
+      A list of hyperparameters name that must include the hyperparameters set
+
+    Returns
+    -------
+    List[str]
+      A list of missing hyperparameters
+    """
+    missing = []
+    for hp in hps:
+      if hp not in self:
+        missing.append(hp)
+    return missing
+  
+  
+  def __contains__(self, key: str):
+    """
+    Checks if the hyperparameter set contains a hp identified by the given key
+
+    Parameters
+    ----------
+    key : str
+      The hyperparameter name
+
+    Returns
+    -------
+    bool
+      ``True`` if the set contains a hyperparameter with a given key,
+      ``False`` otherwise.
+    """
+    return any(e == key for e in self.hps.keys())
