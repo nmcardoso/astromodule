@@ -246,7 +246,8 @@ class HyperParameterSet:
   astromodule.hp.ConstantHyperParameter
   astromodule.hp.HP
   """
-  def __init__(self, *args: HyperParameter):
+  def __init__(self, *args: HyperParameter, verbose: bool = True):
+    self.verbose = verbose
     self.hps = {}
 
     for hp in args:
@@ -308,7 +309,8 @@ class HyperParameterSet:
     astromodule.hp.HyperParameter.suggest
     """
     if not name in self.hps:
-      L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
+      if self.verbose:
+        L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
       return default
 
     if trial is None:
