@@ -669,7 +669,8 @@ document.write(`
 <span class="sd">  astromodule.hp.ConstantHyperParameter</span>
 <span class="sd">  astromodule.hp.HP</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">hps</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
@@ -736,7 +737,8 @@ document.write(`
 <span class="sd">    astromodule.hp.HyperParameter.suggest</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="p">:</span>
-      <span class="n">L</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hyperparameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> not found! Returning default value: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="n">L</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hyperparameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> not found! Returning default value: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
       <span class="k">return</span> <span class="n">default</span>
 
     <span class="k">if</span> <span class="n">trial</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
