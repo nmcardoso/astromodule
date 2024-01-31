@@ -30,6 +30,7 @@ dependencies = [
   "matplotlib",
   "seaborn",
   "optuna",
+  "graphviz",
 ]
 
 [project.optional-dependencies]

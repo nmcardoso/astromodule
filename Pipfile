@@ -17,6 +17,7 @@ pillow = "*"
 pyarrow = "*"
 fastparquet = "*"
 optuna = "*"
+graphviz = "*"
 
 [dev-packages]
 jinja2 = "*"
