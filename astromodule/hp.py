@@ -313,15 +313,15 @@ class HyperParameterSet:
     --------
     astromodule.hp.HyperParameter.suggest
     """
-    if not name in self.hps:
-      if self.verbose:
-        L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
-      return default
-    
     if regex:
       reg = re.compile(name)
       matched_keys = filter(reg.match, self.hps.keys())
       return {k: self.hps[k].suggest(trial) for k in matched_keys}
+    
+    if not name in self.hps:
+      if self.verbose:
+        L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
+      return default
 
     return self.hps[name].suggest(trial)
 
@@ -393,3 +393,13 @@ class HyperParameterSet:
       ``False`` otherwise.
     """
     return any(e == key for e in self.hps.keys())
+  
+  
+if __name__ == '__main__':
+  hps = HyperParameterSet(
+    HP.const('mlp_validation_fraction', 0.2),
+    HP.const('mlp_early_stopping', True),
+    HP.const('mlp_n_iter_no_change', 10),
+    verbose=False,
+  )
+  print(hps.get(r'mlp_*', regex=True))
