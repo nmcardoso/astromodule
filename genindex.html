@@ -355,6 +355,7 @@ document.write(`
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
 </div>
@@ -385,6 +386,10 @@ document.write(`
         <li><a href="api/astromodule.legacy.LS10.html#astromodule.legacy.LS10.__new__">(LS10 method)</a>
 </li>
         <li><a href="api/astromodule.legacy.LS10Tractor.html#astromodule.legacy.LS10Tractor.__new__">(LS10Tractor method)</a>
+</li>
+        <li><a href="api/astromodule.pipeline.Pipeline.html#astromodule.pipeline.Pipeline.__new__">(Pipeline method)</a>
+</li>
+        <li><a href="api/astromodule.pipeline.PipelineStage.html#astromodule.pipeline.PipelineStage.__new__">(PipelineStage method)</a>
 </li>
         <li><a href="api/astromodule.splus.SplusService.html#astromodule.splus.SplusService.__new__">(SplusService method)</a>
 </li>
@@ -424,13 +429,20 @@ document.write(`
         <li><a href="api/astromodule.io.html#module-astromodule.io">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     astromodule.legacy
 
       <ul>
         <li><a href="api/astromodule.legacy.html#module-astromodule.legacy">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    astromodule.pipeline
+
+      <ul>
+        <li><a href="api/astromodule.pipeline.html#module-astromodule.pipeline">module</a>
 </li>
       </ul></li>
       <li>
@@ -611,6 +623,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/generated/astromodule.hp.HyperParameterSet.get.html#astromodule.hp.HyperParameterSet.get">get() (HyperParameterSet method)</a>
 </li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.get_artifact.html#astromodule.pipeline.PipelineStage.get_artifact">get_artifact() (PipelineStage method)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LS10.get_name.html#astromodule.legacy.LS10.get_name">get_name() (LS10 method)</a>
 
       <ul>
@@ -619,6 +633,8 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.get_output.html#astromodule.pipeline.PipelineStage.get_output">get_output() (PipelineStage method)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LegacyService.get_pixscale.html#astromodule.legacy.LegacyService.get_pixscale">get_pixscale() (LegacyService method)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.get_schema.html#astromodule.legacy.LS10Tractor.get_schema">get_schema() (LS10Tractor method)</a>
@@ -693,8 +709,6 @@ document.write(`
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.maskbits.html#astromodule.legacy.LS10Tractor.maskbits">maskbits (LS10Tractor attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     module
 
@@ -707,6 +721,8 @@ document.write(`
 </li>
         <li><a href="api/astromodule.legacy.html#module-astromodule.legacy">astromodule.legacy</a>
 </li>
+        <li><a href="api/astromodule.pipeline.html#module-astromodule.pipeline">astromodule.pipeline</a>
+</li>
         <li><a href="api/astromodule.splus.html#module-astromodule.splus">astromodule.splus</a>
 </li>
         <li><a href="api/astromodule.table.html#module-astromodule.table">astromodule.table</a>
@@ -716,6 +732,8 @@ document.write(`
         <li><a href="api/astromodule.utils.html#module-astromodule.utils">astromodule.utils</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/astromodule.distance.mpc2arcsec.html#astromodule.distance.mpc2arcsec">mpc2arcsec() (in module astromodule.distance)</a>
 </li>
   </ul></td>
@@ -726,16 +744,18 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/generated/astromodule.table.DropDuplicatesResult.n_iterations.html#astromodule.table.DropDuplicatesResult.n_iterations">n_iterations (DropDuplicatesResult attribute)</a>
 </li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.name.html#astromodule.pipeline.PipelineStage.name">name (PipelineStage attribute)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_g.html#astromodule.legacy.LS10Tractor.nobs_g">nobs_g (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_i.html#astromodule.legacy.LS10Tractor.nobs_i">nobs_i (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_r.html#astromodule.legacy.LS10Tractor.nobs_r">nobs_r (LS10Tractor attribute)</a>
 </li>
-      <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_w1.html#astromodule.legacy.LS10Tractor.nobs_w1">nobs_w1 (LS10Tractor attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_w1.html#astromodule.legacy.LS10Tractor.nobs_w1">nobs_w1 (LS10Tractor attribute)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_w2.html#astromodule.legacy.LS10Tractor.nobs_w2">nobs_w2 (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.nobs_w3.html#astromodule.legacy.LS10Tractor.nobs_w3">nobs_w3 (LS10Tractor attribute)</a>
@@ -761,6 +781,16 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/astromodule.io.parallel_function_executor.html#astromodule.io.parallel_function_executor">parallel_function_executor() (in module astromodule.io)</a>
+</li>
+      <li><a href="api/astromodule.pipeline.Pipeline.html#astromodule.pipeline.Pipeline">Pipeline (class in astromodule.pipeline)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/astromodule.pipeline.PipelineStage.html#astromodule.pipeline.PipelineStage">PipelineStage (class in astromodule.pipeline)</a>
+</li>
+      <li><a href="api/generated/astromodule.pipeline.Pipeline.plot.html#astromodule.pipeline.Pipeline.plot">plot() (Pipeline method)</a>
+</li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.produces.html#astromodule.pipeline.PipelineStage.produces">produces (PipelineStage attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -788,20 +818,30 @@ document.write(`
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.rchisq_w1.html#astromodule.legacy.LS10Tractor.rchisq_w1">rchisq_w1 (LS10Tractor attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.rchisq_w2.html#astromodule.legacy.LS10Tractor.rchisq_w2">rchisq_w2 (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.rchisq_w3.html#astromodule.legacy.LS10Tractor.rchisq_w3">rchisq_w3 (LS10Tractor attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.rchisq_w4.html#astromodule.legacy.LS10Tractor.rchisq_w4">rchisq_w4 (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.rchisq_z.html#astromodule.legacy.LS10Tractor.rchisq_z">rchisq_z (LS10Tractor attribute)</a>
 </li>
       <li><a href="api/astromodule.io.read_table.html#astromodule.io.read_table">read_table() (in module astromodule.io)</a>
 </li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.register_artifact.html#astromodule.pipeline.PipelineStage.register_artifact">register_artifact() (PipelineStage method)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.release.html#astromodule.legacy.LS10Tractor.release">release (LS10Tractor attribute)</a>
 </li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.requires.html#astromodule.pipeline.PipelineStage.requires">requires (PipelineStage attribute)</a>
+</li>
+      <li><a href="api/generated/astromodule.pipeline.Pipeline.run.html#astromodule.pipeline.Pipeline.run">run() (Pipeline method)</a>
+
+      <ul>
+        <li><a href="api/generated/astromodule.pipeline.PipelineStage.run.html#astromodule.pipeline.PipelineStage.run">(PipelineStage method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -822,6 +862,8 @@ document.write(`
         <li><a href="api/generated/astromodule.hp.IntHyperParameter.set_attr.html#astromodule.hp.IntHyperParameter.set_attr">(IntHyperParameter method)</a>
 </li>
       </ul></li>
+      <li><a href="api/generated/astromodule.pipeline.PipelineStage.set_output.html#astromodule.pipeline.PipelineStage.set_output">set_output() (PipelineStage method)</a>
+</li>
       <li><a href="api/generated/astromodule.legacy.LS10Tractor.set_schema.html#astromodule.legacy.LS10Tractor.set_schema">set_schema() (LS10Tractor method)</a>
 </li>
       <li><a href="api/generated/astromodule.hp.CategoricalHyperParameter.set_trial.html#astromodule.hp.CategoricalHyperParameter.set_trial">set_trial() (CategoricalHyperParameter method)</a>
@@ -901,6 +943,14 @@ document.write(`
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/generated/astromodule.splus.SplusService.update_token.html#astromodule.splus.SplusService.update_token">update_token() (SplusService method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/generated/astromodule.pipeline.Pipeline.validate.html#astromodule.pipeline.Pipeline.validate">validate() (Pipeline method)</a>
 </li>
   </ul></td>
 </tr></table>

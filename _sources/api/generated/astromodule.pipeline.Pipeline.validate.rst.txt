@@ -1,0 +1,6 @@
+astromodule.pipeline.Pipeline.validate
+======================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: Pipeline.validate

@@ -10,6 +10,7 @@ API Reference
    astromodule.hp
    astromodule.io
    astromodule.legacy
+   astromodule.pipeline
    astromodule.splus
    astromodule.table
    astromodule.tap

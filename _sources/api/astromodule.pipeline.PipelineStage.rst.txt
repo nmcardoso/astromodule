@@ -1,0 +1,47 @@
+astromodule.pipeline.PipelineStage
+==================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoclass:: PipelineStage
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~PipelineStage.get_artifact
+       
+       
+          ~PipelineStage.get_output
+       
+       
+          ~PipelineStage.register_artifact
+       
+       
+          ~PipelineStage.run
+       
+       
+          ~PipelineStage.set_output
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~PipelineStage.name
+      ~PipelineStage.produces
+      ~PipelineStage.requires
+   
+   

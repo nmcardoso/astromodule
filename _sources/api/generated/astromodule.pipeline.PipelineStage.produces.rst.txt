@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStage.produces
+===========================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoattribute:: PipelineStage.produces

@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStage.register\_artifact
+=====================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStage.register_artifact
