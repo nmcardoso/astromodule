@@ -7,7 +7,7 @@ machine learning applications.
 import logging
 import re
 from abc import ABC, abstractmethod
-from typing import Any, List, Sequence, Union
+from typing import Any, Dict, List, Sequence, Union
 
 import optuna
 
@@ -257,6 +257,14 @@ class HyperParameterSet:
         self.hps[name] = hp
       elif isinstance(hp, dict):
         pass
+      
+      
+  @classmethod
+  def from_dict(cls, d: Dict[str, Any]):
+    hp_list = []
+    for k, v in d.items():
+      hp_list.append(ConstantHyperParameter(k, v))
+    return HyperParameterSet(*hp_list)
 
 
   def add(self, hyperparameters: Sequence[Union[dict, HyperParameter]]):
