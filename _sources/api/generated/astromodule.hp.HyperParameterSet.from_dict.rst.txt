@@ -1,0 +1,6 @@
+astromodule.hp.HyperParameterSet.from\_dict
+===========================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HyperParameterSet.from_dict
