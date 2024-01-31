@@ -741,15 +741,15 @@ document.write(`
 <span class="sd">    --------</span>
 <span class="sd">    astromodule.hp.HyperParameter.suggest</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="p">:</span>
-      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-        <span class="n">L</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hyperparameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> not found! Returning default value: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-      <span class="k">return</span> <span class="n">default</span>
-    
     <span class="k">if</span> <span class="n">regex</span><span class="p">:</span>
       <span class="n">reg</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
       <span class="n">matched_keys</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">match</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
       <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">suggest</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">matched_keys</span><span class="p">}</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="n">L</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hyperparameter </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> not found! Returning default value: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">default</span>
 
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">suggest</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span></div>
 
@@ -835,6 +835,16 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="n">key</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
 
+  
+  
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="n">hps</span> <span class="o">=</span> <span class="n">HyperParameterSet</span><span class="p">(</span>
+    <span class="n">HP</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="s1">&#39;mlp_validation_fraction&#39;</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span>
+    <span class="n">HP</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="s1">&#39;mlp_early_stopping&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span>
+    <span class="n">HP</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="s1">&#39;mlp_n_iter_no_change&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+  <span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">hps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;mlp_*&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 
                 </article>
