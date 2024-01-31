@@ -5,6 +5,7 @@ machine learning applications.
 
 
 import logging
+import re
 from abc import ABC, abstractmethod
 from typing import Any, List, Sequence, Union
 
@@ -281,7 +282,8 @@ class HyperParameterSet:
     self,
     name: str,
     trial: optuna.trial.FrozenTrial = None,
-    default: Any = None
+    default: Any = None,
+    regex: bool = False,
   ) -> Any:
     """
     Get the value of a hyperparameter identified by its name.
@@ -298,6 +300,9 @@ class HyperParameterSet:
     
     default: Any
       Default value returned if the specified hyperparameter name wasn't found
+      
+    regex : bool
+      When interpret ``name`` parameter as a regex and get all matches as a dict
 
     Returns
     -------
@@ -312,11 +317,13 @@ class HyperParameterSet:
       if self.verbose:
         L.warning(f'Hyperparameter {name} not found! Returning default value: {str(default)}')
       return default
+    
+    if regex:
+      reg = re.compile(name)
+      matched_keys = filter(reg.match, self.hps.keys())
+      return {k: self.hps[k].suggest(trial) for k in matched_keys}
 
-    if trial is None:
-      return self.hps[name].suggest()
-    else:
-      return self.hps[name].suggest(trial)
+    return self.hps[name].suggest(trial)
 
 
   def set_trial(self, trial: optuna.trial.FrozenTrial):
