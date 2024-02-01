@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStorage.get\_artifact
+==================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStorage.get_artifact

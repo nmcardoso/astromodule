@@ -15,6 +15,9 @@ astromodule.pipeline.Pipeline
    
        
        
+          ~Pipeline.map_run
+       
+       
           ~Pipeline.plot
        
        

@@ -21,10 +21,10 @@ astromodule.pipeline.PipelineStage
           ~PipelineStage.get_output
        
        
-          ~PipelineStage.register_artifact
-       
-       
           ~PipelineStage.run
+       
+       
+          ~PipelineStage.set_artifact
        
        
           ~PipelineStage.set_output
@@ -43,5 +43,6 @@ astromodule.pipeline.PipelineStage
       ~PipelineStage.name
       ~PipelineStage.produces
       ~PipelineStage.requires
+      ~PipelineStage.storage
    
    

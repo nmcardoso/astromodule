@@ -21,6 +21,7 @@
   
     Pipeline
     PipelineStage
+    PipelineStorage
   
   
 

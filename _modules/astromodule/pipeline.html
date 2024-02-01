@@ -362,52 +362,230 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for astromodule.pipeline</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Simple implementation of a linear pipeline with multiprocessing support</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">import</span> <span class="nn">graphviz</span>
 
+<span class="kn">from</span> <span class="nn">astromodule.io</span> <span class="kn">import</span> <span class="n">parallel_function_executor</span>
+
+
+<div class="viewcode-block" id="PipelineStorage">
+<a class="viewcode-back" href="../../api/astromodule.pipeline.PipelineStorage.html#astromodule.pipeline.PipelineStorage">[docs]</a>
+<span class="k">class</span> <span class="nc">PipelineStorage</span><span class="p">:</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  The storage used share resources between pipeline stage</span>
+<span class="sd">  </span>
+<span class="sd">  Attributes</span>
+<span class="sd">  ----------</span>
+<span class="sd">  outputs: dict</span>
+<span class="sd">    The ``output`` data</span>
+<span class="sd">  </span>
+<span class="sd">  artifacts: dict</span>
+<span class="sd">    The ``artifact`` data</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_artifacts</span> <span class="o">=</span> <span class="p">{}</span>
+    
+<div class="viewcode-block" id="PipelineStorage.set_output">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.set_output.html#astromodule.pipeline.PipelineStorage.set_output">[docs]</a>
+  <span class="k">def</span> <span class="nf">set_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores an output ``value`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The output identifier</span>
+<span class="sd">    value : Any</span>
+<span class="sd">      The output value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+    
+<div class="viewcode-block" id="PipelineStorage.get_output">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.get_output.html#astromodule.pipeline.PipelineStorage.get_output">[docs]</a>
+  <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve an output ``value`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The output identifier</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+  
+<div class="viewcode-block" id="PipelineStorage.set_artifact">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.set_artifact.html#astromodule.pipeline.PipelineStorage.set_artifact">[docs]</a>
+  <span class="k">def</span> <span class="nf">set_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores an artifact ``path`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The artifact identifier</span>
+<span class="sd">    path : str | Path</span>
+<span class="sd">      The artifact path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_artifacts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="PipelineStorage.get_artifact">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.get_artifact.html#astromodule.pipeline.PipelineStorage.get_artifact">[docs]</a>
+  <span class="k">def</span> <span class="nf">get_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve an artifact ``path`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The artifact identifier</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_artifacts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+</div>
+
+
+
 
 <div class="viewcode-block" id="PipelineStage">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.PipelineStage.html#astromodule.pipeline.PipelineStage">[docs]</a>
 <span class="k">class</span> <span class="nc">PipelineStage</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-  <span class="n">_artifacts</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="n">_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Unamed Stage&#39;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Base class for all pipeline stages</span>
+<span class="sd">  </span>
+<span class="sd">  Attributes</span>
+<span class="sd">  ----------</span>
+<span class="sd">  storage: PipelineStorage</span>
+<span class="sd">    The pipeline storage. All resources of the pipeline are shared between </span>
+<span class="sd">    stages using this object. The `Pipeline` class creates this object</span>
+<span class="sd">    during instantiation</span>
+<span class="sd">    </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  astromodule.pipeline.Pipeline</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Unnamed Stage&#39;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Unique name that identifies a stage inside a pipeline&quot;&quot;&quot;</span>
   <span class="n">requires</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A list of all resorces required by this pipeline stage. It&#39;s includes all</span>
+<span class="sd">  ``outputs`` and ``artifacts`` accessed by this stage using </span>
+<span class="sd">  `PipelineStage.get_output` or `PipelineStage.get_artifact`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">produces</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A list of all resorces produced by this pipeline stage. It&#39;s includes all</span>
+<span class="sd">  ``outputs`` and ``artifacts`` produced by this stage using </span>
+<span class="sd">  `PipelineStage.set_output` or `PipelineStage.set_artifact` </span>
+<span class="sd">  that can be accessed by another via `PipelineStage.get_output` or</span>
+<span class="sd">  `PipelineStage.get_artifact`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
   
 <div class="viewcode-block" id="PipelineStage.run">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.run.html#astromodule.pipeline.PipelineStage.run">[docs]</a>
   <span class="nd">@abstractmethod</span>
   <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    All concrete class of `PipelineStage` must implement this method.</span>
+<span class="sd">    This method is called by `Pipeline.run` and `Pipeline.map_run` when</span>
+<span class="sd">    executing the pipeline.</span>
+<span class="sd">    </span>
+<span class="sd">    .. warning ::</span>
+<span class="sd">      This method does not receives any parameter, since the `Pipeline`</span>
+<span class="sd">      can not handle it.</span>
+<span class="sd">    </span>
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    astomodule.pipeline.Pipeline.run</span>
+<span class="sd">    astomodule.pipeline.Pipeline.map_run</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PipelineStorage</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_storage</span>
+  
+  <span class="nd">@storage</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipe_storage</span><span class="p">:</span> <span class="n">PipelineStorage</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_storage</span> <span class="o">=</span> <span class="n">pipe_storage</span>
   
 <div class="viewcode-block" id="PipelineStage.set_output">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.set_output.html#astromodule.pipeline.PipelineStage.set_output">[docs]</a>
   <span class="k">def</span> <span class="nf">set_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-    <span class="n">PipelineStage</span><span class="o">.</span><span class="n">_outputs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores a output data that will be shared between all pipeline stages</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The output identifier</span>
+<span class="sd">    value : Any</span>
+<span class="sd">      The value that will be stored</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">set_output</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="PipelineStage.get_output">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.get_output.html#astromodule.pipeline.PipelineStage.get_output">[docs]</a>
   <span class="k">def</span> <span class="nf">get_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">PipelineStage</span><span class="o">.</span><span class="n">_outputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Access the output identified by ``key`` that was produced by a </span>
+<span class="sd">    previous stage.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The output identifier</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Any</span>
+<span class="sd">      The value stored</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
 
   
-<div class="viewcode-block" id="PipelineStage.register_artifact">
-<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.register_artifact.html#astromodule.pipeline.PipelineStage.register_artifact">[docs]</a>
-  <span class="k">def</span> <span class="nf">register_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
-    <span class="n">PipelineStage</span><span class="o">.</span><span class="n">_artifacts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+<div class="viewcode-block" id="PipelineStage.set_artifact">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.set_artifact.html#astromodule.pipeline.PipelineStage.set_artifact">[docs]</a>
+  <span class="k">def</span> <span class="nf">set_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stores an artifact ``path`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The artifact identifier</span>
+<span class="sd">    path : str | Path</span>
+<span class="sd">      The artifact path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">set_artifact</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
 
     
 <div class="viewcode-block" id="PipelineStage.get_artifact">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.get_artifact.html#astromodule.pipeline.PipelineStage.get_artifact">[docs]</a>
   <span class="k">def</span> <span class="nf">get_artifact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">PipelineStage</span><span class="o">.</span><span class="n">_artifacts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieve an artifact ``path`` identified by a ``key``</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The artifact identifier</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
 </div>
 
 
@@ -416,31 +594,89 @@ document.write(`
 <div class="viewcode-block" id="Pipeline">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.Pipeline.html#astromodule.pipeline.Pipeline">[docs]</a>
 <span class="k">class</span> <span class="nc">Pipeline</span><span class="p">:</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">stages</span><span class="p">:</span> <span class="n">PipelineStage</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">stages</span> <span class="o">=</span> <span class="n">stages</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  A simple linear pipeline implementation with mapping and multiprocessing</span>
+<span class="sd">  support.</span>
+<span class="sd">  </span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  *stages: PipelineStage</span>
+<span class="sd">    The stages of the pipeline</span>
+<span class="sd">  verbose: bool, optional</span>
+<span class="sd">    The verbosity flag, by default True.</span>
+<span class="sd">    </span>
+<span class="sd">  Attributes</span>
+<span class="sd">  ----------</span>
+<span class="sd">  storage: PipelineStorage</span>
+<span class="sd">    The object used to share resources between all pipeline stages</span>
+<span class="sd">    </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  astromodule.pipeline.PipelineStorage</span>
+<span class="sd">  astromodule.pipeline.PipelineStage</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">stages</span><span class="p">:</span> <span class="n">PipelineStage</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">PipelineStorage</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">stages</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">:</span>
+      <span class="n">stage</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span>
     
 <div class="viewcode-block" id="Pipeline.run">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.run.html#astromodule.pipeline.Pipeline.run">[docs]</a>
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aborting pipeline execution due to validation fail&#39;</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates and executes all stages of the pipeline</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    validate : bool, optional</span>
+<span class="sd">      If True, a pipeline requirements validation will be performed using</span>
+<span class="sd">      `validate` method. If `False`, the validation will be skiped, </span>
+<span class="sd">      by default True</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    astromodule.pipeline.Pipeline.validate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span> <span class="ow">and</span> <span class="n">validate</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aborting pipeline execution due to validation fail&#39;</span><span class="p">)</span>
       <span class="k">return</span> 
     
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stage</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">)</span><span class="si">}</span><span class="s1">] Stage </span><span class="si">{</span><span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">)</span><span class="si">}</span><span class="s1">] Stage </span><span class="si">{</span><span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      
       <span class="n">stage</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-      <span class="nb">print</span><span class="p">()</span></div>
+      
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span></div>
 
       
 <div class="viewcode-block" id="Pipeline.validate">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.validate.html#astromodule.pipeline.Pipeline.validate">[docs]</a>
   <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates the pipeline by checking whether all requirements for all </span>
+<span class="sd">    stages are satisfied</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">      ``True`` if all stages can retrieve the required resources (outputs</span>
+<span class="sd">      and artifacts) correctly, ``False`` otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">all_resources</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">problems</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stage</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
       <span class="n">missing_req</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">requires</span><span class="p">)</span> <span class="o">-</span> <span class="n">all_resources</span>
       <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing_req</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">problems</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;stage_index&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;stage_name&#39;</span><span class="p">:</span> <span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;missing_req&#39;</span><span class="p">:</span> <span class="n">missing_req</span><span class="p">})</span>
+        <span class="n">problems</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+          <span class="s1">&#39;stage_index&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> 
+          <span class="s1">&#39;stage_name&#39;</span><span class="p">:</span> <span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> 
+          <span class="s1">&#39;missing_req&#39;</span><span class="p">:</span> <span class="n">missing_req</span>
+        <span class="p">})</span>
       <span class="n">all_resources</span> <span class="o">=</span> <span class="n">all_resources</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">stage</span><span class="o">.</span><span class="n">produces</span><span class="p">)</span>
       
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">problems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -455,6 +691,15 @@ document.write(`
 <div class="viewcode-block" id="Pipeline.plot">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.plot.html#astromodule.pipeline.Pipeline.plot">[docs]</a>
   <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the pipeline graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    graphviz</span>
+<span class="sd">      A graphviz object containig the pipeline digraph that can be displayed</span>
+<span class="sd">      in Jupyter Notebook</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dot</span> <span class="o">=</span> <span class="n">graphviz</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="s1">&#39;Pipeline&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stage</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
       <span class="n">dot</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">. </span><span class="si">{</span><span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -468,17 +713,92 @@ document.write(`
     <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">. </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
     <span class="n">p</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Pipeline:</span><span class="se">\n</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">&#39;</span>
-    <span class="k">return</span> <span class="n">p</span></div>
+    <span class="k">return</span> <span class="n">p</span>
+  
+  <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">PipelineStage</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Pipeline</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">stages</span><span class="p">)</span>
+    
+  <span class="k">def</span> <span class="nf">_pipe_executor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">set_output</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">p</span>
+    
+<div class="viewcode-block" id="Pipeline.map_run">
+<a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.map_run.html#astromodule.pipeline.Pipeline.map_run">[docs]</a>
+  <span class="k">def</span> <span class="nf">map_run</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> 
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+    <span class="n">array</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> 
+    <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> 
+    <span class="n">validate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validates and executes all pipeline steps in a similar way to the `run` </span>
+<span class="sd">    method, but using multiprocessing.</span>
+<span class="sd">    This method has a similar implementation to MapReduce [#MapReduce]_, </span>
+<span class="sd">    in which a function is applied to all elements of a vector.</span>
+<span class="sd">    In this case, the function is the pipeline itself and the vector </span>
+<span class="sd">    is specified by the ``array`` parameter.</span>
+<span class="sd">    Thus, the pipeline is executed ``n`` times, where ``n` is the size of </span>
+<span class="sd">    the ``array`` vector.</span>
+<span class="sd">    For each of the ``n`` executions, the pipeline creates an output with </span>
+<span class="sd">    identifier ``key`` whose value is the element of the vector.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    key : str</span>
+<span class="sd">      The identifier that identifies a element of ``array`` vector and can</span>
+<span class="sd">      be accessed by a pipeline stage using `PipelineStage.get_output`.</span>
+<span class="sd">    array : Sequence[Any]</span>
+<span class="sd">      The data that will be mapped to pipeline</span>
+<span class="sd">    workers : int, optional</span>
+<span class="sd">      The number of parallel proccesses that will be spawned, by default 2</span>
+<span class="sd">    validate : bool, optional</span>
+<span class="sd">      If True, a pipeline requirements validation will be performed using</span>
+<span class="sd">      `validate` method. If `False`, the validation will be skiped, </span>
+<span class="sd">      by default True</span>
+<span class="sd">        </span>
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    astromodule.pipeline.Pipeline.run</span>
+<span class="sd">    astromodule.pipeline.Pipeline.validate</span>
+<span class="sd">    </span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [#MapReduce] MapReduce - Wikipedia</span>
+<span class="sd">      `&lt;https://en.wikipedia.org/wiki/MapReduce&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span> <span class="ow">and</span> <span class="n">validate</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aborting pipeline execution due to validation fail&#39;</span><span class="p">)</span>
+      <span class="k">return</span> 
+    
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">}</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">array</span><span class="p">]</span>
+    <span class="n">parallel_function_executor</span><span class="p">(</span>
+      <span class="n">func</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipe_executor</span><span class="p">,</span> 
+      <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> 
+      <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> 
+      <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;jobs&#39;</span>
+    <span class="p">)</span></div>
+</div>
+
+
 
   
-  
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">random</span>
+  <span class="kn">import</span> <span class="nn">time</span>
   <span class="k">class</span> <span class="nc">Stage1</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Stage 1&#39;</span>
     <span class="n">produces</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;super_frame&#39;</span><span class="p">]</span>
     
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">set_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">set_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="s1">&#39;pipe&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
     
   <span class="k">class</span> <span class="nc">Stage2</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Stage 2&#39;</span>
@@ -486,12 +806,14 @@ document.write(`
     
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_output</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">))</span>
+      <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
     
   <span class="n">p</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">Stage1</span><span class="p">(),</span> <span class="n">Stage2</span><span class="p">())</span>
   <span class="c1"># p.plot()</span>
   <span class="c1"># print(p)</span>
   <span class="c1"># p.run()</span>
-  <span class="n">p</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+  <span class="c1"># p.validate()</span>
+  <span class="n">p</span><span class="o">.</span><span class="n">map_run</span><span class="p">(</span><span class="s1">&#39;pipe&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
                 </article>

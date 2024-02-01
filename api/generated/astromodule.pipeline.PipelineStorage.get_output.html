@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.pipeline.PipelineStage.register_artifact &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.pipeline.PipelineStorage.get_output &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -42,11 +42,11 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/astromodule.pipeline.PipelineStage.register_artifact';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/astromodule.pipeline.PipelineStorage.get_output';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="astromodule.pipeline.PipelineStage.run" href="astromodule.pipeline.PipelineStage.run.html" />
-    <link rel="prev" title="astromodule.pipeline.PipelineStage.get_output" href="astromodule.pipeline.PipelineStage.get_output.html" />
+    <link rel="next" title="astromodule.pipeline.PipelineStorage.set_artifact" href="astromodule.pipeline.PipelineStorage.set_artifact.html" />
+    <link rel="prev" title="astromodule.pipeline.PipelineStorage.get_artifact" href="astromodule.pipeline.PipelineStorage.get_artifact.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -468,27 +468,36 @@ document.write(`
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../astromodule.pipeline.html">astromodule.pipeline</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.pipeline.Pipeline.html">astromodule.pipeline.Pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.Pipeline.map_run.html">astromodule.pipeline.Pipeline.map_run</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.Pipeline.plot.html">astromodule.pipeline.Pipeline.plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.Pipeline.run.html">astromodule.pipeline.Pipeline.run</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.Pipeline.validate.html">astromodule.pipeline.Pipeline.validate</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../astromodule.pipeline.PipelineStage.html">astromodule.pipeline.PipelineStage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.pipeline.PipelineStage.html">astromodule.pipeline.PipelineStage</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.get_artifact.html">astromodule.pipeline.PipelineStage.get_artifact</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.get_output.html">astromodule.pipeline.PipelineStage.get_output</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">astromodule.pipeline.PipelineStage.register_artifact</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.run.html">astromodule.pipeline.PipelineStage.run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.set_artifact.html">astromodule.pipeline.PipelineStage.set_artifact</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.set_output.html">astromodule.pipeline.PipelineStage.set_output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.name.html">astromodule.pipeline.PipelineStage.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.produces.html">astromodule.pipeline.PipelineStage.produces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.requires.html">astromodule.pipeline.PipelineStage.requires</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStage.storage.html">astromodule.pipeline.PipelineStage.storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../astromodule.pipeline.PipelineStorage.html">astromodule.pipeline.PipelineStorage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStorage.get_artifact.html">astromodule.pipeline.PipelineStorage.get_artifact</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">astromodule.pipeline.PipelineStorage.get_output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStorage.set_artifact.html">astromodule.pipeline.PipelineStorage.set_artifact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astromodule.pipeline.PipelineStorage.set_output.html">astromodule.pipeline.PipelineStorage.set_output</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.splus.html">astromodule.splus</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.splus.html">astromodule.splus</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.splus.update_authorization.html">astromodule.splus.update_authorization</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.splus.SplusService.html">astromodule.splus.SplusService</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.splus.SplusService.html">astromodule.splus.SplusService</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.splus.SplusService.batch_image_download.html">astromodule.splus.SplusService.batch_image_download</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.splus.SplusService.batch_query.html">astromodule.splus.SplusService.batch_query</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.splus.SplusService.download_field.html">astromodule.splus.SplusService.download_field</a></li>
@@ -501,7 +510,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
@@ -509,7 +518,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.selfmatch.html">astromodule.table.selfmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.table.table_knn.html">astromodule.table.table_knn</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.table.DropDuplicatesResult.html">astromodule.table.DropDuplicatesResult</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.table.DropDuplicatesResult.html">astromodule.table.DropDuplicatesResult</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.df.html">astromodule.table.DropDuplicatesResult.df</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.distances.html">astromodule.table.DropDuplicatesResult.distances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.n_iterations.html">astromodule.table.DropDuplicatesResult.n_iterations</a></li>
@@ -518,15 +527,15 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.tap.html">astromodule.tap</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.tap.TapService.html">astromodule.tap.TapService</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.tap.html">astromodule.tap</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../astromodule.tap.TapService.html">astromodule.tap.TapService</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.tap.TapService.batch_sync_query.html">astromodule.tap.TapService.batch_sync_query</a></li>
 <li class="toctree-l3"><a class="reference internal" href="astromodule.tap.TapService.sync_query.html">astromodule.tap.TapService.sync_query</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.utils.append_query_params.html">astromodule.utils.append_query_params</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.utils.iauname.html">astromodule.utils.iauname</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../astromodule.utils.iauname_path.html">astromodule.utils.iauname_path</a></li>
@@ -578,7 +587,7 @@ document.write(`
     <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
     
     
-    <li class="breadcrumb-item"><a href="../astromodule.pipeline.PipelineStage.html" class="nav-link">astromodule.pipeline.PipelineStage</a></li>
+    <li class="breadcrumb-item"><a href="../astromodule.pipeline.PipelineStorage.html" class="nav-link">astromodule.pipeline.PipelineStorage</a></li>
     
     <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
   </ul>
@@ -597,12 +606,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-pipeline-pipelinestage-register-artifact">
-<h1>astromodule.pipeline.PipelineStage.register_artifact<a class="headerlink" href="#astromodule-pipeline-pipelinestage-register-artifact" title="Link to this heading">#</a></h1>
+  <section id="astromodule-pipeline-pipelinestorage-get-output">
+<h1>astromodule.pipeline.PipelineStorage.get_output<a class="headerlink" href="#astromodule-pipeline-pipelinestorage-get-output" title="Link to this heading">#</a></h1>
 <dl class="py method">
-<dt class="sig sig-object py" id="astromodule.pipeline.PipelineStage.register_artifact">
-<span class="sig-prename descclassname"><span class="pre">PipelineStage.</span></span><span class="sig-name descname"><span class="pre">register_artifact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/astromodule/pipeline.html#PipelineStage.register_artifact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.pipeline.PipelineStage.register_artifact" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="astromodule.pipeline.PipelineStorage.get_output">
+<span class="sig-prename descclassname"><span class="pre">PipelineStorage.</span></span><span class="sig-name descname"><span class="pre">get_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></span></span><a class="reference internal" href="../../_modules/astromodule/pipeline.html#PipelineStorage.get_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.pipeline.PipelineStorage.get_output" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve an output <code class="docutils literal notranslate"><span class="pre">value</span></code> identified by a <code class="docutils literal notranslate"><span class="pre">key</span></code></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>key</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The output identifier</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
@@ -617,20 +635,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.pipeline.PipelineStage.get_output.html"
+       href="astromodule.pipeline.PipelineStorage.get_artifact.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.pipeline.PipelineStage.get_output</p>
+        <p class="prev-next-title">astromodule.pipeline.PipelineStorage.get_artifact</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.pipeline.PipelineStage.run.html"
+       href="astromodule.pipeline.PipelineStorage.set_artifact.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.pipeline.PipelineStage.run</p>
+        <p class="prev-next-title">astromodule.pipeline.PipelineStorage.set_artifact</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -652,14 +670,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.pipeline.PipelineStage.register_artifact"><code class="docutils literal notranslate"><span class="pre">PipelineStage.register_artifact()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.pipeline.PipelineStorage.get_output"><code class="docutils literal notranslate"><span class="pre">PipelineStorage.get_output()</span></code></a></li>
 </ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/generated/astromodule.pipeline.PipelineStage.register_artifact.rst.txt">
+    <a href="../../_sources/api/generated/astromodule.pipeline.PipelineStorage.get_output.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

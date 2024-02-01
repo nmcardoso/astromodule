@@ -1,0 +1,34 @@
+astromodule.pipeline.PipelineStorage
+====================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoclass:: PipelineStorage
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~PipelineStorage.get_artifact
+       
+       
+          ~PipelineStorage.get_output
+       
+       
+          ~PipelineStorage.set_artifact
+       
+       
+          ~PipelineStorage.set_output
+       
+   
+   
+
+   
+   
+   
