@@ -619,8 +619,9 @@ In this case, the function is the pipeline itself and the vector
 is specified by the <code class="docutils literal notranslate"><span class="pre">array</span></code> parameter.
 Thus, the pipeline is executed <code class="docutils literal notranslate"><span class="pre">n</span></code> times, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the size of 
 the <code class="docutils literal notranslate"><span class="pre">array</span></code> vector.
-For each of the <code class="docutils literal notranslate"><span class="pre">n</span></code> executions, the pipeline creates an output with 
-identifier <code class="docutils literal notranslate"><span class="pre">key</span></code> whose value is the element of the vector.</p>
+For each execution, the pipeline creates an storage output with 
+identifier <code class="docutils literal notranslate"><span class="pre">key</span></code> whose value is the element of the vector that can
+be accessed via <a class="reference internal" href="astromodule.pipeline.PipelineStage.get_output.html#astromodule.pipeline.PipelineStage.get_output" title="astromodule.pipeline.PipelineStage.get_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineStage.get_output</span></code></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl>
@@ -643,6 +644,7 @@ by default True</p>
 <dl class="simple">
 <dt><a class="reference internal" href="astromodule.pipeline.Pipeline.run.html#astromodule.pipeline.Pipeline.run" title="astromodule.pipeline.Pipeline.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astromodule.pipeline.Pipeline.run</span></code></a></dt><dd></dd>
 <dt><a class="reference internal" href="astromodule.pipeline.Pipeline.validate.html#astromodule.pipeline.Pipeline.validate" title="astromodule.pipeline.Pipeline.validate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astromodule.pipeline.Pipeline.validate</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="astromodule.pipeline.PipelineStage.get_output.html#astromodule.pipeline.PipelineStage.get_output" title="astromodule.pipeline.PipelineStage.get_output"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astromodule.pipeline.PipelineStage.get_output</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">References</p>

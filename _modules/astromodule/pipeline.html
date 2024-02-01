@@ -745,8 +745,9 @@ document.write(`
 <span class="sd">    is specified by the ``array`` parameter.</span>
 <span class="sd">    Thus, the pipeline is executed ``n`` times, where ``n`` is the size of </span>
 <span class="sd">    the ``array`` vector.</span>
-<span class="sd">    For each of the ``n`` executions, the pipeline creates an output with </span>
-<span class="sd">    identifier ``key`` whose value is the element of the vector.</span>
+<span class="sd">    For each execution, the pipeline creates an storage output with </span>
+<span class="sd">    identifier ``key`` whose value is the element of the vector that can</span>
+<span class="sd">    be accessed via `PipelineStage.get_output`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -766,6 +767,7 @@ document.write(`
 <span class="sd">    --------</span>
 <span class="sd">    astromodule.pipeline.Pipeline.run</span>
 <span class="sd">    astromodule.pipeline.Pipeline.validate</span>
+<span class="sd">    astromodule.pipeline.PipelineStage.get_output</span>
 <span class="sd">    </span>
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
