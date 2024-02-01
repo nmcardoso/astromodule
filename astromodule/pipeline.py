@@ -342,7 +342,7 @@ class Pipeline:
     Parameters
     ----------
     key : str
-      The identifier that identifies a element of ``array`` vector and can
+      The identifier for an element of ``array`` that can
       be accessed by a pipeline stage using `PipelineStage.get_output`.
     array : Sequence[Any]
       The data that will be mapped to pipeline
