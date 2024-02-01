@@ -335,8 +335,9 @@ class Pipeline:
     is specified by the ``array`` parameter.
     Thus, the pipeline is executed ``n`` times, where ``n`` is the size of 
     the ``array`` vector.
-    For each of the ``n`` executions, the pipeline creates an output with 
-    identifier ``key`` whose value is the element of the vector.
+    For each execution, the pipeline creates an storage output with 
+    identifier ``key`` whose value is the element of the vector that can
+    be accessed via `PipelineStage.get_output`.
 
     Parameters
     ----------
@@ -356,6 +357,7 @@ class Pipeline:
     --------
     astromodule.pipeline.Pipeline.run
     astromodule.pipeline.Pipeline.validate
+    astromodule.pipeline.PipelineStage.get_output
     
     References
     ----------
