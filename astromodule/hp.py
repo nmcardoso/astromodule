@@ -250,6 +250,7 @@ class HyperParameterSet:
   def __init__(self, *args: HyperParameter, verbose: bool = True):
     self.verbose = verbose
     self.hps = {}
+    self._trial: optuna.trial.Trial = None
 
     for hp in args:
       if isinstance(hp, HyperParameter):
@@ -267,7 +268,7 @@ class HyperParameterSet:
     return HyperParameterSet(*hp_list)
 
 
-  def add(self, hyperparameters: Sequence[Union[dict, HyperParameter]]):
+  def concat(self, hyperparameters: Sequence[Union[dict, HyperParameter]]):
     """
     Parses a sequence of dictionaries that represents the hyperparameters
 
@@ -343,6 +344,7 @@ class HyperParameterSet:
     trial: optuna.trial.FrozenTrial
       The trial that will be added
     """
+    self._trial = trial
     for hp in self.hps.values():
       hp.set_trial(trial)
 
@@ -404,6 +406,7 @@ class HyperParameterSet:
   
   
   def __iadd__(self, hp: HyperParameter):
+    hp.set_trial(self._trial)
     self.hps.update({hp.attrs.get('name'): hp})
     return self
   
@@ -419,4 +422,6 @@ if __name__ == '__main__':
     HP.const('mlp_n_iter_no_change', 10),
     verbose=False,
   )
+  hps += HP.const('A', 2)
+  print(hps.hps)
   print(hps.get(r'mlp_*', regex=True))
