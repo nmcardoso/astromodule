@@ -230,7 +230,7 @@ class Pipeline:
     Parameters
     ----------
     validate : bool, optional
-      If True, a pipeline requirements validation will be performed using
+      If `True`, a pipeline requirements validation will be performed using
       `validate` method. If `False`, the validation will be skiped, 
       by default True
     
@@ -333,7 +333,7 @@ class Pipeline:
     in which a function is applied to all elements of a vector.
     In this case, the function is the pipeline itself and the vector 
     is specified by the ``array`` parameter.
-    Thus, the pipeline is executed ``n`` times, where ``n` is the size of 
+    Thus, the pipeline is executed ``n`` times, where ``n`` is the size of 
     the ``array`` vector.
     For each of the ``n`` executions, the pipeline creates an output with 
     identifier ``key`` whose value is the element of the vector.
