@@ -1,0 +1,6 @@
+astromodule.hp.HyperParameterSet.concat
+=======================================
+
+.. currentmodule:: astromodule.hp
+
+.. automethod:: HyperParameterSet.concat

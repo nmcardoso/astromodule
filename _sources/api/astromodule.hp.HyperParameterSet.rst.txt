@@ -24,6 +24,9 @@ astromodule.hp.HyperParameterSet
           ~HyperParameterSet.clear_values_dict
        
        
+          ~HyperParameterSet.concat
+       
+       
           ~HyperParameterSet.from_dict
        
        

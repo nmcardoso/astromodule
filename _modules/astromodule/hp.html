@@ -673,6 +673,7 @@ document.write(`
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">hps</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">Trial</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
       <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">):</span>
@@ -693,7 +694,9 @@ document.write(`
 
 
 
-  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">]]):</span>
+<div class="viewcode-block" id="HyperParameterSet.concat">
+<a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.concat.html#astromodule.hp.HyperParameterSet.concat">[docs]</a>
+  <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">]]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parses a sequence of dictionaries that represents the hyperparameters</span>
 
@@ -709,7 +712,8 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span> <span class="p">})</span>
       <span class="k">else</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">hp</span> <span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">hp</span> <span class="p">})</span></div>
+
 
 
 <div class="viewcode-block" id="HyperParameterSet.get">
@@ -774,6 +778,7 @@ document.write(`
 <span class="sd">    trial: optuna.trial.FrozenTrial</span>
 <span class="sd">      The trial that will be added</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span> <span class="o">=</span> <span class="n">trial</span>
     <span class="k">for</span> <span class="n">hp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
       <span class="n">hp</span><span class="o">.</span><span class="n">set_trial</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span></div>
 
@@ -845,6 +850,7 @@ document.write(`
   
   
   <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+    <span class="n">hp</span><span class="o">.</span><span class="n">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_trial</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">hp</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span> <span class="n">hp</span><span class="p">})</span>
     <span class="k">return</span> <span class="bp">self</span>
   
@@ -864,6 +870,8 @@ document.write(`
     <span class="n">HP</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="s1">&#39;mlp_n_iter_no_change&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
     <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
   <span class="p">)</span>
+  <span class="n">hps</span> <span class="o">+=</span> <span class="n">HP</span><span class="o">.</span><span class="n">const</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">hps</span><span class="o">.</span><span class="n">hps</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">hps</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;mlp_*&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 

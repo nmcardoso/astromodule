@@ -372,6 +372,7 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.add.html">astromodule.hp.HyperParameterSet.add</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.check_missing_hp.html">astromodule.hp.HyperParameterSet.check_missing_hp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.clear_values_dict.html">astromodule.hp.HyperParameterSet.clear_values_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.concat.html">astromodule.hp.HyperParameterSet.concat</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.from_dict.html">astromodule.hp.HyperParameterSet.from_dict</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.get.html">astromodule.hp.HyperParameterSet.get</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.set_trial.html">astromodule.hp.HyperParameterSet.set_trial</a></li>
@@ -639,16 +640,19 @@ handles the registration and access of hyperparameters.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.clear_values_dict.html#astromodule.hp.HyperParameterSet.clear_values_dict" title="astromodule.hp.HyperParameterSet.clear_values_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_values_dict</span></code></a>()</p></td>
 <td><p>Clear <code class="docutils literal notranslate"><span class="pre">last_value</span></code> property of the <a class="reference internal" href="astromodule.hp.HyperParameter.html#astromodule.hp.HyperParameter" title="astromodule.hp.HyperParameter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HyperParameter</span></code></a>, relevant when training with conditional hyperparameters</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.from_dict.html#astromodule.hp.HyperParameterSet.from_dict" title="astromodule.hp.HyperParameterSet.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(d)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.concat.html#astromodule.hp.HyperParameterSet.concat" title="astromodule.hp.HyperParameterSet.concat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">concat</span></code></a>(hyperparameters)</p></td>
+<td><p>Parses a sequence of dictionaries that represents the hyperparameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.from_dict.html#astromodule.hp.HyperParameterSet.from_dict" title="astromodule.hp.HyperParameterSet.from_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_dict</span></code></a>(d)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.get.html#astromodule.hp.HyperParameterSet.get" title="astromodule.hp.HyperParameterSet.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(name[, trial, default, regex])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.get.html#astromodule.hp.HyperParameterSet.get" title="astromodule.hp.HyperParameterSet.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(name[, trial, default, regex])</p></td>
 <td><p>Get the value of a hyperparameter identified by its name.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.set_trial.html#astromodule.hp.HyperParameterSet.set_trial" title="astromodule.hp.HyperParameterSet.set_trial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_trial</span></code></a>(trial)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.set_trial.html#astromodule.hp.HyperParameterSet.set_trial" title="astromodule.hp.HyperParameterSet.set_trial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_trial</span></code></a>(trial)</p></td>
 <td><p>Sets the optuna's trial for all hyperparameter in this set</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.to_values_dict.html#astromodule.hp.HyperParameterSet.to_values_dict" title="astromodule.hp.HyperParameterSet.to_values_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_values_dict</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.to_values_dict.html#astromodule.hp.HyperParameterSet.to_values_dict" title="astromodule.hp.HyperParameterSet.to_values_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_values_dict</span></code></a>()</p></td>
 <td><p>Returns a dict representation of this hyperparameters set with hp name as dict key and last optuna's suggested value as dict value</p></td>
 </tr>
 </tbody>
