@@ -260,8 +260,8 @@ class Pipeline:
     Returns
     -------
     bool
-      ``True`` if all stages can retrieve the required resources (outputs
-      and artifacts) correctly, ``False`` otherwise.
+      `True` if all stages can retrieve the required resources (outputs
+      and artifacts) correctly, `False` otherwise.
     """
     all_resources = set()
     problems = []
@@ -349,7 +349,7 @@ class Pipeline:
     workers : int, optional
       The number of parallel proccesses that will be spawned, by default 2
     validate : bool, optional
-      If True, a pipeline requirements validation will be performed using
+      If `True`, a pipeline requirements validation will be performed using
       `validate` method. If `False`, the validation will be skiped, 
       by default True
         
