@@ -399,8 +399,8 @@ class HyperParameterSet:
     Returns
     -------
     bool
-      ``True`` if the set contains a hyperparameter with a given key,
-      ``False`` otherwise.
+      `True` if the set contains a hyperparameter with a given key,
+      `False` otherwise.
     """
     return any(e == key for e in self.hps.keys())
   
