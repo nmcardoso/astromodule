@@ -29,7 +29,7 @@ class PipelineStorage:
 
 
 class PipelineStage(ABC):
-  name: str = 'Unamed Stage'
+  name: str = 'Unnamed Stage'
   requires: Sequence[str] = []
   produces: Sequence[str] = []
   
