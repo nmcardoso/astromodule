@@ -403,6 +403,15 @@ class HyperParameterSet:
     return any(e == key for e in self.hps.keys())
   
   
+  def __iadd__(self, hp: HyperParameter):
+    self.hps.update({hp.attrs.get('name'): hp})
+    return self
+  
+  
+  def add(self, hp: HyperParameter):
+    self += hp
+  
+  
 if __name__ == '__main__':
   hps = HyperParameterSet(
     HP.const('mlp_validation_fraction', 0.2),
