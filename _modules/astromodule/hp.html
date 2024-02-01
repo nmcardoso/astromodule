@@ -693,8 +693,6 @@ document.write(`
 
 
 
-<div class="viewcode-block" id="HyperParameterSet.add">
-<a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.add.html#astromodule.hp.HyperParameterSet.add">[docs]</a>
   <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">]]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parses a sequence of dictionaries that represents the hyperparameters</span>
@@ -711,8 +709,7 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span> <span class="p">})</span>
       <span class="k">else</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">hp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">hp</span> <span class="p">})</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span> <span class="n">name</span><span class="p">:</span> <span class="n">hp</span> <span class="p">})</span>
 
 
 <div class="viewcode-block" id="HyperParameterSet.get">
@@ -844,7 +841,19 @@ document.write(`
 <span class="sd">      ``True`` if the set contains a hyperparameter with a given key,</span>
 <span class="sd">      ``False`` otherwise.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="n">key</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="n">key</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+  
+  
+  <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">hp</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span> <span class="n">hp</span><span class="p">})</span>
+    <span class="k">return</span> <span class="bp">self</span>
+  
+  
+<div class="viewcode-block" id="HyperParameterSet.add">
+<a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.add.html#astromodule.hp.HyperParameterSet.add">[docs]</a>
+  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+    <span class="bp">self</span> <span class="o">+=</span> <span class="n">hp</span></div>
+</div>
 
   
   
