@@ -125,8 +125,8 @@ class PipelineStage(ABC):
     
     See also
     --------
-    astomodule.pipeline.Pipeline.run
-    astomodule.pipeline.Pipeline.map_run
+    astromodule.pipeline.Pipeline.run
+    astromodule.pipeline.Pipeline.map_run
     """
     pass
   
