@@ -1,0 +1,6 @@
+astromodule.datamodel.GD12.SMOOTH\_OR\_FEATURED
+===============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD12.SMOOTH_OR_FEATURED

@@ -1,0 +1,39 @@
+astromodule.datamodel.GD8
+=========================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: GD8
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~GD8.BAR
+      ~GD8.BULGE_SIZE
+      ~GD8.DISK_EDGE_ON
+      ~GD8.EDGE_ON_BULGE
+      ~GD8.HAS_SPIRAL_ARMS
+      ~GD8.HOW_ROUNDED
+      ~GD8.MERGING
+      ~GD8.SMOOTH_OR_FEATURED
+      ~GD8.SPIRAL_ARM_COUNT
+      ~GD8.SPIRAL_WINDING
+   
+   

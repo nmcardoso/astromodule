@@ -1,0 +1,6 @@
+astromodule.datamodel.Question.config
+=====================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. automethod:: Question.config

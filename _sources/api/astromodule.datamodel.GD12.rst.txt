@@ -1,0 +1,39 @@
+astromodule.datamodel.GD12
+==========================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: GD12
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~GD12.BAR
+      ~GD12.BULGE_SIZE
+      ~GD12.DISK_EDGE_ON
+      ~GD12.EDGE_ON_BULGE
+      ~GD12.HAS_SPIRAL_ARMS
+      ~GD12.HOW_ROUNDED
+      ~GD12.MERGING
+      ~GD12.SMOOTH_OR_FEATURED
+      ~GD12.SPIRAL_ARM_COUNT
+      ~GD12.SPIRAL_WINDING
+   
+   

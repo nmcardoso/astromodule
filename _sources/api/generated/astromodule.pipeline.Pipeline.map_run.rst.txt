@@ -1,6 +1,0 @@
-astromodule.pipeline.Pipeline.map\_run
-======================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: Pipeline.map_run

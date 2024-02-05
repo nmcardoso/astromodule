@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.MERGING
+=================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.MERGING

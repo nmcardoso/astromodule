@@ -1,0 +1,22 @@
+astromodule.datamodel.Questions
+===============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: Questions
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   

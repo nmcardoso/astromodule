@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.SPIRAL\_ARM\_COUNT
+============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.SPIRAL_ARM_COUNT

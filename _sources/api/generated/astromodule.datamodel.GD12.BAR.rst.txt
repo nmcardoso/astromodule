@@ -1,0 +1,6 @@
+astromodule.datamodel.GD12.BAR
+==============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD12.BAR

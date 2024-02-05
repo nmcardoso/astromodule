@@ -1,0 +1,39 @@
+astromodule.datamodel.GD5
+=========================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: GD5
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~GD5.BAR
+      ~GD5.BULGE_SIZE
+      ~GD5.DISK_EDGE_ON
+      ~GD5.EDGE_ON_BULGE
+      ~GD5.HAS_SPIRAL_ARMS
+      ~GD5.HOW_ROUNDED
+      ~GD5.MERGING
+      ~GD5.SMOOTH_OR_FEATURED
+      ~GD5.SPIRAL_ARM_COUNT
+      ~GD5.SPIRAL_WINDING
+   
+   

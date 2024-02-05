@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.BULGE\_SIZE
+=====================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.BULGE_SIZE

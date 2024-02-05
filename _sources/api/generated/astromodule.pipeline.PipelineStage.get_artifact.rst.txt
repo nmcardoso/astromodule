@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStage.get\_artifact
-================================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: PipelineStage.get_artifact

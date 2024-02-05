@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.DISK\_EDGE\_ON
+========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.DISK_EDGE_ON

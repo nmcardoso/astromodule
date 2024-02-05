@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.BAR
+=============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.BAR

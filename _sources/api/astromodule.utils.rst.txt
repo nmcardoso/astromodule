@@ -15,6 +15,7 @@
     :toctree:
   
     append_query_params
+    filter_dict
     iauname
     iauname_path
   

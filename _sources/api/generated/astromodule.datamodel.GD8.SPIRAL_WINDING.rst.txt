@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.SPIRAL\_WINDING
+=========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.SPIRAL_WINDING

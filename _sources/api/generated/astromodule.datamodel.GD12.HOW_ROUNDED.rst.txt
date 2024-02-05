@@ -1,0 +1,6 @@
+astromodule.datamodel.GD12.HOW\_ROUNDED
+=======================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD12.HOW_ROUNDED

@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStage.set\_output
-==============================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: PipelineStage.set_output

@@ -1,0 +1,33 @@
+astromodule.datamodel.Answer
+============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: Answer
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~Answer.db
+      ~Answer.fr
+      ~Answer.question
+      ~Answer.vt
+   
+   

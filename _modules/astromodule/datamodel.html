@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>astromodule.datamodel &#8212; AstroModule 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/astromodule/datamodel';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/galaxy_256.png" class="logo__image only-light" alt="AstroModule 0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/galaxy_256.png" class="logo__image only-dark" alt="AstroModule 0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for astromodule.datamodel</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="Question">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.Question.html#astromodule.datamodel.Question">[docs]</a>
+<span></span><span class="k">class</span> <span class="nc">Question</span><span class="p">:</span>
+<div class="viewcode-block" id="Question.config">
+<a class="viewcode-back" href="../../api/generated/astromodule.datamodel.Question.config.html#astromodule.datamodel.Question.config">[docs]</a>
+  <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">ans_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">ans</span> <span class="k">for</span> <span class="n">ans</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">if</span> <span class="n">ans</span><span class="o">.</span><span class="n">isupper</span><span class="p">()]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">answers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ans</span><span class="p">)</span> <span class="k">for</span> <span class="n">ans</span> <span class="ow">in</span> <span class="n">ans_keys</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">ans</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">answers</span><span class="p">:</span>
+      <span class="n">ans</span><span class="o">.</span><span class="n">question</span> <span class="o">=</span> <span class="bp">self</span>
+    <span class="k">return</span> <span class="bp">self</span></div>
+
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">t</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+
+
+
+<div class="viewcode-block" id="Answer">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.Answer.html#astromodule.datamodel.Answer">[docs]</a>
+<span class="k">class</span> <span class="nc">Answer</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_question</span> <span class="o">=</span> <span class="kc">None</span>
+    
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">question</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_question</span>
+  
+  <span class="nd">@question</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">question</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">Question</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_question</span> <span class="o">=</span> <span class="n">q</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">vt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">fr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_fraction&#39;</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">db</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_debiased&#39;</span>
+  
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">question</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+  
+  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="Questions">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.Questions.html#astromodule.datamodel.Questions">[docs]</a>
+<span class="k">class</span> <span class="nc">Questions</span><span class="p">:</span>
+  <span class="k">class</span> <span class="nc">SmothOrFeatured</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">SMOOTH</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;smooth&#39;</span><span class="p">)</span>
+    <span class="n">FEATURED_OR_DISK</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;featured-or-disk&#39;</span><span class="p">)</span>
+    <span class="n">ARTIFACT</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;artifact&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">DiskEdgeOn</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">YES</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="n">NO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
+
+  <span class="k">class</span> <span class="nc">HasSpiralArms</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">YES</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="n">NO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
+
+  <span class="k">class</span> <span class="nc">Bar</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">STRONG</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;strong&#39;</span><span class="p">)</span>
+    <span class="n">WEAK</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;weak&#39;</span><span class="p">)</span>
+    <span class="n">NO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
+
+  <span class="k">class</span> <span class="nc">BulgeSize</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">DOMINANT</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;dominant&#39;</span><span class="p">)</span>
+    <span class="n">LARGE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;large&#39;</span><span class="p">)</span>
+    <span class="n">MODERATE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;moderate&#39;</span><span class="p">)</span>
+    <span class="n">SMALL</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;small&#39;</span><span class="p">)</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+  <span class="k">class</span> <span class="nc">HowRounded</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">ROUND</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;round&#39;</span><span class="p">)</span>
+    <span class="n">IN_BETWEEN</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;in-between&#39;</span><span class="p">)</span>
+    <span class="n">CIGAR_SHAPED</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;cigar-shaped&#39;</span><span class="p">)</span>
+      
+  <span class="k">class</span> <span class="nc">EdgeOnBulge</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">BOXY</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;boxy&#39;</span><span class="p">)</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">ROUNDED</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;rounded&#39;</span><span class="p">)</span>
+      
+  <span class="k">class</span> <span class="nc">SpiralWinding</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">TIGHT</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">MEDIUM</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+    <span class="n">LOOSE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;loose&#39;</span><span class="p">)</span>
+      
+  <span class="k">class</span> <span class="nc">SpiralArmCount</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">ONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+    <span class="n">TWO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+    <span class="n">THREE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+    <span class="n">FOUR</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+    <span class="n">MORE_THAN_4</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;more-than-4&#39;</span><span class="p">)</span>
+    <span class="n">CANT_TELL</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;cant-tell&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">Merging</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">MINOR_DISTURBANCE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;minor-disturbance&#39;</span><span class="p">)</span>
+    <span class="n">MAJOR_DISTURBANCE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;major-disturbance&#39;</span><span class="p">)</span>
+    <span class="n">MERGER</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;merger&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">BarGZ</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">YES</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
+    <span class="n">NO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">)</span>
+  
+  <span class="k">class</span> <span class="nc">BulgeSizeGZ</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">DOMINANT</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;dominant&#39;</span><span class="p">)</span>
+    <span class="n">OBVIOUS</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;obvious&#39;</span><span class="p">)</span>
+    <span class="n">NONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">HowRoundedGZ</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">COMPLETELY</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;completely&#39;</span><span class="p">)</span>
+    <span class="n">IN_BETWEEN</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;in-between&#39;</span><span class="p">)</span>
+    <span class="n">CIGAR_SHAPED</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;cigar-shaped&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">SpiralArmCountGZ</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">ONE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+    <span class="n">TWO</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">)</span>
+    <span class="n">THREE</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+    <span class="n">FOUR</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">)</span>
+    <span class="n">MORE_THAN_4</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;more-than-4&#39;</span><span class="p">)</span>
+    
+  <span class="k">class</span> <span class="nc">MergingGZ</span><span class="p">(</span><span class="n">Question</span><span class="p">):</span>
+    <span class="n">NEITHER</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;neither&#39;</span><span class="p">)</span>
+    <span class="n">TIDAL_DEBRIS</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;tidal-debris&#39;</span><span class="p">)</span>
+    <span class="n">BOTH</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">MERGER</span> <span class="o">=</span> <span class="n">Answer</span><span class="p">(</span><span class="s1">&#39;merger&#39;</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="GD5">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.GD5.html#astromodule.datamodel.GD5">[docs]</a>
+<span class="k">class</span> <span class="nc">GD5</span><span class="p">:</span>
+  <span class="n">SMOOTH_OR_FEATURED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SmothOrFeatured</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;smooth-or-featured-dr5&#39;</span><span class="p">)</span>
+  <span class="n">DISK_EDGE_ON</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">DiskEdgeOn</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;disk-edge-on-dr5&#39;</span><span class="p">)</span>
+  <span class="n">HAS_SPIRAL_ARMS</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HasSpiralArms</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;has-spiral-arms-dr5&#39;</span><span class="p">)</span>
+  <span class="n">BAR</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">Bar</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bar-dr5&#39;</span><span class="p">)</span>
+  <span class="n">BULGE_SIZE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">BulgeSize</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bulge-size-dr5&#39;</span><span class="p">)</span>
+  <span class="n">HOW_ROUNDED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HowRounded</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;how-rounded-dr5&#39;</span><span class="p">)</span>
+  <span class="n">EDGE_ON_BULGE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">EdgeOnBulge</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;edge-on-bulge-dr5&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_WINDING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralWinding</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-winding-dr5&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_ARM_COUNT</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralArmCount</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-arm-count-dr5&#39;</span><span class="p">)</span>
+  <span class="n">MERGING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">Merging</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;merging-dr5&#39;</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="GD8">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.GD8.html#astromodule.datamodel.GD8">[docs]</a>
+<span class="k">class</span> <span class="nc">GD8</span><span class="p">:</span>
+  <span class="n">SMOOTH_OR_FEATURED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SmothOrFeatured</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;smooth-or-featured-dr8&#39;</span><span class="p">)</span>
+  <span class="n">DISK_EDGE_ON</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">DiskEdgeOn</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;disk-edge-on-dr8&#39;</span><span class="p">)</span>
+  <span class="n">HAS_SPIRAL_ARMS</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HasSpiralArms</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;has-spiral-arms-dr8&#39;</span><span class="p">)</span>
+  <span class="n">BAR</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">Bar</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bar-dr8&#39;</span><span class="p">)</span>
+  <span class="n">BULGE_SIZE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">BulgeSize</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bulge-size-dr8&#39;</span><span class="p">)</span>
+  <span class="n">HOW_ROUNDED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HowRounded</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;how-rounded-dr8&#39;</span><span class="p">)</span>
+  <span class="n">EDGE_ON_BULGE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">EdgeOnBulge</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;edge-on-bulge-dr8&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_WINDING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralWinding</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-winding-dr8&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_ARM_COUNT</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralArmCount</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-arm-count-dr8&#39;</span><span class="p">)</span>
+  <span class="n">MERGING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">Merging</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;merging-dr8&#39;</span><span class="p">)</span></div>
+
+  
+  
+  
+<div class="viewcode-block" id="GD12">
+<a class="viewcode-back" href="../../api/astromodule.datamodel.GD12.html#astromodule.datamodel.GD12">[docs]</a>
+<span class="k">class</span> <span class="nc">GD12</span><span class="p">:</span>
+  <span class="n">SMOOTH_OR_FEATURED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SmothOrFeatured</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;smooth-or-featured-dr12&#39;</span><span class="p">)</span>
+  <span class="n">DISK_EDGE_ON</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">DiskEdgeOn</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;disk-edge-on-dr12&#39;</span><span class="p">)</span>
+  <span class="n">HAS_SPIRAL_ARMS</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HasSpiralArms</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;has-spiral-arms-dr12&#39;</span><span class="p">)</span>
+  <span class="n">BAR</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">BarGZ</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bar-dr12&#39;</span><span class="p">)</span>
+  <span class="n">BULGE_SIZE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">BulgeSizeGZ</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;bulge-size-dr12&#39;</span><span class="p">)</span>
+  <span class="n">HOW_ROUNDED</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">HowRoundedGZ</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;how-rounded-dr12&#39;</span><span class="p">)</span>
+  <span class="n">EDGE_ON_BULGE</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">EdgeOnBulge</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;edge-on-bulge-dr12&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_WINDING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralWinding</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-winding-dr12&#39;</span><span class="p">)</span>
+  <span class="n">SPIRAL_ARM_COUNT</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">SpiralArmCountGZ</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;spiral-arm-count-dr12&#39;</span><span class="p">)</span>
+  <span class="n">MERGING</span> <span class="o">=</span> <span class="n">Questions</span><span class="o">.</span><span class="n">MergingGZ</span><span class="p">()</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">&#39;merging-dr12&#39;</span><span class="p">)</span></div>
+
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">GD12</span><span class="o">.</span><span class="n">SPIRAL_ARM_COUNT</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Natanael M. Cardoso.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

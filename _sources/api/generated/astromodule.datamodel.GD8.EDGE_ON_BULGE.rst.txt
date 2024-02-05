@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.EDGE\_ON\_BULGE
+=========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.EDGE_ON_BULGE

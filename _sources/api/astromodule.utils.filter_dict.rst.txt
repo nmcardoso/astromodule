@@ -1,0 +1,6 @@
+astromodule.utils.filter\_dict
+==============================
+
+.. currentmodule:: astromodule.utils
+
+.. autofunction:: filter_dict

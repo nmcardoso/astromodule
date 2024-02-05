@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.MERGING
+=================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.MERGING

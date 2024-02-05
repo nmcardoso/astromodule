@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStage.get\_output
-==============================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: PipelineStage.get_output

@@ -1,0 +1,6 @@
+astromodule.datamodel.Answer.fr
+===============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoproperty:: Answer.fr

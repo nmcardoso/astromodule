@@ -1,0 +1,36 @@
+﻿astromodule.datamodel
+=====================
+
+.. automodule:: astromodule.datamodel
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    Answer
+    GD12
+    GD5
+    GD8
+    Question
+    Questions
+  
+  
+
+  
+  
+  
+
+
+

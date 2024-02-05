@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.HOW\_ROUNDED
+======================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.HOW_ROUNDED

@@ -1,0 +1,6 @@
+astromodule.datamodel.Question.t
+================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoproperty:: Question.t

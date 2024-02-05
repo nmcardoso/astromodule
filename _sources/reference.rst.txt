@@ -6,6 +6,7 @@ API Reference
    :template: module-template.rst
    :recursive:
 
+   astromodule.datamodel
    astromodule.distance
    astromodule.hp
    astromodule.io

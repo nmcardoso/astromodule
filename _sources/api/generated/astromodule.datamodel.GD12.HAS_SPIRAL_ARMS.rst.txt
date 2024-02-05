@@ -1,0 +1,6 @@
+astromodule.datamodel.GD12.HAS\_SPIRAL\_ARMS
+============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD12.HAS_SPIRAL_ARMS

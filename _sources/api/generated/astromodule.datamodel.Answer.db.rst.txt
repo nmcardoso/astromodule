@@ -1,0 +1,6 @@
+astromodule.datamodel.Answer.db
+===============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoproperty:: Answer.db

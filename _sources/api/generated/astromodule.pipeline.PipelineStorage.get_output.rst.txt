@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStorage.get\_output
-================================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: PipelineStorage.get_output

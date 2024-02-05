@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.HAS\_SPIRAL\_ARMS
+===========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.HAS_SPIRAL_ARMS

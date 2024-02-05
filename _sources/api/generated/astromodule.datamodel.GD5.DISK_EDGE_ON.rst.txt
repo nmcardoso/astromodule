@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.DISK\_EDGE\_ON
+========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.DISK_EDGE_ON

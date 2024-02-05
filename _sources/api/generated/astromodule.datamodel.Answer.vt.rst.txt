@@ -1,0 +1,6 @@
+astromodule.datamodel.Answer.vt
+===============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoproperty:: Answer.vt

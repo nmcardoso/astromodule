@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStorage.set\_artifact
-==================================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: PipelineStorage.set_artifact

@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.SMOOTH\_OR\_FEATURED
+==============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.SMOOTH_OR_FEATURED

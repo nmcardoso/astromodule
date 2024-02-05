@@ -1,0 +1,6 @@
+astromodule.datamodel.GD5.EDGE\_ON\_BULGE
+=========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD5.EDGE_ON_BULGE

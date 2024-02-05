@@ -1,0 +1,6 @@
+astromodule.datamodel.GD8.SMOOTH\_OR\_FEATURED
+==============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: GD8.SMOOTH_OR_FEATURED
