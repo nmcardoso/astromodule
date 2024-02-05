@@ -4,7 +4,7 @@ Utility module
 
 
 from pathlib import Path
-from typing import Sequence
+from typing import Any, Sequence
 
 import numpy as np
 from astropy import units as u
@@ -119,3 +119,8 @@ def append_query_params(url: str, query_params: dict) -> str:
     new_url = url + '?' + query_string
 
   return new_url
+
+
+
+def filter_dict(obj: dict, mask: Sequence[Any]):
+  return {k: v for k, v in obj.items() if k in mask}
