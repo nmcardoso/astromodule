@@ -6,6 +6,10 @@ class Question:
     for ans in self.answers:
       ans.question = self
     return self
+  
+  @property
+  def t(self):
+    return self.name
 
 
 
@@ -13,7 +17,6 @@ class Answer:
   def __init__(self, name: str):
     self.name = name
     self._question = None
-    self._parent = None
     
   @property
   def question(self):
@@ -155,7 +158,7 @@ class GD8:
   
   
   
-class GZ12:
+class GD12:
   SMOOTH_OR_FEATURED = Questions.SmothOrFeatured().config('smooth-or-featured-dr12')
   DISK_EDGE_ON = Questions.DiskEdgeOn().config('disk-edge-on-dr12')
   HAS_SPIRAL_ARMS = Questions.HasSpiralArms().config('has-spiral-arms-dr12')
@@ -170,4 +173,4 @@ class GZ12:
 
 
 if __name__ == '__main__':
-  print(GD5.SMOOTH_OR_FEATURED.SMOOTH.parent)
+  print(GD12.SPIRAL_ARM_COUNT)
