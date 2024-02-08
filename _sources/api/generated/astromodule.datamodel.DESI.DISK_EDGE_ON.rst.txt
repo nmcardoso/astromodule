@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.DISK\_EDGE\_ON
+=========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.DISK_EDGE_ON

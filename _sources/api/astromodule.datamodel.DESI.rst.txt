@@ -1,0 +1,39 @@
+astromodule.datamodel.DESI
+==========================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoclass:: DESI
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+      ~DESI.BAR
+      ~DESI.BULGE_SIZE
+      ~DESI.DISK_EDGE_ON
+      ~DESI.EDGE_ON_BULGE
+      ~DESI.HAS_SPIRAL_ARMS
+      ~DESI.HOW_ROUNDED
+      ~DESI.MERGING
+      ~DESI.SMOOTH_OR_FEATURED
+      ~DESI.SPIRAL_ARM_COUNT
+      ~DESI.SPIRAL_WINDING
+   
+   

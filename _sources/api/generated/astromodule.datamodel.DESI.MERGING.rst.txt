@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.MERGING
+==================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.MERGING

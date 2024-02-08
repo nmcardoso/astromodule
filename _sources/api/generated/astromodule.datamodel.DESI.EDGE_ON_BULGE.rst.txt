@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.EDGE\_ON\_BULGE
+==========================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.EDGE_ON_BULGE

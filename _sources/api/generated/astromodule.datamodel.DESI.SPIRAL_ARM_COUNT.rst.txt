@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.SPIRAL\_ARM\_COUNT
+=============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.SPIRAL_ARM_COUNT

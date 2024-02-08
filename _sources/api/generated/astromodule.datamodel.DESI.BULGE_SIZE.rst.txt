@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.BULGE\_SIZE
+======================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.BULGE_SIZE

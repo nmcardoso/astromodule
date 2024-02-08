@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.SMOOTH\_OR\_FEATURED
+===============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.SMOOTH_OR_FEATURED

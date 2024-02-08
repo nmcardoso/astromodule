@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.BAR
+==============================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.BAR

@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.HAS\_SPIRAL\_ARMS
+============================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.HAS_SPIRAL_ARMS

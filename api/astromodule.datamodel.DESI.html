@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>astromodule.datamodel.DESI &#8212; AstroModule 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.datamodel.DESI';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="astromodule.datamodel.DESI.BAR" href="generated/astromodule.datamodel.DESI.BAR.html" />
+    <link rel="prev" title="astromodule.datamodel.Answer.vt" href="generated/astromodule.datamodel.Answer.vt.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/galaxy_256.png" class="logo__image only-light" alt="AstroModule 0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/galaxy_256.png" class="logo__image only-dark" alt="AstroModule 0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../reference.html">
+                        API Reference
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/nmcardoso" title="Github" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Github</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://natanael.net" title="Website" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fas fa-globe fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Website</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.datamodel.html">astromodule.datamodel</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.datamodel.Answer.html">astromodule.datamodel.Answer</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Answer.db.html">astromodule.datamodel.Answer.db</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Answer.fr.html">astromodule.datamodel.Answer.fr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Answer.question.html">astromodule.datamodel.Answer.question</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Answer.vt.html">astromodule.datamodel.Answer.vt</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">astromodule.datamodel.DESI</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.BAR.html">astromodule.datamodel.DESI.BAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.BULGE_SIZE.html">astromodule.datamodel.DESI.BULGE_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.DISK_EDGE_ON.html">astromodule.datamodel.DESI.DISK_EDGE_ON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.EDGE_ON_BULGE.html">astromodule.datamodel.DESI.EDGE_ON_BULGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.HAS_SPIRAL_ARMS.html">astromodule.datamodel.DESI.HAS_SPIRAL_ARMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.HOW_ROUNDED.html">astromodule.datamodel.DESI.HOW_ROUNDED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.MERGING.html">astromodule.datamodel.DESI.MERGING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.SMOOTH_OR_FEATURED.html">astromodule.datamodel.DESI.SMOOTH_OR_FEATURED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.SPIRAL_ARM_COUNT.html">astromodule.datamodel.DESI.SPIRAL_ARM_COUNT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.DESI.SPIRAL_WINDING.html">astromodule.datamodel.DESI.SPIRAL_WINDING</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.datamodel.GD12.html">astromodule.datamodel.GD12</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.BAR.html">astromodule.datamodel.GD12.BAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.BULGE_SIZE.html">astromodule.datamodel.GD12.BULGE_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.DISK_EDGE_ON.html">astromodule.datamodel.GD12.DISK_EDGE_ON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.EDGE_ON_BULGE.html">astromodule.datamodel.GD12.EDGE_ON_BULGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.HAS_SPIRAL_ARMS.html">astromodule.datamodel.GD12.HAS_SPIRAL_ARMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.HOW_ROUNDED.html">astromodule.datamodel.GD12.HOW_ROUNDED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.MERGING.html">astromodule.datamodel.GD12.MERGING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.SMOOTH_OR_FEATURED.html">astromodule.datamodel.GD12.SMOOTH_OR_FEATURED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.SPIRAL_ARM_COUNT.html">astromodule.datamodel.GD12.SPIRAL_ARM_COUNT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD12.SPIRAL_WINDING.html">astromodule.datamodel.GD12.SPIRAL_WINDING</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.datamodel.GD5.html">astromodule.datamodel.GD5</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.BAR.html">astromodule.datamodel.GD5.BAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.BULGE_SIZE.html">astromodule.datamodel.GD5.BULGE_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.DISK_EDGE_ON.html">astromodule.datamodel.GD5.DISK_EDGE_ON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.EDGE_ON_BULGE.html">astromodule.datamodel.GD5.EDGE_ON_BULGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.HAS_SPIRAL_ARMS.html">astromodule.datamodel.GD5.HAS_SPIRAL_ARMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.HOW_ROUNDED.html">astromodule.datamodel.GD5.HOW_ROUNDED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.MERGING.html">astromodule.datamodel.GD5.MERGING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.SMOOTH_OR_FEATURED.html">astromodule.datamodel.GD5.SMOOTH_OR_FEATURED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.SPIRAL_ARM_COUNT.html">astromodule.datamodel.GD5.SPIRAL_ARM_COUNT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD5.SPIRAL_WINDING.html">astromodule.datamodel.GD5.SPIRAL_WINDING</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.datamodel.GD8.html">astromodule.datamodel.GD8</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.BAR.html">astromodule.datamodel.GD8.BAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.BULGE_SIZE.html">astromodule.datamodel.GD8.BULGE_SIZE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.DISK_EDGE_ON.html">astromodule.datamodel.GD8.DISK_EDGE_ON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.EDGE_ON_BULGE.html">astromodule.datamodel.GD8.EDGE_ON_BULGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.HAS_SPIRAL_ARMS.html">astromodule.datamodel.GD8.HAS_SPIRAL_ARMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.HOW_ROUNDED.html">astromodule.datamodel.GD8.HOW_ROUNDED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.MERGING.html">astromodule.datamodel.GD8.MERGING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.SMOOTH_OR_FEATURED.html">astromodule.datamodel.GD8.SMOOTH_OR_FEATURED</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.SPIRAL_ARM_COUNT.html">astromodule.datamodel.GD8.SPIRAL_ARM_COUNT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.GD8.SPIRAL_WINDING.html">astromodule.datamodel.GD8.SPIRAL_WINDING</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.datamodel.Question.html">astromodule.datamodel.Question</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Question.config.html">astromodule.datamodel.Question.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.datamodel.Question.t.html">astromodule.datamodel.Question.t</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.datamodel.Questions.html">astromodule.datamodel.Questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.distance.html">astromodule.distance</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.distance.arcsec2mpc.html">astromodule.distance.arcsec2mpc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.distance.mpc2arcsec.html">astromodule.distance.mpc2arcsec</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.hp.html">astromodule.hp</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.CategoricalHyperParameter.html">astromodule.hp.CategoricalHyperParameter</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.clear_last_value.html">astromodule.hp.CategoricalHyperParameter.clear_last_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.from_dict.html">astromodule.hp.CategoricalHyperParameter.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.set_attr.html">astromodule.hp.CategoricalHyperParameter.set_attr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.set_trial.html">astromodule.hp.CategoricalHyperParameter.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.suggest.html">astromodule.hp.CategoricalHyperParameter.suggest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.CategoricalHyperParameter.to_dict.html">astromodule.hp.CategoricalHyperParameter.to_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.ConstantHyperParameter.html">astromodule.hp.ConstantHyperParameter</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.clear_last_value.html">astromodule.hp.ConstantHyperParameter.clear_last_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.from_dict.html">astromodule.hp.ConstantHyperParameter.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.set_attr.html">astromodule.hp.ConstantHyperParameter.set_attr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.set_trial.html">astromodule.hp.ConstantHyperParameter.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.suggest.html">astromodule.hp.ConstantHyperParameter.suggest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.ConstantHyperParameter.to_dict.html">astromodule.hp.ConstantHyperParameter.to_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.FloatHyperParameter.html">astromodule.hp.FloatHyperParameter</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.clear_last_value.html">astromodule.hp.FloatHyperParameter.clear_last_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.from_dict.html">astromodule.hp.FloatHyperParameter.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.set_attr.html">astromodule.hp.FloatHyperParameter.set_attr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.set_trial.html">astromodule.hp.FloatHyperParameter.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.suggest.html">astromodule.hp.FloatHyperParameter.suggest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.FloatHyperParameter.to_dict.html">astromodule.hp.FloatHyperParameter.to_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.HP.html">astromodule.hp.HP</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HP.cat.html">astromodule.hp.HP.cat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HP.const.html">astromodule.hp.HP.const</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HP.num.html">astromodule.hp.HP.num</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.HyperParameter.html">astromodule.hp.HyperParameter</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.clear_last_value.html">astromodule.hp.HyperParameter.clear_last_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.from_dict.html">astromodule.hp.HyperParameter.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.set_attr.html">astromodule.hp.HyperParameter.set_attr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.set_trial.html">astromodule.hp.HyperParameter.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.suggest.html">astromodule.hp.HyperParameter.suggest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameter.to_dict.html">astromodule.hp.HyperParameter.to_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.HyperParameterSet.html">astromodule.hp.HyperParameterSet</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.add.html">astromodule.hp.HyperParameterSet.add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.check_missing_hp.html">astromodule.hp.HyperParameterSet.check_missing_hp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.clear_values_dict.html">astromodule.hp.HyperParameterSet.clear_values_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.concat.html">astromodule.hp.HyperParameterSet.concat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.from_dict.html">astromodule.hp.HyperParameterSet.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.get.html">astromodule.hp.HyperParameterSet.get</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.set_trial.html">astromodule.hp.HyperParameterSet.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.HyperParameterSet.to_values_dict.html">astromodule.hp.HyperParameterSet.to_values_dict</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.hp.IntHyperParameter.html">astromodule.hp.IntHyperParameter</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.clear_last_value.html">astromodule.hp.IntHyperParameter.clear_last_value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.from_dict.html">astromodule.hp.IntHyperParameter.from_dict</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.set_attr.html">astromodule.hp.IntHyperParameter.set_attr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.set_trial.html">astromodule.hp.IntHyperParameter.set_trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.suggest.html">astromodule.hp.IntHyperParameter.suggest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.hp.IntHyperParameter.to_dict.html">astromodule.hp.IntHyperParameter.to_dict</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.write_table.html">astromodule.io.write_table</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.legacy.html">astromodule.legacy</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LS10.html">astromodule.legacy.LS10</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.config.html">astromodule.legacy.LS10.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.get_name.html">astromodule.legacy.LS10.get_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10.tractor.html">astromodule.legacy.LS10.tractor</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LS10Tractor.html">astromodule.legacy.LS10Tractor</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.config.html">astromodule.legacy.LS10Tractor.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.get_name.html">astromodule.legacy.LS10Tractor.get_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.get_schema.html">astromodule.legacy.LS10Tractor.get_schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.set_schema.html">astromodule.legacy.LS10Tractor.set_schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brick_primary.html">astromodule.legacy.LS10Tractor.brick_primary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brickid.html">astromodule.legacy.LS10Tractor.brickid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.brickname.html">astromodule.legacy.LS10Tractor.brickname</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.bx.html">astromodule.legacy.LS10Tractor.bx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.by.html">astromodule.legacy.LS10Tractor.by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.dec.html">astromodule.legacy.LS10Tractor.dec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.dec_ivar.html">astromodule.legacy.LS10Tractor.dec_ivar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.fitbits.html">astromodule.legacy.LS10Tractor.fitbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_g.html">astromodule.legacy.LS10Tractor.mag_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_i.html">astromodule.legacy.LS10Tractor.mag_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_r.html">astromodule.legacy.LS10Tractor.mag_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w1.html">astromodule.legacy.LS10Tractor.mag_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w2.html">astromodule.legacy.LS10Tractor.mag_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w3.html">astromodule.legacy.LS10Tractor.mag_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_w4.html">astromodule.legacy.LS10Tractor.mag_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.mag_z.html">astromodule.legacy.LS10Tractor.mag_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.maskbits.html">astromodule.legacy.LS10Tractor.maskbits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_g.html">astromodule.legacy.LS10Tractor.nobs_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_i.html">astromodule.legacy.LS10Tractor.nobs_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_r.html">astromodule.legacy.LS10Tractor.nobs_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w1.html">astromodule.legacy.LS10Tractor.nobs_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w2.html">astromodule.legacy.LS10Tractor.nobs_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w3.html">astromodule.legacy.LS10Tractor.nobs_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_w4.html">astromodule.legacy.LS10Tractor.nobs_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.nobs_z.html">astromodule.legacy.LS10Tractor.nobs_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.objid.html">astromodule.legacy.LS10Tractor.objid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.ra.html">astromodule.legacy.LS10Tractor.ra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.ra_ivar.html">astromodule.legacy.LS10Tractor.ra_ivar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_g.html">astromodule.legacy.LS10Tractor.rchisq_g</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_i.html">astromodule.legacy.LS10Tractor.rchisq_i</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_r.html">astromodule.legacy.LS10Tractor.rchisq_r</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w1.html">astromodule.legacy.LS10Tractor.rchisq_w1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w2.html">astromodule.legacy.LS10Tractor.rchisq_w2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w3.html">astromodule.legacy.LS10Tractor.rchisq_w3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_w4.html">astromodule.legacy.LS10Tractor.rchisq_w4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.rchisq_z.html">astromodule.legacy.LS10Tractor.rchisq_z</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.release.html">astromodule.legacy.LS10Tractor.release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LS10Tractor.type.html">astromodule.legacy.LS10Tractor.type</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LegacyClass.html">astromodule.legacy.LegacyClass</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyClass.config.html">astromodule.legacy.LegacyClass.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyClass.DR10.html">astromodule.legacy.LegacyClass.DR10</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.legacy.LegacyService.html">astromodule.legacy.LegacyService</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_cutout.html">astromodule.legacy.LegacyService.batch_cutout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_sync_query.html">astromodule.legacy.LegacyService.batch_sync_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.crossmatch.html">astromodule.legacy.LegacyService.crossmatch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.cutout.html">astromodule.legacy.LegacyService.cutout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.get_pixscale.html">astromodule.legacy.LegacyService.get_pixscale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.legacy.LegacyService.sync_query.html">astromodule.legacy.LegacyService.sync_query</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.pipeline.html">astromodule.pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.pipeline.Pipeline.html">astromodule.pipeline.Pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.extract_stages_requirements.html">astromodule.pipeline.Pipeline.extract_stages_requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.map_run.html">astromodule.pipeline.Pipeline.map_run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.plot.html">astromodule.pipeline.Pipeline.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.run.html">astromodule.pipeline.Pipeline.run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.set_stages_requirements.html">astromodule.pipeline.Pipeline.set_stages_requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.validate.html">astromodule.pipeline.Pipeline.validate</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.pipeline.PipelineStage.html">astromodule.pipeline.PipelineStage</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.get_data.html">astromodule.pipeline.PipelineStage.get_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.run.html">astromodule.pipeline.PipelineStage.run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.set_data.html">astromodule.pipeline.PipelineStage.set_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.name.html">astromodule.pipeline.PipelineStage.name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.products.html">astromodule.pipeline.PipelineStage.products</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.requirements.html">astromodule.pipeline.PipelineStage.requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.storage.html">astromodule.pipeline.PipelineStage.storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.pipeline.PipelineStorage.html">astromodule.pipeline.PipelineStorage</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read.html">astromodule.pipeline.PipelineStorage.read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read_many.html">astromodule.pipeline.PipelineStorage.read_many</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write.html">astromodule.pipeline.PipelineStorage.write</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write_many.html">astromodule.pipeline.PipelineStorage.write_many</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.splus.html">astromodule.splus</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.splus.update_authorization.html">astromodule.splus.update_authorization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.splus.SplusService.html">astromodule.splus.SplusService</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_image_download.html">astromodule.splus.SplusService.batch_image_download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.batch_query.html">astromodule.splus.SplusService.batch_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_field.html">astromodule.splus.SplusService.download_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_fits.html">astromodule.splus.SplusService.download_fits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_lupton_rgb.html">astromodule.splus.SplusService.download_lupton_rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.download_trilogy_rgb.html">astromodule.splus.SplusService.download_trilogy_rgb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.query.html">astromodule.splus.SplusService.query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.splus.SplusService.update_token.html">astromodule.splus.SplusService.update_token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.fast_crossmatch.html">astromodule.table.fast_crossmatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.selfmatch.html">astromodule.table.selfmatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.table_knn.html">astromodule.table.table_knn</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.table.DropDuplicatesResult.html">astromodule.table.DropDuplicatesResult</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.df.html">astromodule.table.DropDuplicatesResult.df</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.distances.html">astromodule.table.DropDuplicatesResult.distances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.n_iterations.html">astromodule.table.DropDuplicatesResult.n_iterations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.table.DropDuplicatesResult.drop_count.html">astromodule.table.DropDuplicatesResult.drop_count</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.tap.html">astromodule.tap</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.tap.TapService.html">astromodule.tap.TapService</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.tap.TapService.batch_sync_query.html">astromodule.tap.TapService.batch_sync_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.tap.TapService.sync_query.html">astromodule.tap.TapService.sync_query</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.utils.html">astromodule.utils</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-33"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.utils.append_query_params.html">astromodule.utils.append_query_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.utils.filter_dict.html">astromodule.utils.filter_dict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.utils.iauname.html">astromodule.utils.iauname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.utils.iauname_path.html">astromodule.utils.iauname_path</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="astromodule.datamodel.html" class="nav-link">astromodule.datamodel</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="astromodule-datamodel-desi">
+<h1>astromodule.datamodel.DESI<a class="headerlink" href="#astromodule-datamodel-desi" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="astromodule.datamodel.DESI">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DESI</span></span><a class="reference internal" href="../_modules/astromodule/datamodel.html#DESI"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.datamodel.DESI" title="Link to this definition">#</a></dt>
+<dd><p class="rubric">Methods</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.BAR.html#astromodule.datamodel.DESI.BAR" title="astromodule.datamodel.DESI.BAR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BAR</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.BULGE_SIZE.html#astromodule.datamodel.DESI.BULGE_SIZE" title="astromodule.datamodel.DESI.BULGE_SIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BULGE_SIZE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.DISK_EDGE_ON.html#astromodule.datamodel.DESI.DISK_EDGE_ON" title="astromodule.datamodel.DESI.DISK_EDGE_ON"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DISK_EDGE_ON</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.EDGE_ON_BULGE.html#astromodule.datamodel.DESI.EDGE_ON_BULGE" title="astromodule.datamodel.DESI.EDGE_ON_BULGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EDGE_ON_BULGE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.HAS_SPIRAL_ARMS.html#astromodule.datamodel.DESI.HAS_SPIRAL_ARMS" title="astromodule.datamodel.DESI.HAS_SPIRAL_ARMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HAS_SPIRAL_ARMS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.HOW_ROUNDED.html#astromodule.datamodel.DESI.HOW_ROUNDED" title="astromodule.datamodel.DESI.HOW_ROUNDED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HOW_ROUNDED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.MERGING.html#astromodule.datamodel.DESI.MERGING" title="astromodule.datamodel.DESI.MERGING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MERGING</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.SMOOTH_OR_FEATURED.html#astromodule.datamodel.DESI.SMOOTH_OR_FEATURED" title="astromodule.datamodel.DESI.SMOOTH_OR_FEATURED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SMOOTH_OR_FEATURED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.SPIRAL_ARM_COUNT.html#astromodule.datamodel.DESI.SPIRAL_ARM_COUNT" title="astromodule.datamodel.DESI.SPIRAL_ARM_COUNT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPIRAL_ARM_COUNT</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.datamodel.DESI.SPIRAL_WINDING.html#astromodule.datamodel.DESI.SPIRAL_WINDING" title="astromodule.datamodel.DESI.SPIRAL_WINDING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPIRAL_WINDING</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="astromodule.datamodel.DESI.__new__">
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#astromodule.datamodel.DESI.__new__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="generated/astromodule.datamodel.Answer.vt.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">astromodule.datamodel.Answer.vt</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="generated/astromodule.datamodel.DESI.BAR.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">astromodule.datamodel.DESI.BAR</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.datamodel.DESI"><code class="docutils literal notranslate"><span class="pre">DESI</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.datamodel.DESI.__new__"><code class="docutils literal notranslate"><span class="pre">DESI.__new__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/astromodule.datamodel.DESI.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Natanael M. Cardoso.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

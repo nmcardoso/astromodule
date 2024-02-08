@@ -1,0 +1,6 @@
+astromodule.datamodel.DESI.HOW\_ROUNDED
+=======================================
+
+.. currentmodule:: astromodule.datamodel
+
+.. autoattribute:: DESI.HOW_ROUNDED
