@@ -418,7 +418,7 @@ class Pipeline:
     return p
   
   
-  def __add__(self, other: 'Pipeline' | PipelineStage) -> 'Pipeline':
+  def __add__(self, other: PipelineStage) -> 'Pipeline':
     """
     Overcharge of the ``+`` operator that implements concatenation of
     pipelines or concatenation of a pipeline and a stage
