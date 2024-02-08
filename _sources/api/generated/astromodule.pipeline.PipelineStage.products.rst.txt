@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStage.products
+===========================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoattribute:: PipelineStage.products

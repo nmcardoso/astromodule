@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStorage.read
+=========================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStorage.read

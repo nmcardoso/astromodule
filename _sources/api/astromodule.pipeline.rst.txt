@@ -1,0 +1,33 @@
+﻿astromodule.pipeline
+====================
+
+.. automodule:: astromodule.pipeline
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Classes
+
+  .. autosummary::
+    :toctree:
+    :template: class-template.rst
+  
+    Pipeline
+    PipelineStage
+    PipelineStorage
+  
+  
+
+  
+  
+  
+
+
+

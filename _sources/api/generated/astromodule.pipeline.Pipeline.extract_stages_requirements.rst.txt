@@ -1,0 +1,6 @@
+astromodule.pipeline.Pipeline.extract\_stages\_requirements
+===========================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: Pipeline.extract_stages_requirements

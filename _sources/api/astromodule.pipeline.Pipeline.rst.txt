@@ -1,0 +1,40 @@
+astromodule.pipeline.Pipeline
+=============================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoclass:: Pipeline
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~Pipeline.extract_stages_requirements
+       
+       
+          ~Pipeline.map_run
+       
+       
+          ~Pipeline.plot
+       
+       
+          ~Pipeline.run
+       
+       
+          ~Pipeline.set_stages_requirements
+       
+       
+          ~Pipeline.validate
+       
+   
+   
+
+   
+   
+   

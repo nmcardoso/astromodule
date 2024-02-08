@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStage.set\_data
+============================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStage.set_data

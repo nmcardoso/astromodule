@@ -1,0 +1,6 @@
+astromodule.pipeline.Pipeline.run
+=================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: Pipeline.run

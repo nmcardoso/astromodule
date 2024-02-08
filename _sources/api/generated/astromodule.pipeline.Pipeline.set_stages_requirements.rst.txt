@@ -1,0 +1,6 @@
+astromodule.pipeline.Pipeline.set\_stages\_requirements
+=======================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: Pipeline.set_stages_requirements

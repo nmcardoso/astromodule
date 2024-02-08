@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStorage.write\_many
+================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStorage.write_many
