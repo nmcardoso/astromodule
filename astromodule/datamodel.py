@@ -169,6 +169,19 @@ class GD12:
   SPIRAL_WINDING = Questions.SpiralWinding().config('spiral-winding-dr12')
   SPIRAL_ARM_COUNT = Questions.SpiralArmCountGZ().config('spiral-arm-count-dr12')
   MERGING = Questions.MergingGZ().config('merging-dr12')
+  
+  
+class DESI:
+  SMOOTH_OR_FEATURED = Questions.SmothOrFeatured().config('smooth-or-featured')
+  DISK_EDGE_ON = Questions.DiskEdgeOn().config('disk-edge-on')
+  HAS_SPIRAL_ARMS = Questions.HasSpiralArms().config('has-spiral-arms')
+  BAR = Questions.Bar().config('bar')
+  BULGE_SIZE = Questions.BulgeSize().config('bulge-size')
+  HOW_ROUNDED = Questions.HowRounded().config('how-rounded')
+  EDGE_ON_BULGE = Questions.EdgeOnBulge().config('edge-on-bulge')
+  SPIRAL_WINDING = Questions.SpiralWinding().config('spiral-winding')
+  SPIRAL_ARM_COUNT = Questions.SpiralArmCount().config('spiral-arm-count')
+  MERGING = Questions.Merging().config('merging')
 
 
 
