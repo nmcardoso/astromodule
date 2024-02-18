@@ -7,7 +7,7 @@ import concurrent.futures
 import re
 from io import BufferedIOBase, RawIOBase, StringIO, TextIOBase
 from pathlib import Path
-from typing import Any, BinaryIO, Callable, Dict, Sequence
+from typing import Any, BinaryIO, Callable, Dict, Literal, Sequence
 
 import numpy as np
 import pandas as pd
@@ -29,6 +29,8 @@ def read_table(
   na_values: Sequence[str] | Dict[str, Sequence[str]] = None,
   keep_default_na: bool = True,
   na_filter: bool = True,
+  header: Literal['infer'] | int | Sequence[int] = 'infer',
+  col_names: Sequence[str] | None = None,
 ) -> pd.DataFrame:
   """
   This function tries to detect the table type comparing the file extension and
@@ -117,6 +119,31 @@ def read_table(
     
     .. note::
       Used only for ASCII tables, ignored by other types of tables.
+      
+  header : 'infer' or int or Sequence[int]
+    Row number(s) containing column labels and marking the start of the data 
+    (zero-indexed). Default behavior is to infer the column names: if no ``names``
+    are passed the behavior is identical to ``header=0`` and column names are 
+    inferred from the first line of the file, if column names are passed 
+    explicitly to ``names`` then the behavior is identical to ``header=None``. 
+    Explicitly pass ``header=0`` to be able to replace existing names. The 
+    header can be a list of integers that specify row locations for a 
+    `pandas.MultiIndex` on the columns e.g. ``[0, 1, 3]``. Intervening rows 
+    that are not specified will be skipped (e.g. 2 in this example is skipped). 
+    Note that this parameter ignores commented lines and empty lines if 
+    ``skip_blank_lines=True``, so ``header=0`` denotes the first line of data 
+    rather than the first line of the file.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
+    
+  col_names : Sequence[str]
+    Sequence of column labels to apply. If the file contains a header row, 
+    then you should explicitly pass ``header=0`` to override the column names. 
+    Duplicates in this list are not allowed.
+    
+    .. note::
+      Used only for ASCII tables, ignored by other types of tables.
 
   Notes
   -----
@@ -166,6 +193,9 @@ def read_table(
         df = df[columns]
       return df
   elif fmt in ('dat', 'tsv'):
+    optional_params = {}
+    if col_names:
+      optional_params = {'names': col_names}
     return pd.read_csv(
       path, 
       delim_whitespace=True, 
@@ -175,8 +205,13 @@ def read_table(
       na_values=na_values,
       keep_default_na=keep_default_na,
       na_filter=na_filter,
+      header=header,
+      **optional_params,
     )
   elif fmt == 'csv':
+    optional_params = {}
+    if col_names:
+      optional_params = {'names': col_names}
     return pd.read_csv(
       path, 
       usecols=columns, 
@@ -185,6 +220,8 @@ def read_table(
       na_values=na_values,
       keep_default_na=keep_default_na,
       na_filter=na_filter,
+      header=header,
+      **optional_params,
     )
   elif fmt == 'parquet':
     return pd.read_parquet(
