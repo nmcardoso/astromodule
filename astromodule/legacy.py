@@ -5,7 +5,7 @@ High-level interface to Legacy Survey data
 
 from io import BytesIO
 from pathlib import Path
-from typing import List, Sequence, Tuple, Union
+from typing import List, Literal, Sequence, Tuple, Union
 
 import pandas as pd
 import requests
@@ -86,6 +86,41 @@ Legacy.config()
 
 
 class LegacyService(TapService):
+  """
+  High-level Legacy Survey API interface
+  
+  Parameters
+  ----------
+  replace: bool, optional
+    Replace file if exists in ``save_path`` location
+  
+  width: float, optional
+    Stamp width.
+  
+  height: float, optional
+    Stamp height.
+  
+  pixscale: float, optional
+    Pixel scale of the sky.
+  
+  bands: str, optional
+    Image bands
+  
+  layer: str, optional
+    Legacy Survey image layer.
+  
+  use_dev: bool, optional
+    Use the dev env of Legacy Cutout API
+  
+  fmt: str, optional
+    File format. One of: ``jpg`` or ``fits``
+  
+  compress_fits: bool, optional
+    Compress the downloaded fits stamp to ``fits.fz``
+  
+  workers: int, optional
+    Maximum spawned threads when `batch_cutout` is called
+  """
   def __init__(
     self,
     replace: bool = False,
@@ -95,7 +130,7 @@ class LegacyService(TapService):
     bands: str = 'grz',
     layer: str = 'ls-dr10',
     use_dev: bool = False,
-    fmt: str = 'jpg',
+    fmt: Literal['jpg', 'fits'] = 'jpg',
     compress_fits: bool = False,
     compress_type: str = 'HCOMPRESS_1',
     hcomp_scale: int = 3,
@@ -103,30 +138,6 @@ class LegacyService(TapService):
     quantize_method: int = -1,
     workers: int = 3,
   ):
-    """
-    Parameters
-    ----------
-    replace: bool, optional
-      Replace file if exists in ``save_path`` location
-    width: float, optional
-      Stamp width.
-    height: float, optional
-      Stamp height.
-    pixscale: float, optional
-      Pixel scale of the sky.
-    bands: str, optional
-      Image bands
-    layer: str, optional
-      Legacy Survey image layer.
-    use_dev: bool, optional
-      Use the dev env of Legacy Cutout API
-    fmt: str, optional
-      File format. One of: ``jpg`` or ``fits``
-    compress_fits: bool, optional
-      Compress the downloaded fits stamp to ``fits.fz``
-    workers: int, optional
-      Maximum spawned threads when `batch_cutout` is called
-    """
     super().__init__(LEGACY_TAP_SYNC_DR10)
     self.replace = replace
     self.width = width
@@ -135,6 +146,7 @@ class LegacyService(TapService):
     self.bands = bands
     self.layer = layer
     self.use_dev = use_dev
+    self.fmt = fmt
     self.workers = workers
     self.compress_fits = compress_fits
     self.compress_type = compress_type
@@ -167,7 +179,7 @@ class LegacyService(TapService):
       The path that will be appended at beggining of every paths if ``save_path``
       is ``None``.
     """
-    if self.image_format == 'jpg':
+    if self.fmt == 'jpg':
       url = LEGACY_RGB_URL_DEV if self.use_dev else LEGACY_RGB_URL
     else:
       url = LEGACY_FITS_URL_DEV if self.use_dev else LEGACY_FITS_URL
@@ -176,7 +188,7 @@ class LegacyService(TapService):
       save_path = iauname_path(
         iaunames=iauname(ra=ra, dec=dec),
         prefix=Path(base_path),
-        suffix=f'.{self.image_format}'
+        suffix=f'.{self.fmt}'
       )
 
     pixscale = self.get_pixscale(mag_r) if mag_r is not None else self.pixscale
@@ -242,7 +254,7 @@ class LegacyService(TapService):
       save_path = iauname_path(
         iaunames=iauname(ra=ra, dec=dec),
         prefix=Path(base_path),
-        suffix=f'.{self.image_format}'
+        suffix=f'.{self.fmt}'
       )
 
     if mag_r is None:
