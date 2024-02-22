@@ -676,7 +676,34 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="astromodule.legacy.LegacyService">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegacyService</span></span><a class="reference internal" href="../_modules/astromodule/legacy.html#LegacyService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.legacy.LegacyService" title="Link to this definition">#</a></dt>
-<dd><p class="rubric">Methods</p>
+<dd><p>High-level Legacy Survey API interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>replace: bool, optional</strong></dt><dd><p>Replace file if exists in <code class="docutils literal notranslate"><span class="pre">save_path</span></code> location</p>
+</dd>
+<dt><strong>width: float, optional</strong></dt><dd><p>Stamp width.</p>
+</dd>
+<dt><strong>height: float, optional</strong></dt><dd><p>Stamp height.</p>
+</dd>
+<dt><strong>pixscale: float, optional</strong></dt><dd><p>Pixel scale of the sky.</p>
+</dd>
+<dt><strong>bands: str, optional</strong></dt><dd><p>Image bands</p>
+</dd>
+<dt><strong>layer: str, optional</strong></dt><dd><p>Legacy Survey image layer.</p>
+</dd>
+<dt><strong>use_dev: bool, optional</strong></dt><dd><p>Use the dev env of Legacy Cutout API</p>
+</dd>
+<dt><strong>fmt: str, optional</strong></dt><dd><p>File format. One of: <code class="docutils literal notranslate"><span class="pre">jpg</span></code> or <code class="docutils literal notranslate"><span class="pre">fits</span></code></p>
+</dd>
+<dt><strong>compress_fits: bool, optional</strong></dt><dd><p>Compress the downloaded fits stamp to <code class="docutils literal notranslate"><span class="pre">fits.fz</span></code></p>
+</dd>
+<dt><strong>workers: int, optional</strong></dt><dd><p>Maximum spawned threads when <a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_cutout.html#astromodule.legacy.LegacyService.batch_cutout" title="astromodule.legacy.LegacyService.batch_cutout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">batch_cutout</span></code></a> is called</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.legacy.LegacyService.batch_cutout.html#astromodule.legacy.LegacyService.batch_cutout" title="astromodule.legacy.LegacyService.batch_cutout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">batch_cutout</span></code></a>(ra, dec[, save_path, ...])</p></td>

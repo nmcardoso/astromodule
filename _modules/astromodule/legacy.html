@@ -369,7 +369,7 @@ document.write(`
 
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -461,6 +461,41 @@ document.write(`
 <div class="viewcode-block" id="LegacyService">
 <a class="viewcode-back" href="../../api/astromodule.legacy.LegacyService.html#astromodule.legacy.LegacyService">[docs]</a>
 <span class="k">class</span> <span class="nc">LegacyService</span><span class="p">(</span><span class="n">TapService</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  High-level Legacy Survey API interface</span>
+<span class="sd">  </span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  replace: bool, optional</span>
+<span class="sd">    Replace file if exists in ``save_path`` location</span>
+<span class="sd">  </span>
+<span class="sd">  width: float, optional</span>
+<span class="sd">    Stamp width.</span>
+<span class="sd">  </span>
+<span class="sd">  height: float, optional</span>
+<span class="sd">    Stamp height.</span>
+<span class="sd">  </span>
+<span class="sd">  pixscale: float, optional</span>
+<span class="sd">    Pixel scale of the sky.</span>
+<span class="sd">  </span>
+<span class="sd">  bands: str, optional</span>
+<span class="sd">    Image bands</span>
+<span class="sd">  </span>
+<span class="sd">  layer: str, optional</span>
+<span class="sd">    Legacy Survey image layer.</span>
+<span class="sd">  </span>
+<span class="sd">  use_dev: bool, optional</span>
+<span class="sd">    Use the dev env of Legacy Cutout API</span>
+<span class="sd">  </span>
+<span class="sd">  fmt: str, optional</span>
+<span class="sd">    File format. One of: ``jpg`` or ``fits``</span>
+<span class="sd">  </span>
+<span class="sd">  compress_fits: bool, optional</span>
+<span class="sd">    Compress the downloaded fits stamp to ``fits.fz``</span>
+<span class="sd">  </span>
+<span class="sd">  workers: int, optional</span>
+<span class="sd">    Maximum spawned threads when `batch_cutout` is called</span>
+<span class="sd">  &quot;&quot;&quot;</span>
   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -470,7 +505,7 @@ document.write(`
     <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;grz&#39;</span><span class="p">,</span>
     <span class="n">layer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ls-dr10&#39;</span><span class="p">,</span>
     <span class="n">use_dev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">fmt</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;jpg&#39;</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;fits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;jpg&#39;</span><span class="p">,</span>
     <span class="n">compress_fits</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">compress_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;HCOMPRESS_1&#39;</span><span class="p">,</span>
     <span class="n">hcomp_scale</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
@@ -478,30 +513,6 @@ document.write(`
     <span class="n">quantize_method</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
   <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    replace: bool, optional</span>
-<span class="sd">      Replace file if exists in ``save_path`` location</span>
-<span class="sd">    width: float, optional</span>
-<span class="sd">      Stamp width.</span>
-<span class="sd">    height: float, optional</span>
-<span class="sd">      Stamp height.</span>
-<span class="sd">    pixscale: float, optional</span>
-<span class="sd">      Pixel scale of the sky.</span>
-<span class="sd">    bands: str, optional</span>
-<span class="sd">      Image bands</span>
-<span class="sd">    layer: str, optional</span>
-<span class="sd">      Legacy Survey image layer.</span>
-<span class="sd">    use_dev: bool, optional</span>
-<span class="sd">      Use the dev env of Legacy Cutout API</span>
-<span class="sd">    fmt: str, optional</span>
-<span class="sd">      File format. One of: ``jpg`` or ``fits``</span>
-<span class="sd">    compress_fits: bool, optional</span>
-<span class="sd">      Compress the downloaded fits stamp to ``fits.fz``</span>
-<span class="sd">    workers: int, optional</span>
-<span class="sd">      Maximum spawned threads when `batch_cutout` is called</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">LEGACY_TAP_SYNC_DR10</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">replace</span> <span class="o">=</span> <span class="n">replace</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
@@ -510,6 +521,7 @@ document.write(`
     <span class="bp">self</span><span class="o">.</span><span class="n">bands</span> <span class="o">=</span> <span class="n">bands</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">layer</span> <span class="o">=</span> <span class="n">layer</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">use_dev</span> <span class="o">=</span> <span class="n">use_dev</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">workers</span> <span class="o">=</span> <span class="n">workers</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">compress_fits</span> <span class="o">=</span> <span class="n">compress_fits</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">compress_type</span> <span class="o">=</span> <span class="n">compress_type</span>
@@ -544,7 +556,7 @@ document.write(`
 <span class="sd">      The path that will be appended at beggining of every paths if ``save_path``</span>
 <span class="sd">      is ``None``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_format</span> <span class="o">==</span> <span class="s1">&#39;jpg&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fmt</span> <span class="o">==</span> <span class="s1">&#39;jpg&#39;</span><span class="p">:</span>
       <span class="n">url</span> <span class="o">=</span> <span class="n">LEGACY_RGB_URL_DEV</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_dev</span> <span class="k">else</span> <span class="n">LEGACY_RGB_URL</span>
     <span class="k">else</span><span class="p">:</span>
       <span class="n">url</span> <span class="o">=</span> <span class="n">LEGACY_FITS_URL_DEV</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_dev</span> <span class="k">else</span> <span class="n">LEGACY_FITS_URL</span>
@@ -553,7 +565,7 @@ document.write(`
       <span class="n">save_path</span> <span class="o">=</span> <span class="n">iauname_path</span><span class="p">(</span>
         <span class="n">iaunames</span><span class="o">=</span><span class="n">iauname</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">),</span>
         <span class="n">prefix</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">base_path</span><span class="p">),</span>
-        <span class="n">suffix</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">suffix</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
       <span class="p">)</span>
 
     <span class="n">pixscale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_pixscale</span><span class="p">(</span><span class="n">mag_r</span><span class="p">)</span> <span class="k">if</span> <span class="n">mag_r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixscale</span>
@@ -622,7 +634,7 @@ document.write(`
       <span class="n">save_path</span> <span class="o">=</span> <span class="n">iauname_path</span><span class="p">(</span>
         <span class="n">iaunames</span><span class="o">=</span><span class="n">iauname</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">),</span>
         <span class="n">prefix</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">base_path</span><span class="p">),</span>
-        <span class="n">suffix</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">image_format</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">suffix</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
       <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">mag_r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
