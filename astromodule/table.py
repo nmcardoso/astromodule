@@ -15,7 +15,8 @@ from typing import Literal, Sequence, Tuple, Union
 import astropy.units as u
 import numpy as np
 import pandas as pd
-from astropy.coordinates import SkyCoord, match_coordinates_sky
+from astropy.coordinates import (SkyCoord, match_coordinates_sky,
+                                 search_around_sky)
 from astropy.table import Table
 
 from astromodule.io import PathOrFile, TableLike, read_table, write_table
@@ -648,6 +649,31 @@ def selfmatch(
   df_out = read_table(BytesIO(result.stdout), fmt=fmt)
   return df_out
 
+
+
+
+def radial_search(
+  position: Tuple[float, float] | SkyCoord,
+  table: TableLike,
+  radius: float | u.Quantity,
+  ra: str = None,
+  dec: str = None,
+):
+  df = read_table(table)
+  ra, dec = guess_coords_columns(df, ra, dec)
+    
+  if not isinstance(radius, u.Quantity):
+    radius = radius * u.arcsec
+    
+  if not isinstance(position, SkyCoord):
+    position = SkyCoord(ra=position[0]*u.deg, dec=position[1]*u.deg)
+    
+  catalog = SkyCoord(ra=df[ra].values*u.deg, dec=df[dec].values*u.deg)
+  
+  idx1, idx2, sep2d, dist3d = search_around_sky(position, catalog, seplimit=radius)
+  
+  return df.iloc[idx2]
+  
 
 
 
