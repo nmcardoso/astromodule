@@ -14,6 +14,7 @@ import pandas as pd
 import requests
 from astropy.io import fits, votable
 from astropy.table import Table
+from PIL import Image, ImageOps
 from tqdm import tqdm
 
 RANDOM_SEED = 42
@@ -293,6 +294,38 @@ def write_table(data: TableLike, path: PathOrFile, fmt: str | None = None):
   elif fmt in ('vo', 'vot', 'votable', 'xml'):
     t = Table.from_pandas(data)
     votable.writeto(t, path)
+
+
+
+
+def read_image(path: str | Path) -> np.ndarray:
+  """
+  Load image from local storage to numpy array.
+  Supports several types of files, incluing ``.jpg``, ``.png``, ``.npy``,
+  ``.npz``, ``.fits``
+
+  Parameters
+  ----------
+  path: str or pathlib.Path
+    Path to the desired file
+
+  Returns
+  -------
+  numpy.ndarray
+    Image converted (if needed) to a numpy array.
+  """
+  path = Path(path)
+  if path.suffix in ('.jpg', '.jpeg', '.png'):
+    img = Image.open(path)
+    return np.asarray(img)
+  elif path.suffix in ('.npy', '.npz'):
+    return np.load(path)
+  elif path.suffix in ('.fits', '.fit', '.fz'):
+    im = fits.getdata(path)
+    if np.argmin(im.shape) == 0:
+      # convert from (c, h, w) to (h, w, c)
+      im = np.moveaxis(im, 0 , -1)
+    return im
     
     
 
