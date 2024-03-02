@@ -326,6 +326,21 @@ def read_image(path: str | Path) -> np.ndarray:
       # convert from (c, h, w) to (h, w, c)
       im = np.moveaxis(im, 0 , -1)
     return im
+  
+  
+
+def write_image(data: np.ndarray, path: str | Path):
+  path = Path(path)
+  path.parent.mkdir(parents=True, exist_ok=True)
+
+  if path.suffix in ('.jpg', '.png'):
+    ImageOps.flip(Image.fromarray(data, 'RGB')).save(path)
+  elif path.suffix in ('.fits', '.fit'):
+    fits.ImageHDU(np.moveaxis(data, -1, 0)).writeto(path, overwrite=True)
+  elif path.suffix == '.npy':
+    np.save(path, data)
+  elif path.suffix == '.npz':
+    np.savez(path, *data)
     
     
 
