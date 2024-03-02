@@ -12,6 +12,7 @@ API Reference
    astromodule.io
    astromodule.legacy
    astromodule.pipeline
+   astromodule.plot
    astromodule.splus
    astromodule.table
    astromodule.tap
