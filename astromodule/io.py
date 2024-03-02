@@ -188,9 +188,9 @@ def read_table(
     with fits.open(path) as hdul:
       table_data = hdul[1].data
       table = Table(data=table_data)
-      df = table.to_pandas()
-      if columns:
-        df = df[columns]
+      if columns is None:
+        columns = [name for name in table.colnames if len(table[name].shape) <= 1]
+      df = table[columns].to_pandas()
       return df
   elif fmt in ('dat', 'tsv'):
     optional_params = {}
