@@ -19,6 +19,7 @@
     drop_duplicates
     fast_crossmatch
     guess_coords_columns
+    radial_search
     selfmatch
     table_knn
   

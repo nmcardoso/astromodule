@@ -1,0 +1,31 @@
+﻿astromodule.plot
+================
+
+.. automodule:: astromodule.plot
+
+  
+  
+  
+
+  
+  
+  .. rubric:: Functions
+
+  .. autosummary::
+    :toctree:
+  
+    plot_axis_grid
+    simple_image_axis
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+
+

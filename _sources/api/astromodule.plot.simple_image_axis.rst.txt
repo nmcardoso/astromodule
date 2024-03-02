@@ -1,0 +1,6 @@
+astromodule.plot.simple\_image\_axis
+====================================
+
+.. currentmodule:: astromodule.plot
+
+.. autofunction:: simple_image_axis

@@ -1,0 +1,6 @@
+astromodule.io.write\_image
+===========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: write_image

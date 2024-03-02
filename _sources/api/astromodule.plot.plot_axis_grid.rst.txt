@@ -1,0 +1,6 @@
+astromodule.plot.plot\_axis\_grid
+=================================
+
+.. currentmodule:: astromodule.plot
+
+.. autofunction:: plot_axis_grid

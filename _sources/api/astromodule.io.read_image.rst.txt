@@ -1,0 +1,6 @@
+astromodule.io.read\_image
+==========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: read_image

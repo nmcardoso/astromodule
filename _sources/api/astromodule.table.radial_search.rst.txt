@@ -1,0 +1,6 @@
+astromodule.table.radial\_search
+================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: radial_search

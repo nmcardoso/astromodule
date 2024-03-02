@@ -18,7 +18,9 @@
     compress_fits
     download_file
     parallel_function_executor
+    read_image
     read_table
+    write_image
     write_table
   
   
