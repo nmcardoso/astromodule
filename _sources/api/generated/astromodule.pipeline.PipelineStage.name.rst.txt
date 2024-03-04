@@ -3,4 +3,4 @@ astromodule.pipeline.PipelineStage.name
 
 .. currentmodule:: astromodule.pipeline
 
-.. autoattribute:: PipelineStage.name
+.. autoproperty:: PipelineStage.name

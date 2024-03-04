@@ -472,9 +472,6 @@ document.write(`
 <span class="sd">  --------</span>
 <span class="sd">  astromodule.pipeline.Pipeline</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  
-  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;Unnamed Stage&#39;</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;Unique name that identifies a stage inside a pipeline&quot;&quot;&quot;</span>
   <span class="n">requirements</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  A list of all resorces required by this pipeline stage. It&#39;s includes all</span>
@@ -561,7 +558,11 @@ document.write(`
 <span class="sd">      The data identifier</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
-</div>
+
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span></div>
 
 
 
