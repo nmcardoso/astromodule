@@ -91,9 +91,6 @@ class PipelineStage(ABC):
   --------
   astromodule.pipeline.Pipeline
   """
-  
-  name: str = 'Unnamed Stage'
-  """Unique name that identifies a stage inside a pipeline"""
   requirements: Sequence[str] = []
   """
   A list of all resorces required by this pipeline stage. It's includes all
@@ -172,6 +169,10 @@ class PipelineStage(ABC):
       The data identifier
     """
     return self.storage.read(key)
+  
+  @property
+  def name(self):
+    return self.__class__.__name__
 
 
 
