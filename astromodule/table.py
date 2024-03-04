@@ -706,8 +706,9 @@ def concat_tables(
   """
   dfs = [read_table(df, **kwargs) for df in tables]
   dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
-  return pd.concat(dfs)
-
+  if len(dfs) > 0:
+    return pd.concat(dfs)
+  return pd.DataFrame()
 
 
 if __name__ == '__main__':
