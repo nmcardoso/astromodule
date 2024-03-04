@@ -753,7 +753,7 @@ document.write(`
     <span class="k">else</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="si">}</span><span class="s1">] Pipeline Start&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_executor</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_executor</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">()</span></div>
 
       
@@ -856,7 +856,7 @@ document.write(`
       <span class="k">return</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">stages</span><span class="p">)</span>
     
     
-  <span class="k">def</span> <span class="nf">_pipe_executor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_pipe_executor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wrapper function that create a new pipeline instance and execute it to</span>
 <span class="sd">    ensure isolation of different pipelines in parallel execution</span>
@@ -868,7 +868,7 @@ document.write(`
 <span class="sd">    data : Any</span>
 <span class="sd">      The value of the mapped resource</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">req_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_req_list</span><span class="p">)</span>
+    <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">req_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_req_list</span><span class="p">)</span>
     <span class="n">pipe</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="n">pipe</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">del</span> <span class="n">pipe</span></div>
