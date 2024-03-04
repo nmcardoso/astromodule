@@ -349,7 +349,7 @@ class Pipeline:
     else:
       for i, data in enumerate(array):
         print(f'[{i+1} / {len(array)}] Pipeline Start')
-        self._pipe_executor(key=key, data=data)
+        self._pipe_executor(key=key, data=data, verbose=True)
         print()
       
       
@@ -445,7 +445,7 @@ class Pipeline:
       return Pipeline(*self.stages, *other.stages)
     
     
-  def _pipe_executor(self, key: str, data: Any):
+  def _pipe_executor(self, key: str, data: Any, verbose: bool = False):
     """
     Wrapper function that create a new pipeline instance and execute it to
     ensure isolation of different pipelines in parallel execution
@@ -457,7 +457,7 @@ class Pipeline:
     data : Any
       The value of the mapped resource
     """
-    pipe = Pipeline(*self.stages, verbose=False, req_list=self._req_list)
+    pipe = Pipeline(*self.stages, verbose=verbose, req_list=self._req_list)
     pipe.storage.write(key, data)
     pipe.run(validate=False)
     del pipe
