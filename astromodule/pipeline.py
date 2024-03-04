@@ -338,13 +338,19 @@ class Pipeline:
         print('Aborting pipeline execution due to validation fail')
       return 
     
-    params = [{'key': key, 'data': d} for d in array]
-    parallel_function_executor(
-      func=self._pipe_executor, 
-      params=params, 
-      workers=workers, 
-      unit='jobs'
-    )
+    if workers > 1:
+      params = [{'key': key, 'data': d} for d in array]
+      parallel_function_executor(
+        func=self._pipe_executor, 
+        params=params, 
+        workers=workers, 
+        unit='jobs'
+      )
+    else:
+      for i, data in enumerate(array):
+        print(f'[{i+1} / {len(array)}] Pipeline Start')
+        self._pipe_executor(key=key, data=data)
+        print()
       
       
   def validate(self, ignore: Sequence[str] = []) -> bool:
