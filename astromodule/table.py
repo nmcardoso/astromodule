@@ -653,7 +653,7 @@ def selfmatch(
 
 
 def radial_search(
-  position: Tuple[float, float] | SkyCoord,
+  position: SkyCoord,
   table: TableLike,
   radius: float | u.Quantity,
   ra: str = None,
@@ -665,14 +665,11 @@ def radial_search(
   if not isinstance(radius, u.Quantity):
     radius = radius * u.arcsec
     
-  if not isinstance(position, SkyCoord):
-    position = SkyCoord(ra=position[0]*u.deg, dec=position[1]*u.deg)
-    
   catalog = SkyCoord(ra=df[ra].values*u.deg, dec=df[dec].values*u.deg)
   
-  idx1, idx2, sep2d, dist3d = search_around_sky(position, catalog, seplimit=radius)
+  mask = position.separation(catalog) < radius
   
-  return df.iloc[idx2]
+  return df[mask]
   
 
 
