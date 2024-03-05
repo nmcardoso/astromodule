@@ -1,0 +1,25 @@
+astromodule.utils.SingletonMeta
+===============================
+
+.. currentmodule:: astromodule.utils
+
+.. autoclass:: SingletonMeta
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+       
+          ~SingletonMeta.mro
+       
+   
+   
+
+   
+   
+   

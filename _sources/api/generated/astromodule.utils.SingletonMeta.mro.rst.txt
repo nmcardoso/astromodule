@@ -1,0 +1,6 @@
+astromodule.utils.SingletonMeta.mro
+===================================
+
+.. currentmodule:: astromodule.utils
+
+.. automethod:: SingletonMeta.mro
