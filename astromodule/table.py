@@ -665,7 +665,7 @@ def radial_search(
   if not isinstance(radius, u.Quantity):
     radius = radius * u.arcsec
     
-  catalog = SkyCoord(ra=df[ra].values*u.deg, dec=df[dec].values*u.deg)
+  catalog = SkyCoord(ra=df[ra].values, dec=df[dec].values, unit=u.deg, frame='icrs')
   
   mask = position.separation(catalog) < radius
   
