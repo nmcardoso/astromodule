@@ -560,6 +560,7 @@ class Pipeline:
     # pipe.storage.write(key, data)
     PipelineStorage().write(key, data)
     pipe.run(validate=False)
+    PipelineStorage().del_storage(self.storage_id)
     del pipe
 
 
