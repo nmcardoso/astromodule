@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStorage.has\_key
+=============================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStorage.has_key

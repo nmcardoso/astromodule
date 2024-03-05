@@ -37,6 +37,6 @@ astromodule.pipeline.PipelineStage
       ~PipelineStage.name
       ~PipelineStage.products
       ~PipelineStage.requirements
-      ~PipelineStage.storage
+      ~PipelineStage.storage_id
    
    

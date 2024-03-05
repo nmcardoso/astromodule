@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStage.storage\_id
+==============================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoproperty:: PipelineStage.storage_id

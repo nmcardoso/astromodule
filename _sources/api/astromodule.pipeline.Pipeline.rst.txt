@@ -15,7 +15,7 @@ astromodule.pipeline.Pipeline
    
        
        
-          ~Pipeline.extract_stages_requirements
+          ~Pipeline.get_stages_requirements
        
        
           ~Pipeline.map_run

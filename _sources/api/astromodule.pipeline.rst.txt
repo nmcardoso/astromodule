@@ -19,6 +19,7 @@
     :toctree:
     :template: class-template.rst
   
+    NotFoundKey
     Pipeline
     PipelineStage
     PipelineStorage

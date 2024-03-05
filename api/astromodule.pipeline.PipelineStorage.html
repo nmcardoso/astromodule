@@ -45,8 +45,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.pipeline.PipelineStorage';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.pipeline.PipelineStorage.read" href="generated/astromodule.pipeline.PipelineStorage.read.html" />
-    <link rel="prev" title="astromodule.pipeline.PipelineStage.storage" href="generated/astromodule.pipeline.PipelineStage.storage.html" />
+    <link rel="next" title="astromodule.pipeline.PipelineStorage.del_storage" href="generated/astromodule.pipeline.PipelineStorage.del_storage.html" />
+    <link rel="prev" title="astromodule.pipeline.PipelineStage.storage_id" href="generated/astromodule.pipeline.PipelineStage.storage_id.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -538,8 +538,9 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.pipeline.html">astromodule.pipeline</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="astromodule.pipeline.NotFoundKey.html">astromodule.pipeline.NotFoundKey</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="astromodule.pipeline.Pipeline.html">astromodule.pipeline.Pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.extract_stages_requirements.html">astromodule.pipeline.Pipeline.extract_stages_requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.get_stages_requirements.html">astromodule.pipeline.Pipeline.get_stages_requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.map_run.html">astromodule.pipeline.Pipeline.map_run</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.plot.html">astromodule.pipeline.Pipeline.plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.Pipeline.run.html">astromodule.pipeline.Pipeline.run</a></li>
@@ -554,10 +555,12 @@ document.write(`
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.name.html">astromodule.pipeline.PipelineStage.name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.products.html">astromodule.pipeline.PipelineStage.products</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.requirements.html">astromodule.pipeline.PipelineStage.requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.storage.html">astromodule.pipeline.PipelineStage.storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStage.storage_id.html">astromodule.pipeline.PipelineStage.storage_id</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">astromodule.pipeline.PipelineStorage</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.del_storage.html">astromodule.pipeline.PipelineStorage.del_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.has_key.html">astromodule.pipeline.PipelineStorage.has_key</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read.html">astromodule.pipeline.PipelineStorage.read</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read_many.html">astromodule.pipeline.PipelineStorage.read_many</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write.html">astromodule.pipeline.PipelineStorage.write</a></li>
@@ -700,16 +703,22 @@ document.write(`
 <p class="rubric">Methods</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read.html#astromodule.pipeline.PipelineStorage.read" title="astromodule.pipeline.PipelineStorage.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(key)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.del_storage.html#astromodule.pipeline.PipelineStorage.del_storage" title="astromodule.pipeline.PipelineStorage.del_storage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_storage</span></code></a>(storage_id)</p></td>
+<td><p>Delete storage defined by <code class="docutils literal notranslate"><span class="pre">storage_id</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.has_key.html#astromodule.pipeline.PipelineStorage.has_key" title="astromodule.pipeline.PipelineStorage.has_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_key</span></code></a>(key[, storage_id])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read.html#astromodule.pipeline.PipelineStorage.read" title="astromodule.pipeline.PipelineStorage.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(key[, storage_id])</p></td>
 <td><p>Retrieve the <code class="docutils literal notranslate"><span class="pre">value</span></code> identified by a <code class="docutils literal notranslate"><span class="pre">key</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read_many.html#astromodule.pipeline.PipelineStorage.read_many" title="astromodule.pipeline.PipelineStorage.read_many"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_many</span></code></a>(keys)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.read_many.html#astromodule.pipeline.PipelineStorage.read_many" title="astromodule.pipeline.PipelineStorage.read_many"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_many</span></code></a>(keys[, storage_id])</p></td>
 <td><p>Retrieve the <code class="docutils literal notranslate"><span class="pre">values</span></code> identified by <code class="docutils literal notranslate"><span class="pre">keys</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write.html#astromodule.pipeline.PipelineStorage.write" title="astromodule.pipeline.PipelineStorage.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(key, value)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write.html#astromodule.pipeline.PipelineStorage.write" title="astromodule.pipeline.PipelineStorage.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>(key, value[, storage_id])</p></td>
 <td><p>Stores <code class="docutils literal notranslate"><span class="pre">value</span></code> identified by a <code class="docutils literal notranslate"><span class="pre">key</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write_many.html#astromodule.pipeline.PipelineStorage.write_many" title="astromodule.pipeline.PipelineStorage.write_many"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_many</span></code></a>(**data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/astromodule.pipeline.PipelineStorage.write_many.html#astromodule.pipeline.PipelineStorage.write_many" title="astromodule.pipeline.PipelineStorage.write_many"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_many</span></code></a>([storage_id])</p></td>
 <td><p>Stores <code class="docutils literal notranslate"><span class="pre">value</span></code> identified by a <code class="docutils literal notranslate"><span class="pre">key</span></code> in <code class="docutils literal notranslate"><span class="pre">data</span></code></p></td>
 </tr>
 </tbody>
@@ -734,20 +743,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/astromodule.pipeline.PipelineStage.storage.html"
+       href="generated/astromodule.pipeline.PipelineStage.storage_id.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.pipeline.PipelineStage.storage</p>
+        <p class="prev-next-title">astromodule.pipeline.PipelineStage.storage_id</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/astromodule.pipeline.PipelineStorage.read.html"
+       href="generated/astromodule.pipeline.PipelineStorage.del_storage.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.pipeline.PipelineStorage.read</p>
+        <p class="prev-next-title">astromodule.pipeline.PipelineStorage.del_storage</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

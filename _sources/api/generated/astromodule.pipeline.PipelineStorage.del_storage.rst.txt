@@ -1,0 +1,6 @@
+astromodule.pipeline.PipelineStorage.del\_storage
+=================================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. automethod:: PipelineStorage.del_storage

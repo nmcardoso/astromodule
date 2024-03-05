@@ -1,0 +1,22 @@
+astromodule.pipeline.NotFoundKey
+================================
+
+.. currentmodule:: astromodule.pipeline
+
+.. autoclass:: NotFoundKey
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: generated/
+
+   
+       
+   
+   
+
+   
+   
+   

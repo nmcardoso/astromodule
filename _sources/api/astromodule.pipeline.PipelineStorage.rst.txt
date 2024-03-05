@@ -15,6 +15,12 @@ astromodule.pipeline.PipelineStorage
    
        
        
+          ~PipelineStorage.del_storage
+       
+       
+          ~PipelineStorage.has_key
+       
+       
           ~PipelineStorage.read
        
        
