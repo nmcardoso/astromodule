@@ -7,15 +7,79 @@ import tempfile
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from pathlib import Path
+from secrets import token_hex
 from typing import Any, Dict, Sequence
 
 import graphviz
 
 from astromodule.io import parallel_function_executor
-from astromodule.utils import filter_dict
+from astromodule.utils import SingletonMeta, filter_dict
 
+# class PipelineStorage:
+#   """
+#   The storage used share resources between pipeline stage
+  
+#   Attributes
+#   ----------
+#   storage: dict
+#     The data shared across pipeline stages
+#   """
+#   def __init__(self):
+#     self._storage = {}
+    
+#   def write(self, key: str, value: Any):
+#     """
+#     Stores ``value`` identified by a ``key``
 
-class PipelineStorage:
+#     Parameters
+#     ----------
+#     key : str
+#       The data identifier
+#     value : Any
+#       The data value
+#     """
+#     self._storage[key] = value
+    
+#   def write_many(self, **data):
+#     """
+#     Stores ``value`` identified by a ``key`` in ``data``
+
+#     Parameters
+#     ----------
+#     **data: Any
+#       The data to be stored
+#     """
+#     for key, value in data.items():
+#       self._storage[key] = value
+    
+#   def read(self, key: str) -> Any:
+#     """
+#     Retrieve the ``value`` identified by a ``key``
+
+#     Parameters
+#     ----------
+#     key : str
+#       The data identifier
+#     """
+#     return self._storage.get(key)
+    
+#   def read_many(self, keys: Sequence[str]) -> Dict[str, Any]:
+#     """
+#     Retrieve the ``values`` identified by ``keys``
+
+#     Parameters
+#     ----------
+#     keys : Sequence[str]
+#       The data identifiers
+#     """
+#     return filter_dict(self._storage, keys)
+  
+
+class NotFoundKey:
+  pass
+
+  
+class PipelineStorage(metaclass=SingletonMeta):
   """
   The storage used share resources between pipeline stage
   
@@ -27,7 +91,7 @@ class PipelineStorage:
   def __init__(self):
     self._storage = {}
     
-  def write(self, key: str, value: Any):
+  def write(self, key: str, value: Any, storage_id: str = 'shared'):
     """
     Stores ``value`` identified by a ``key``
 
@@ -38,9 +102,11 @@ class PipelineStorage:
     value : Any
       The data value
     """
-    self._storage[key] = value
+    if storage_id not in self._storage:
+      self._storage[storage_id] = {}
+    self._storage[storage_id][key] = value
     
-  def write_many(self, **data):
+  def write_many(self, storage_id: str = 'shared', **data):
     """
     Stores ``value`` identified by a ``key`` in ``data``
 
@@ -50,9 +116,9 @@ class PipelineStorage:
       The data to be stored
     """
     for key, value in data.items():
-      self._storage[key] = value
+      self.write(key, value, storage_id)
     
-  def read(self, key: str) -> Any:
+  def read(self, key: str, storage_id: str = 'shared') -> Any:
     """
     Retrieve the ``value`` identified by a ``key``
 
@@ -61,9 +127,9 @@ class PipelineStorage:
     key : str
       The data identifier
     """
-    return self._storage.get(key)
+    return self._storage.get(storage_id, {}).get(key)
     
-  def read_many(self, keys: Sequence[str]) -> Dict[str, Any]:
+  def read_many(self, keys: Sequence[str], storage_id: str = 'shared') -> Dict[str, Any]:
     """
     Retrieve the ``values`` identified by ``keys``
 
@@ -72,8 +138,23 @@ class PipelineStorage:
     keys : Sequence[str]
       The data identifiers
     """
-    return filter_dict(self._storage, keys)
+    return filter_dict(self._storage.get(storage_id, {}), keys)
 
+  def del_storage(self, storage_id: str):
+    """
+    Delete storage defined by ``storage_id``
+
+    Parameters
+    ----------
+    storage_id : str
+      Storage identifier
+    """
+    if storage_id in self._storage:
+      del self._storage[storage_id]
+      
+  def has_key(self, key: str, storage_id: str = 'shared'):
+    return key in self._storage.get(storage_id, {})
+  
 
 
 class PipelineStage(ABC):
@@ -121,29 +202,41 @@ class PipelineStage(ABC):
     """
     pass
   
-  @property
-  def storage(self) -> PipelineStorage:
-    """
-    The pipeline shared storage object
+  # @property
+  # def storage(self) -> PipelineStorage:
+  #   """
+  #   The pipeline shared storage object
 
-    Returns
-    -------
-    PipelineStorage
-      The pipeline storage
-    """
-    return self._storage
+  #   Returns
+  #   -------
+  #   PipelineStorage
+  #     The pipeline storage
+  #   """
+  #   return self._storage
   
-  @storage.setter
-  def storage(self, pipe_storage: PipelineStorage):
-    """
-    The pipeline shared storage object
+  # @storage.setter
+  # def storage(self, pipe_storage: PipelineStorage):
+  #   """
+  #   The pipeline shared storage object
 
-    Parameters
-    ----------
-    pipe_storage : PipelineStorage
-      A pipeline storage object
-    """
-    self._storage = pipe_storage
+  #   Parameters
+  #   ----------
+  #   pipe_storage : PipelineStorage
+  #     A pipeline storage object
+  #   """
+  #   self._storage = pipe_storage
+  
+  @property
+  def storage_id(self) -> str:
+    return self._storage_id
+  
+  @storage_id.setter
+  def storage_id(self, value: str):
+    self._storage_id = value
+  
+  @property
+  def name(self):
+    return self.__class__.__name__
   
   def set_data(self, key: str, value: Any):
     """
@@ -157,7 +250,8 @@ class PipelineStage(ABC):
     value : Any
       The data value
     """
-    self.storage.write(key, value)
+    # self.storage.write(key, value)
+    PipelineStorage().write(key, value, self.storage_id)
     
   def get_data(self, key: str) -> Path:
     """
@@ -168,11 +262,11 @@ class PipelineStage(ABC):
     key : str
       The data identifier
     """
-    return self.storage.read(key)
-  
-  @property
-  def name(self):
-    return self.__class__.__name__
+    # return self.storage.read(key)
+    storage = PipelineStorage()
+    if storage.has_key(key, self.storage_id):
+      return storage.read(key, self.storage_id)
+    return storage.read(key, 'shared')
 
 
 
@@ -206,14 +300,15 @@ class Pipeline:
     req_list: Sequence[str] = None,
   ):
     self.verbose = verbose
-    self.storage = PipelineStorage()
+    # self.storage = PipelineStorage()
     self.stages = [deepcopy(s) for s in stages]
+    self.storage_id = token_hex(8)
     
     for stage in self.stages:
-      stage.storage = self.storage
+      stage.storage_id = self.storage_id
     
     if not req_list:
-      req_list = self.extract_stages_requirements()
+      req_list = self.get_stages_requirements()
     self.set_stages_requirements(req_list)
     self._req_list = req_list
   
@@ -232,7 +327,7 @@ class Pipeline:
       stage.requirements = req
       
       
-  def extract_stages_requirements(self) -> Sequence[str]:
+  def get_stages_requirements(self) -> Sequence[str]:
     """
     Use code inspection to find required resources based in the assignature
     of `PipelineStage.run` method.
@@ -275,12 +370,15 @@ class Pipeline:
     
     for i, stage in enumerate(self.stages, 1):
       if self.verbose:
-        print(f'[{i} / {len(self.stages)}] Stage {stage.name}')
+        print(f'[{i} / {len(self.stages)}] {stage.name}')
       
-      kwargs = self.storage.read_many(stage.requirements)
+      # kwargs = PipelineStorage().read_many(stage.requirements, self.storage_id)
+      kwargs = {req: stage.get_data(req) for req in stage.requirements}
       outputs = stage.run(**kwargs)
       if isinstance(outputs, dict):
-        self.storage.write_many(**outputs)
+        for k, v in outputs.items():
+          stage.set_data(k, v)
+        # PipelineStorage().write_many(self.storage_id, **outputs)
       
       if self.verbose:
         print()
@@ -459,7 +557,8 @@ class Pipeline:
       The value of the mapped resource
     """
     pipe = Pipeline(*self.stages, verbose=verbose, req_list=self._req_list)
-    pipe.storage.write(key, data)
+    # pipe.storage.write(key, data)
+    PipelineStorage().write(key, data)
     pipe.run(validate=False)
     del pipe
 
