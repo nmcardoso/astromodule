@@ -1059,7 +1059,7 @@ document.write(`
   <span class="k">else</span><span class="p">:</span>
     <span class="n">catalog</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">ra</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">dec</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">frame</span><span class="p">)</span>
   
-  <span class="n">mask</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">radius</span>
+  <span class="n">mask</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">radius</span>
   
   <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
