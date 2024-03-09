@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 dynamic = ["readme"]
 name = "astromodule"
-version = "0.5.16"
+version = "0.5.17"
 requires-python = ">= 3.8"
 description = "Astronomy Tools"
 keywords = ["astronomy", "machine learning", "data science"]
@@ -31,6 +31,7 @@ dependencies = [
   "seaborn",
   "optuna",
   "graphviz",
+  "pypdf",
 ]
 
 [project.optional-dependencies]

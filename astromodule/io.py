@@ -15,6 +15,7 @@ import requests
 from astropy.io import fits, votable
 from astropy.table import Table
 from PIL import Image, ImageOps
+from pypdf import PdfWriter
 from tqdm import tqdm
 
 RANDOM_SEED = 42
@@ -464,6 +465,32 @@ def batch_download_file(
     for _url, _save_path in zip(urls, save_path)
   ]
   parallel_function_executor(download_file, params, workers=workers, unit='file')
+
+
+
+
+def merge_pdf(pdfs: Sequence[str | Path], output_path: str | Path):
+  """
+  Merge a sequence of pdf files into one single file
+
+  Parameters
+  ----------
+  pdfs : Sequence[str  |  Path]
+    Input paths, must be a sequence
+  output_path : str | Path
+    The output file path
+  """
+  merger = PdfWriter()
+  for pdf in pdfs:
+    p = Path(pdf)
+    if p.exists():
+      merger.append(p)
+  merger.write(output_path)
+  merger.close()
+  
+  
+  
+  
 
 
 if __name__ == '__main__':

@@ -18,6 +18,7 @@ pyarrow = "*"
 fastparquet = "*"
 optuna = "*"
 graphviz = "*"
+pypdf = "*"
 
 [dev-packages]
 jinja2 = "*"
