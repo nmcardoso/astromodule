@@ -1045,14 +1045,19 @@ document.write(`
   <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">,</span>
   <span class="n">ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">frame</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;icrs&#39;</span><span class="p">,</span>
+  <span class="n">cached_catalog</span><span class="p">:</span> <span class="n">SkyCoord</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
   <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
     
   <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
     <span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
-    
-  <span class="n">catalog</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">ra</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">dec</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s1">&#39;icrs&#39;</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">cached_catalog</span><span class="p">:</span>
+    <span class="n">catalog</span> <span class="o">=</span> <span class="n">cached_catalog</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">catalog</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">ra</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">dec</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">frame</span><span class="p">)</span>
   
   <span class="n">mask</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">catalog</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">radius</span>
   
