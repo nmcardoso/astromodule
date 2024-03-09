@@ -658,14 +658,19 @@ def radial_search(
   radius: float | u.Quantity,
   ra: str = None,
   dec: str = None,
+  frame: str = 'icrs',
+  cached_catalog: SkyCoord = None,
 ):
   df = read_table(table)
   ra, dec = guess_coords_columns(df, ra, dec)
     
   if not isinstance(radius, u.Quantity):
     radius = radius * u.arcsec
-    
-  catalog = SkyCoord(ra=df[ra].values, dec=df[dec].values, unit=u.deg, frame='icrs')
+  
+  if cached_catalog:
+    catalog = cached_catalog
+  else:
+    catalog = SkyCoord(ra=df[ra].values, dec=df[dec].values, unit=u.deg, frame=frame)
   
   mask = position.separation(catalog) < radius
   
