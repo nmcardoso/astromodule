@@ -1,0 +1,6 @@
+astromodule.io.merge\_pdf
+=========================
+
+.. currentmodule:: astromodule.io
+
+.. autofunction:: merge_pdf

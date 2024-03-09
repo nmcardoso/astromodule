@@ -462,6 +462,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.merge_pdf.html">astromodule.io.merge_pdf</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_image.html">astromodule.io.read_image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
@@ -698,19 +699,22 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.download_file.html#astromodule.io.download_file" title="astromodule.io.download_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">download_file</span></code></a>(url, save_path[, replace, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.parallel_function_executor.html#astromodule.io.parallel_function_executor" title="astromodule.io.parallel_function_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_function_executor</span></code></a>(func[, params, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.merge_pdf.html#astromodule.io.merge_pdf" title="astromodule.io.merge_pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_pdf</span></code></a>(pdfs, output_path)</p></td>
+<td><p>Merge a sequence of pdf files into one single file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.parallel_function_executor.html#astromodule.io.parallel_function_executor" title="astromodule.io.parallel_function_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_function_executor</span></code></a>(func[, params, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.read_image.html#astromodule.io.read_image" title="astromodule.io.read_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_image</span></code></a>(path)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.read_image.html#astromodule.io.read_image" title="astromodule.io.read_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_image</span></code></a>(path)</p></td>
 <td><p>Load image from local storage to numpy array.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.read_table.html#astromodule.io.read_table" title="astromodule.io.read_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_table</span></code></a>(path[, fmt, columns, low_memory, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.read_table.html#astromodule.io.read_table" title="astromodule.io.read_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_table</span></code></a>(path[, fmt, columns, low_memory, ...])</p></td>
 <td><p>This function tries to detect the table type comparing the file extension and returns a pandas dataframe of the loaded table.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.write_image.html#astromodule.io.write_image" title="astromodule.io.write_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_image</span></code></a>(data, path)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.write_image.html#astromodule.io.write_image" title="astromodule.io.write_image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_image</span></code></a>(data, path)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.io.write_table.html#astromodule.io.write_table" title="astromodule.io.write_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_table</span></code></a>(data, path[, fmt])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.io.write_table.html#astromodule.io.write_table" title="astromodule.io.write_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_table</span></code></a>(data, path[, fmt])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

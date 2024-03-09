@@ -379,6 +379,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span><span class="p">,</span> <span class="n">votable</span>
 <span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageOps</span>
+<span class="kn">from</span> <span class="nn">pypdf</span> <span class="kn">import</span> <span class="n">PdfWriter</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">42</span>
@@ -852,6 +853,35 @@ document.write(`
   <span class="p">]</span>
   <span class="n">parallel_function_executor</span><span class="p">(</span><span class="n">download_file</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">)</span></div>
 
+
+
+
+
+<div class="viewcode-block" id="merge_pdf">
+<a class="viewcode-back" href="../../api/astromodule.io.merge_pdf.html#astromodule.io.merge_pdf">[docs]</a>
+<span class="k">def</span> <span class="nf">merge_pdf</span><span class="p">(</span><span class="n">pdfs</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">],</span> <span class="n">output_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Merge a sequence of pdf files into one single file</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  pdfs : Sequence[str  |  Path]</span>
+<span class="sd">    Input paths, must be a sequence</span>
+<span class="sd">  output_path : str | Path</span>
+<span class="sd">    The output file path</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">merger</span> <span class="o">=</span> <span class="n">PdfWriter</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+      <span class="n">merger</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+  <span class="n">merger</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+  <span class="n">merger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+  
+  
+  
+  
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

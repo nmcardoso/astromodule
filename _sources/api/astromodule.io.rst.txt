@@ -17,6 +17,7 @@
     batch_download_file
     compress_fits
     download_file
+    merge_pdf
     parallel_function_executor
     read_image
     read_table
