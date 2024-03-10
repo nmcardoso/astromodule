@@ -676,10 +676,10 @@ def radial_search(
   separation = catalog.separation(position)
   mask = separation < radius
   
+  df2 = df.copy()
+  
   if include_sep:
-    df2 = df.loc[:, 'separation'] = separation
-  else:
-    df2 = df
+    df2.loc[:, 'separation'] = separation
   
   return df2[mask]
   
