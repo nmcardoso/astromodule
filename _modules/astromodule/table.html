@@ -1063,10 +1063,10 @@ document.write(`
   <span class="n">separation</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
   <span class="n">mask</span> <span class="o">=</span> <span class="n">separation</span> <span class="o">&lt;</span> <span class="n">radius</span>
   
+  <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+  
   <span class="k">if</span> <span class="n">include_sep</span><span class="p">:</span>
-    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;separation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">separation</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">df2</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;separation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">separation</span>
   
   <span class="k">return</span> <span class="n">df2</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span></div>
 
