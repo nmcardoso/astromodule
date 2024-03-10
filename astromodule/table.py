@@ -660,6 +660,7 @@ def radial_search(
   dec: str = None,
   frame: str = 'icrs',
   cached_catalog: SkyCoord = None,
+  include_sep: bool = False,
 ):
   df = read_table(table)
   ra, dec = guess_coords_columns(df, ra, dec)
@@ -672,9 +673,15 @@ def radial_search(
   else:
     catalog = SkyCoord(ra=df[ra].values, dec=df[dec].values, unit=u.deg, frame=frame)
   
-  mask = catalog.separation(position) < radius
+  separation = catalog.separation(position)
+  mask = separation < radius
   
-  return df[mask]
+  if include_sep:
+    df2 = df.loc[:, 'separation'] = separation
+  else:
+    df2 = df
+  
+  return df2[mask]
   
 
 
