@@ -67,7 +67,7 @@ def send_email2(
   for path in files:
     with open(path, 'rb') as fp:
       file_data = fp.read()
-      maintype, _, subtype = (mimetypes.guess_type(path)[0] or 'application/octet-stream').partition("/")
+      maintype, _, subtype = (mimetypes.guess_type(path)[0] or 'application/octet-stream').partition('/')
       msg.add_attachment(file_data, maintype=maintype, subtype=subtype, filename=path)
 
   smtp = smtplib.SMTP('smtp.office365.com', 587)
