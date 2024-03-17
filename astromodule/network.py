@@ -76,17 +76,3 @@ def send_email2(
   smtp.login(username, password)
   smtp.sendmail(sender, recipients, msg.as_string())
   smtp.quit()
-
-
-
-  
-if __name__ == '__main__':
-  send_email2(
-    'natanael_magalhaes@msn.com', 
-    ['palmiliaxonga@gmail.com'], 
-    'natanael_magalhaes@msn.com', 
-    'fat=fat*n;', 
-    'Relatório Final', 
-    'Relatório Final',
-    files=['/home/natan/repos/splus-radial-search/output_heasarc/heasarc_top200.pdf']
-  )
