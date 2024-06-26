@@ -715,9 +715,9 @@ def concat_tables(
   pd.DataFrame
     A dataframe with concatenated tables or a empty dataframe
   """
-  pb = tqdm if progress else lambda x: x
+  pb = tqdm if progress else lambda x, **_: x
   dfs = []
-  for table in pb(tables):
+  for table in pb(tables, unit='table'):
     dfs.append(read_table(table, **kwargs))
   dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
   if len(dfs) > 0:
