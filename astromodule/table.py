@@ -18,6 +18,7 @@ import pandas as pd
 from astropy.coordinates import (SkyCoord, match_coordinates_sky,
                                  search_around_sky)
 from astropy.table import Table
+from tqdm import tqdm
 
 from astromodule.io import PathOrFile, TableLike, read_table, write_table
 
@@ -688,6 +689,7 @@ def radial_search(
 
 def concat_tables(
   tables: Sequence[TableLike | PathOrFile],
+  progress: bool = False,
   **kwargs
 ) -> pd.DataFrame:
   """
@@ -711,9 +713,12 @@ def concat_tables(
   Returns
   -------
   pd.DataFrame
-    A dataframe of the concatenated table
+    A dataframe with concatenated tables or a empty dataframe
   """
-  dfs = [read_table(df, **kwargs) for df in tables]
+  pb = tqdm if progress else lambda x: x
+  dfs = []
+  for table in pb(tables):
+    dfs.append(read_table(table, **kwargs))
   dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
   if len(dfs) > 0:
     return pd.concat(dfs)
