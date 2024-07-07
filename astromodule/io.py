@@ -200,7 +200,7 @@ def read_table(
       optional_params = {'names': col_names}
     return pd.read_csv(
       path, 
-      delim_whitespace=True, 
+      sep='\s+', 
       usecols=columns, 
       low_memory=low_memory,
       comment=comment,
