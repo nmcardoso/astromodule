@@ -572,7 +572,7 @@ document.write(`
       <span class="n">optional_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;names&#39;</span><span class="p">:</span> <span class="n">col_names</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
       <span class="n">path</span><span class="p">,</span> 
-      <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> 
       <span class="n">usecols</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
       <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span><span class="p">,</span>
       <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span>
