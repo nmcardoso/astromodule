@@ -11,8 +11,8 @@ Features
 * Single async database query
 * Fast batch database queries using multiprocessing
 
-Authors
--------
+Author
+------
 Natanael Magalhães Cardoso <`natanael.net <https://natanael.net>`_>
 """
 
@@ -88,7 +88,7 @@ class SplusService:
     The password used in splus.cloud authentication, defaults to ``SPLUS_PASS``
     environment variable
   """
-  _lock: Lock = Lock()
+  _lock = Lock()
 
 
   def __init__(self, username: str = SPLUS_USER, password: str = SPLUS_PASS):
@@ -417,6 +417,7 @@ class SplusService:
       params['upload'] = 'upload,param:uplTable'
       file = BytesIO()
       write_table(table, file, fmt='votable')
+      file.seek(0)
       resp = self.client.post(
         url,
         params=params,
