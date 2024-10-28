@@ -66,7 +66,7 @@ def teiu_up(args):
   password = os.environ.get('TEIU_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p '{password}' rsync -r -v --progress -e ssh '{local}' {user}@teiu.iag.usp.br:'{remote}'"
+  cmd = f"sshpass -p {password} rsync -r -v --progress -e ssh '{local}' {user}@teiu.iag.usp.br:'{remote}'"
   subprocess.call(cmd, shell=True)
 
 
@@ -75,14 +75,14 @@ def teiu_down(args):
   password = os.environ.get('TEIU_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p '{password}' rsync -r -v --progress -e ssh {user}@teiu.iag.usp.br:'{remote}' '{local}'"
+  cmd = f"sshpass -p {password} rsync -r -v --progress -e ssh {user}@teiu.iag.usp.br:'{remote}' '{local}'"
   subprocess.call(cmd, shell=True)
   
   
 def teiu_ssh(args):
   user = os.environ.get('TEIU_USER')
   password = os.environ.get('TEIU_PASS') 
-  cmd = f"sshpass -p '{password}' ssh {user}@teiu.iag.usp.br"
+  cmd = f"sshpass -p {password} ssh {user}@teiu.iag.usp.br"
   subprocess.call(cmd, shell=True)
 
 
@@ -122,7 +122,7 @@ def iguana_up(args):
   password = os.environ.get('IGUANA_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p '{password}' rsync -r -v --progress -e ssh '{local}' {user}@iguana.iag.usp.br:'{remote}'"
+  cmd = f"sshpass -p {password} rsync -r -v --progress -e ssh '{local}' {user}@iguana.iag.usp.br:'{remote}'"
   subprocess.call(cmd, shell=True)
 
 
@@ -131,14 +131,14 @@ def iguana_down(args):
   password = os.environ.get('IGUANA_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p '{password}' rsync -r -v --progress -e ssh {user}@iguana.iag.usp.br:'{remote}' '{local}'"
+  cmd = f"sshpass -p {password} rsync -r -v --progress -e ssh {user}@iguana.iag.usp.br:'{remote}' '{local}'"
   subprocess.call(cmd, shell=True)
   
   
 def iguana_ssh(args):
   user = os.environ.get('IGUANA_USER')
   password = os.environ.get('IGUANA_PASS') 
-  cmd = f"sshpass -p '{password}' ssh {user}@iguana.iag.usp.br"
+  cmd = f"sshpass -p {password} ssh {user}@iguana.iag.usp.br"
   subprocess.call(cmd, shell=True)
 
 
