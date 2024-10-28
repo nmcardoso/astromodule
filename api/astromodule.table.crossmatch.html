@@ -16,29 +16,32 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=8dde47fa"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
@@ -49,6 +52,7 @@
     <link rel="prev" title="astromodule.table.concat_tables" href="astromodule.table.concat_tables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.1" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,7 @@
     
     
     <img src="../_static/galaxy_256.png" class="logo__image only-light" alt="AstroModule 0 documentation - Home"/>
-    <script>document.write(`<img src="../_static/galaxy_256.png" class="logo__image only-dark" alt="AstroModule 0 documentation - Home"/>`);</script>
+    <img src="../_static/galaxy_256.png" class="logo__image only-dark pst-js-only" alt="AstroModule 0 documentation - Home"/>
   
   
 </a></div>
@@ -159,29 +151,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -218,15 +202,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -245,7 +225,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -278,15 +259,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -660,8 +637,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -676,7 +651,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="astromodule.table.html" class="nav-link">astromodule.table</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">astromodule....</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">astromodule.table.crossmatch</span></li>
   </ul>
 </nav>
 </div>
@@ -697,7 +672,7 @@ document.write(`
 <h1>astromodule.table.crossmatch<a class="headerlink" href="#astromodule-table-crossmatch" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="astromodule.table.crossmatch">
-<span class="sig-name descname"><span class="pre">crossmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table1:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table2:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span> <span class="pre">|</span> <span class="pre">~astropy.units.quantity.Quantity</span> <span class="pre">=</span> <span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">arcsec&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join:</span> <span class="pre">~typing.Literal['1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1or2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1not2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'2not1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1xor2']</span> <span class="pre">=</span> <span class="pre">'1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find:</span> <span class="pre">~typing.Literal['all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best2']</span> <span class="pre">=</span> <span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixcols:</span> <span class="pre">~typing.Literal['dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'none']</span> <span class="pre">=</span> <span class="pre">'dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix1:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix2:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorecol:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">'xmatch_sep'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt:</span> <span class="pre">~typing.Literal['fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'csv']</span> <span class="pre">=</span> <span class="pre">'fits'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.2)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/table.html#crossmatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.table.crossmatch" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">crossmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table1:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table2:</span> <span class="pre">~astropy.table.table.Table</span> <span class="pre">|</span> <span class="pre">~pandas.core.frame.DataFrame</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path</span> <span class="pre">|</span> <span class="pre">~io.BufferedIOBase</span> <span class="pre">|</span> <span class="pre">~io.RawIOBase</span> <span class="pre">|</span> <span class="pre">~io.TextIOBase</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec1:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec2:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius:</span> <span class="pre">float</span> <span class="pre">|</span> <span class="pre">~astropy.units.quantity.Quantity</span> <span class="pre">=</span> <span class="pre">&lt;Quantity</span> <span class="pre">1.</span> <span class="pre">arcsec&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">join:</span> <span class="pre">~typing.Literal['1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1or2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1not2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'2not1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'1xor2']</span> <span class="pre">=</span> <span class="pre">'1and2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find:</span> <span class="pre">~typing.Literal['all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'best2']</span> <span class="pre">=</span> <span class="pre">'best'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixcols:</span> <span class="pre">~typing.Literal['dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'none']</span> <span class="pre">=</span> <span class="pre">'dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix1:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix2:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'_2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scorecol:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">'xmatch_sep'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt:</span> <span class="pre">~typing.Literal['fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'csv']</span> <span class="pre">=</span> <span class="pre">'fits'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/astromodule/table.html#crossmatch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.table.crossmatch" title="Link to this definition">#</a></dt>
 <dd><p>Performs a crossmatch between two tables using STILTS <a class="footnote-reference brackets" href="#st" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> as the backend.
 This function spawns a subprocess invoking the <code class="docutils literal notranslate"><span class="pre">tmatch2</span></code> <a class="footnote-reference brackets" href="#tmatch2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> 
 tool of the STILTS executable.</p>
@@ -714,28 +689,28 @@ table-like object (pandas dataframe, astropy table), a path to a file
 represented as a string or pathlib.Path object, or a file object
 (BinaryIO, StringIO, file-descriptor, etc).</p>
 </dd>
-<dt><strong>ra1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+<dt><strong>ra1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
 is passed, this function will try to guess the RA column name based on
 predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
 function’s documentation for more details.</p>
 </dd>
-<dt><strong>dec1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Declination (DEC) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+<dt><strong>dec1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Declination (DEC) column in the first table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
 is passed, this function will try to guess the RA column name based on
 predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
 function’s documentation for more details.</p>
 </dd>
-<dt><strong>ra2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+<dt><strong>ra2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Right Ascension (RA) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
 is passed, this function will try to guess the RA column name based on
 predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
 function’s documentation for more details.</p>
 </dd>
-<dt><strong>dec2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Declination (DEC) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+<dt><strong>dec2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>The name of the Declination (DEC) column in the second table. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
 is passed, this function will try to guess the RA column name based on
 predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
 function’s documentation for more details.</p>
 </dd>
-<dt><strong>radius</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">u.Quantity</span></code>, optional</span></dt><dd><p>The crossmatch max error radius. This function accepts a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
-that will be interpreted as <code class="docutils literal notranslate"><span class="pre">arcsec</span></code> unit, or a <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v7.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
+<dt><strong>radius</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">u.Quantity</span></code>, optional</span></dt><dd><p>The crossmatch max error radius. This function accepts a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
+that will be interpreted as <code class="docutils literal notranslate"><span class="pre">arcsec</span></code> unit, or a <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quantity</span></code></a></p>
 </dd>
 <dt><strong>join</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Literal</span></code>[‘1and2’, ‘1or2’, ‘all1’, ‘all2’, ‘1not2’, ‘2not1’, ‘1xor2’], optional</span></dt><dd><p>Determines which rows are included in the output table. 
 The matching algorithm determines which of the rows from the first 
@@ -808,17 +783,17 @@ came from</p></li>
 <p>If columns are renamed, the new ones are determined by <code class="docutils literal notranslate"><span class="pre">suffix*</span></code> 
 parameters.</p>
 </dd>
-<dt><strong>suffix1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
+<dt><strong>suffix1</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
 insertion into the output table, this parameter determines how the 
 renaming is done. It gives a suffix which is appended to all renamed 
 columns from table 1.</p>
 </dd>
-<dt><strong>suffix2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
+<dt><strong>suffix2</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>, optional</span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
 insertion into the output table, this parameter determines how the 
 renaming is done. It gives a suffix which is appended to all renamed 
 columns from table 2.</p>
 </dd>
-<dt><strong>scorecol</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>Gives the name of a column in the output table to contain the “match score” 
+<dt><strong>scorecol</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a>, optional</span></dt><dd><p>Gives the name of a column in the output table to contain the “match score” 
 for each pairwise match. The meaning of this column is dependent on the 
 chosen <code class="docutils literal notranslate"><span class="pre">matcher</span></code>, but it typically represents a distance of some kind 
 between the two matching points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> is chosen, no score 
@@ -833,7 +808,7 @@ file types. Fits is faster and is the default file type.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd><p>The result table as a pandas dataframe</p>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> | <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd><p>The result table as a pandas dataframe</p>
 </dd>
 </dl>
 </dd>
@@ -890,7 +865,8 @@ file types. Fits is faster and is the default file type.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -927,8 +903,8 @@ file types. Fits is faster and is the default file type.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -948,7 +924,7 @@ file types. Fits is faster and is the default file type.</p>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.4.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
     <br/>
   </p>
 </div>
@@ -961,7 +937,7 @@ file types. Fits is faster and is the default file type.</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>
