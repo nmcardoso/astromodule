@@ -54,7 +54,11 @@ def cbpf():
     'ssh': cbpf_ssh
   }
   
-  cmds.get(args.subprog)(args)
+  handler = cmds.get(args.subprog)
+  if handler:
+    handler(args)
+  else:
+    parser.print_help()
   
   
   
@@ -112,7 +116,11 @@ def teiu():
     'ssh': teiu_ssh
   }
   
-  cmds.get(args.subprog)(args)
+  handler = cmds.get(args.subprog)
+  if handler:
+    handler(args)
+  else:
+    parser.print_help()
 
 
 
@@ -169,7 +177,11 @@ def iguana():
     'ssh': iguana_ssh
   }
   
-  cmds.get(args.subprog)(args)
+  handler = cmds.get(args.subprog)
+  if handler:
+    handler(args)
+  else:
+    parser.print_help()
   
   
 if __name__ == "__main__":
