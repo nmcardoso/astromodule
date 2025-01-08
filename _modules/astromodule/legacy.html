@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
@@ -294,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -348,22 +353,22 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
-<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
 
-<span class="kn">from</span> <span class="nn">astromodule.adql</span> <span class="kn">import</span> <span class="n">AdqlColumn</span><span class="p">,</span> <span class="n">AdqlDatabase</span><span class="p">,</span> <span class="n">AdqlSchema</span><span class="p">,</span> <span class="n">AdqlTable</span>
-<span class="kn">from</span> <span class="nn">astromodule.io</span> <span class="kn">import</span> <span class="p">(</span><span class="n">PathOrFile</span><span class="p">,</span> <span class="n">TableLike</span><span class="p">,</span> <span class="n">compress_fits</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.adql</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdqlColumn</span><span class="p">,</span> <span class="n">AdqlDatabase</span><span class="p">,</span> <span class="n">AdqlSchema</span><span class="p">,</span> <span class="n">AdqlTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.io</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">PathOrFile</span><span class="p">,</span> <span class="n">TableLike</span><span class="p">,</span> <span class="n">compress_fits</span><span class="p">,</span>
                             <span class="n">download_file</span><span class="p">,</span> <span class="n">parallel_function_executor</span><span class="p">,</span>
                             <span class="n">read_table</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">astromodule.table</span> <span class="kn">import</span> <span class="n">guess_coords_columns</span>
-<span class="kn">from</span> <span class="nn">astromodule.tap</span> <span class="kn">import</span> <span class="n">TapService</span>
-<span class="kn">from</span> <span class="nn">astromodule.utils</span> <span class="kn">import</span> <span class="n">append_query_params</span><span class="p">,</span> <span class="n">iauname</span><span class="p">,</span> <span class="n">iauname_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">guess_coords_columns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.tap</span><span class="w"> </span><span class="kn">import</span> <span class="n">TapService</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">append_query_params</span><span class="p">,</span> <span class="n">iauname</span><span class="p">,</span> <span class="n">iauname_path</span>
 
 <span class="n">LEGACY_RGB_URL</span> <span class="o">=</span> <span class="s1">&#39;https://www.legacysurvey.org/viewer/jpeg-cutout&#39;</span>
 <span class="n">LEGACY_RGB_URL_DEV</span> <span class="o">=</span> <span class="s1">&#39;https://www.legacysurvey.org/viewer-dev/jpeg-cutout&#39;</span>
@@ -381,7 +386,7 @@
 
 <div class="viewcode-block" id="LS10Tractor">
 <a class="viewcode-back" href="../../api/astromodule.legacy.LS10Tractor.html#astromodule.legacy.LS10Tractor">[docs]</a>
-<span class="k">class</span> <span class="nc">LS10Tractor</span><span class="p">(</span><span class="n">AdqlTable</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LS10Tractor</span><span class="p">(</span><span class="n">AdqlTable</span><span class="p">):</span>
   <span class="n">release</span> <span class="o">=</span> <span class="n">AdqlColumn</span><span class="p">(</span><span class="s1">&#39;release&#39;</span><span class="p">)</span>
   <span class="n">brickid</span> <span class="o">=</span> <span class="n">AdqlColumn</span><span class="p">(</span><span class="s1">&#39;brickid&#39;</span><span class="p">)</span>
   <span class="n">brickname</span> <span class="o">=</span> <span class="n">AdqlColumn</span><span class="p">(</span><span class="s1">&#39;brickname&#39;</span><span class="p">)</span>
@@ -424,13 +429,13 @@
 
 <div class="viewcode-block" id="LS10">
 <a class="viewcode-back" href="../../api/astromodule.legacy.LS10.html#astromodule.legacy.LS10">[docs]</a>
-<span class="k">class</span> <span class="nc">LS10</span><span class="p">(</span><span class="n">AdqlSchema</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LS10</span><span class="p">(</span><span class="n">AdqlSchema</span><span class="p">):</span>
   <span class="n">tractor</span> <span class="o">=</span> <span class="n">LS10Tractor</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="LegacyClass">
 <a class="viewcode-back" href="../../api/astromodule.legacy.LegacyClass.html#astromodule.legacy.LegacyClass">[docs]</a>
-<span class="k">class</span> <span class="nc">LegacyClass</span><span class="p">(</span><span class="n">AdqlDatabase</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LegacyClass</span><span class="p">(</span><span class="n">AdqlDatabase</span><span class="p">):</span>
   <span class="n">DR10</span> <span class="o">=</span> <span class="n">LS10</span><span class="p">()</span></div>
 
 
@@ -441,7 +446,7 @@
 
 <div class="viewcode-block" id="LegacyService">
 <a class="viewcode-back" href="../../api/astromodule.legacy.LegacyService.html#astromodule.legacy.LegacyService">[docs]</a>
-<span class="k">class</span> <span class="nc">LegacyService</span><span class="p">(</span><span class="n">TapService</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LegacyService</span><span class="p">(</span><span class="n">TapService</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  High-level Legacy Survey API interface</span>
 <span class="sd">  </span>
@@ -477,7 +482,7 @@
 <span class="sd">  workers: int, optional</span>
 <span class="sd">    Maximum spawned threads when `batch_cutout` is called</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
@@ -514,7 +519,7 @@
 
 <div class="viewcode-block" id="LegacyService.cutout">
 <a class="viewcode-back" href="../../api/generated/astromodule.legacy.LegacyService.cutout.html#astromodule.legacy.LegacyService.cutout">[docs]</a>
-  <span class="k">def</span> <span class="nf">cutout</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">cutout</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -585,7 +590,7 @@
 
 <div class="viewcode-block" id="LegacyService.batch_cutout">
 <a class="viewcode-back" href="../../api/generated/astromodule.legacy.LegacyService.batch_cutout.html#astromodule.legacy.LegacyService.batch_cutout">[docs]</a>
-  <span class="k">def</span> <span class="nf">batch_cutout</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">batch_cutout</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
     <span class="n">dec</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
@@ -653,7 +658,7 @@
 
 <div class="viewcode-block" id="LegacyService.get_pixscale">
 <a class="viewcode-back" href="../../api/generated/astromodule.legacy.LegacyService.get_pixscale.html#astromodule.legacy.LegacyService.get_pixscale">[docs]</a>
-  <span class="k">def</span> <span class="nf">get_pixscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mag_r</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">get_pixscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mag_r</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mag_r</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
       <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_pixscale</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mag_r</span><span class="p">]</span>
 
@@ -666,7 +671,7 @@
     
 <div class="viewcode-block" id="LegacyService.crossmatch">
 <a class="viewcode-back" href="../../api/generated/astromodule.legacy.LegacyService.crossmatch.html#astromodule.legacy.LegacyService.crossmatch">[docs]</a>
-  <span class="k">def</span> <span class="nf">crossmatch</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">crossmatch</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> 
     <span class="n">table</span><span class="p">:</span> <span class="n">TableLike</span> <span class="o">|</span> <span class="n">PathOrFile</span><span class="p">,</span> 
     <span class="n">columns</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">AdqlColumn</span><span class="p">],</span> 
@@ -766,8 +771,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -800,7 +805,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

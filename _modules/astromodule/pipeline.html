@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
@@ -294,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -347,18 +352,18 @@
 <span class="sd">Simple implementation of a linear pipeline with multiprocessing support</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">secrets</span> <span class="kn">import</span> <span class="n">token_hex</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">secrets</span><span class="w"> </span><span class="kn">import</span> <span class="n">token_hex</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span>
 
-<span class="kn">import</span> <span class="nn">graphviz</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">graphviz</span>
 
-<span class="kn">from</span> <span class="nn">astromodule.io</span> <span class="kn">import</span> <span class="n">parallel_function_executor</span>
-<span class="kn">from</span> <span class="nn">astromodule.utils</span> <span class="kn">import</span> <span class="n">SingletonMeta</span><span class="p">,</span> <span class="n">filter_dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">parallel_function_executor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SingletonMeta</span><span class="p">,</span> <span class="n">filter_dict</span>
 
 <span class="c1"># class PipelineStorage:</span>
 <span class="c1">#   &quot;&quot;&quot;</span>
@@ -422,14 +427,14 @@
 
 <div class="viewcode-block" id="NotFoundKey">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.NotFoundKey.html#astromodule.pipeline.NotFoundKey">[docs]</a>
-<span class="k">class</span> <span class="nc">NotFoundKey</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NotFoundKey</span><span class="p">:</span>
   <span class="k">pass</span></div>
 
 
   
 <div class="viewcode-block" id="PipelineStorage">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.PipelineStorage.html#astromodule.pipeline.PipelineStorage">[docs]</a>
-<span class="k">class</span> <span class="nc">PipelineStorage</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">SingletonMeta</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PipelineStorage</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">SingletonMeta</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  The storage used share resources between pipeline stage</span>
 <span class="sd">  </span>
@@ -438,12 +443,12 @@
 <span class="sd">  storage: dict</span>
 <span class="sd">    The data shared across pipeline stages</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_storage</span> <span class="o">=</span> <span class="p">{}</span>
     
 <div class="viewcode-block" id="PipelineStorage.write">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.write.html#astromodule.pipeline.PipelineStorage.write">[docs]</a>
-  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Stores ``value`` identified by a ``key``</span>
 
@@ -461,7 +466,7 @@
     
 <div class="viewcode-block" id="PipelineStorage.write_many">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.write_many.html#astromodule.pipeline.PipelineStorage.write_many">[docs]</a>
-  <span class="k">def</span> <span class="nf">write_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">write_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Stores ``value`` identified by a ``key`` in ``data``</span>
 
@@ -476,7 +481,7 @@
     
 <div class="viewcode-block" id="PipelineStorage.read">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.read.html#astromodule.pipeline.PipelineStorage.read">[docs]</a>
-  <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the ``value`` identified by a ``key``</span>
 
@@ -490,7 +495,7 @@
     
 <div class="viewcode-block" id="PipelineStorage.read_many">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.read_many.html#astromodule.pipeline.PipelineStorage.read_many">[docs]</a>
-  <span class="k">def</span> <span class="nf">read_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">read_many</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">keys</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve the ``values`` identified by ``keys``</span>
 
@@ -504,7 +509,7 @@
 
 <div class="viewcode-block" id="PipelineStorage.del_storage">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.del_storage.html#astromodule.pipeline.PipelineStorage.del_storage">[docs]</a>
-  <span class="k">def</span> <span class="nf">del_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">del_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Delete storage defined by ``storage_id``</span>
 
@@ -519,7 +524,7 @@
       
 <div class="viewcode-block" id="PipelineStorage.has_key">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStorage.has_key.html#astromodule.pipeline.PipelineStorage.has_key">[docs]</a>
-  <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">storage_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_storage</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">storage_id</span><span class="p">,</span> <span class="p">{})</span></div>
 </div>
 
@@ -528,7 +533,7 @@
 
 <div class="viewcode-block" id="PipelineStage">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.PipelineStage.html#astromodule.pipeline.PipelineStage">[docs]</a>
-<span class="k">class</span> <span class="nc">PipelineStage</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PipelineStage</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Base class for all pipeline stages</span>
 <span class="sd">  </span>
@@ -559,7 +564,7 @@
 <div class="viewcode-block" id="PipelineStage.run">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.run.html#astromodule.pipeline.PipelineStage.run">[docs]</a>
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    All concrete class of `PipelineStage` must implement this method.</span>
 <span class="sd">    This method is called by `Pipeline.run` and `Pipeline.map_run` when</span>
@@ -601,20 +606,20 @@
   <span class="c1">#   self._storage = pipe_storage</span>
   
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">storage_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">storage_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_storage_id</span>
   
   <span class="nd">@storage_id</span><span class="o">.</span><span class="n">setter</span>
-  <span class="k">def</span> <span class="nf">storage_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">storage_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_storage_id</span> <span class="o">=</span> <span class="n">value</span>
   
   <span class="nd">@property</span>
-  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
   
 <div class="viewcode-block" id="PipelineStage.set_data">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.set_data.html#astromodule.pipeline.PipelineStage.set_data">[docs]</a>
-  <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Stores shared data ``value`` identified by a ``key``</span>
 
@@ -632,7 +637,7 @@
     
 <div class="viewcode-block" id="PipelineStage.get_data">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.PipelineStage.get_data.html#astromodule.pipeline.PipelineStage.get_data">[docs]</a>
-  <span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Retrieve shared data identified by a ``key``</span>
 
@@ -653,7 +658,7 @@
 
 <div class="viewcode-block" id="Pipeline">
 <a class="viewcode-back" href="../../api/astromodule.pipeline.Pipeline.html#astromodule.pipeline.Pipeline">[docs]</a>
-<span class="k">class</span> <span class="nc">Pipeline</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Pipeline</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  A simple linear pipeline implementation with mapping and multiprocessing</span>
 <span class="sd">  support.</span>
@@ -676,7 +681,7 @@
 <span class="sd">  astromodule.pipeline.PipelineStorage</span>
 <span class="sd">  astromodule.pipeline.PipelineStage</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> 
     <span class="o">*</span><span class="n">stages</span><span class="p">:</span> <span class="n">PipelineStage</span><span class="p">,</span> 
     <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
@@ -698,7 +703,7 @@
   
 <div class="viewcode-block" id="Pipeline.set_stages_requirements">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.set_stages_requirements.html#astromodule.pipeline.Pipeline.set_stages_requirements">[docs]</a>
-  <span class="k">def</span> <span class="nf">set_stages_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requirements</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">set_stages_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requirements</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sets ``requirements`` attribute for all pipeline stages</span>
 
@@ -715,7 +720,7 @@
       
 <div class="viewcode-block" id="Pipeline.get_stages_requirements">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.get_stages_requirements.html#astromodule.pipeline.Pipeline.get_stages_requirements">[docs]</a>
-  <span class="k">def</span> <span class="nf">get_stages_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">get_stages_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Use code inspection to find required resources based in the assignature</span>
 <span class="sd">    of `PipelineStage.run` method.</span>
@@ -739,7 +744,7 @@
     
 <div class="viewcode-block" id="Pipeline.run">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.run.html#astromodule.pipeline.Pipeline.run">[docs]</a>
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validates and executes all stages of the pipeline</span>
 
@@ -778,7 +783,7 @@
         
 <div class="viewcode-block" id="Pipeline.map_run">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.map_run.html#astromodule.pipeline.Pipeline.map_run">[docs]</a>
-  <span class="k">def</span> <span class="nf">map_run</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">map_run</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> 
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
     <span class="n">array</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> 
@@ -849,7 +854,7 @@
       
 <div class="viewcode-block" id="Pipeline.validate">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.validate.html#astromodule.pipeline.Pipeline.validate">[docs]</a>
-  <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignore</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ignore</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validates the pipeline by checking whether all requirements for all </span>
 <span class="sd">    stages are satisfied</span>
@@ -889,7 +894,7 @@
   
 <div class="viewcode-block" id="Pipeline.plot">
 <a class="viewcode-back" href="../../api/generated/astromodule.pipeline.Pipeline.plot.html#astromodule.pipeline.Pipeline.plot">[docs]</a>
-  <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the pipeline graph</span>
 
@@ -909,7 +914,7 @@
 
       
       
-  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    String object representation</span>
 
@@ -924,7 +929,7 @@
     <span class="k">return</span> <span class="n">p</span>
   
   
-  <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">PipelineStage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Pipeline&#39;</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">PipelineStage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Pipeline&#39;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Overcharge of the ``+`` operator that implements concatenation of</span>
 <span class="sd">    pipelines or concatenation of a pipeline and a stage</span>
@@ -945,7 +950,7 @@
       <span class="k">return</span> <span class="n">Pipeline</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="o">.</span><span class="n">stages</span><span class="p">)</span>
     
     
-  <span class="k">def</span> <span class="nf">_pipe_executor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">_pipe_executor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wrapper function that create a new pipeline instance and execute it to</span>
 <span class="sd">    ensure isolation of different pipelines in parallel execution</span>
@@ -968,22 +973,22 @@
 
   
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-  <span class="kn">import</span> <span class="nn">random</span>
-  <span class="kn">import</span> <span class="nn">time</span>
-  <span class="k">class</span> <span class="nc">Stage1</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+  <span class="k">class</span><span class="w"> </span><span class="nc">Stage1</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Stage 1&#39;</span>
     <span class="n">products</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;frame&#39;</span><span class="p">]</span>
     
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipe</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipe</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
       <span class="k">return</span> <span class="p">{</span>
         <span class="s1">&#39;frame&#39;</span><span class="p">:</span> <span class="n">pipe</span> <span class="o">*</span> <span class="mi">2</span>
       <span class="p">}</span>
     
-  <span class="k">class</span> <span class="nc">Stage2</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
+  <span class="k">class</span><span class="w"> </span><span class="nc">Stage2</span><span class="p">(</span><span class="n">PipelineStage</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Stage 2&#39;</span>
     
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
     
@@ -1022,8 +1027,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1056,7 +1061,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

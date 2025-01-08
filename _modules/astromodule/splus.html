@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
@@ -294,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -361,24 +366,24 @@
 <span class="sd">Natanael Magalhães Cardoso &lt;`natanael.net &lt;https://natanael.net&gt;`_&gt;</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">concurrent.futures</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BufferedIOBase</span><span class="p">,</span> <span class="n">BytesIO</span><span class="p">,</span> <span class="n">RawIOBase</span>
-<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Lock</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
-<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">concurrent.futures</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BufferedIOBase</span><span class="p">,</span> <span class="n">BytesIO</span><span class="p">,</span> <span class="n">RawIOBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">multiprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlparse</span>
 
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tqdm</span>
 
-<span class="kn">from</span> <span class="nn">astromodule.io</span> <span class="kn">import</span> <span class="n">download_file</span><span class="p">,</span> <span class="n">write_table</span>
-<span class="kn">from</span> <span class="nn">astromodule.table</span> <span class="kn">import</span> <span class="n">concat_tables</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span><span class="p">,</span> <span class="n">write_table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">concat_tables</span>
 
 <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://splus.cloud/api/&#39;</span>
 <span class="n">LOGIN_ROUTE</span> <span class="o">=</span> <span class="s1">&#39;auth/login&#39;</span>
@@ -394,7 +399,7 @@
 
 <div class="viewcode-block" id="update_authorization">
 <a class="viewcode-back" href="../../api/astromodule.splus.update_authorization.html#astromodule.splus.update_authorization">[docs]</a>
-<span class="k">def</span> <span class="nf">update_authorization</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_authorization</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Decorator that can be placed on functions that needs S-PLUS authentication</span>
 <span class="sd">  This decorator will update authorization token before the function call if </span>
@@ -410,7 +415,7 @@
 <span class="sd">    The decorated function</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-  <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">this</span><span class="p">:</span> <span class="n">SplusService</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">updated</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">update_token</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">updated</span><span class="p">:</span>
@@ -425,7 +430,7 @@
 
 <div class="viewcode-block" id="SplusService">
 <a class="viewcode-back" href="../../api/astromodule.splus.SplusService.html#astromodule.splus.SplusService">[docs]</a>
-<span class="k">class</span> <span class="nc">SplusService</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SplusService</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This service class interacts with splus.cloud server over https</span>
 
@@ -441,7 +446,7 @@
   <span class="n">_lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
 
 
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_USER</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_PASS</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_USER</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPLUS_PASS</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">credentials</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
       <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="n">password</span>
@@ -453,7 +458,7 @@
 
 <div class="viewcode-block" id="SplusService.update_token">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.update_token.html#astromodule.splus.SplusService.update_token">[docs]</a>
-  <span class="k">def</span> <span class="nf">update_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">update_token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Updates splus.cloud authorization token</span>
 
@@ -485,7 +490,7 @@
 
 <div class="viewcode-block" id="SplusService.download_lupton_rgb">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_lupton_rgb.html#astromodule.splus.SplusService.download_lupton_rgb">[docs]</a>
-  <span class="k">def</span> <span class="nf">download_lupton_rgb</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">download_lupton_rgb</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -547,7 +552,7 @@
 
 <div class="viewcode-block" id="SplusService.download_trilogy_rgb">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_trilogy_rgb.html#astromodule.splus.SplusService.download_trilogy_rgb">[docs]</a>
-  <span class="k">def</span> <span class="nf">download_trilogy_rgb</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">download_trilogy_rgb</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -609,7 +614,7 @@
 
 <div class="viewcode-block" id="SplusService.download_fits">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_fits.html#astromodule.splus.SplusService.download_fits">[docs]</a>
-  <span class="k">def</span> <span class="nf">download_fits</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">download_fits</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">dec</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -654,7 +659,7 @@
 
 <div class="viewcode-block" id="SplusService.batch_image_download">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.batch_image_download.html#astromodule.splus.SplusService.batch_image_download">[docs]</a>
-  <span class="k">def</span> <span class="nf">batch_image_download</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">batch_image_download</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">ra</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
     <span class="n">dec</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
@@ -723,7 +728,7 @@
 <div class="viewcode-block" id="SplusService.query">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.query.html#astromodule.splus.SplusService.query">[docs]</a>
   <span class="nd">@update_authorization</span>
-  <span class="k">def</span> <span class="nf">query</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
@@ -801,7 +806,7 @@
 
 <div class="viewcode-block" id="SplusService.batch_query">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.batch_query.html#astromodule.splus.SplusService.batch_query">[docs]</a>
-  <span class="k">def</span> <span class="nf">batch_query</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">batch_query</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">sql</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="n">save_path</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]],</span>
@@ -869,7 +874,7 @@
 <div class="viewcode-block" id="SplusService.download_field">
 <a class="viewcode-back" href="../../api/generated/astromodule.splus.SplusService.download_field.html#astromodule.splus.SplusService.download_field">[docs]</a>
   <span class="nd">@update_authorization</span>
-  <span class="k">def</span> <span class="nf">download_field</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">download_field</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> 
     <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
     <span class="n">output</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="n">BufferedIOBase</span> <span class="o">|</span> <span class="n">RawIOBase</span><span class="p">,</span>
@@ -898,7 +903,7 @@
     
 
 
-  <span class="k">def</span> <span class="nf">_get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">_get_url</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get the full url based on params</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -906,7 +911,7 @@
 
 
   <span class="nd">@update_authorization</span>
-  <span class="k">def</span> <span class="nf">_track_tap_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">_track_tap_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Tracks the async query status in splus.cloud database</span>
 
@@ -955,7 +960,7 @@
 
 
   <span class="nd">@update_authorization</span>
-  <span class="k">def</span> <span class="nf">_download_image</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">_download_image</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">route</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">save_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span>
@@ -999,7 +1004,7 @@
         <span class="p">)</span>
 
 
-  <span class="k">def</span> <span class="nf">_batch_download</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">_batch_download</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">download_function</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">download_args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>
@@ -1130,8 +1135,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1164,7 +1169,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>

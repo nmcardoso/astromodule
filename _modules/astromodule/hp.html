@@ -15,8 +15,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
@@ -294,9 +294,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -349,19 +354,19 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">import</span> <span class="nn">optuna</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
 
 <span class="n">L</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="HyperParameter">
 <a class="viewcode-back" href="../../api/astromodule.hp.HyperParameter.html#astromodule.hp.HyperParameter">[docs]</a>
-<span class="k">class</span> <span class="nc">HyperParameter</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HyperParameter</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This abstract class is the generic representation of a hyperparmaeter </span>
 <span class="sd">  and can be used on any model of Machine Learning or Deep Learning.</span>
@@ -371,7 +376,7 @@
 <span class="sd">  Get the hyperparimeters automatically by the ``optuna`` library</span>
 <span class="sd">  or predefined (manual) form with the same code.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -379,7 +384,7 @@
 <div class="viewcode-block" id="HyperParameter.suggest">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.suggest.html#astromodule.hp.HyperParameter.suggest">[docs]</a>
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Used to recover the value of the hyperparmeter as defined by the</span>
 <span class="sd">    concrete class.The concrete class can implement a logic based</span>
@@ -397,19 +402,19 @@
 
 <div class="viewcode-block" id="HyperParameter.set_attr">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.set_attr.html#astromodule.hp.HyperParameter.set_attr">[docs]</a>
-  <span class="k">def</span> <span class="nf">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">set_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
 <div class="viewcode-block" id="HyperParameter.set_trial">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.set_trial.html#astromodule.hp.HyperParameter.set_trial">[docs]</a>
-  <span class="k">def</span> <span class="nf">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span> <span class="o">=</span> <span class="n">trial</span></div>
 
 
 <div class="viewcode-block" id="HyperParameter.to_dict">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.to_dict.html#astromodule.hp.HyperParameter.to_dict">[docs]</a>
-  <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A hyperparmeter can be defined from various attributes.</span>
 <span class="sd">    This method expresses the hyperparmeter in the form of a python dictionary.</span>
@@ -436,7 +441,7 @@
 
 <div class="viewcode-block" id="HyperParameter.clear_last_value">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.clear_last_value.html#astromodule.hp.HyperParameter.clear_last_value">[docs]</a>
-  <span class="k">def</span> <span class="nf">clear_last_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">clear_last_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sets ``last_value`` attribute to ``None``</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -446,7 +451,7 @@
 <div class="viewcode-block" id="HyperParameter.from_dict">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameter.from_dict.html#astromodule.hp.HyperParameter.from_dict">[docs]</a>
   <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates a concrete instance of hyperparmeter from a dictionary of the</span>
 <span class="sd">    python</span>
@@ -479,7 +484,7 @@
 
 <div class="viewcode-block" id="CategoricalHyperParameter">
 <a class="viewcode-back" href="../../api/astromodule.hp.CategoricalHyperParameter.html#astromodule.hp.CategoricalHyperParameter">[docs]</a>
-<span class="k">class</span> <span class="nc">CategoricalHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CategoricalHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Concrete class that represents a hyperparimeter of the categorical type</span>
 
@@ -490,14 +495,14 @@
 <span class="sd">  choices: Sequence[Any]</span>
 <span class="sd">    A list-like object of categorical values</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">choices</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">choices</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">CategoricalHyperParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="s1">&#39;choices&#39;</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CategoricalHyperParameter.suggest">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.CategoricalHyperParameter.suggest.html#astromodule.hp.CategoricalHyperParameter.suggest">[docs]</a>
-  <span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="n">_trial</span> <span class="o">=</span> <span class="n">trial</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span> <span class="o">=</span> <span class="n">_trial</span><span class="o">.</span><span class="n">suggest_categorical</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span></div>
@@ -508,8 +513,8 @@
 
 <div class="viewcode-block" id="FloatHyperParameter">
 <a class="viewcode-back" href="../../api/astromodule.hp.FloatHyperParameter.html#astromodule.hp.FloatHyperParameter">[docs]</a>
-<span class="k">class</span> <span class="nc">FloatHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FloatHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">low</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -526,7 +531,7 @@
 
 <div class="viewcode-block" id="FloatHyperParameter.suggest">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.FloatHyperParameter.suggest.html#astromodule.hp.FloatHyperParameter.suggest">[docs]</a>
-  <span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">_trial</span> <span class="o">=</span> <span class="n">trial</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span> <span class="o">=</span> <span class="n">_trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span></div>
@@ -537,8 +542,8 @@
 
 <div class="viewcode-block" id="IntHyperParameter">
 <a class="viewcode-back" href="../../api/astromodule.hp.IntHyperParameter.html#astromodule.hp.IntHyperParameter">[docs]</a>
-<span class="k">class</span> <span class="nc">IntHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">IntHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">low</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -555,7 +560,7 @@
 
 <div class="viewcode-block" id="IntHyperParameter.suggest">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.IntHyperParameter.suggest.html#astromodule.hp.IntHyperParameter.suggest">[docs]</a>
-  <span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="n">_trial</span> <span class="o">=</span> <span class="n">trial</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span> <span class="o">=</span> <span class="n">_trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_value</span></div>
@@ -566,8 +571,8 @@
 
 <div class="viewcode-block" id="ConstantHyperParameter">
 <a class="viewcode-back" href="../../api/astromodule.hp.ConstantHyperParameter.html#astromodule.hp.ConstantHyperParameter">[docs]</a>
-<span class="k">class</span> <span class="nc">ConstantHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConstantHyperParameter</span><span class="p">(</span><span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">ConstantHyperParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">set_attr</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
@@ -575,7 +580,7 @@
 
 <div class="viewcode-block" id="ConstantHyperParameter.suggest">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.ConstantHyperParameter.suggest.html#astromodule.hp.ConstantHyperParameter.suggest">[docs]</a>
-  <span class="k">def</span> <span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">suggest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span></div>
 </div>
 
@@ -583,7 +588,7 @@
 
 <div class="viewcode-block" id="HP">
 <a class="viewcode-back" href="../../api/astromodule.hp.HP.html#astromodule.hp.HP">[docs]</a>
-<span class="k">class</span> <span class="nc">HP</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HP</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  A utilitary factory class that produces concretes `HyperParameter` instances</span>
 <span class="sd">  according to its types. Used for convenience, to avoid importing and</span>
@@ -597,7 +602,7 @@
 <div class="viewcode-block" id="HP.cat">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HP.cat.html#astromodule.hp.HP.cat">[docs]</a>
   <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">cat</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">choices</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CategoricalHyperParameter</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">cat</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">choices</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CategoricalHyperParameter</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">CategoricalHyperParameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">choices</span><span class="p">)</span></div>
 
 
@@ -605,7 +610,7 @@
 <div class="viewcode-block" id="HP.const">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HP.const.html#astromodule.hp.HP.const">[docs]</a>
   <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">const</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConstantHyperParameter</span><span class="p">:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">const</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConstantHyperParameter</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">ConstantHyperParameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
 
@@ -613,7 +618,7 @@
 <div class="viewcode-block" id="HP.num">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HP.num.html#astromodule.hp.HP.num">[docs]</a>
   <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">num</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">num</span><span class="p">(</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">low</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
     <span class="n">high</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
@@ -632,7 +637,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet">
 <a class="viewcode-back" href="../../api/astromodule.hp.HyperParameterSet.html#astromodule.hp.HyperParameterSet">[docs]</a>
-<span class="k">class</span> <span class="nc">HyperParameterSet</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HyperParameterSet</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Represents a set of concretes `HyperParameter` instances and </span>
 <span class="sd">  handles the registration and access of hyperparameters.</span>
@@ -651,7 +656,7 @@
 <span class="sd">  astromodule.hp.ConstantHyperParameter</span>
 <span class="sd">  astromodule.hp.HP</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">hps</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">Trial</span> <span class="o">=</span> <span class="kc">None</span>
@@ -667,7 +672,7 @@
 <div class="viewcode-block" id="HyperParameterSet.from_dict">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.from_dict.html#astromodule.hp.HyperParameterSet.from_dict">[docs]</a>
   <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
     <span class="n">hp_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
       <span class="n">hp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConstantHyperParameter</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
@@ -677,7 +682,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet.concat">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.concat.html#astromodule.hp.HyperParameterSet.concat">[docs]</a>
-  <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">]]):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">HyperParameter</span><span class="p">]]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parses a sequence of dictionaries that represents the hyperparameters</span>
 
@@ -699,7 +704,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet.get">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.get.html#astromodule.hp.HyperParameterSet.get">[docs]</a>
-  <span class="k">def</span> <span class="nf">get</span><span class="p">(</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -750,7 +755,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet.set_trial">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.set_trial.html#astromodule.hp.HyperParameterSet.set_trial">[docs]</a>
-  <span class="k">def</span> <span class="nf">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trial</span><span class="p">:</span> <span class="n">optuna</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">FrozenTrial</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Sets the optuna&#39;s trial for all hyperparameter in this set</span>
 
@@ -767,7 +772,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet.to_values_dict">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.to_values_dict.html#astromodule.hp.HyperParameterSet.to_values_dict">[docs]</a>
-  <span class="k">def</span> <span class="nf">to_values_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">to_values_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a dict representation of this hyperparameters set with hp name</span>
 <span class="sd">    as dict key and last optuna&#39;s suggested value as dict value</span>
@@ -778,7 +783,7 @@
 
 <div class="viewcode-block" id="HyperParameterSet.clear_values_dict">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.clear_values_dict.html#astromodule.hp.HyperParameterSet.clear_values_dict">[docs]</a>
-  <span class="k">def</span> <span class="nf">clear_values_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">clear_values_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clear ``last_value`` property of the `HyperParameter`, relevant when training</span>
 <span class="sd">    with conditional hyperparameters</span>
@@ -790,7 +795,7 @@
       
 <div class="viewcode-block" id="HyperParameterSet.check_missing_hp">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.check_missing_hp.html#astromodule.hp.HyperParameterSet.check_missing_hp">[docs]</a>
-  <span class="k">def</span> <span class="nf">check_missing_hp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hps</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">check_missing_hp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hps</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if all elements in a given list is in hyperparameters set</span>
 
@@ -812,7 +817,7 @@
 
   
   
-  <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the hyperparameter set contains a hp identified by the given key</span>
 
@@ -830,7 +835,7 @@
     <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">e</span> <span class="o">==</span> <span class="n">key</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
   
   
-  <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
     <span class="n">hp</span><span class="o">.</span><span class="n">set_trial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_trial</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">hps</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">hp</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span> <span class="n">hp</span><span class="p">})</span>
     <span class="k">return</span> <span class="bp">self</span>
@@ -838,7 +843,7 @@
   
 <div class="viewcode-block" id="HyperParameterSet.add">
 <a class="viewcode-back" href="../../api/generated/astromodule.hp.HyperParameterSet.add.html#astromodule.hp.HyperParameterSet.add">[docs]</a>
-  <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hp</span><span class="p">:</span> <span class="n">HyperParameter</span><span class="p">):</span>
     <span class="bp">self</span> <span class="o">+=</span> <span class="n">hp</span></div>
 </div>
 
@@ -883,8 +888,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -917,7 +922,8 @@
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
