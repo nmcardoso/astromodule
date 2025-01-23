@@ -517,7 +517,7 @@ class SplusService:
     
     if isinstance(output, (str, Path)):
       output = Path(output)
-      output.mkdir(parents=True, exist_ok=True)
+      output.parent.mkdir(parents=True, exist_ok=True)
       output.write_bytes(resp.content)
     elif isinstance(output, (BufferedIOBase, RawIOBase)):
       output.write(resp.content)
