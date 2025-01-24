@@ -1,6 +1,7 @@
 import os
 import subprocess
 from argparse import ArgumentParser
+from time import sleep
 
 
 def cbpf_up(args):
@@ -18,7 +19,12 @@ def cbpf_down(args):
   local = args.local[0]
   remote = args.remote[0]
   cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -p 13900' {user}@tiomno.cbpf.br:'{remote}' '{local}'"
-  subprocess.call(cmd, shell=True)
+  it = 0
+  while it < args.repeat:
+    print(f'Execution {it} of {args.repeat}')
+    subprocess.call(cmd, shell=True)
+    sleep(args.delay)
+    it += 1
   
 
 def cbpf_ssh(args):
@@ -37,6 +43,8 @@ def cbpf():
   subparser = parser.add_subparsers(dest='subprog')
   
   down = subparser.add_parser('down')
+  down.add_argument('-r', '--repeat', type=int, default=1, action='store', help='number of times to repeat')
+  down.add_argument('-d', '--delay', type=int, default=120, action='store', help='delay time in seconds')
   down.add_argument('remote', nargs=1)
   down.add_argument('local', nargs='+')
   
