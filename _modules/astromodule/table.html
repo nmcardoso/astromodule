@@ -368,6 +368,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">SkyCoord</span><span class="p">,</span> <span class="n">match_coordinates_sky</span><span class="p">,</span>
                                  <span class="n">search_around_sky</span><span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">astromodule.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">PathOrFile</span><span class="p">,</span> <span class="n">TableLike</span><span class="p">,</span> <span class="n">read_table</span><span class="p">,</span> <span class="n">write_table</span>
@@ -657,7 +658,7 @@
   <span class="n">suffix1</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_1&#39;</span><span class="p">,</span>
   <span class="n">suffix2</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_2&#39;</span><span class="p">,</span>
   <span class="n">scorecol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;xmatch_sep&#39;</span><span class="p">,</span>
-  <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span>
+  <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Performs a crossmatch between two tables using STILTS [#ST]_ as the backend.</span>
@@ -818,36 +819,65 @@
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
   <span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-  <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in1_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
-  <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in2_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
   
-  <span class="n">df1</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
-  <span class="n">df2</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table1</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">):</span>
+    <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
+    <span class="n">fmt1</span> <span class="o">=</span> <span class="n">tb1_path</span><span class="o">.</span><span class="n">suffix</span>
+    <span class="n">values1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">tmp1</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">fmt1</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span>
+    <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in1_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt1</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ra1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span><span class="p">)</span>
+    <span class="n">values1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;values1=</span><span class="si">{</span><span class="n">ra1</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec1</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">write_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">tb1_path</span><span class="p">)</span>
+    <span class="n">tmp1</span> <span class="o">=</span> <span class="kc">True</span>
+      
   
-  <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">ra1</span><span class="p">,</span> <span class="n">dec1</span><span class="p">)</span>
-  <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span><span class="p">)</span>
-  
-  <span class="n">write_table</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">tb1_path</span><span class="p">)</span>
-  <span class="n">write_table</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">tb2_path</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table2</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">):</span>
+    <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
+    <span class="n">fmt2</span> <span class="o">=</span> <span class="n">tb2_path</span><span class="o">.</span><span class="n">suffix</span>
+    <span class="n">values2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">tmp2</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">fmt2</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span>
+    <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in2_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt2</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ra2</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">ra2</span><span class="p">,</span> <span class="n">dec2</span><span class="p">)</span>
+    <span class="n">values2</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;values2=</span><span class="si">{</span><span class="n">ra2</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec2</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">write_table</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">tb2_path</span><span class="p">)</span>
+    <span class="n">tmp2</span> <span class="o">=</span> <span class="kc">True</span>
   
   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
     <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+    
+  <span class="n">topcatextra_path</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s1">&#39;https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar&#39;</span><span class="p">,</span> 
+    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">pkgname</span><span class="o">=</span><span class="s1">&#39;astromodule&#39;</span>
+  <span class="p">)</span>
   
   <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;stilts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;java&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;-jar&#39;</span><span class="p">,</span>
+    <span class="n">topcatextra_path</span><span class="p">,</span>
+    <span class="s1">&#39;-stilts&#39;</span><span class="p">,</span>
     <span class="s1">&#39;tmatch2&#39;</span><span class="p">,</span>
     <span class="s1">&#39;matcher=sky&#39;</span><span class="p">,</span>
     <span class="s1">&#39;progress=none&#39;</span><span class="p">,</span>
     <span class="s1">&#39;runner=parallel&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;ifmt1=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;ifmt2=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;ofmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;ifmt1=</span><span class="si">{</span><span class="n">fmt1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;ifmt2=</span><span class="si">{</span><span class="n">fmt2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;ofmt=parquet&#39;</span><span class="p">,</span>
     <span class="s1">&#39;omode=out&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;out=-&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;values1=</span><span class="si">{</span><span class="n">ra1</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="sa">f</span><span class="s1">&#39;values2=</span><span class="si">{</span><span class="n">ra2</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">values1</span><span class="p">,</span>
+    <span class="n">values2</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;params=</span><span class="si">{</span><span class="n">radius</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;join=</span><span class="si">{</span><span class="n">join</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
     <span class="sa">f</span><span class="s1">&#39;find=</span><span class="si">{</span><span class="n">find</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -866,8 +896,11 @@
     <span class="n">text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
   <span class="p">)</span>
   
-  <span class="n">tb1_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
-  <span class="n">tb2_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">tmp1</span><span class="p">:</span>
+    <span class="n">tb1_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">tmp2</span><span class="p">:</span>
+    <span class="n">tb2_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  
   <span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;STILTS proccess exited with an error signal.&#39;</span><span class="p">)</span>
@@ -888,7 +921,7 @@
   <span class="n">action</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;identify&#39;</span><span class="p">,</span> <span class="s1">&#39;keep0&#39;</span><span class="p">,</span> <span class="s1">&#39;keep1&#39;</span><span class="p">,</span> <span class="s1">&#39;wide2&#39;</span><span class="p">,</span> <span class="s1">&#39;wideN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;keep1&#39;</span><span class="p">,</span>
   <span class="n">ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
   <span class="n">dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-  <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fits&#39;</span><span class="p">,</span>
+  <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  Performs a selfmatch in a table (crossmatch agains the same table) using </span>
@@ -977,8 +1010,6 @@
   <span class="n">write_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">in_path</span><span class="p">)</span>
   
   <span class="c1"># input_stream = BytesIO()</span>
-  <span class="c1"># df = read_table(table)</span>
-  <span class="c1"># ra, dec = guess_coords_columns(df, ra, dec)</span>
   <span class="c1"># write_table(df, input_stream, fmt=fmt)</span>
   <span class="c1"># input_stream.seek(0)</span>
   
@@ -986,9 +1017,18 @@
     <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
-    
+  
+  <span class="n">topcatextra_path</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s1">&#39;https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar&#39;</span><span class="p">,</span> 
+    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">pkgname</span><span class="o">=</span><span class="s1">&#39;astromodule&#39;</span>
+  <span class="p">)</span>
+  
   <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;stilts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;java&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;-jar&#39;</span><span class="p">,</span>
+    <span class="n">topcatextra_path</span><span class="p">,</span>
+    <span class="s1">&#39;-stilts&#39;</span><span class="p">,</span>
     <span class="s1">&#39;tmatch1&#39;</span><span class="p">,</span>
     <span class="s1">&#39;matcher=sky&#39;</span><span class="p">,</span>
     <span class="s1">&#39;progress=none&#39;</span><span class="p">,</span>
@@ -1011,6 +1051,7 @@
   <span class="p">)</span>
   
   <span class="n">in_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  
   <span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;STILTS proccess exited with an error signal.&#39;</span><span class="p">)</span>
@@ -1109,6 +1150,11 @@
     <span class="n">action</span><span class="o">=</span><span class="s1">&#39;identify&#39;</span><span class="p">,</span>
     <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;parquet&#39;</span>
   <span class="p">)</span>
+  <span class="c1"># df = crossmatch(</span>
+  <span class="c1">#   Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared.csv&#39;,</span>
+  <span class="c1">#   Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared+top20.csv&#39;,</span>
+  <span class="c1">#   radius=1*u.arcsec,</span>
+  <span class="c1"># )</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 

@@ -365,7 +365,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span><span class="p">,</span> <span class="n">votable</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageOps</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pypdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfWriter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">42</span>
@@ -552,7 +551,7 @@
       <span class="n">optional_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;names&#39;</span><span class="p">:</span> <span class="n">col_names</span><span class="p">}</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
       <span class="n">path</span><span class="p">,</span> 
-      <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> 
+      <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> 
       <span class="n">usecols</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> 
       <span class="n">low_memory</span><span class="o">=</span><span class="n">low_memory</span><span class="p">,</span>
       <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span>
@@ -856,6 +855,8 @@
 <span class="sd">  output_path : str | Path</span>
 <span class="sd">    The output file path</span>
 <span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">pypdf</span><span class="w"> </span><span class="kn">import</span> <span class="n">PdfWriter</span>
+  
   <span class="n">merger</span> <span class="o">=</span> <span class="n">PdfWriter</span><span class="p">()</span>
   <span class="k">for</span> <span class="n">pdf</span> <span class="ow">in</span> <span class="n">pdfs</span><span class="p">:</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">pdf</span><span class="p">)</span>
