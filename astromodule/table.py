@@ -18,6 +18,7 @@ import pandas as pd
 from astropy.coordinates import (SkyCoord, match_coordinates_sky,
                                  search_around_sky)
 from astropy.table import Table
+from astropy.utils.data import download_file
 from tqdm import tqdm
 
 from astromodule.io import PathOrFile, TableLike, read_table, write_table
@@ -290,7 +291,7 @@ def crossmatch(
   suffix1: str = '_1',
   suffix2: str = '_2',
   scorecol: str | None = 'xmatch_sep',
-  fmt: Literal['fits', 'csv'] = 'fits',
+  fmt: Literal['fits', 'csv', 'parquet'] = 'parquet',
 ) -> pd.DataFrame | None:
   """
   Performs a crossmatch between two tables using STILTS [#ST]_ as the backend.
@@ -451,36 +452,65 @@ def crossmatch(
   """
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
-  tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt}'
-  tb2_path = tmpdir / f'xmatch_in2_{token}.{fmt}'
   
-  df1 = read_table(table1)
-  df2 = read_table(table2)
+  if isinstance(table1, (str, Path)) and Path(table1).suffix in ('fits', 'csv', 'parquet'):
+    tb1_path = Path(table1)
+    fmt1 = tb1_path.suffix
+    values1 = ''
+    tmp1 = False
+  else:
+    fmt1 = 'parquet'
+    tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt1}'
+    df1 = read_table(table1)
+    if ra1 is None or dec1 is None:
+      ra1, dec1 = guess_coords_columns(df1, ra1, dec1)
+    values1 = f'values1={ra1} {dec1}'
+    write_table(df1, tb1_path)
+    tmp1 = True
+      
   
-  ra1, dec1 = guess_coords_columns(df1, ra1, dec1)
-  ra2, dec2 = guess_coords_columns(df2, ra2, dec2)
-  
-  write_table(df1, tb1_path)
-  write_table(df2, tb2_path)
+  if isinstance(table2, (str, Path)) and Path(table1).suffix in ('fits', 'csv', 'parquet'):
+    tb2_path = Path(table2)
+    fmt2 = tb2_path.suffix
+    values2 = ''
+    tmp2 = False
+  else:
+    fmt2 = 'parquet'
+    tb2_path = tmpdir / f'xmatch_in2_{token}.{fmt2}'
+    df2 = read_table(table2)
+    if ra2 is None or dec2 is None:
+      ra2, dec2 = guess_coords_columns(df2, ra2, dec2)
+    values2 = f'values2={ra2} {dec2}'
+    write_table(df2, tb2_path)
+    tmp2 = True
   
   if isinstance(radius, u.Quantity):
     radius = float(radius.to(u.arcsec).value)
   else:
     radius = float(radius)
+    
+  topcatextra_path = download_file(
+    'https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar', 
+    cache=True, 
+    pkgname='astromodule'
+  )
   
   cmd = [
-    'stilts',
+    'java',
+    '-jar',
+    topcatextra_path,
+    '-stilts',
     'tmatch2',
     'matcher=sky',
     'progress=none',
     'runner=parallel',
-    f'ifmt1={fmt}',
-    f'ifmt2={fmt}',
-    f'ofmt={fmt}',
+    f'ifmt1={fmt1}',
+    f'ifmt2={fmt2}',
+    f'ofmt=parquet',
     'omode=out',
     f'out=-',
-    f'values1={ra1} {dec1}',
-    f'values2={ra2} {dec2}',
+    values1,
+    values2,
     f'params={radius}',
     f'join={join}',
     f'find={find}',
@@ -499,8 +529,11 @@ def crossmatch(
     text=False,
   )
   
-  tb1_path.unlink()
-  tb2_path.unlink()
+  if tmp1:
+    tb1_path.unlink()
+  if tmp2:
+    tb2_path.unlink()
+  
   error = result.stderr.decode().strip()
   if error:
     print('STILTS proccess exited with an error signal.')
@@ -518,7 +551,7 @@ def selfmatch(
   action: Literal['identify', 'keep0', 'keep1', 'wide2', 'wideN'] = 'keep1',
   ra: str | None = None,
   dec: str | None = None,
-  fmt: Literal['fits', 'csv'] = 'fits',
+  fmt: Literal['fits', 'csv', 'parquet'] = 'parquet',
 ) -> pd.DataFrame | None:
   """
   Performs a selfmatch in a table (crossmatch agains the same table) using 
@@ -607,8 +640,6 @@ def selfmatch(
   write_table(df, in_path)
   
   # input_stream = BytesIO()
-  # df = read_table(table)
-  # ra, dec = guess_coords_columns(df, ra, dec)
   # write_table(df, input_stream, fmt=fmt)
   # input_stream.seek(0)
   
@@ -616,9 +647,18 @@ def selfmatch(
     radius = float(radius.to(u.arcsec).value)
   else:
     radius = float(radius)
-    
+  
+  topcatextra_path = download_file(
+    'https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar', 
+    cache=True, 
+    pkgname='astromodule'
+  )
+  
   cmd = [
-    'stilts',
+    'java',
+    '-jar',
+    topcatextra_path,
+    '-stilts',
     'tmatch1',
     'matcher=sky',
     'progress=none',
@@ -641,6 +681,7 @@ def selfmatch(
   )
   
   in_path.unlink()
+  
   error = result.stderr.decode().strip()
   if error:
     print('STILTS proccess exited with an error signal.')
@@ -732,4 +773,9 @@ if __name__ == '__main__':
     action='identify',
     fmt='parquet'
   )
+  # df = crossmatch(
+  #   Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
+  #   Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared+top20.csv',
+  #   radius=1*u.arcsec,
+  # )
   print(df)

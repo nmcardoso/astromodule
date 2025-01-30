@@ -15,7 +15,6 @@ import requests
 from astropy.io import fits, votable
 from astropy.table import Table
 from PIL import Image, ImageOps
-from pypdf import PdfWriter
 from tqdm import tqdm
 
 RANDOM_SEED = 42
@@ -200,7 +199,7 @@ def read_table(
       optional_params = {'names': col_names}
     return pd.read_csv(
       path, 
-      sep='\s+', 
+      sep=r'\s+', 
       usecols=columns, 
       low_memory=low_memory,
       comment=comment,
@@ -480,6 +479,8 @@ def merge_pdf(pdfs: Sequence[str | Path], output_path: str | Path):
   output_path : str | Path
     The output file path
   """
+  from pypdf import PdfWriter
+  
   merger = PdfWriter()
   for pdf in pdfs:
     p = Path(pdf)
