@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 dynamic = ["readme"]
 name = "astromodule"
-version = "0.6.6"
+version = "0.7.0"
 requires-python = ">= 3.8"
 description = "Astronomy Tools"
 keywords = ["astronomy", "machine learning", "data science"]
