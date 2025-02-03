@@ -425,9 +425,15 @@ def parallel_function_executor(
   func: Callable,
   params: Sequence[Dict[str, Any]] = [],
   workers: int = 2,
-  unit: str = 'it'
+  unit: str = 'it',
+  kind: Literal['thread', 'process'] = 'thread'
 ):
-  with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+  if kind == 'thread':
+    pool = concurrent.futures.ThreadPoolExecutor
+  else:
+    pool = concurrent.futures.ProcessPoolExecutor
+    
+  with pool(max_workers=workers) as executor:
     futures = []
 
     for i in range(len(params)):
