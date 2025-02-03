@@ -78,7 +78,8 @@ def teiu_up(args):
   password = os.environ.get('TEIU_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh '{local}' {user}@teiu.iag.usp.br:'{remote}'"
+  url = 'teiu.iag.usp.br' if not args.ip else '10.180.0.110'
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh '{local}' {user}@{url}:'{remote}'"
   subprocess.call(cmd, shell=True)
 
 
@@ -87,14 +88,16 @@ def teiu_down(args):
   password = os.environ.get('TEIU_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh {user}@teiu.iag.usp.br:'{remote}' '{local}'"
+  url = 'teiu.iag.usp.br' if not args.ip else '10.180.0.110'
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh {user}@{url}:'{remote}' '{local}'"
   subprocess.call(cmd, shell=True)
   
   
 def teiu_ssh(args):
   user = os.environ.get('TEIU_USER')
   password = os.environ.get('TEIU_PASS') 
-  cmd = f"sshpass -p {password} ssh {user}@teiu.iag.usp.br"
+  url = 'teiu.iag.usp.br' if not args.ip else '10.180.0.110'
+  cmd = f"sshpass -p {password} ssh {user}@{url}"
   subprocess.call(cmd, shell=True)
 
 
@@ -109,12 +112,15 @@ def teiu():
   down = subparser.add_parser('down')
   down.add_argument('remote', nargs=1)
   down.add_argument('local', nargs='+')
+  down.add_argument('--ip', action='store_true')
   
   up = subparser.add_parser('up')
   up.add_argument('local', nargs=1) 
   up.add_argument('remote', nargs='+')
+  up.add_argument('--ip', action='store_true')
   
-  subparser.add_parser('ssh')
+  ssh = subparser.add_parser('ssh')
+  ssh.add_argument('--ip', action='store_true')
   
   args = parser.parse_args()
   
@@ -138,7 +144,8 @@ def iguana_up(args):
   password = os.environ.get('IGUANA_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh '{local}' {user}@iguana.iag.usp.br:'{remote}'"
+  url = 'iguana.iag.usp.br' if not args.ip else '10.180.0.180'
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh '{local}' {user}@{url}:'{remote}'"
   subprocess.call(cmd, shell=True)
 
 
@@ -147,14 +154,16 @@ def iguana_down(args):
   password = os.environ.get('IGUANA_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh {user}@iguana.iag.usp.br:'{remote}' '{local}'"
+  url = 'iguana.iag.usp.br' if not args.ip else '10.180.0.180'
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh {user}@{url}:'{remote}' '{local}'"
   subprocess.call(cmd, shell=True)
   
   
 def iguana_ssh(args):
   user = os.environ.get('IGUANA_USER')
   password = os.environ.get('IGUANA_PASS') 
-  cmd = f"sshpass -p {password} ssh {user}@iguana.iag.usp.br"
+  url = 'iguana.iag.usp.br' if not args.ip else '10.180.0.180'
+  cmd = f"sshpass -p {password} ssh {user}@{url}"
   subprocess.call(cmd, shell=True)
 
 
@@ -170,12 +179,15 @@ def iguana():
   down = subparser.add_parser('down')
   down.add_argument('remote', nargs=1)
   down.add_argument('local', nargs='+')
+  down.add_argument('--ip', action='store_true')
   
   up = subparser.add_parser('up')
   up.add_argument('local', nargs=1) 
   up.add_argument('remote', nargs='+')
+  up.add_argument('--ip', action='store_true')
   
-  subparser.add_parser('ssh')
+  ssh = subparser.add_parser('ssh')
+  ssh.add_argument('--ip', action='store_true')
   
   args = parser.parse_args()
   
