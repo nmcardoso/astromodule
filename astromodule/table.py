@@ -453,7 +453,7 @@ def crossmatch(
   tmpdir = Path(tempfile.gettempdir())
   token = secrets.token_hex(8)
   
-  if isinstance(table1, (str, Path)) and Path(table1).suffix in ('fits', 'csv', 'parquet'):
+  if isinstance(table1, (str, Path)) and Path(table1).suffix.lower() in ('.fits', '.csv', '.parquet'):
     tb1_path = Path(table1)
     fmt1 = tb1_path.suffix
     values1 = ''
@@ -469,7 +469,7 @@ def crossmatch(
     tmp1 = True
       
   
-  if isinstance(table2, (str, Path)) and Path(table1).suffix in ('fits', 'csv', 'parquet'):
+  if isinstance(table2, (str, Path)) and Path(table1).suffix.lower() in ('.fits', '.csv', '.parquet'):
     tb2_path = Path(table2)
     fmt2 = tb2_path.suffix
     values2 = ''
@@ -694,6 +694,242 @@ def selfmatch(
 
 
 
+def crossmatch_cds(
+  table: TableLike | PathOrFile,
+  cds_table: str = 'simbad',
+  radius: float | u.Quantity = 1.0,
+  ra: str | None = None,
+  dec: str | None = None,
+  find: Literal['all', 'best', 'best-remote', 'each', 'each-dist'] = 'all',
+  fixcols: Literal['none', 'dups', 'all'] = 'dups',
+  suffix_in: str = '_in',
+  suffix_remote: str = '_cds',
+  block_size: int = 50_000,
+  use_moc: bool = False,
+  pre_sort: bool = False,
+  service_url: str = None,
+  fmt: Literal['fits', 'csv', 'parquet'] = 'parquet',
+):
+  """
+  Uses the CDS X-Match service to join a local table to one of the tables 
+  hosted by the Centre de Données astronomiques de Strasbourg. This includes 
+  all of the VizieR tables and the SIMBAD database. The service is very fast, 
+  and in most cases it is the best way to match a local table against a large 
+  external table hosted by a service.
+  
+  The local table is uploaded to the X-Match service in chunks, and the matches 
+  for each chunk are retrieved in turn and eventually stitched together to form 
+  the final result. The tool only uploads sky position and an identifier for each 
+  row of the input table, but all columns of the input table are reinstated in 
+  the result for reference. 
+  
+  Parameters
+  ----------
+  table : TableLike | PathOrFile
+    The table that will be crossmatched. This parameter accepts a
+    table-like object (pandas dataframe, astropy table), a path to a file
+    represented as a `str` or `pathlib.Path` object, or a file object
+    (BinaryIO, StringIO, file-descriptor, etc).
+  
+  cds_table : str
+    Identifier of the table from the CDS crossmatch service that is to be 
+    matched against the local table. This identifier may be the standard VizieR 
+    identifier (e.g. "II/246/out" for the 2MASS Point Source Catalogue) or 
+    "simbad" to indicate SIMBAD data.
+
+    See for instance the TAPVizieR table searching facility 
+    at http://tapvizier.u-strasbg.fr/adql/ to find VizieR catalogue identifiers.
+  
+  radius : float | u.Quantity
+    The crossmatch max error radius. This function accepts a ``float`` value,
+    that will be interpreted as ``arcsec`` unit, or a `astropy.units.Quantity`.
+  
+  ra : str
+    The name of the Right Ascension (RA) column. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  dec : str
+    The name of the Declination (Dec) column. If ``None``
+    is passed, this function will try to guess the RA column name based on
+    predefined patterns using the function `~guess_coords_columns`, see this
+    function's documentation for more details.
+  
+  find : "all" or "best" or "best-remote" or "each" or "each-dist"
+    Determines which pair matches are included in the result.
+
+    * ``all``: All matches
+    * ``best``: Matched rows, best remote row for each input row
+    * ``best-remote``: Matched rows, best input row for each remote row
+    * ``each``: One row per input row, contains best remote match or blank
+    * ``each-dist``: One row per input row, column giving distance only for best match
+
+    Note only the all mode is symmetric between the two tables. 
+    
+    Note also that there is a bug in best-remote matching. If the match is done 
+    in multiple blocks, it's possible for a remote table row to appear matched 
+    against one local table row per uploaded block, rather than just once for 
+    the whole result. If you're worried about that, set blocksize >= rowCount. 
+    This may be fixed in a future release. 
+  
+  fixcols : "none" or "dups" or "all"
+    Determines how input columns are renamed before use in the output table. The choices are:
+
+    * ``none``: columns are not renamed
+    * ``dups``: columns which would otherwise have duplicate names in the output 
+        will be renamed to indicate which table they came from
+    * ``all``: all columns will be renamed to indicate which table they came from
+
+    If columns are renamed, the new ones are determined by ``suffix*`` parameters. 
+    
+  suffix_in : str
+    If the fixcols parameter is set so that input columns are renamed for 
+    insertion into the output table, this parameter determines how the renaming 
+    is done. It gives a suffix which is appended to all renamed columns from the 
+    input table. Default: "_in"
+    
+  suffix_remote : str
+    If the fixcols parameter is set so that input columns are renamed for insertion 
+    into the output table, this parameter determines how the renaming is done. 
+    It gives a suffix which is appended to all renamed columns from the 
+    CDS result table. Default: "_cds"
+  
+  block_sise : int
+    The CDS Xmatch service operates limits on the maximum number of rows that 
+    can be uploaded and the maximum number of rows that is returned as a result 
+    from a single query. In the case of large input tables, they are broken down 
+    into smaller blocks, and one request is sent to the external service for 
+    each block. This parameter controls the number of rows in each block. 
+    For an input table with fewer rows than this value, the whole thing is 
+    done as a single request.
+
+    At time of writing, the maximum upload size is 100Mb (about 3Mrow; 
+    this does not depend on the width of your table), and the maximum 
+    return size is 2Mrow.
+
+    Large blocksizes tend to be good (up to a point) for reducing the total 
+    amount of time a large xmatch operation takes, but they can make it harder 
+    to see the job progressing. There is also the danger (for ALL-type find modes) 
+    of exceeding the return size limit, which will result in truncation of the 
+    returned result. 
+  
+  use_moc : bool
+    If true, first acquire a MOC coverage map from CDS, and use that to 
+    pre-filter rows before uploading them for matching. This should improve 
+    efficiency, but have no effect on the result. 
+  
+  pre_sort : bool
+    If true, the rows are sorted by HEALPix index before they are uploaded to 
+    the CDS X-Match service. If the match is done in multiple blocks, this may 
+    improve efficiency, since when matching against a large remote catalogue 
+    the X-Match service likes to process requests in which sources are grouped 
+    into a small region rather than scattered all over the sky.
+
+    Note this will have a couple of other side effects that may be undesirable: 
+    it will read all the input rows into the task at once, which may make it 
+    harder to assess progress, and it will affect the order of the rows in the 
+    output table.
+
+    It is probably only worth setting true for rather large (multi-million-row?) 
+    multi-block matches, where both local and remote catalogues are spread over a 
+    significant fraction of the sky. But feel free to experiment. 
+  
+  service_url : str
+    The URL at which the CDS Xmatch service can be found. Normally this should 
+    not be altered from the default, but if other implementations of the same 
+    service are known, this parameter can be used to access them. 
+  
+  fmt : "fits" or "csv" or "parquet"
+    This function converts the input table to file before passing to 
+    stilts backend. This parameter can be used to set the intermediate
+    file type. Fits is faster and is the default file type.
+  """
+  tmpdir = Path(tempfile.gettempdir())
+  token = secrets.token_hex(8)
+  
+  if isinstance(table, (str, Path)) and Path(table).suffix.lower() in ('.fits', '.csv', '.parquet'):
+    in_path = Path(table)
+    fmt = in_path.suffix[1:]
+    tmp = False
+  else:
+    in_path = tmpdir / f'cdsmatch_{token}.{fmt}'
+    df = read_table(table)
+    if ra is None or dec is None:
+      ra, dec = guess_coords_columns(df, ra, dec)
+    write_table(df, in_path)
+    tmp = True
+  
+  ra_param, dec_param = '', ''
+  if ra: ra_param = f'ra={ra}'
+  if dec: dec_param = f'dec={dec}'
+    
+  service_url_param = f'serviceurl={service_url}' if service_url else ''
+  use_moc = 'true' if use_moc else 'false'
+  pre_sort = 'true' if pre_sort else 'false'
+  
+  if isinstance(radius, u.Quantity):
+    radius = float(radius.to(u.arcsec).value)
+  else:
+    radius = float(radius)
+  
+  topcatextra_path = download_file(
+    'https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar', 
+    cache=True, 
+    pkgname='astromodule'
+  )
+
+  cmd = [
+    'java',
+    '-jar',
+    topcatextra_path,
+    '-stilts',
+    'cdsskymatch',
+    f'ifmt={fmt}',
+    'omode=out',
+    'out=-',
+    f'ofmt={fmt}',
+    ra_param,
+    dec_param,
+    f'radius={radius}',
+    f'cdstable={cds_table}',
+    f'find={find}',
+    f'blocksize={block_size}',
+    'compress=true',
+    service_url_param,
+    f'usemoc={use_moc}',
+    f'presort={pre_sort}',
+    f'fixcols={fixcols}',
+    f'suffixin={suffix_in}',
+    f'suffixremote={suffix_remote}',
+    f'in={str(in_path.absolute())}',
+  ]
+  
+  cmd = list(filter(lambda x: x != '', cmd))
+  
+  result = subprocess.run(
+    cmd,
+    stderr=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    text=False,
+  )
+  
+  if tmp:
+    in_path.unlink()
+  
+  error = result.stderr.decode().strip()
+  if result.returncode != 0:
+    print('STILTS proccess exited with an error signal.')
+    print(error)
+    return None
+  elif error:
+    print(error)
+  
+  df_out = read_table(BytesIO(result.stdout), fmt=fmt)
+  return df_out
+
+
+
 def radial_search(
   position: SkyCoord,
   table: TableLike,
@@ -767,15 +1003,20 @@ def concat_tables(
 
 
 if __name__ == '__main__':
-  df = selfmatch(
-    Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
-    radius=45*u.arcmin,
-    action='identify',
-    fmt='parquet'
-  )
+  # df = selfmatch(
+  #   Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
+  #   radius=45*u.arcmin,
+  #   action='identify',
+  #   fmt='parquet'
+  # )
   # df = crossmatch(
   #   Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared.csv',
   #   Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared+top20.csv',
   #   radius=1*u.arcsec,
   # )
+  df = crossmatch_cds(
+    Path(__file__).parent.parent / 'tests' / 'selection_claudia+prepared+top20.csv',
+    ra='ra',
+    dec='dec',
+  )
   print(df)
