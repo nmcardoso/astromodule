@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>astromodule.io.parallel_function_executor &#8212; AstroModule 0 documentation</title>
+    <title>astromodule.table.crossmatch_cds &#8212; AstroModule 0 documentation</title>
   
   
   
@@ -45,11 +45,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.io.parallel_function_executor';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/astromodule.table.crossmatch_cds';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="astromodule.io.read_image" href="astromodule.io.read_image.html" />
-    <link rel="prev" title="astromodule.io.merge_pdf" href="astromodule.io.merge_pdf.html" />
+    <link rel="next" title="astromodule.table.drop_duplicates" href="astromodule.table.drop_duplicates.html" />
+    <link rel="prev" title="astromodule.table.crossmatch" href="astromodule.table.crossmatch.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.1" />
@@ -441,12 +441,12 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.io.html">astromodule.io</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.batch_download_file.html">astromodule.io.batch_download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.compress_fits.html">astromodule.io.compress_fits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.download_file.html">astromodule.io.download_file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.merge_pdf.html">astromodule.io.merge_pdf</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.io.parallel_function_executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.io.parallel_function_executor.html">astromodule.io.parallel_function_executor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_image.html">astromodule.io.read_image</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.read_table.html">astromodule.io.read_table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.io.write_image.html">astromodule.io.write_image</a></li>
@@ -573,10 +573,10 @@
 </details></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="astromodule.table.html">astromodule.table</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch_cds.html">astromodule.table.crossmatch_cds</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">astromodule.table.crossmatch_cds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.fast_crossmatch.html">astromodule.table.fast_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
@@ -655,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../reference.html" class="nav-link">API Reference</a></li>
     
     
-    <li class="breadcrumb-item"><a href="astromodule.io.html" class="nav-link">astromodule.io</a></li>
+    <li class="breadcrumb-item"><a href="astromodule.table.html" class="nav-link">astromodule.table</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">astromodule.io.parallel_function_executor</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">astromodule.table.crossmatch_cds</span></li>
   </ul>
 </nav>
 </div>
@@ -674,12 +674,131 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="astromodule-io-parallel-function-executor">
-<h1>astromodule.io.parallel_function_executor<a class="headerlink" href="#astromodule-io-parallel-function-executor" title="Link to this heading">#</a></h1>
+  <section id="astromodule-table-crossmatch-cds">
+<h1>astromodule.table.crossmatch_cds<a class="headerlink" href="#astromodule-table-crossmatch-cds" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="astromodule.io.parallel_function_executor">
-<span class="sig-name descname"><span class="pre">parallel_function_executor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.13)"><span class="pre">Callable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.13)"><span class="pre">Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'it'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'thread'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'process'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'thread'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/io.html#parallel_function_executor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.io.parallel_function_executor" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="astromodule.table.crossmatch_cds">
+<span class="sig-name descname"><span class="pre">crossmatch_cds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.table.Table.html#astropy.table.Table" title="(in Astropy v7.1)"><span class="pre">Table</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v2.2.3)"><span class="pre">DataFrame</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.BufferedIOBase" title="(in Python v3.13)"><span class="pre">BufferedIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.RawIOBase" title="(in Python v3.13)"><span class="pre">RawIOBase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/io.html#io.TextIOBase" title="(in Python v3.13)"><span class="pre">TextIOBase</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cds_table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simbad'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v7.1)"><span class="pre">Quantity</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">find</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'all'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'best'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'best-remote'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'each'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'each-dist'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixcols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'none'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'dups'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'all'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'dups'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_in'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix_remote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_cds'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_moc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre_sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">service_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.13)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'fits'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'csv'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'parquet'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'parquet'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/astromodule/table.html#crossmatch_cds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#astromodule.table.crossmatch_cds" title="Link to this definition">#</a></dt>
+<dd><p>Uses the CDS X-Match service to join a local table to one of the tables 
+hosted by the Centre de Données astronomiques de Strasbourg. This includes 
+all of the VizieR tables and the SIMBAD database. The service is very fast, 
+and in most cases it is the best way to match a local table against a large 
+external table hosted by a service.</p>
+<p>The local table is uploaded to the X-Match service in chunks, and the matches 
+for each chunk are retrieved in turn and eventually stitched together to form 
+the final result. The tool only uploads sky position and an identifier for each 
+row of the input table, but all columns of the input table are reinstated in 
+the result for reference.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>table</strong><span class="classifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TableLike</span></code> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">PathOrFile</span></code></span></dt><dd><p>The table that will be crossmatched. This parameter accepts a
+table-like object (pandas dataframe, astropy table), a path to a file
+represented as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pathlib.Path</span></code></a> object, or a file object
+(BinaryIO, StringIO, file-descriptor, etc).</p>
+</dd>
+<dt><strong>cds_table</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>Identifier of the table from the CDS crossmatch service that is to be 
+matched against the local table. This identifier may be the standard VizieR 
+identifier (e.g. “II/246/out” for the 2MASS Point Source Catalogue) or 
+“simbad” to indicate SIMBAD data.</p>
+<p>See for instance the TAPVizieR table searching facility 
+at <a class="reference external" href="http://tapvizier.u-strasbg.fr/adql/">http://tapvizier.u-strasbg.fr/adql/</a> to find VizieR catalogue identifiers.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">float</span></code></a> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">u.Quantity</span></code></span></dt><dd><p>The crossmatch max error radius. This function accepts a <code class="docutils literal notranslate"><span class="pre">float</span></code> value,
+that will be interpreted as <code class="docutils literal notranslate"><span class="pre">arcsec</span></code> unit, or a <a class="reference external" href="https://docs.astropy.org/en/latest/api/astropy.units.Quantity.html#astropy.units.Quantity" title="(in Astropy v7.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code></a>.</p>
+</dd>
+<dt><strong>ra</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of the Right Ascension (RA) column. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
+function’s documentation for more details.</p>
+</dd>
+<dt><strong>dec</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The name of the Declination (Dec) column. If <code class="docutils literal notranslate"><span class="pre">None</span></code>
+is passed, this function will try to guess the RA column name based on
+predefined patterns using the function <a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>, see this
+function’s documentation for more details.</p>
+</dd>
+<dt><strong>find</strong><span class="classifier">“all” or “best” or “best-remote” or “each” or “each-dist”</span></dt><dd><p>Determines which pair matches are included in the result.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: All matches</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best</span></code>: Matched rows, best remote row for each input row</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best-remote</span></code>: Matched rows, best input row for each remote row</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each</span></code>: One row per input row, contains best remote match or blank</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">each-dist</span></code>: One row per input row, column giving distance only for best match</p></li>
+</ul>
+<p>Note only the all mode is symmetric between the two tables.</p>
+<p>Note also that there is a bug in best-remote matching. If the match is done 
+in multiple blocks, it’s possible for a remote table row to appear matched 
+against one local table row per uploaded block, rather than just once for 
+the whole result. If you’re worried about that, set blocksize &gt;= rowCount. 
+This may be fixed in a future release.</p>
+</dd>
+<dt><strong>fixcols</strong><span class="classifier">“none” or “dups” or “all”</span></dt><dd><p>Determines how input columns are renamed before use in the output table. The choices are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>: columns are not renamed</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dups</span></code>: columns which would otherwise have duplicate names in the output </dt><dd><p>will be renamed to indicate which table they came from</p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>: all columns will be renamed to indicate which table they came from</p></li>
+</ul>
+<p>If columns are renamed, the new ones are determined by <code class="docutils literal notranslate"><span class="pre">suffix*</span></code> parameters.</p>
+</dd>
+<dt><strong>suffix_in</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for 
+insertion into the output table, this parameter determines how the renaming 
+is done. It gives a suffix which is appended to all renamed columns from the 
+input table. Default: “_in”</p>
+</dd>
+<dt><strong>suffix_remote</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>If the fixcols parameter is set so that input columns are renamed for insertion 
+into the output table, this parameter determines how the renaming is done. 
+It gives a suffix which is appended to all renamed columns from the 
+CDS result table. Default: “_cds”</p>
+</dd>
+<dt><strong>block_sise</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></span></dt><dd><p>The CDS Xmatch service operates limits on the maximum number of rows that 
+can be uploaded and the maximum number of rows that is returned as a result 
+from a single query. In the case of large input tables, they are broken down 
+into smaller blocks, and one request is sent to the external service for 
+each block. This parameter controls the number of rows in each block. 
+For an input table with fewer rows than this value, the whole thing is 
+done as a single request.</p>
+<p>At time of writing, the maximum upload size is 100Mb (about 3Mrow; 
+this does not depend on the width of your table), and the maximum 
+return size is 2Mrow.</p>
+<p>Large blocksizes tend to be good (up to a point) for reducing the total 
+amount of time a large xmatch operation takes, but they can make it harder 
+to see the job progressing. There is also the danger (for ALL-type find modes) 
+of exceeding the return size limit, which will result in truncation of the 
+returned result.</p>
+</dd>
+<dt><strong>use_moc</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.13)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If true, first acquire a MOC coverage map from CDS, and use that to 
+pre-filter rows before uploading them for matching. This should improve 
+efficiency, but have no effect on the result.</p>
+</dd>
+<dt><strong>pre_sort</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values" title="(in Python v3.13)"><span class="xref std std-ref">bool</span></a></span></dt><dd><p>If true, the rows are sorted by HEALPix index before they are uploaded to 
+the CDS X-Match service. If the match is done in multiple blocks, this may 
+improve efficiency, since when matching against a large remote catalogue 
+the X-Match service likes to process requests in which sources are grouped 
+into a small region rather than scattered all over the sky.</p>
+<p>Note this will have a couple of other side effects that may be undesirable: 
+it will read all the input rows into the task at once, which may make it 
+harder to assess progress, and it will affect the order of the rows in the 
+output table.</p>
+<p>It is probably only worth setting true for rather large (multi-million-row?) 
+multi-block matches, where both local and remote catalogues are spread over a 
+significant fraction of the sky. But feel free to experiment.</p>
+</dd>
+<dt><strong>service_url</strong><span class="classifier"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></span></dt><dd><p>The URL at which the CDS Xmatch service can be found. Normally this should 
+not be altered from the default, but if other implementations of the same 
+service are known, this parameter can be used to access them.</p>
+</dd>
+<dt><strong>fmt</strong><span class="classifier">“fits” or “csv” or “parquet”</span></dt><dd><p>This function converts the input table to file before passing to 
+stilts backend. This parameter can be used to set the intermediate
+file type. Fits is faster and is the default file type.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 
@@ -694,20 +813,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="astromodule.io.merge_pdf.html"
+       href="astromodule.table.crossmatch.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">astromodule.io.merge_pdf</p>
+        <p class="prev-next-title">astromodule.table.crossmatch</p>
       </div>
     </a>
     <a class="right-next"
-       href="astromodule.io.read_image.html"
+       href="astromodule.table.drop_duplicates.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">astromodule.io.read_image</p>
+        <p class="prev-next-title">astromodule.table.drop_duplicates</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,7 +849,7 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.io.parallel_function_executor"><code class="docutils literal notranslate"><span class="pre">parallel_function_executor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#astromodule.table.crossmatch_cds"><code class="docutils literal notranslate"><span class="pre">crossmatch_cds()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -738,7 +857,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/api/astromodule.io.parallel_function_executor.rst.txt"
+      <li><a href="../_sources/api/astromodule.table.crossmatch_cds.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

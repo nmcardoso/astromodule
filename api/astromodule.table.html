@@ -576,6 +576,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">astromodule.table</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.concat_tables.html">astromodule.table.concat_tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch.html">astromodule.table.crossmatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="astromodule.table.crossmatch_cds.html">astromodule.table.crossmatch_cds</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.drop_duplicates.html">astromodule.table.drop_duplicates</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.fast_crossmatch.html">astromodule.table.fast_crossmatch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="astromodule.table.guess_coords_columns.html">astromodule.table.guess_coords_columns</a></li>
@@ -682,22 +683,25 @@
 <tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.crossmatch.html#astromodule.table.crossmatch" title="astromodule.table.crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crossmatch</span></code></a>(table1, table2[, ra1, dec1, ra2, ...])</p></td>
 <td><p>Performs a crossmatch between two tables using STILTS <a href="#id5"><span class="problematic" id="id1">[#ST]_</span></a> as the backend.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.drop_duplicates.html#astromodule.table.drop_duplicates" title="astromodule.table.drop_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>(table[, radius, ra, dec, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.crossmatch_cds.html#astromodule.table.crossmatch_cds" title="astromodule.table.crossmatch_cds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">crossmatch_cds</span></code></a>(table[, cds_table, radius, ...])</p></td>
+<td><p>Uses the CDS X-Match service to join a local table to one of the tables  hosted by the Centre de Données astronomiques de Strasbourg.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.drop_duplicates.html#astromodule.table.drop_duplicates" title="astromodule.table.drop_duplicates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_duplicates</span></code></a>(table[, radius, ra, dec, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.fast_crossmatch.html#astromodule.table.fast_crossmatch" title="astromodule.table.fast_crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_crossmatch</span></code></a>(left, right[, radius, join, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.fast_crossmatch.html#astromodule.table.fast_crossmatch" title="astromodule.table.fast_crossmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fast_crossmatch</span></code></a>(left, right[, radius, join, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>(df[, ra, dec])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.guess_coords_columns.html#astromodule.table.guess_coords_columns" title="astromodule.table.guess_coords_columns"><code class="xref py py-obj docutils literal notranslate"><span class="pre">guess_coords_columns</span></code></a>(df[, ra, dec])</p></td>
 <td><p>Receives a pandas dataframe and try to guess the columns names used to identify the RA and DEC coordinates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.radial_search.html#astromodule.table.radial_search" title="astromodule.table.radial_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radial_search</span></code></a>(position, table, radius[, ra, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.radial_search.html#astromodule.table.radial_search" title="astromodule.table.radial_search"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radial_search</span></code></a>(position, table, radius[, ra, ...])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.selfmatch.html#astromodule.table.selfmatch" title="astromodule.table.selfmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selfmatch</span></code></a>(table, radius[, action, ra, dec, fmt])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.selfmatch.html#astromodule.table.selfmatch" title="astromodule.table.selfmatch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">selfmatch</span></code></a>(table, radius[, action, ra, dec, fmt])</p></td>
 <td><p>Performs a selfmatch in a table (crossmatch agains the same table) using  STILTS <a href="#id6"><span class="problematic" id="id2">[#ST]_</span></a> as a backend (the same backend of TOPCAT <a href="#id7"><span class="problematic" id="id3">[#TOPCAT]_</span></a>).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="astromodule.table.table_knn.html#astromodule.table.table_knn" title="astromodule.table.table_knn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table_knn</span></code></a>(left, right[, nthneighbor, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="astromodule.table.table_knn.html#astromodule.table.table_knn" title="astromodule.table.table_knn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">table_knn</span></code></a>(left, right[, nthneighbor, ...])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>

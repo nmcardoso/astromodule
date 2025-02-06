@@ -16,6 +16,7 @@
   
     concat_tables
     crossmatch
+    crossmatch_cds
     drop_duplicates
     fast_crossmatch
     guess_coords_columns

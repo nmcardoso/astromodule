@@ -1,0 +1,6 @@
+astromodule.table.crossmatch\_cds
+=================================
+
+.. currentmodule:: astromodule.table
+
+.. autofunction:: crossmatch_cds

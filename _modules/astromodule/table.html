@@ -820,7 +820,7 @@
   <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
   <span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
   
-  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table1</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table1</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">):</span>
     <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
     <span class="n">fmt1</span> <span class="o">=</span> <span class="n">tb1_path</span><span class="o">.</span><span class="n">suffix</span>
     <span class="n">values1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -836,7 +836,7 @@
     <span class="n">tmp1</span> <span class="o">=</span> <span class="kc">True</span>
       
   
-  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table2</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table2</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">):</span>
     <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
     <span class="n">fmt2</span> <span class="o">=</span> <span class="n">tb2_path</span><span class="o">.</span><span class="n">suffix</span>
     <span class="n">values2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -1065,6 +1065,245 @@
 
 
 
+<div class="viewcode-block" id="crossmatch_cds">
+<a class="viewcode-back" href="../../api/astromodule.table.crossmatch_cds.html#astromodule.table.crossmatch_cds">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">crossmatch_cds</span><span class="p">(</span>
+  <span class="n">table</span><span class="p">:</span> <span class="n">TableLike</span> <span class="o">|</span> <span class="n">PathOrFile</span><span class="p">,</span>
+  <span class="n">cds_table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;simbad&#39;</span><span class="p">,</span>
+  <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="n">ra</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">dec</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">find</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="s1">&#39;best-remote&#39;</span><span class="p">,</span> <span class="s1">&#39;each&#39;</span><span class="p">,</span> <span class="s1">&#39;each-dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+  <span class="n">fixcols</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;dups&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;dups&#39;</span><span class="p">,</span>
+  <span class="n">suffix_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_in&#39;</span><span class="p">,</span>
+  <span class="n">suffix_remote</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_cds&#39;</span><span class="p">,</span>
+  <span class="n">block_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50_000</span><span class="p">,</span>
+  <span class="n">use_moc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">pre_sort</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="n">service_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">fmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;fits&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;parquet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Uses the CDS X-Match service to join a local table to one of the tables </span>
+<span class="sd">  hosted by the Centre de Données astronomiques de Strasbourg. This includes </span>
+<span class="sd">  all of the VizieR tables and the SIMBAD database. The service is very fast, </span>
+<span class="sd">  and in most cases it is the best way to match a local table against a large </span>
+<span class="sd">  external table hosted by a service.</span>
+<span class="sd">  </span>
+<span class="sd">  The local table is uploaded to the X-Match service in chunks, and the matches </span>
+<span class="sd">  for each chunk are retrieved in turn and eventually stitched together to form </span>
+<span class="sd">  the final result. The tool only uploads sky position and an identifier for each </span>
+<span class="sd">  row of the input table, but all columns of the input table are reinstated in </span>
+<span class="sd">  the result for reference. </span>
+<span class="sd">  </span>
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  table : TableLike | PathOrFile</span>
+<span class="sd">    The table that will be crossmatched. This parameter accepts a</span>
+<span class="sd">    table-like object (pandas dataframe, astropy table), a path to a file</span>
+<span class="sd">    represented as a `str` or `pathlib.Path` object, or a file object</span>
+<span class="sd">    (BinaryIO, StringIO, file-descriptor, etc).</span>
+<span class="sd">  </span>
+<span class="sd">  cds_table : str</span>
+<span class="sd">    Identifier of the table from the CDS crossmatch service that is to be </span>
+<span class="sd">    matched against the local table. This identifier may be the standard VizieR </span>
+<span class="sd">    identifier (e.g. &quot;II/246/out&quot; for the 2MASS Point Source Catalogue) or </span>
+<span class="sd">    &quot;simbad&quot; to indicate SIMBAD data.</span>
+
+<span class="sd">    See for instance the TAPVizieR table searching facility </span>
+<span class="sd">    at http://tapvizier.u-strasbg.fr/adql/ to find VizieR catalogue identifiers.</span>
+<span class="sd">  </span>
+<span class="sd">  radius : float | u.Quantity</span>
+<span class="sd">    The crossmatch max error radius. This function accepts a ``float`` value,</span>
+<span class="sd">    that will be interpreted as ``arcsec`` unit, or a `astropy.units.Quantity`.</span>
+<span class="sd">  </span>
+<span class="sd">  ra : str</span>
+<span class="sd">    The name of the Right Ascension (RA) column. If ``None``</span>
+<span class="sd">    is passed, this function will try to guess the RA column name based on</span>
+<span class="sd">    predefined patterns using the function `~guess_coords_columns`, see this</span>
+<span class="sd">    function&#39;s documentation for more details.</span>
+<span class="sd">  </span>
+<span class="sd">  dec : str</span>
+<span class="sd">    The name of the Declination (Dec) column. If ``None``</span>
+<span class="sd">    is passed, this function will try to guess the RA column name based on</span>
+<span class="sd">    predefined patterns using the function `~guess_coords_columns`, see this</span>
+<span class="sd">    function&#39;s documentation for more details.</span>
+<span class="sd">  </span>
+<span class="sd">  find : &quot;all&quot; or &quot;best&quot; or &quot;best-remote&quot; or &quot;each&quot; or &quot;each-dist&quot;</span>
+<span class="sd">    Determines which pair matches are included in the result.</span>
+
+<span class="sd">    * ``all``: All matches</span>
+<span class="sd">    * ``best``: Matched rows, best remote row for each input row</span>
+<span class="sd">    * ``best-remote``: Matched rows, best input row for each remote row</span>
+<span class="sd">    * ``each``: One row per input row, contains best remote match or blank</span>
+<span class="sd">    * ``each-dist``: One row per input row, column giving distance only for best match</span>
+
+<span class="sd">    Note only the all mode is symmetric between the two tables. </span>
+<span class="sd">    </span>
+<span class="sd">    Note also that there is a bug in best-remote matching. If the match is done </span>
+<span class="sd">    in multiple blocks, it&#39;s possible for a remote table row to appear matched </span>
+<span class="sd">    against one local table row per uploaded block, rather than just once for </span>
+<span class="sd">    the whole result. If you&#39;re worried about that, set blocksize &gt;= rowCount. </span>
+<span class="sd">    This may be fixed in a future release. </span>
+<span class="sd">  </span>
+<span class="sd">  fixcols : &quot;none&quot; or &quot;dups&quot; or &quot;all&quot;</span>
+<span class="sd">    Determines how input columns are renamed before use in the output table. The choices are:</span>
+
+<span class="sd">    * ``none``: columns are not renamed</span>
+<span class="sd">    * ``dups``: columns which would otherwise have duplicate names in the output </span>
+<span class="sd">        will be renamed to indicate which table they came from</span>
+<span class="sd">    * ``all``: all columns will be renamed to indicate which table they came from</span>
+
+<span class="sd">    If columns are renamed, the new ones are determined by ``suffix*`` parameters. </span>
+<span class="sd">    </span>
+<span class="sd">  suffix_in : str</span>
+<span class="sd">    If the fixcols parameter is set so that input columns are renamed for </span>
+<span class="sd">    insertion into the output table, this parameter determines how the renaming </span>
+<span class="sd">    is done. It gives a suffix which is appended to all renamed columns from the </span>
+<span class="sd">    input table. Default: &quot;_in&quot;</span>
+<span class="sd">    </span>
+<span class="sd">  suffix_remote : str</span>
+<span class="sd">    If the fixcols parameter is set so that input columns are renamed for insertion </span>
+<span class="sd">    into the output table, this parameter determines how the renaming is done. </span>
+<span class="sd">    It gives a suffix which is appended to all renamed columns from the </span>
+<span class="sd">    CDS result table. Default: &quot;_cds&quot;</span>
+<span class="sd">  </span>
+<span class="sd">  block_sise : int</span>
+<span class="sd">    The CDS Xmatch service operates limits on the maximum number of rows that </span>
+<span class="sd">    can be uploaded and the maximum number of rows that is returned as a result </span>
+<span class="sd">    from a single query. In the case of large input tables, they are broken down </span>
+<span class="sd">    into smaller blocks, and one request is sent to the external service for </span>
+<span class="sd">    each block. This parameter controls the number of rows in each block. </span>
+<span class="sd">    For an input table with fewer rows than this value, the whole thing is </span>
+<span class="sd">    done as a single request.</span>
+
+<span class="sd">    At time of writing, the maximum upload size is 100Mb (about 3Mrow; </span>
+<span class="sd">    this does not depend on the width of your table), and the maximum </span>
+<span class="sd">    return size is 2Mrow.</span>
+
+<span class="sd">    Large blocksizes tend to be good (up to a point) for reducing the total </span>
+<span class="sd">    amount of time a large xmatch operation takes, but they can make it harder </span>
+<span class="sd">    to see the job progressing. There is also the danger (for ALL-type find modes) </span>
+<span class="sd">    of exceeding the return size limit, which will result in truncation of the </span>
+<span class="sd">    returned result. </span>
+<span class="sd">  </span>
+<span class="sd">  use_moc : bool</span>
+<span class="sd">    If true, first acquire a MOC coverage map from CDS, and use that to </span>
+<span class="sd">    pre-filter rows before uploading them for matching. This should improve </span>
+<span class="sd">    efficiency, but have no effect on the result. </span>
+<span class="sd">  </span>
+<span class="sd">  pre_sort : bool</span>
+<span class="sd">    If true, the rows are sorted by HEALPix index before they are uploaded to </span>
+<span class="sd">    the CDS X-Match service. If the match is done in multiple blocks, this may </span>
+<span class="sd">    improve efficiency, since when matching against a large remote catalogue </span>
+<span class="sd">    the X-Match service likes to process requests in which sources are grouped </span>
+<span class="sd">    into a small region rather than scattered all over the sky.</span>
+
+<span class="sd">    Note this will have a couple of other side effects that may be undesirable: </span>
+<span class="sd">    it will read all the input rows into the task at once, which may make it </span>
+<span class="sd">    harder to assess progress, and it will affect the order of the rows in the </span>
+<span class="sd">    output table.</span>
+
+<span class="sd">    It is probably only worth setting true for rather large (multi-million-row?) </span>
+<span class="sd">    multi-block matches, where both local and remote catalogues are spread over a </span>
+<span class="sd">    significant fraction of the sky. But feel free to experiment. </span>
+<span class="sd">  </span>
+<span class="sd">  service_url : str</span>
+<span class="sd">    The URL at which the CDS Xmatch service can be found. Normally this should </span>
+<span class="sd">    not be altered from the default, but if other implementations of the same </span>
+<span class="sd">    service are known, this parameter can be used to access them. </span>
+<span class="sd">  </span>
+<span class="sd">  fmt : &quot;fits&quot; or &quot;csv&quot; or &quot;parquet&quot;</span>
+<span class="sd">    This function converts the input table to file before passing to </span>
+<span class="sd">    stilts backend. This parameter can be used to set the intermediate</span>
+<span class="sd">    file type. Fits is faster and is the default file type.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">tmpdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
+  <span class="n">token</span> <span class="o">=</span> <span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">):</span>
+    <span class="n">in_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="n">in_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">in_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;cdsmatch_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">guess_coords_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">)</span>
+    <span class="n">write_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">in_path</span><span class="p">)</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="kc">True</span>
+  
+  <span class="n">ra_param</span><span class="p">,</span> <span class="n">dec_param</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span>
+  <span class="k">if</span> <span class="n">ra</span><span class="p">:</span> <span class="n">ra_param</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ra=</span><span class="si">{</span><span class="n">ra</span><span class="si">}</span><span class="s1">&#39;</span>
+  <span class="k">if</span> <span class="n">dec</span><span class="p">:</span> <span class="n">dec_param</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;dec=</span><span class="si">{</span><span class="n">dec</span><span class="si">}</span><span class="s1">&#39;</span>
+    
+  <span class="n">service_url_param</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;serviceurl=</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">if</span> <span class="n">service_url</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">use_moc</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span> <span class="k">if</span> <span class="n">use_moc</span> <span class="k">else</span> <span class="s1">&#39;false&#39;</span>
+  <span class="n">pre_sort</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span> <span class="k">if</span> <span class="n">pre_sort</span> <span class="k">else</span> <span class="s1">&#39;false&#39;</span>
+  
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">):</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+  
+  <span class="n">topcatextra_path</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s1">&#39;https://www.star.bris.ac.uk/~mbt/topcat/topcat-extra.jar&#39;</span><span class="p">,</span> 
+    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">pkgname</span><span class="o">=</span><span class="s1">&#39;astromodule&#39;</span>
+  <span class="p">)</span>
+
+  <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;java&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;-jar&#39;</span><span class="p">,</span>
+    <span class="n">topcatextra_path</span><span class="p">,</span>
+    <span class="s1">&#39;-stilts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cdsskymatch&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;ifmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;omode=out&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;out=-&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;ofmt=</span><span class="si">{</span><span class="n">fmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">ra_param</span><span class="p">,</span>
+    <span class="n">dec_param</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;radius=</span><span class="si">{</span><span class="n">radius</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;cdstable=</span><span class="si">{</span><span class="n">cds_table</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;find=</span><span class="si">{</span><span class="n">find</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;blocksize=</span><span class="si">{</span><span class="n">block_size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;compress=true&#39;</span><span class="p">,</span>
+    <span class="n">service_url_param</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;usemoc=</span><span class="si">{</span><span class="n">use_moc</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;presort=</span><span class="si">{</span><span class="n">pre_sort</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;fixcols=</span><span class="si">{</span><span class="n">fixcols</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;suffixin=</span><span class="si">{</span><span class="n">suffix_in</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;suffixremote=</span><span class="si">{</span><span class="n">suffix_remote</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s1">&#39;in=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">in_path</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+  <span class="p">]</span>
+  
+  <span class="n">cmd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">))</span>
+  
+  <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">cmd</span><span class="p">,</span>
+    <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+    <span class="n">text</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+  <span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">tmp</span><span class="p">:</span>
+    <span class="n">in_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+  
+  <span class="n">error</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;STILTS proccess exited with an error signal.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">elif</span> <span class="n">error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+  
+  <span class="n">df_out</span> <span class="o">=</span> <span class="n">read_table</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">),</span> <span class="n">fmt</span><span class="o">=</span><span class="n">fmt</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df_out</span></div>
+
+
+
+
 <div class="viewcode-block" id="radial_search">
 <a class="viewcode-back" href="../../api/astromodule.table.radial_search.html#astromodule.table.radial_search">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">radial_search</span><span class="p">(</span>
@@ -1144,17 +1383,22 @@
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">selfmatch</span><span class="p">(</span>
-    <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;tests&#39;</span> <span class="o">/</span> <span class="s1">&#39;selection_claudia+prepared.csv&#39;</span><span class="p">,</span>
-    <span class="n">radius</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">arcmin</span><span class="p">,</span>
-    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;identify&#39;</span><span class="p">,</span>
-    <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;parquet&#39;</span>
-  <span class="p">)</span>
+  <span class="c1"># df = selfmatch(</span>
+  <span class="c1">#   Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared.csv&#39;,</span>
+  <span class="c1">#   radius=45*u.arcmin,</span>
+  <span class="c1">#   action=&#39;identify&#39;,</span>
+  <span class="c1">#   fmt=&#39;parquet&#39;</span>
+  <span class="c1"># )</span>
   <span class="c1"># df = crossmatch(</span>
   <span class="c1">#   Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared.csv&#39;,</span>
   <span class="c1">#   Path(__file__).parent.parent / &#39;tests&#39; / &#39;selection_claudia+prepared+top20.csv&#39;,</span>
   <span class="c1">#   radius=1*u.arcsec,</span>
   <span class="c1"># )</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">crossmatch_cds</span><span class="p">(</span>
+    <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;tests&#39;</span> <span class="o">/</span> <span class="s1">&#39;selection_claudia+prepared+top20.csv&#39;</span><span class="p">,</span>
+    <span class="n">ra</span><span class="o">=</span><span class="s1">&#39;ra&#39;</span><span class="p">,</span>
+    <span class="n">dec</span><span class="o">=</span><span class="s1">&#39;dec&#39;</span><span class="p">,</span>
+  <span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
