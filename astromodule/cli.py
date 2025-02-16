@@ -9,7 +9,7 @@ def cbpf_up(args):
   password = os.environ.get('CBPF_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -p 13900' '{local}' {user}@tiomno.cbpf.br:'{remote}'"
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -XY -p 13900' '{local}' {user}@tiomno.cbpf.br:'{remote}'"
   subprocess.call(cmd, shell=True)
   
 
@@ -18,7 +18,7 @@ def cbpf_down(args):
   password = os.environ.get('CBPF_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -p 13900' {user}@tiomno.cbpf.br:'{remote}' '{local}'"
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -XY -p 13900' {user}@tiomno.cbpf.br:'{remote}' '{local}'"
   it = 0
   while it < args.repeat:
     print(f'Execution {it} of {args.repeat}')
@@ -30,7 +30,7 @@ def cbpf_down(args):
 def cbpf_ssh(args):
   user = os.environ.get('CBPF_USER')
   password = os.environ.get('CBPF_PASS') 
-  cmd = f"sshpass -p {password} ssh -p 13900 {user}@tiomno.cbpf.br"
+  cmd = f"sshpass -p {password} ssh -XY -p 13900 {user}@tiomno.cbpf.br"
   subprocess.call(cmd, shell=True)
 
 
