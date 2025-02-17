@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStage.requirements
-===============================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. autoattribute:: PipelineStage.requirements

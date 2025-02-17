@@ -1,6 +1,0 @@
-astromodule.pipeline.Pipeline.plot
-==================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. automethod:: Pipeline.plot

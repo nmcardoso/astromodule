@@ -1,6 +1,0 @@
-astromodule.pipeline.PipelineStage.name
-=======================================
-
-.. currentmodule:: astromodule.pipeline
-
-.. autoproperty:: PipelineStage.name
