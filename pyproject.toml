@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 dynamic = ["readme"]
 name = "astromodule"
-version = "0.9.1"
+version = "0.10.0"
 requires-python = ">= 3.8"
 description = "Astronomy Tools"
 keywords = ["astronomy", "machine learning", "data science"]
@@ -48,6 +48,7 @@ docs = [
 teiu = "astromodule.cli:teiu"
 cbpf = "astromodule.cli:cbpf"
 iguana = "astromodule.cli:iguana"
+db = "astromodule.cli:db"
 
 [project.urls]
 Homepage = "https://nmcardoso.github.io/astromodule"

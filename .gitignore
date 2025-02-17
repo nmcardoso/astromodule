@@ -8,3 +8,5 @@ dist
 # Docs
 docs/_build
 docs/api
+
+mariadb
