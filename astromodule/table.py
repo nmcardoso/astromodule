@@ -455,9 +455,12 @@ def crossmatch(
   
   if isinstance(table1, (str, Path)) and Path(table1).suffix.lower() in ('.fits', '.csv', '.parquet'):
     tb1_path = Path(table1)
-    fmt1 = tb1_path.suffix
-    values1 = ''
+    fmt1 = tb1_path.suffix[1:]
     tmp1 = False
+    if ra1 is None or dec1 is None:
+      values1 = ''
+    else:
+      values1 = f'values2={ra2} {dec2}'
   else:
     fmt1 = 'parquet'
     tb1_path = tmpdir / f'xmatch_in1_{token}.{fmt1}'
@@ -471,9 +474,12 @@ def crossmatch(
   
   if isinstance(table2, (str, Path)) and Path(table2).suffix.lower() in ('.fits', '.csv', '.parquet'):
     tb2_path = Path(table2)
-    fmt2 = tb2_path.suffix
-    values2 = ''
+    fmt2 = tb2_path.suffix[1:]
     tmp2 = False
+    if ra2 is None or dec2 is None:
+      values2 = ''
+    else:
+      values2 = f'values2={ra2} {dec2}'
   else:
     fmt2 = 'parquet'
     tb2_path = tmpdir / f'xmatch_in2_{token}.{fmt2}'
