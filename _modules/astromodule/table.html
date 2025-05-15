@@ -822,9 +822,12 @@
   
   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table1</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">):</span>
     <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table1</span><span class="p">)</span>
-    <span class="n">fmt1</span> <span class="o">=</span> <span class="n">tb1_path</span><span class="o">.</span><span class="n">suffix</span>
-    <span class="n">values1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">fmt1</span> <span class="o">=</span> <span class="n">tb1_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="n">tmp1</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">ra1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">values1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">values1</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;values2=</span><span class="si">{</span><span class="n">ra2</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec2</span><span class="si">}</span><span class="s1">&#39;</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="n">fmt1</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span>
     <span class="n">tb1_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in1_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt1</span><span class="si">}</span><span class="s1">&#39;</span>
@@ -838,9 +841,12 @@
   
   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">table2</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">))</span> <span class="ow">and</span> <span class="n">Path</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.fits&#39;</span><span class="p">,</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;.parquet&#39;</span><span class="p">):</span>
     <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">table2</span><span class="p">)</span>
-    <span class="n">fmt2</span> <span class="o">=</span> <span class="n">tb2_path</span><span class="o">.</span><span class="n">suffix</span>
-    <span class="n">values2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">fmt2</span> <span class="o">=</span> <span class="n">tb2_path</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="n">tmp2</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">ra2</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">values2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">values2</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;values2=</span><span class="si">{</span><span class="n">ra2</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">dec2</span><span class="si">}</span><span class="s1">&#39;</span>
   <span class="k">else</span><span class="p">:</span>
     <span class="n">fmt2</span> <span class="o">=</span> <span class="s1">&#39;parquet&#39;</span>
     <span class="n">tb2_path</span> <span class="o">=</span> <span class="n">tmpdir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;xmatch_in2_</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">fmt2</span><span class="si">}</span><span class="s1">&#39;</span>
