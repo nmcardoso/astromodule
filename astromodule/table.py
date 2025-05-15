@@ -469,7 +469,7 @@ def crossmatch(
     tmp1 = True
       
   
-  if isinstance(table2, (str, Path)) and Path(table1).suffix.lower() in ('.fits', '.csv', '.parquet'):
+  if isinstance(table2, (str, Path)) and Path(table2).suffix.lower() in ('.fits', '.csv', '.parquet'):
     tb2_path = Path(table2)
     fmt2 = tb2_path.suffix
     values2 = ''
