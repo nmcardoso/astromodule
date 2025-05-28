@@ -15,7 +15,8 @@ def cbpf_up(args):
   password = os.environ.get('CBPF_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -XY -p 13900' '{local}' {user}@tiomno.cbpf.br:'{remote}'"
+  update_flag = '--update' if not args.overwrite else ''
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress {update_flag} -e 'ssh -XY -p 13900' '{local}' {user}@tiomno.cbpf.br:'{remote}'"
   subprocess.call(cmd, shell=True)
   
 
@@ -24,13 +25,15 @@ def cbpf_down(args):
   password = os.environ.get('CBPF_PASS')
   local = args.local[0]
   remote = args.remote[0]
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e 'ssh -XY -p 13900' {user}@tiomno.cbpf.br:'{remote}' '{local}'"
+  update_flag = '--update' if not args.overwrite else ''
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress {update_flag} -e 'ssh -XY -p 13900' {user}@tiomno.cbpf.br:'{remote}' '{local}'"
   it = 0
   while it < args.repeat:
     print(f'Execution {it} of {args.repeat}')
     subprocess.call(cmd, shell=True)
-    sleep(args.delay)
     it += 1
+    if it < args.repeat:
+      sleep(args.delay)
   
 
 def cbpf_ssh(args):
@@ -53,10 +56,12 @@ def cbpf():
   down.add_argument('-d', '--delay', type=int, default=120, action='store', help='delay time in seconds')
   down.add_argument('remote', nargs=1)
   down.add_argument('local', nargs='+')
+  down.add_argument('--overwrite', action='store_true')
   
   up = subparser.add_parser('up')
   up.add_argument('local', nargs=1) 
   up.add_argument('remote', nargs='+')
+  up.add_argument('--overwrite', action='store_true')
   
   subparser.add_parser('ssh')
   
@@ -85,7 +90,8 @@ def teiu_up(args):
   local = args.local[0]
   remote = args.remote[0]
   url = 'teiu.iag.usp.br' if not args.ip else '10.180.0.110'
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh '{local}' {user}@{url}:'{remote}'"
+  update_flag = '--update' if not args.overwrite else ''
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress {update_flag} -e ssh '{local}' {user}@{url}:'{remote}'"
   subprocess.call(cmd, shell=True)
 
 
@@ -95,7 +101,8 @@ def teiu_down(args):
   local = args.local[0]
   remote = args.remote[0]
   url = 'teiu.iag.usp.br' if not args.ip else '10.180.0.110'
-  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress -e ssh {user}@{url}:'{remote}' '{local}'"
+  update_flag = '--update' if not args.overwrite else ''
+  cmd = f"sshpass -p {password} rsync --mkpath -r -v --progress {update_flag} -e ssh {user}@{url}:'{remote}' '{local}'"
   subprocess.call(cmd, shell=True)
   
   
@@ -119,11 +126,13 @@ def teiu():
   down.add_argument('remote', nargs=1)
   down.add_argument('local', nargs='+')
   down.add_argument('--ip', action='store_true')
+  down.add_argument('--overwrite', action='store_true')
   
   up = subparser.add_parser('up')
   up.add_argument('local', nargs=1) 
   up.add_argument('remote', nargs='+')
   up.add_argument('--ip', action='store_true')
+  up.add_argument('--overwrite', action='store_true')
   
   ssh = subparser.add_parser('ssh')
   ssh.add_argument('--ip', action='store_true')
