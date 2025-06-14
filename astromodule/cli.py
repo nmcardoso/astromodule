@@ -114,6 +114,7 @@ def cbpf():
   dag.add_argument('--stop', action='store_true', help='stop dagster server')
   dag.add_argument('--restart', action='store_true', help='restart dagster server')
   dag.add_argument('--pull', action='store_true', help='git pull in dagster-home repo')
+  dag.add_argument('--home', action='store_true', help='home path of the dagster deployment')
   dag.add_argument('--tunnel', action='store_true', help='ssh tunnel')
   dag.add_argument('--local-port', action='store', type=int, default=3003, help='local port of dagster tunnel')
   dag.add_argument('--remote-port', action='store', type=int, default=3003, help='remote port of dagster tunnel')
