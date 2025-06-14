@@ -60,7 +60,7 @@ def cbpf_dagster(args):
     cmds.append(
       f"sshpass -p {password} "
       f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
-      f"""-o RemoteCommand='bash -lc "{conda_cmd}; {server_cmd}"'"""
+      f"""'bash -lc "{conda_cmd}; {server_cmd}"'"""
     )
   
   if args.stop:
@@ -73,14 +73,14 @@ def cbpf_dagster(args):
     cmds.append(
       f"sshpass -p {password} "
       f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
-      f"""-o RemoteCommand='bash -lc "cd $DAGSTER_HOME; git pull"'"""
+      f"""'bash -lc "cd $DAGSTER_HOME; git pull"'"""
     )
   
   if args.home:
     cmds.append(
       f"sshpass -p {password} "
       f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
-      f"""-o RemoteCommand='bash -lc "echo $DAGSTER_HOME"'"""
+      f"""'bash -lc "echo $DAGSTER_HOME"'"""
     )
   
   for cmd in cmds:
