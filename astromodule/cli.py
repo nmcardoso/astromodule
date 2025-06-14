@@ -41,6 +41,50 @@ def cbpf_ssh(args):
   password = os.environ.get('CBPF_PASS') 
   cmd = f"sshpass -p {password} ssh -XY -p 13900 {user}@tiomno.cbpf.br"
   subprocess.call(cmd, shell=True)
+  
+
+def cbpf_dagster(args):
+  user = os.environ.get('CBPF_USER')
+  password = os.environ.get('CBPF_PASS')
+  
+  cmds = []
+  if args.tunnel:
+    cmds.append(
+      f"sshpass -p {password} "
+      f"ssh -NL -p {args.local_port}:localhost:{args.remote_port} {user}@tiomno.cbpf.br"
+    )
+  
+  if args.start:
+    conda_cmd = 'conda activate dagster'
+    server_cmd = f'dagster-webserver -p {args.remote_port} -w $DAGSTER_HOME/cbpf_workspace.yaml'
+    cmds.append(
+      f"sshpass -p {password} "
+      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"-o RemoteCommand='{conda_cmd}; {server_cmd}'"
+    )
+  
+  if args.stop:
+    pass
+  
+  if args.restart:
+    pass
+  
+  if args.pull:
+    cmds.append(
+      f"sshpass -p {password} "
+      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"-o RemoteCommand='cd $DAGSTER_HOME; git pull'"
+    )
+  
+  if args.home:
+    cmds.append(
+      f"sshpass -p {password} "
+      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"-o RemoteCommand='echo $DAGSTER_HOME'"
+    )
+  
+  for cmd in cmds:
+    subprocess.call(cmd, shell=True)
 
 
 def cbpf():
@@ -65,12 +109,22 @@ def cbpf():
   
   subparser.add_parser('ssh')
   
+  dag = subparser.add_parser('dagster')
+  dag.add_argument('--start', action='store_true', help='start dagster server')
+  dag.add_argument('--stop', action='store_true', help='stop dagster server')
+  dag.add_argument('--restart', action='store_true', help='restart dagster server')
+  dag.add_argument('--pull', action='store_true', help='git pull in dagster-home repo')
+  dag.add_argument('--tunnel', action='store_true', help='ssh tunnel')
+  dag.add_argument('--local-port', action='store', type=int, default=3003, help='local port of dagster tunnel')
+  dag.add_argument('--remote-port', action='store', type=int, default=3003, help='remote port of dagster tunnel')
+  
   args = parser.parse_args()
   
   cmds = {
     'down': cbpf_down,
     'up': cbpf_up,
-    'ssh': cbpf_ssh
+    'ssh': cbpf_ssh,
+    'dagster': cbpf_dagster,
   }
   
   handler = cmds.get(args.subprog)
