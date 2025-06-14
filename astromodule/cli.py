@@ -51,7 +51,7 @@ def cbpf_dagster(args):
   if args.tunnel:
     cmds.append(
       f"sshpass -p {password} "
-      f"ssh -NL -p {args.local_port}:localhost:{args.remote_port} {user}@tiomno.cbpf.br"
+      f"ssh -NL {args.local_port}:localhost:{args.remote_port} {user}@tiomno.cbpf.br"
     )
   
   if args.start:
@@ -59,7 +59,7 @@ def cbpf_dagster(args):
     server_cmd = f'dagster-webserver -p {args.remote_port} -w $DAGSTER_HOME/cbpf_workspace.yaml'
     cmds.append(
       f"sshpass -p {password} "
-      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
       f"-o RemoteCommand='{conda_cmd}; {server_cmd}'"
     )
   
@@ -72,14 +72,14 @@ def cbpf_dagster(args):
   if args.pull:
     cmds.append(
       f"sshpass -p {password} "
-      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
       f"-o RemoteCommand='cd $DAGSTER_HOME; git pull'"
     )
   
   if args.home:
     cmds.append(
       f"sshpass -p {password} "
-      f"ssh -XY -p {user}@tiomno.cbpf.br "
+      f"ssh -XY -p 13900 {user}@tiomno.cbpf.br "
       f"-o RemoteCommand='echo $DAGSTER_HOME'"
     )
   
