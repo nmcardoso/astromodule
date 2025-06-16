@@ -1001,8 +1001,10 @@ def concat_tables(
   pb = tqdm if progress else lambda x, **_: x
   dfs = []
   for table in pb(tables, unit='table'):
-    dfs.append(read_table(table, **kwargs))
-  dfs = [df for df in dfs if isinstance(df, pd.DataFrame) and not df.empty]
+    try:
+      dfs.append(read_table(table, **kwargs))
+    except pd.errors.EmptyDataError:
+      pass
   if len(dfs) > 0:
     return pd.concat(dfs)
   return pd.DataFrame()
